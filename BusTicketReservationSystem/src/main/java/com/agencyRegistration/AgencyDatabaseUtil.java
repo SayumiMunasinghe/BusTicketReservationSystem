@@ -54,12 +54,12 @@ public class AgencyDatabaseUtil {
 //			Connection con = DriverManager.getConnection(url, uName, pWord);
 			
 		    Class.forName("com.mysql.jdbc.Driver");         
-		    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","password");  
+		    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/obtrs","root","password");  
 			Statement stmt = con.createStatement();
-//			String sql = "Insert into obtrs.agency values (0 , "+agentNIC+", "+agentName+", "+companyName+", "+agentPhone+", "+agentEmail+", "+agencyLocation+", "+password+", "+confirmPassword+","+username+")";
-//			String sql = "Insert into new_table values (1 , 5)";
+			String sql = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
+//			String sql = "Insert into new_table values (4 , 5)";
 			
-			int rs = stmt.executeUpdate("Insert into new_table values (1 , 5)");
+			int rs = stmt.executeUpdate(sql);
 		
 //			int rs = stmt.executeUpdate(sql);
 			
