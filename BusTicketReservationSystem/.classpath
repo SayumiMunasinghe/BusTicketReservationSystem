@@ -18,8 +18,7 @@
 	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/junit-4.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/mysql-connector-java-5.1.48.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Desktop/OOP YT PROJECT/Jar files/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Senal Weerasekara/Downloads/Compressed/jar_files/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

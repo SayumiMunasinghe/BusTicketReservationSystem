@@ -57,8 +57,6 @@ public class AgencyDatabaseUtil {
 		    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","password");  
 			Statement stmt = con.createStatement();
 //			String sql = "Insert into obtrs.agency values (0 , "+agentNIC+", "+agentName+", "+companyName+", "+agentPhone+", "+agentEmail+", "+agencyLocation+", "+password+", "+confirmPassword+","+username+")";
-//			String sql = "INSERT INTO agency VALUES(0 , \"123456789\", \"agentName\", \"companyName\", \"agentPhone\", \"agentEmail\", \"agencyLocation\", \"password\", \"confirmPasswor\" , \"username\")";
-//			String sql = "Insert into agency values" + "(0, " + "45645sf6", "semora", "abc comp", "123456789","semora@gmail.com" ,"colombo", "pass" , "pass" , "semora99")";
 //			String sql = "Insert into new_table values (1 , 5)";
 			
 			int rs = stmt.executeUpdate("Insert into new_table values (1 , 5)");
