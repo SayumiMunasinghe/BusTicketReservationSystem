@@ -1,6 +1,8 @@
 package com.agencyRegistration;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,19 @@ public class AgencyRegistrationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
 		String username = request.getParameter("userName");
+		
+//		boolean status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, confirmPassword, username);
+		boolean status1 = AgencyDatabaseUtil.insertAgencyDetails("123456789", "agentName", "companyName", "agentPhone", "agentEmail", "agencyLocation", "password", "confirmPasswor" , "username");
+		
+		if (status1 == true) {
+			//this will send to another JSP
+			RequestDispatcher d1 = request.getRequestDispatcher("result1.jsp");
+			d1.forward(request, response);
+		} else {
+			RequestDispatcher d2 = request.getRequestDispatcher("result2.jsp");
+			d2.forward(request, response);
+		}
+		
 		
 		
 	}
