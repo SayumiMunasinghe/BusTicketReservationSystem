@@ -7,12 +7,14 @@
 <title>Homepage</title>
 </head>
 <body>
-	<form action="#" method="get">
-		<label>Arrival</label><br>
-		<select name="arrival">
-			
-		</select>
-	
+	<form action="findBus" method="post">
+		<label>From: </label><br>
+		<input type="text" name="arrival"><br>
+		<label>To: </label><br>
+		<input type="text" name="destination"><br>
+		<label>Travel Date: </label><br>
+		<input type="date" name="travelDate"><br>
+		<input type="submit" name="submit" value="Find Bus">
 	</form>
 </body>
 </html>
