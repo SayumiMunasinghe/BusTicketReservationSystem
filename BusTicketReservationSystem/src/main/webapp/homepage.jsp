@@ -10,7 +10,7 @@
 	<form action="#" method="get">
 		<label>Arrival</label><br>
 		<select name="arrival">
-			<option value>
+			
 		</select>
 	
 	</form>
