@@ -27,10 +27,10 @@ public class AgencyRegistrationServlet extends HttpServlet {
 		String confirmPassword = request.getParameter("confirmPassword");
 		String username = request.getParameter("userName");
 		
-//		boolean status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, confirmPassword, username);
-		boolean status1 = AgencyDatabaseUtil.insertAgencyDetails("123456789", "agentName", "companyName", "agentPhone", "agentEmail", "agencyLocation", "password", "confirmPasswor" , "username");
+		boolean status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, confirmPassword, username);
+//		boolean status1 = AgencyDatabaseUtil.insertAgencyDetails("123456789", "agentName", "companyName", "agentPhone", "agentEmail", "agencyLocation", "password", "confirmPasswor" , "username");
 		
-		if (status1 == true) {
+		if (status == true) {
 			//this will send to another JSP
 			RequestDispatcher d1 = request.getRequestDispatcher("result1.jsp");
 			d1.forward(request, response);
