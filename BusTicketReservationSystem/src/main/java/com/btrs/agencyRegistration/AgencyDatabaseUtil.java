@@ -38,28 +38,24 @@ public class AgencyDatabaseUtil {
 	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String confirmPassword, String username) 
 	{
 		String status = "0";
-		
+		System.out.println("h2");
 		try {
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
 			String sql1 = "SELECT * FROM obtrs.agency WHERE username ='"+username+"'OR agentEmail = '"+agentEmail+"'";
 			rs = stmt.executeQuery(sql1);
 			
+			if(!(password.equals(confirmPassword))) {
+				status = "password";
+				System.out.println("hoolloo");
+				return status;
+			}
+			
 			if(rs.next()) {
 				String checkUsername = rs.getString("username");
 				String checkAgentEmail = rs.getString("agentEmail");
-				
-//				if(checkUsername.equals(username) || checkAgentEmail.equals(agentEmail) ) {
-//					status = "username";
-//					return status;
-//				}
-				
-				System.out.println(password);
-				System.out.println(confirmPassword);
-				
-				if(!(password.equals(confirmPassword))) {
-					status = "password";
-					System.out.println("hoolloo");
+				if(checkUsername.equals(username) || checkAgentEmail.equals(agentEmail) ) {
+					status = "username";
 					return status;
 				}
 			}
