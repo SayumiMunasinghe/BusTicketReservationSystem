@@ -10,7 +10,7 @@
 
 	<servlet>
 		<servlet-name>AgencyRegistrationServlet</servlet-name>
-		<servlet-class>com.agencyRegistration.AgencyRegistrationServlet</servlet-class>
+		<servlet-class>com.btrs.agencyRegistration.AgencyRegistrationServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AgencyRegistrationServlet</servlet-name>

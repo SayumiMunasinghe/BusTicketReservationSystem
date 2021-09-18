@@ -42,41 +42,28 @@ public class AgencyDatabaseUtil {
 		try {
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
-			String sql1 = "SELECT * FROM obtrs.agency WHERE username ='"+username+"'";
+			String sql1 = "SELECT * FROM obtrs.agency WHERE username ='"+username+"'OR agentEmail = '"+agentEmail+"'";
 			rs = stmt.executeQuery(sql1);
 			
-			//Get username, email, nic to check if entered details already exists 
-//			rs.get
 			if(rs.next()) {
 				String checkUsername = rs.getString("username");
-				String checkAgentEmail = rs.getString(6);
-				String checkAgentNIC = rs.getString(2);
+				String checkAgentEmail = rs.getString("agentEmail");
+//				String checkAgentNIC = rs.getString(2);
 				
-				System.out.println("test5");
-//				System.out.println(checkUsername);
-				System.out.println("test");
-			
-				if(checkUsername == username) {
+
+				if(checkUsername == username || checkAgentEmail == agentEmail) {
 					return status = "username";
 				}
-				if(checkAgentEmail == agentEmail) {
-					return status = "agentEmail";
-				}
-				if(checkAgentNIC == "8080") {
-					status = "agentNIC";
-					return status;
-				}
-			
 			}
 			
-//			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
-//			int rs2 = stmt.executeUpdate(sql2);
-//
-//			if(rs2 > 0) {
-//				status = "1";
-//			}else {
-//				status = "0";
-//			}
+			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
+			int rs2 = stmt.executeUpdate(sql2);
+
+			if(rs2 > 0) {
+				status = "1";
+			}else {
+				status = "0";
+			}
 		}
 		catch(Exception e){
 			e.printStackTrace();

@@ -38,15 +38,9 @@ public class AgencyRegistrationServlet extends HttpServlet {
 			RequestDispatcher d2 = request.getRequestDispatcher("result2.jsp");
 			d2.forward(request, response);
 		} else if (status == "username"){
-			RequestDispatcher d2 = request.getRequestDispatcher("tempResult3.jsp");
-			d2.forward(request, response);
-		} else if (status == "agentEmail"){
-			RequestDispatcher d2 = request.getRequestDispatcher("tempResult4.jsp");
-			d2.forward(request, response);
-		} else if (status == "agentNIC"){
-			RequestDispatcher d2 = request.getRequestDispatcher("tempResult5.jsp");
-			d2.forward(request, response);
-		}
+			RequestDispatcher d3 = request.getRequestDispatcher("result3.jsp");
+			d3.forward(request, response);
+
 		
 	}
 

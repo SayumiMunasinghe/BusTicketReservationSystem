@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>AGENT NIC ALREADY EXISTS!!!</h1>
+<h1>DATA already exists</h1>
 </body>
 </html>
