@@ -48,16 +48,18 @@ public class AgencyDatabaseUtil {
 			if(rs.next()) {
 				String checkUsername = rs.getString("username");
 				String checkAgentEmail = rs.getString("agentEmail");
-//				String checkAgentNIC = rs.getString(2);
-				System.out.println("please");
-				System.out.println(checkUsername);
-				System.out.println(username);
-				System.out.println("work");
 				
+//				if(checkUsername.equals(username) || checkAgentEmail.equals(agentEmail) ) {
+//					status = "username";
+//					return status;
+//				}
 				
-				if(checkUsername == username) {
-					status = "username";
-					System.out.println("check worked");
+				System.out.println(password);
+				System.out.println(confirmPassword);
+				
+				if(!(password.equals(confirmPassword))) {
+					status = "password";
+					System.out.println("hoolloo");
 					return status;
 				}
 			}
@@ -70,7 +72,6 @@ public class AgencyDatabaseUtil {
 //			}else {
 //				status = "0";
 //			}
-			System.out.println("check failed");
 		}
 		catch(Exception e){
 			e.printStackTrace();
