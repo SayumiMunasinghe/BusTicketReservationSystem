@@ -1,4 +1,4 @@
-package Homepage;
+package com.btrs.homepage;
 
 public class BusDetails {
 	private int busID;

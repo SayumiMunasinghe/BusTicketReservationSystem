@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Homepage</title>
+<title>Home Page</title>
 </head>
 <body>
 	<form action="findBus" method="post">
