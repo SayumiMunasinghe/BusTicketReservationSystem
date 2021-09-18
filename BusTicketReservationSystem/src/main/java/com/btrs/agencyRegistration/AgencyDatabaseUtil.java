@@ -49,11 +49,13 @@ public class AgencyDatabaseUtil {
 				String checkUsername = rs.getString("username");
 				String checkAgentEmail = rs.getString("agentEmail");
 //				String checkAgentNIC = rs.getString(2);
-				System.out.println("hi");
+				System.out.println("please");
 				System.out.println(checkUsername);
 				System.out.println(username);
+				System.out.println("work");
 				
-				if(username == "Doe") {
+				
+				if(checkUsername == username) {
 					status = "username";
 					System.out.println("check worked");
 					return status;
