@@ -40,7 +40,7 @@ public class AgencyRegistrationServlet extends HttpServlet {
 		} else if (status == "username"){
 			RequestDispatcher d3 = request.getRequestDispatcher("result3.jsp");
 			d3.forward(request, response);
-
+		}
 		
 	}
 
