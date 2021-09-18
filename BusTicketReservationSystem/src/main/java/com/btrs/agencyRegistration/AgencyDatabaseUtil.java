@@ -49,21 +49,26 @@ public class AgencyDatabaseUtil {
 				String checkUsername = rs.getString("username");
 				String checkAgentEmail = rs.getString("agentEmail");
 //				String checkAgentNIC = rs.getString(2);
+				System.out.println("hi");
+				System.out.println(checkUsername);
+				System.out.println(username);
 				
-
-				if(checkUsername == username || checkAgentEmail == agentEmail) {
-					return status = "username";
+				if(username == "Doe") {
+					status = "username";
+					System.out.println("check worked");
+					return status;
 				}
 			}
 			
-			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
-			int rs2 = stmt.executeUpdate(sql2);
-
-			if(rs2 > 0) {
-				status = "1";
-			}else {
-				status = "0";
-			}
+//			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
+//			int rs2 = stmt.executeUpdate(sql2);
+//
+//			if(rs2 > 0) {
+//				status = "1";
+//			}else {
+//				status = "0";
+//			}
+			System.out.println("check failed");
 		}
 		catch(Exception e){
 			e.printStackTrace();
