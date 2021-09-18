@@ -1,4 +1,4 @@
-package Homepage;
+package com.btrs.homepage;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SelectBusServlet")
+//@WebServlet("/SelectBusServlet")
 public class SelectBusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Test");
 		String arrival = request.getParameter("arrival");
 		String departure = request.getParameter("departure");
 

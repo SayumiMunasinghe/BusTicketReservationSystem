@@ -1,4 +1,4 @@
-package Homepage;
+package com.btrs.homepage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
