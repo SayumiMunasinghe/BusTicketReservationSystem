@@ -1,4 +1,4 @@
-package com.agencyRegistration;
+package com.btrs.agencyRegistration;
 
 public class AgencyDetails {
 	private int agentID;
