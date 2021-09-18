@@ -7,7 +7,7 @@
 <title>Home Page</title>
 </head>
 <body>
-	<form action="findBus" method="post">
+	<form action="findbus" method="post">
 		<label>From: </label><br>
 		<input type="text" name="arrival"><br>
 		<label>To: </label><br>

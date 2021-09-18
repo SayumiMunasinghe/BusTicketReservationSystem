@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	
+
 	<display-name>BusTicketReservationSystem</display-name>
-	
+
 	<servlet>
 		<servlet-name>AgencyRegistrationServlet</servlet-name>
 		<servlet-class>com.agencyRegistration.AgencyRegistrationServlet</servlet-class>
@@ -17,12 +17,14 @@
 		<url-pattern>/agencyInsert</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
-		<servlet-name>travelDetails</servlet-name>
+		<servlet-name>findBus</servlet-name>
 		<servlet-class>com.btrs.homepage.SelectBusServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>travelDetails</servlet-name>
-		<url-pattern>/findBus</url-pattern>
+		<servlet-name>findBus</servlet-name>
+		<url-pattern>/findbus</url-pattern>
 	</servlet-mapping>
+
 </web-app>
