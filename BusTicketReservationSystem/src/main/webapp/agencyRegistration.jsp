@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>Agency Registration Form</h2>
+  <h2>Agency Registration</h2>
   <form class="form-horizontal" action="agencyInsert" method="post">
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Agent Name:</label>
