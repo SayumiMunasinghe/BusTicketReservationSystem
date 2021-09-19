@@ -35,7 +35,7 @@ public class AgencyDatabaseUtil {
 	
 	
 // Inserting data into the data base
-	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String confirmPassword, String username) 
+	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		String status = "0";
 		try {
@@ -43,13 +43,7 @@ public class AgencyDatabaseUtil {
 			stmt = con.createStatement();
 			String sql1 = "SELECT * FROM obtrs.agency WHERE username ='"+username+"'OR agentEmail = '"+agentEmail+"'";
 			rs = stmt.executeQuery(sql1);
-			
-			//Check if password match with confirm password
-			if(!(password.equals(confirmPassword))) {
-				status = "password";
-				return status;
-			}
-			
+						
 			//Check if username or email already exist or not
 			if(rs.next()) {
 				String checkUsername = rs.getString("username");
@@ -61,7 +55,7 @@ public class AgencyDatabaseUtil {
 			}
 			
 			//This will insert entered data into the database
-			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"', '"+confirmPassword+"','"+username+"')";
+			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"','"+username+"')";
 			int rs2 = stmt.executeUpdate(sql2);
 
 			if(rs2 > 0) {
