@@ -26,5 +26,13 @@
 		<servlet-name>findBus</servlet-name>
 		<url-pattern>/findbus</url-pattern>
 	</servlet-mapping>
-
+     
+     <servlet>
+          <servlet-name>addCardServlet</servlet-name>
+          <servlet-class>com.cards.addCardServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+           <servlet-name>addCardServlet</servlet-name>
+           <url-pattern>/insert</url-pattern>
+     </servlet-mapping>
 </web-app>
