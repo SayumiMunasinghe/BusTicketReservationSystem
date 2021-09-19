@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>SUCCESSFULLY INSERTED</h1>
-
+<h1>Password does not match</h1>
 </body>
 </html>
