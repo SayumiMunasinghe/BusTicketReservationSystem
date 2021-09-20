@@ -52,13 +52,13 @@
      <div class="form-group">
       <label class="control-label col-sm-2" for="email">password:</label>
       <div class="col-sm-9">
-        <input type="password"  name="password" value="Doe" class="form-control" required>
+        <input type="password"  name="password" id ="pws" class="form-control" required>
       </div>
     </div>
      <div class="form-group">
       <label class="control-label col-sm-2" for="email">confirmPassword:</label>
       <div class="col-sm-9">
-        <input type="password" name="confirmPassword" value="Dssssoe" class="form-control" required>
+        <input type="password" name="confirmPassword" id ="cpws" class="form-control" required>
       </div>
     </div>
        <div class="form-group">
@@ -70,12 +70,25 @@
     
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" name="submit" value="Register" class="btn btn-default">
+        <input type="submit" name="submit" value="Register" class="btn btn-default" onclick="return Validate()">
 
       </div>
     </div>
   </form>
 </div>
+
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("pws").value;
+        var confirmPassword = document.getElementById("cpws").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
 
 </body>
 </html>

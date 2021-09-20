@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
+<br><br><br><br><br>
 
 <body>
 <br><br><br>
-
 <div class="container">
   <h2>Agency Login</h2>
   <form class="form-horizontal" action="agencyLogin" method="post">
@@ -28,7 +28,7 @@
  		<input type="text" name="agentPassword" placeholder ="Enter password" class="form-control">
       </div>
       </div>
-        
+   
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" name="submit" value="Login" class="btn btn-default">
