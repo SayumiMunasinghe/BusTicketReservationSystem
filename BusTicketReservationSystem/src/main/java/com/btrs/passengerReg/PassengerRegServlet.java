@@ -1,4 +1,4 @@
-package passengerReg;
+package com.btrs.passengerReg;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

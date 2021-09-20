@@ -1,4 +1,4 @@
-package passengerReg;
+package com.btrs.passengerReg;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

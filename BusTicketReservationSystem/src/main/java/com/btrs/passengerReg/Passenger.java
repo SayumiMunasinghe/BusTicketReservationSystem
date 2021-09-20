@@ -1,4 +1,4 @@
-package passengerReg;
+package com.btrs.passengerReg;
 
 public class Passenger {
 	private int pid;
