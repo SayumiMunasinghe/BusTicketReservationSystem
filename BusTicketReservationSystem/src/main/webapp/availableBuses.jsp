@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="bus" items="${cusDetails}">
+	<c:forEach var="bus" items="${busDetails}">
 		${bus.busID}
 		${bus.busNumber}
 		${bus.numberOfSeats}
@@ -18,6 +18,12 @@
 		${bus.arrival}
 		${bus.destination}
 		${bus.time}
+		<form action="BookSeatsServlet" method="POST">
+			<input type="hidden" name="busID" value="${bus.busID}">
+			<input type="hidden" name="time" value="${bus.time}">
+			<input type="submit" name="submit" value="Reserve tickets">
+		</form>
+		<br>
 	</c:forEach>
 	
 </body>
