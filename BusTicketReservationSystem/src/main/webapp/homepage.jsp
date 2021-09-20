@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Homepage</title>
+<title>Home Page</title>
 </head>
 <body>
-	<form action="#" method="get">
-		<label>Arrival</label><br>
-		<select name="arrival">
-			<option value>
-		</select>
-	
+	<form action="findbus" method="post">
+		<label>From: </label><br>
+		<input type="text" name="arrival"><br>
+		<label>To: </label><br>
+		<input type="text" name="destination"><br>
+		<label>Travel Date: </label><br>
+		<input type="date" name="travelDate"><br>
+		<input type="submit" name="submit" value="Find Bus">
 	</form>
 </body>
 </html>

@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<web-app>
-         
-    <servlet>
-    	<servlet-name>AgencyRegistrationServlet</servlet-name>
-    	<servlet-class>com.agencyRegistration.AgencyRegistrationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>AgencyRegistrationServlet</servlet-name>
-    	<url-pattern>/agencyInsert</url-pattern>
-    </servlet-mapping>
-		
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
 
+	<display-name>BusTicketReservationSystem</display-name>
+
+	<servlet>
+		<servlet-name>AgencyRegistrationServlet</servlet-name>
+		<servlet-class>com.btrs.agencyRegistration.AgencyRegistrationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AgencyRegistrationServlet</servlet-name>
+		<url-pattern>/agencyInsert</url-pattern>
+	</servlet-mapping>
+	
+	
+
+
+	<servlet>
+		<servlet-name>findBus</servlet-name>
+		<servlet-class>com.btrs.homepage.SelectBusServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>findBus</servlet-name>
+		<url-pattern>/findbus</url-pattern>
+	</servlet-mapping>
+     
+     <servlet>
+          <servlet-name>addCardServlet</servlet-name>
+          <servlet-class>com.cards.addCardServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+           <servlet-name>addCardServlet</servlet-name>
+           <url-pattern>/insert</url-pattern>
+     </servlet-mapping>
 </web-app>
