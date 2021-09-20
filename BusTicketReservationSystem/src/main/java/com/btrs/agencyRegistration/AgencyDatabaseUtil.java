@@ -11,32 +11,43 @@ public class AgencyDatabaseUtil {
 	private static Connection con = null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
-//	
-//	
-//	public static List<AgencyDetails> checkExistData(String userName, String password){
-//	
-//		ArrayList<AgencyDetails> AgDetail = new ArrayList<>();
-//		
-//		//Validation of data
-//		try {
-//			con = DatabaseConnection.initializeDatabase();
-//			stmt = con.createStatement();
-//			String sql = "SELECT * FROM agency WHERE username ='"+userName+"'and password ='"+password+"'";
-//			rs = stmt.executeQuery(sql);
-//			
-//			 //IF condition goes here
-//		}
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return AgDetail;
-//	}
+	
+	
+	public static List<AgencyDetails> checkExistData(String userName, String password){
+		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
+
+		try {
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM agency WHERE username ='"+userName+"'and password ='"+password+"'";
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				int agentID = rs.getInt("agentID");
+				String agentNIC = rs.getString("agentNIC");
+				String agentName = rs.getString("agentName");
+				String companyName = rs.getString("companyName");
+				String agentPhone = rs.getString("agentPhone");
+				String agentEmail = rs.getString("agentEmail");
+				String agencyLocation = rs.getString("agencyLocation");
+				String pass = rs.getString("password");
+				String username = rs.getString("username");
+				
+				AgencyDetails newAgency1 = new AgencyDetails(agentID, agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, pass, username);
+				agencyDetailList1.add(newAgency1);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return agencyDetailList1;
+	}
 	
 	
 // Inserting data into the data base
 	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
+		ResultSet rs = null;
 		String status = "0";
 		try {
 			con = DatabaseConnection.initializeDatabase();
