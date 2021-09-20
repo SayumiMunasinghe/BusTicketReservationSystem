@@ -28,6 +28,16 @@
  		<input type="text" name="password" placeholder ="Enter password" class="form-control">
       </div>
       </div>
+      
+     <% String popup = (String)request.getAttribute("popup");
+		if(popup == "1"){
+			%><div class="" id = "popupp">
+			  <div class="alert alert-danger alert-dismissible fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Username or Password is incorrect!</strong> Username or password does not match.
+			  </div>
+			</div><%
+		}%>
    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">

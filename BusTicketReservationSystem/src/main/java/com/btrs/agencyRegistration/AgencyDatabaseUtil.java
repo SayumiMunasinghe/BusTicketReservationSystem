@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+
 import DBconnection.DatabaseConnection;
 
 public class AgencyDatabaseUtil {
@@ -35,6 +37,8 @@ public class AgencyDatabaseUtil {
 				
 				AgencyDetails newAgency1 = new AgencyDetails(agentID, agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, pass, username);
 				agencyDetailList1.add(newAgency1);
+			}else{
+					
 			}
 		}
 		catch(Exception e) {
@@ -59,8 +63,12 @@ public class AgencyDatabaseUtil {
 			if(rs.next()) {
 				String checkUsername = rs.getString("username");
 				String checkAgentEmail = rs.getString("agentEmail");
-				if(checkUsername.equals(username) || checkAgentEmail.equals(agentEmail) ) {
+				if(checkUsername.equals(username)) {
 					status = "username";
+					return status;
+				}
+				if(checkAgentEmail.equals(agentEmail)) {
+					status = "email";
 					return status;
 				}
 			}

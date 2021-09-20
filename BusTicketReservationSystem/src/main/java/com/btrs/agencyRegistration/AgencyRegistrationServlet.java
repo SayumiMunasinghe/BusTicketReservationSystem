@@ -33,8 +33,15 @@ public class AgencyRegistrationServlet extends HttpServlet {
 			RequestDispatcher d2 = request.getRequestDispatcher("result2.jsp");
 			d2.forward(request, response);
 		} else if (status == "username"){
-			RequestDispatcher d3 = request.getRequestDispatcher("result3.jsp");
+			String popup = "1";
+			request.setAttribute("popup", popup);
+			RequestDispatcher d3 = request.getRequestDispatcher("agencyRegistration.jsp");
 			d3.forward(request, response);
+		}else if (status == "email"){
+			String popup = "2";
+			request.setAttribute("popup", popup);
+			RequestDispatcher d5 = request.getRequestDispatcher("agencyRegistration.jsp");
+			d5.forward(request, response);
 		}
 	}
 }
