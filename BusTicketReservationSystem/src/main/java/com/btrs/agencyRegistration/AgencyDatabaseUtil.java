@@ -15,6 +15,28 @@ public class AgencyDatabaseUtil {
 	private static ResultSet rs = null;
 	
 	
+	//Checks login and return user ID value and assigns user ID to a session in AgencyLoginServlet page. 
+	public static int checkLogin(String userName, String password){
+		int output = -1;
+		try {
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+			String sql = "SELECT * FROM agency WHERE username ='"+userName+"'and password ='"+password+"'";
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				int agentID = rs.getInt("agentID");
+				output = agentID;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
+	
+	
+	// For reading user data. change this comment to a better one
 	public static List<AgencyDetails> checkExistData(String userName, String password){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
@@ -48,7 +70,7 @@ public class AgencyDatabaseUtil {
 	}
 	
 	
-// Inserting data into the data base
+// INSERTING data into the data base from registration
 	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		ResultSet rs = null;
@@ -76,7 +98,6 @@ public class AgencyDatabaseUtil {
 			//This will insert entered data into the database
 			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"','"+username+"')";
 			int rs2 = stmt.executeUpdate(sql2);
-
 			if(rs2 > 0) {
 				status = "1";
 			}else {
