@@ -1,7 +1,6 @@
 package com.btrs.passengerReg;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -59,6 +58,36 @@ public class PassengerDBUtil {
 		}
 		
 		return passenger;
+	}
+	
+	public static boolean insertPassenger(String fname, String lname, String email, String pwd, String phone) {
+		
+		//variable to check if sql statement execute successfully and inserted a row
+		boolean isSuccess = false;
+			
+		try {
+			
+			//sql statement to insert the new passenger details to the db
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+			String sql = "insert into passenger values (0,'"+fname+"','"+lname+"','"+email+"','"+pwd+"','"+phone+"')";
+			
+			//if executeupdate return 0 -> unsuccess (row not inserted)
+			//else it would return 1 -> success(row inserted)
+			//change bool variable depending on this
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				isSuccess = true;
+			}else {
+				isSuccess = false;
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return isSuccess;
 	}
 
 }

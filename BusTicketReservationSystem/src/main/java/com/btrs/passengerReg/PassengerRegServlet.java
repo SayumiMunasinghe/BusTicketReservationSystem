@@ -16,10 +16,9 @@ public class PassengerRegServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String fname = request.getParameter("fname");
-//		String lname = request.getParameter("lname");
+
+		//take the values sent from PassengerLogin.jsp and store in below variables
 		String email = request.getParameter("email");
-//		String phone = request.getParameter("tel");
 		String password = request.getParameter("pw");
 		
 		try {
@@ -27,9 +26,11 @@ public class PassengerRegServlet extends HttpServlet {
 			request.setAttribute("passDetails", passDetails);
 		}
 		catch(Exception e) {
+			//print the exeception if there is one
 			e.printStackTrace();
 		}
 		
+		//allows a servlet to navigate to a jsp page
 		RequestDispatcher dis = request.getRequestDispatcher("passengeracc.jsp");
 		dis.forward(request, response);
 	}
