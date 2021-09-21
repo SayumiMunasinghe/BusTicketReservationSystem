@@ -15,19 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/SelectBusServlet")
 public class SelectBusServlet extends HttpServlet {
-	private static Date travelDate;
+	public static Date travelDate;
+	public static String dateOfTravel;
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String arrival = request.getParameter("arrival");
 		String destination = request.getParameter("destination");
-		String dateOfTravel = request.getParameter("travelDate");
+		dateOfTravel = request.getParameter("travelDate");
 	
 		try {
 			travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
 			List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
-			
+		
 			if(busDetails.isEmpty()) {
 				String flag = "empty";
 				request.setAttribute("flag", flag);
@@ -42,11 +43,5 @@ public class SelectBusServlet extends HttpServlet {
 		}
 		RequestDispatcher dis = request.getRequestDispatcher("availableBuses.jsp");
 		dis.forward(request, response);
-	}
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doGet(req, resp);
-		System.out.println(req.getParameter("busID"));
-	}
-	
+	}	
 }
