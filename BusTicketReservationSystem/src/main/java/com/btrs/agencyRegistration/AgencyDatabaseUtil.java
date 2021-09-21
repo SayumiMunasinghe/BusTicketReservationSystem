@@ -14,7 +14,6 @@ public class AgencyDatabaseUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
-	
 	public static List<AgencyDetails> checkExistData(String userName, String password){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
@@ -76,7 +75,6 @@ public class AgencyDatabaseUtil {
 			//This will insert entered data into the database
 			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"','"+username+"')";
 			int rs2 = stmt.executeUpdate(sql2);
-
 			if(rs2 > 0) {
 				status = "1";
 			}else {
