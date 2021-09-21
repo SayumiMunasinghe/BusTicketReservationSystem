@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -6,14 +7,22 @@
 <meta charset="ISO-8859-1">
 <title>Home Page</title>
 </head>
+<%
+	LocalDate today = LocalDate.now();
+%>
 <body>
-	<form action="findbus" method="post">
+<%  String flag = (String)request.getAttribute("flag");
+	if(flag == "empty") {
+		%><p>No buses available for your chosen route. Please enter different locations.</p><%
+	}
+%>
+	<form action="SelectBusServlet" method="POST">
 		<label>From: </label><br>
-		<input type="text" name="arrival"><br>
+		<input type="text" name="arrival" required><br>
 		<label>To: </label><br>
-		<input type="text" name="destination"><br>
+		<input type="text" name="destination" required><br>
 		<label>Travel Date: </label><br>
-		<input type="date" name="travelDate"><br>
+		<input type="date" name="travelDate" min="<%= today%>" required><br>
 		<input type="submit" name="submit" value="Find Bus">
 	</form>
 </body>

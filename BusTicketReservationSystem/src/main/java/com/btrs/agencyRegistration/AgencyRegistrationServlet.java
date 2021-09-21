@@ -1,6 +1,7 @@
 package com.btrs.agencyRegistration;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,18 +24,24 @@ public class AgencyRegistrationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String username = request.getParameter("userName");
 		
+		//Inserting data into database
 		String status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
-		
 		if (status == "1") {
-			//this will send to another JSP
 			RequestDispatcher d1 = request.getRequestDispatcher("result1.jsp");
 			d1.forward(request, response);
 		} else if (status == "0"){
 			RequestDispatcher d2 = request.getRequestDispatcher("result2.jsp");
 			d2.forward(request, response);
 		} else if (status == "username"){
-			RequestDispatcher d3 = request.getRequestDispatcher("result3.jsp");
+			String popup = "1";
+			request.setAttribute("popup", popup);
+			RequestDispatcher d3 = request.getRequestDispatcher("agencyRegistration.jsp");
 			d3.forward(request, response);
+		}else if (status == "email"){
+			String popup = "2";
+			request.setAttribute("popup", popup);
+			RequestDispatcher d5 = request.getRequestDispatcher("agencyRegistration.jsp");
+			d5.forward(request, response);
 		}
 	}
 }
