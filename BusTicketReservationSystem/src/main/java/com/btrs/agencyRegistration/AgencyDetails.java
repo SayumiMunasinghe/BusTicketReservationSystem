@@ -1,5 +1,8 @@
 package com.btrs.agencyRegistration;
 
+import javax.servlet.http.HttpSession;
+
+
 public class AgencyDetails {
 	private int agentID;
 	private String agentNIC;
@@ -22,6 +25,7 @@ public class AgencyDetails {
 		this.agencyLocation = agencyLocation;
 		this.password = password;
 		this.username = username;
+
 	}
 
 	public int getAgentID() {
