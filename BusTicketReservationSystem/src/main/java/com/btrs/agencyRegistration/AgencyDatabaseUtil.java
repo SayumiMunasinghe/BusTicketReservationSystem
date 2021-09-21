@@ -3,9 +3,8 @@ package com.btrs.agencyRegistration;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
-
+import javax.servlet.http.HttpSession;
 import DBconnection.DatabaseConnection;
 
 public class AgencyDatabaseUtil {
@@ -13,7 +12,6 @@ public class AgencyDatabaseUtil {
 	private static Connection con = null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
-	
 	
 	//Checks login and return user ID value and assigns user ID to a session in AgencyLoginServlet page. 
 	public static int checkLogin(String userName, String password){
@@ -36,7 +34,7 @@ public class AgencyDatabaseUtil {
 	}
 	
 	
-	// For reading user data. change this comment to a better one
+	//READING data and displaying the data in viewAgencyDetails page 
 	public static List<AgencyDetails> viewAgencyData(int userID){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
@@ -109,6 +107,29 @@ public class AgencyDatabaseUtil {
 		}
 		return status;
 	}
+	
+	
+	// INSERTING data into the data base from registration
+		public static String UpdateAgencyDetails(int userID, String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
+		{
+			String status = "0";
+			try {
+				con = DatabaseConnection.initializeDatabase();
+				stmt = con.createStatement();
+				
+				String sql2 = "UPDATE agency SET agentNIC = '"+agentNIC+"' , agentName = '"+agentName+"', companyName = '"+companyName+"', agentPhone = '"+agentPhone+"', agentEmail = '"+agentEmail+"', agencyLocation = '"+agencyLocation+"', password = '"+password+"', username ='"+username+"' WHERE agentID = "+userID+"";
+				int rs2 = stmt.executeUpdate(sql2);
+				if(rs2 > 0) {
+					status = "1";
+				}else {
+					status = "0";
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			return status;
+		}
 	
 	
 	
