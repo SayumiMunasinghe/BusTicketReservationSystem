@@ -14,7 +14,7 @@
 <body>
 <br><br><br>
 <div class="container">
-  <h2>Agency Login</h2>
+  <h2>Agency Login Page</h2>
   <form class="form-horizontal" action="AgencyLoginServlet" method="post">
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Agent Username:</label>

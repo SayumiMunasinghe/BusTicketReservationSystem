@@ -49,8 +49,7 @@ public class AgencyLoginServlet extends HttpServlet {
 		
 		//to delete session
 //		session.removeAttribute("mode");
-		
-		
+
 		RequestDispatcher d4 = request.getRequestDispatcher("viewAgencyDetails.jsp");
 		d4.forward(request, response);
 	}
