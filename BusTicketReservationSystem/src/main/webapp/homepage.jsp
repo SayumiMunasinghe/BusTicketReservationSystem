@@ -25,5 +25,6 @@
 		<input type="date" name="travelDate" min="<%= today%>" required><br>
 		<input type="submit" name="submit" value="Find Bus">
 	</form>
+	<a href = "ManageAgencyDetails.jsp"> <button>Manage agency details</button> </a>
 </body>
 </html>
