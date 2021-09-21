@@ -10,9 +10,10 @@
 
 	<form action="#" method="post">
 		First Name <input type="text" name="fname">	<br>
-		Last Name <input type="text" name="fname">	<br>
-		Email <input type="text" name="fname">	<br>
-		Password <input type="text" name="fname">	<br>
+		Last Name <input type="text" name="lname">	<br>
+		Contact No <input type="text" name="tel">	<br>
+		Email <input type="text" name="email">	<br>
+		Password <input type="text" name="pw">	<br>
 		
 		<input type="submit" name="submit" value="Register">
 	</form>

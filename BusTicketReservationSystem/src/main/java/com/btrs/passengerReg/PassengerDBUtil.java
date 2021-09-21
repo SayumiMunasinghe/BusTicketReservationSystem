@@ -6,27 +6,41 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import DBconnection.DatabaseConnection;
 
 public class PassengerDBUtil {
 	
-	public static List<Passenger> Register(String email, String pw){
+	//copy for db connection
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	//til here
+	
+	public static List<Passenger> CheckExist(String email, String pw){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		
 		//create database connection
-		String url = "jdbc:mysql://localhost:3306/obtrs";
-		String user = "root";
-		String password = "password"; 
-		
+//		String url = "jdbc:mysql://localhost:3306/obtrs";
+//		String user = "root";
+//		String password = "password"; 
+//		
 		//validate
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+//			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url, user, password);
-			Statement stmt = con.createStatement();
-			
+//			Connection con = DriverManager.getConnection(url, user, password);
+//			Statement stmt = con.createStatement();
+
+			//copy for db connection for util file
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
 			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			rs = stmt.executeQuery(sql);
+			//til here
 			
-			ResultSet rs = stmt.executeQuery(sql);
+//			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			
+//			ResultSet rs = stmt.executeQuery(sql);
 		
 			if(rs.next()) {
 				int pid = rs.getInt(1);

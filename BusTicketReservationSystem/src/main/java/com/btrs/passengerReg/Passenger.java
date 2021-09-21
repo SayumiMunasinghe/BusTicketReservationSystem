@@ -37,4 +37,8 @@ public class Passenger {
 		return password;
 	}
 
+	public String getTelno() {
+		return telno;
+	}
+
 }
