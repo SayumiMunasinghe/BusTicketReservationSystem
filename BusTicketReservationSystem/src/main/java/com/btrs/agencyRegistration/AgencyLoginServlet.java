@@ -21,7 +21,6 @@ public class AgencyLoginServlet extends HttpServlet {
 		
 		try {
 			int userID = AgencyDatabaseUtil.checkLogin(username, password);
-//			request.setAttribute("agencyListDetails", agencyListDetails);
 		      if (userID == -1) {
 		    	  String popup = "1";
 				  request.setAttribute("popup", popup);
@@ -40,9 +39,7 @@ public class AgencyLoginServlet extends HttpServlet {
 		String mode = "agency";
 		session.setAttribute("mode", mode);
 		
-		// PUT HOME PAGE TO HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		RequestDispatcher d4 = request.getRequestDispatcher("homepage.jsp");
-//		RequestDispatcher d4 = request.getRequestDispatcher("viewAgencyDetails.jsp");
 		d4.forward(request, response);
 	}
 

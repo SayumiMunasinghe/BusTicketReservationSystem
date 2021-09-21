@@ -15,16 +15,14 @@
 
 <div class="container">
 
-    <form class="form-horizontal" action="ViewAgencyDetailsServlet" method="Post">
-    	<input type="submit" name="View Details" value="View Details" class="btn btn-primary btn-lg btn-block">
+    <form class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
+    	<input type="submit" name="viewDetails" value="View Details" class="btn btn-primary btn-lg btn-block">
     </form>
-    <form class="form-horizontal" action="ViewAgencyDetailsServlet" method="Post">
-    	<input type="submit" name="View Details" value="View Details" class="btn btn-primary btn-lg btn-block">
+ 
+     <form action="ViewAgencyDetailsServlet" method="Post">
+    	<input type="submit" name="testing" value="Delete Details" class="btn btn-primary btn-lg btn-block">
     </form>
-    <form class="form-horizontal" action="ViewAgencyDetailsServlet" method="Post">
-    	<input type="submit" name="View Details" value="View Details" class="btn btn-primary btn-lg btn-block">
-    </form>
-
+ 
 </div>
 
 </body>
