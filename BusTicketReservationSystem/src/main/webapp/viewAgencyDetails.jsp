@@ -63,9 +63,19 @@
       </tr>
     </tbody>
     
+    
     </c:forEach>
   </table>
 </div>
+      <% String popup = (String)request.getAttribute("popup1");
+		if(popup == "1"){
+			%><div class="" id = "popupp">
+			  <div class="alert alert-danger alert-dismissible fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Data Could Not Be Accessed!</strong> Please enter valid data.
+			  </div>
+			</div><%
+		}%>
 
 </body>
 </html>

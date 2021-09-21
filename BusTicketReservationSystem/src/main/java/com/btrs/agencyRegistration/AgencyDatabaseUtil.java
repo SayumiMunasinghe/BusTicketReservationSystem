@@ -37,13 +37,13 @@ public class AgencyDatabaseUtil {
 	
 	
 	// For reading user data. change this comment to a better one
-	public static List<AgencyDetails> checkExistData(String userName, String password){
+	public static List<AgencyDetails> viewAgencyData(int userID){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
 		try {
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
-			String sql = "SELECT * FROM agency WHERE username ='"+userName+"'and password ='"+password+"'";
+			String sql = "SELECT * FROM agency WHERE agentID ='"+userID+"'";
 			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
