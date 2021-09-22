@@ -19,10 +19,11 @@
 		
 		<input type="submit" name="submit" value="Login">
 	</form>-->
-	
+	<br><br><br><br><br><br>	
 	<div class="container">
+	<div class="well">
   <h2>Passenger Login</h2>
-  <form action="PassengerRegServlet" method="post">
+  <form action="PassengerLoginServlet" method="post">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
@@ -33,6 +34,7 @@
     </div>
     <input type="submit" class="btn btn-default" value="Login">
   </form>
+  </div>
 </div>
 
 </body>
