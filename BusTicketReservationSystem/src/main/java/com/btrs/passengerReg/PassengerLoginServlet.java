@@ -20,24 +20,30 @@ public class PassengerLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pw");
 		HttpSession session = request.getSession();
-
+		
+		int passengerid = -1;
 		
 		try {
-			int pid= PassengerDBUtil.CheckExist(email, password);
-			//pass obj
-//			request.setAttribute("passDetails", passDetails);
+			int pid= PassengerDBUtil.checkLogin(email, password);
 			session.setAttribute("userID", pid);
 			String mode = "passenger";
 			session.setAttribute("mode", mode);
+			passengerid = pid;
 		}
 		catch(Exception e) {
 			//print the exeception if there is one
 			e.printStackTrace();
 		}
 		
-		//allows a servlet to navigate to a jsp page
-		RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
-		dis.forward(request, response);
+		if(passengerid > 0) {
+			//allows a servlet to navigate to a jsp page
+			RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
+			dis.forward(request, response);
+		}else{
+			//if email or pw doesnot match data in db will redirect to the login form
+			RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
+			dis.forward(request, response);
+		}
 	}
 	
 	//Session for user ID

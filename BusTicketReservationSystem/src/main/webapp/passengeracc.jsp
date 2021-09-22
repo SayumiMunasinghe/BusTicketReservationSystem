@@ -42,34 +42,5 @@
   </table>
 </div>
 
-<!-- <table>
-	<c:forEach var="pass" items="${passDetails}">
-		<tr>
-			<td>Passenger ID</td>
-			<td>${pass.pid}</td>
-		</tr>
-		<tr>
-			<td>First Name</td>
-			<td>${pass.fName}</td>
-		</tr>
-		<tr>
-			<td>Last Name</td>
-			<td>${pass.lName}</td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td>${pass.email}</td>
-		</tr>
-		<tr>
-			<td>Phone</td>
-			<td>${pass.telno}</td>
-		</tr>
-		<tr>
-			<td>Password</td>
-			<td>${pass.password}</td>
-		</tr>
-	</c:forEach>
-</table>-->
-
 </body>
 </html>

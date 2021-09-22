@@ -13,43 +13,22 @@ public class PassengerDBUtil {
 	private static ResultSet rs = null;
 	//til here
 	
-	public static int CheckExist(String email, String pw){
-//		ArrayList<Passenger> passenger = new ArrayList<>();
-		
-		//create database connection
-//		String url = "jdbc:mysql://localhost:3306/obtrs";
-//		String user = "root";
-//		String password = "password"; 
+	//checks if user details pw and un exist and return pid to allow login to a session
+	public static int checkLogin(String email, String pw){
 
-		  int passid = -1;
+		int passid = -1;
 		//validate
+		
 		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-			
-//			Connection con = DriverManager.getConnection(url, user, password);
-//			Statement stmt = con.createStatement();
-
 			//copy for db connection for util file
-			con = DatabaseConnection.initializeDatabase();
+			con = DatabaseConnection.initializeDatabase(); //make connection with db using DatabaseConnection class
 			stmt = con.createStatement();
 			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
 			rs = stmt.executeQuery(sql);
 			//til here
 			
-//			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
-			
-//			ResultSet rs = stmt.executeQuery(sql);
-			
 		    if(rs.next()) {
 				int pid = rs.getInt(1);
-//				String fname = rs.getString(2);
-//				String lname = rs.getString(3);
-//				String pemail = rs.getString(4);
-//				String passw = rs.getString(5);
-//				String telno = rs.getString(6);
-				
-//				Passenger p = new Passenger(pid, fname, lname, pemail, passw, telno);
-//				passenger.add(p);
 				passid = pid;
 			}
 			
@@ -91,29 +70,23 @@ public class PassengerDBUtil {
 	}
 	
 	public static int getID(String email) {
-		
+		//this function is used to return the pid of passenger to servlet to send to homepage 
 		int passid = -1;
 			
 		try {
 			
 			//sql statement to insert the new passenger details to the db
-			con = DatabaseConnection.initializeDatabase();
+			//just call this function to create connection to db
+			con = DatabaseConnection.initializeDatabase(); 
 			stmt = con.createStatement();
 			String sql = "select pid from passenger where email '"+email+"'";
 			
-			//if executeupdate return 0 -> unsuccess (row not inserted)
-			//else it would return 1 -> success(row inserted)
-			//change bool variable depending on this
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			 if(rs.next()) {
-					int pid = rs.getInt(1);
-					passid = pid;
-					
-			}
-			
-			 
-			
+					int pid = rs.getInt(1); //get the pid from db 
+					passid = pid;	//assign to pid
+			}			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

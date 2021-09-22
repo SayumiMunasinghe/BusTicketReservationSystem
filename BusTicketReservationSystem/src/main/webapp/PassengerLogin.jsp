@@ -13,12 +13,6 @@
 </head>
 <body>
 
-	<!-- <form action="PassengerRegServlet" method="post">
-		Email <input type="text" name="email" required>	<br>
-		Password <input type="password" name="pw" required>	<br>
-		
-		<input type="submit" name="submit" value="Login">
-	</form>-->
 	<br><br><br><br><br><br>	
 	<div class="container">
 	<div class="well">
@@ -32,10 +26,25 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
     </div>
-    <input type="submit" class="btn btn-default" value="Login">
+    <input type="submit" class="btn btn-default" value="Login" onclick="EmailPattern()">
   </form>
   </div>
 </div>
 
+	<script type="text/javascript">
+		function EmailPattern(){
+			var mail = document.getElementById("email").value;	
+			
+			var regx =/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+			
+			if(regx.text(mail)){
+				alert("Valid email");
+				return true;
+			}else{
+				alert("Re-enter valid Email ID");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>

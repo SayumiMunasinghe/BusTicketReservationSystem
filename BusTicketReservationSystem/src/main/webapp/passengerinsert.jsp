@@ -34,6 +34,10 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
     </div>
+    <div class="form-group">
+      <label for="pwd">Re-Enter Password:</label>
+      <input type="password" class="form-control" id="repwd" placeholder="Re-enter password" name="repwd">
+    </div>
      <div class="form-group">
       <label for="lname">Contact No:</label>
       <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno">
