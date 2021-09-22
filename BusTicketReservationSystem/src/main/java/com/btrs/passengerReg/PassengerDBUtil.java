@@ -3,9 +3,12 @@ package com.btrs.passengerReg;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import DBconnection.DatabaseConnection;
 
-public class PassengerDBUtil {
+import com.btrs.DBconnection.DatabaseConnection;
+import com.btrs.interfaces.Person;
+
+//use interface called Person for checkLogin()
+public class PassengerDBUtil implements Person {
 	
 	//copy for db connection
 	private static Connection con = null;
