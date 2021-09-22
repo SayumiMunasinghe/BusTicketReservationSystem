@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-import DBconnection.DatabaseConnection;
+
+import com.btrs.DBconnection.DatabaseConnection;
 
 public class AgencyDatabaseUtil {
 	

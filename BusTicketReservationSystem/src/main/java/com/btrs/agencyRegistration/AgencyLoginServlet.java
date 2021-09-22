@@ -48,9 +48,13 @@ public class AgencyLoginServlet extends HttpServlet {
 //Session for user ID
 //session.setAttribute("userID", userID);
 //session.setAttribute("mode", mode);
-//to retrive session
-//String test = (String)session.getAttribute("mode");
+//
 
+//int test = (int)session.getAttribute("userID");
+//
+//test;
+
+//
 //to delete session
 //session.removeAttribute("mode");
 
