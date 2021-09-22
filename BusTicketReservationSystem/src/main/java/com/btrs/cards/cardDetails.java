@@ -1,4 +1,4 @@
-package com.cards;
+package com.btrs.cards;
 
 public class cardDetails {
     private int id;
