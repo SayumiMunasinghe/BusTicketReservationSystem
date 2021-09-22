@@ -3,7 +3,8 @@ package com.btrs.passengerReg;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import DBconnection.DatabaseConnection;
+
+import com.btrs.DBconnection.DatabaseConnection;
 
 public class PassengerDBUtil {
 	
