@@ -20,7 +20,6 @@
 	<classpathentry kind="lib" path="C:/Jar/junit-4.13.jar"/>
 	<classpathentry kind="lib" path="C:/Jar/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="lib" path="C:/Jar/mysql-connector-java-5.1.48-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Jar/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="lib" path="C:/Jar/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

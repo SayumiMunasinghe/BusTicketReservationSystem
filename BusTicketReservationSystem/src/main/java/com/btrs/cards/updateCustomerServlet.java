@@ -1,4 +1,4 @@
-package com.cards;
+package com.btrs.cards;
 
 import java.io.IOException;
 
@@ -9,22 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/addCardServlet")
-public class addCardServlet extends HttpServlet {
+/**
+ * Servlet implementation class updateCustomerServlet
+ */
+@WebServlet("/updateCustomerServlet")
+public class updateCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String cNO =request.getParameter("cno").replaceAll("[a-zA-Z]", "");
-    	String cType = request.getParameter("type");
-		String cvv = request.getParameter("cvv").replaceAll("[a-zA-Z]", "");
-		String cHName = request.getParameter("hName");
-		String date = request.getParameter("date").replaceAll("[a-zA-Z]", "");
+        int id = 1;
+		String type = request.getParameter("cardType");
+		String cNum = request.getParameter("cno");
+		String name = request.getParameter("hName"); 
+		String cv = request.getParameter("cvv");
+		String expD = request.getParameter("date");
 		
 		boolean check;
 		
-		check = cardsDBUtil.addCard(cNO, cHName, cType, cvv, date);
-		
+		check = cardsDBUtil.updateCard(id,type ,cNum,name,cv,expD );
 		if(check == true) {
 		     RequestDispatcher dis = request.getRequestDispatcher("result1.jsp");
 		     dis.forward(request, response);
