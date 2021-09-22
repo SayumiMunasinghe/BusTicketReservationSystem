@@ -110,13 +110,8 @@
         </form>         
       </div>
    
-         
-        
-          
-       
   
-      <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">
-                
+      <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">     
           <div class="row">
               <div class ="form-group col-lg-7">
           <label>Card Type:</label><input type ="Text"  class="form-control" id="visa" name="type"  disabled readonly>
@@ -141,9 +136,6 @@
            </div>
            <input type="submit" value="Update" name="update" class="btn btn-primary">
            <input type="submit" value="Remove Card" name="Delete" class="btn btn-danger">
-           
-  
-          
         </form>
     
        

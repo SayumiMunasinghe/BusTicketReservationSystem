@@ -19,7 +19,6 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("viewDetails") != null) {
 			HttpSession session = request.getSession();
-			//		String mode = (String)session.getAttribute("mode");
 			int userID = (int) session.getAttribute("userID");
 	
 			if(userID == -1) {
@@ -70,10 +69,21 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			
 			AgencyDatabaseUtil.UpdateAgencyDetails(userID ,agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
 			
-			System.out.println(agentEmail);
-			System.out.println(agentName);
-			request.setAttribute("tableSwitch", "true");
-			RequestDispatcher d7 = request.getRequestDispatcher("viewAgencyDetails.jsp");
+			String updateSuccess = "1";
+			request.setAttribute("updateSuccess", updateSuccess);
+			RequestDispatcher d7 = request.getRequestDispatcher("AgencySuccess.jsp");
+			d7.forward(request, response);
+		}
+		
+		if(request.getParameter("deleteDetails") != null) {
+			HttpSession session = request.getSession();
+			int userID = (int) session.getAttribute("userID");
+			
+			AgencyDatabaseUtil.DeleteAgencyDetails(userID);
+			
+			String deleteSuccess = "1";
+			request.setAttribute("deleteSuccess", deleteSuccess);
+			RequestDispatcher d7 = request.getRequestDispatcher("AgencySuccess.jsp");
 			d7.forward(request, response);
 		}
 		
