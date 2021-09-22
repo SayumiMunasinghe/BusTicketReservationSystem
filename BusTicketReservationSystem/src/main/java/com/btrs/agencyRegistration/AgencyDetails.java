@@ -1,7 +1,4 @@
 package com.btrs.agencyRegistration;
-import com.btrs.interfaces.Person;
-import javax.servlet.http.HttpSession;
-
 
 public class AgencyDetails{
 	private int agentID;
