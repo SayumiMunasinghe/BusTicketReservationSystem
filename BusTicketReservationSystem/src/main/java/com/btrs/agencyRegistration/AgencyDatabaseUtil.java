@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+import com.btrs.interfaces.PersonDatabase;
 
 import com.btrs.DBconnection.DatabaseConnection;
 
-public class AgencyDatabaseUtil {
+public class AgencyDatabaseUtil implements PersonDatabase{
 	
 	private static Connection con = null;
 	private static Statement stmt = null;
