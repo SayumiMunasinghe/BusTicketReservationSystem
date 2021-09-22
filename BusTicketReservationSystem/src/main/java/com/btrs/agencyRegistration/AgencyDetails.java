@@ -1,5 +1,8 @@
 package com.btrs.agencyRegistration;
 
+import javax.servlet.http.HttpSession;
+
+
 public class AgencyDetails {
 	private int agentID;
 	private String agentNIC;
@@ -9,12 +12,10 @@ public class AgencyDetails {
 	private String agentEmail;
 	private String agencyLocation;
 	private String password;
-	private String confirmPassword;
 	private String username;
 	
 	public AgencyDetails(int agentID, String agentNIC, String agentName, String companyName, String agentPhone,
-			String agentEmail, String agencyLocation, String password, String confirmPassword, String username) {
-		super();
+			String agentEmail, String agencyLocation, String password, String username) {
 		this.agentID = agentID;
 		this.agentNIC = agentNIC;
 		this.agentName = agentName;
@@ -23,8 +24,8 @@ public class AgencyDetails {
 		this.agentEmail = agentEmail;
 		this.agencyLocation = agencyLocation;
 		this.password = password;
-		this.confirmPassword = confirmPassword;
 		this.username = username;
+
 	}
 
 	public int getAgentID() {
@@ -59,16 +60,7 @@ public class AgencyDetails {
 		return password;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
 	public String getUsername() {
 		return username;
 	}
-
-
-
-	
-	
 }

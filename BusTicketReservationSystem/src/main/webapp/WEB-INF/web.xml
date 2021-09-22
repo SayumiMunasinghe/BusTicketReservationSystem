@@ -8,14 +8,9 @@
 
 	<display-name>BusTicketReservationSystem</display-name>
 
-	<servlet>
-		<servlet-name>AgencyRegistrationServlet</servlet-name>
-		<servlet-class>com.btrs.agencyRegistration.AgencyRegistrationServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AgencyRegistrationServlet</servlet-name>
-		<url-pattern>/agencyInsert</url-pattern>
-	</servlet-mapping>
+	
+	
+	
 
 
 	<servlet>
