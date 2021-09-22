@@ -1,36 +1,61 @@
 package com.cards;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
+
 public class cardsDBUtil {
-       public static boolean addCard(String cNO,String cHName ,String cType,String cvv,String date) {
+	private static Connection con = null;
+	private static Statement state = null;
+	private static boolean Success;
+       public static boolean addCard(int pid, String cNO,String cHName ,String cType,String cvv,String date) {
     	   
-    	   boolean isSuccess = false;
+    	   
     	    
-    	   //Create database connection
-    	   String url ="jdbc:mysql://localhost:3306/obtrs";
-    	   String user ="root";
-    	   String password ="password";
+    	   boolean Success = false;
     	   
-    	   try {
-    		   
-    		   Class.forName("com.mysql.jdbc.Driver");
-    		   
-    		   Connection con = DriverManager.getConnection(url, user, password);
-    		   Statement state = con.createStatement();
-    		   String sql = "insert into cards values('"+cNO+"','"+cHName+"','"+cType+"','"+cvv+"','"+date+"') ";
+    	   try { 
+    		   con = DBconnection.getConnection();
+    		   state = con.createStatement();
+    		   String sql = "insert into cards values('"+pid+"','"+cNO+"','"+cHName+"','"+cType+"','"+cvv+"','"+date+"') ";
     		   int res = state.executeUpdate(sql);
     		   
     		   if(res > 0) {
-    			   isSuccess = true;
+    			   Success = true;
     		   }else {
-    			   isSuccess = false;
+    			   Success = false;
     		   } 
     	   }catch(Exception e) {
     		   e.printStackTrace();
     	   }
-    	   return isSuccess;
+    	   return Success;
        }
+       
+  public static boolean updateCard(int id,String type ,String cNum,String name,String cv,String expD ) {
+	  
+	  try {
+		  
+		  con = DBconnection.getConnection();
+		  state =con.createStatement();
+		  String sql = "update cards set cardholder_Name='"+name+"',CVV='"+cv+"',exp_Date='"+expD+"'"
+		  		+ "     where passengerID='"+id+"' and card_No='"+cNum+"'";
+		  int res = state.executeUpdate(sql);
+		  
+		  if(res>0) {
+			  Success = true;
+		  }else {
+			  Success = false;
+		  }
+		  
+	  }catch(Exception e){
+		  e.printStackTrace();
+	  }
+	  
+	  
+	  
+	  return Success;
+  }    
+   
+ 
 }
