@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import DBconnection.DatabaseConnection;
 
-public class PassengerDBUtil {
+public class PassengerDBUtil implements Person {
 	
 	//copy for db connection
 	private static Connection con = null;
