@@ -3,7 +3,6 @@ package com.btrs.passengerReg;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import com.btrs.DBconnection.DatabaseConnection;
 import com.btrs.interfaces.Person;
 
