@@ -22,24 +22,7 @@
 		<url-pattern>/findbus</url-pattern>
 	</servlet-mapping>
      
-     <servlet>
-          <servlet-name>addCardServlet</servlet-name>
-          <servlet-class>com.cards.addCardServlet</servlet-class>
-     </servlet>
-     <servlet-mapping>
-           <servlet-name>addCardServlet</servlet-name>
-           <url-pattern>/insert</url-pattern>
-     </servlet-mapping>
      
-    
-    <servlet>
-    <servlet-name>updateCard</servlet-name>
-    <servlet-class>com.cards.updateCustomerServlet</servlet-class>
-    </servlet> 
-    <servlet-mapping>
-    <servlet-name>updateCard</servlet-name>
-    <url-pattern>/update</url-pattern>
-    </servlet-mapping>
      
      
 </web-app>
