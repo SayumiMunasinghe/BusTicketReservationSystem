@@ -33,7 +33,7 @@
       <button id = "but2" onclick="showForm(this.id)" class="btn btn-default">Update Card</button>
       <br>
       <br>
-       <form action="insert" method="post" id="f1" >
+       <form action="addCardServlet" method="post" id="f1" >
         
          <label>
           <input type ="radio" id="visa" name="type" value="Visa"  checked >
@@ -73,7 +73,7 @@
           
        
         </form>                
-        <form action="update" method="post"   id="f2" style="display:none">
+        <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">
           <div class="row">
               <div class ="form-group col-lg-3">
           <label>Card Type:</label><input type ="Text"  class="form-control" id="visa" name="type" placeholder="visa" disabled readonly>

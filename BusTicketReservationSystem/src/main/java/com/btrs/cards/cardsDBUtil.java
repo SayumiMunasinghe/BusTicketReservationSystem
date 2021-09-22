@@ -1,4 +1,4 @@
-package com.cards;
+package com.btrs.cards;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
