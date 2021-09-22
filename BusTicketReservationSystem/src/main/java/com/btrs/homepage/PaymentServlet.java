@@ -1,24 +1,32 @@
 package com.btrs.homepage;
 
 import java.io.IOException;
-import java.time.LocalTime;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/BookSeatsServlet")
-public class BookSeatsServlet extends HttpServlet {
+/**
+ * Servlet implementation class PaymentServlet
+ */
+@WebServlet("/PaymentServlet")
+public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PaymentServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int busID = Integer.parseInt(request.getParameter("busID"));
-		String time = request.getParameter("time");
-		
-		LocalTime convTime = LocalTime.parse(time);
-		
+		// TODO Auto-generated method stub
 	}
 
 }
