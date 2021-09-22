@@ -13,38 +13,43 @@
 </head>
 <body>
 
-	<br><br><br><br><br><br>	
-	<div class="container">
-	<div class="well">
-  <h2>Passenger Login</h2>
-  <form action="PassengerLoginServlet" method="post">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
-    </div>
-    <input type="submit" class="btn btn-default" value="Login" onclick="EmailPattern()">
-  </form>
-  </div>
-</div>
-
-	<script type="text/javascript">
-		function EmailPattern(){
-			var mail = document.getElementById("email").value;	
-			
-			var regx =/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
-			
-			if(regx.text(mail)){
-				alert("Valid email");
-				return true;
-			}else{
-				alert("Re-enter valid Email ID");
-				return false;
-			}
+		<br><br><br><br><br><br>	
+		<div class="container">
+		<div class="well">
+	  <h2>Passenger Login</h2>
+	  <form action="PassengerLoginServlet" method="post">
+	    <div class="form-group">
+	      <label for="email">Email:</label>
+	      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+	    </div>
+	  
+	    <div class="form-group">
+	      <label for="pwd">Password:</label>
+	      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
+	    </div>
+	  	
+	  	<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">
+		  <label class="form-check-label" for="flexCheckDefault">
+		    Show Password
+	  	  </label>
+	  	  </div>
+	    
+	    <input type="submit" class="btn btn-default" value="Login">
+	  </form>
+	  </div>
+	</div>
+	
+<script>
+		function myFunction() {
+		  var x = document.getElementById("pwd");
+		  if (x.type === "password") {
+		    x.type = "text";
+		  } else {
+		    x.type = "password";
+		  }
 		}
-	</script>
+</script>
+
 </body>
 </html>

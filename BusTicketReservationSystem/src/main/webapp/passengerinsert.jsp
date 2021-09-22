@@ -13,6 +13,13 @@
 </head>
 <body>
 
+<script>
+	
+	
+	
+	
+</script>
+
 	<div class="container">
   <h2>Passenger Registration</h2>
   <br>
@@ -20,27 +27,28 @@
   
     <div class="form-group">
       <label for="fname">First Name:</label>
-      <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname">
+      <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required>
     </div>
     <div class="form-group">
       <label for="lname">Last Name:</label>
-      <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname">
+      <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" required>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      <input type="password" class="form-control" id="pwd1" placeholder="Enter password" name="pwd" required>
     </div>
     <div class="form-group">
       <label for="pwd">Re-Enter Password:</label>
-      <input type="password" class="form-control" id="repwd" placeholder="Re-enter password" name="repwd">
+      <input type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
     </div>
+    <h6 id="mismatch"></h6>
      <div class="form-group">
       <label for="lname">Contact No:</label>
-      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno">
+      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" required>
     </div>
  
     <input type="submit" class="btn btn-default" value="Register">
