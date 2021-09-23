@@ -1,9 +1,6 @@
 package com.btrs.agencyRegistration;
 
-import javax.servlet.http.HttpSession;
-
-
-public class AgencyDetails {
+public class AgencyDetails{
 	private int agentID;
 	private String agentNIC;
 	private String agentName;

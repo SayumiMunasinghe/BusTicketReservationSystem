@@ -1,6 +1,7 @@
-package com.cards;
+package com.btrs.cards;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,8 @@ public class addCardServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String cNO =request.getParameter("cno").replaceAll("[a-zA-Z]", "");
+    	int pid = 1;
+		String cNO =request.getParameter("cno").replaceAll("[a-zA-Z--]", "");
     	String cType = request.getParameter("type");
 		String cvv = request.getParameter("cvv").replaceAll("[a-zA-Z]", "");
 		String cHName = request.getParameter("hName");
@@ -23,10 +25,11 @@ public class addCardServlet extends HttpServlet {
 		
 		boolean check;
 		
-		check = cardsDBUtil.addCard(cNO, cHName, cType, cvv, date);
+		check = cardsDBUtil.addCard(pid,cNO, cHName, cType, cvv, date);
 		
 		if(check == true) {
-		     RequestDispatcher dis = request.getRequestDispatcher("result1.jsp");
+			
+		     RequestDispatcher dis = request.getRequestDispatcher("Success.jsp");
 		     dis.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");

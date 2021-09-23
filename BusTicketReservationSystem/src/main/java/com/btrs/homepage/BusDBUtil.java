@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-import DBconnection.DatabaseConnection;
+import com.btrs.DBconnection.DatabaseConnection;
 
 
 public class BusDBUtil {
