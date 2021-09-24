@@ -10,7 +10,7 @@ import java.util.List;
 public class busDBUtil {
 	
 	//read part---------------------------------------
-	public static List<Bus> validate(int aId) {
+	/*public static List<Bus> validate(int aId) {
 		
 		ArrayList<Bus> bus = new ArrayList<>();
 		
@@ -51,7 +51,7 @@ public class busDBUtil {
 		
 		
 		
-}
+}*/
 	
 
 	
@@ -65,7 +65,7 @@ public class busDBUtil {
 	
 	
 	//insert part---------------------------------------------------------------
-public static boolean InsertBus(String busNumber, int busSeat, String type, String condition, String day) {
+public static boolean InsertBus(String busNumber, int busSeat, String type, String condition/*, String day*/) {
 	
 	boolean isSuccess = false;
 	
@@ -80,11 +80,12 @@ public static boolean InsertBus(String busNumber, int busSeat, String type, Stri
 		Connection con = DriverManager.getConnection(url, user, pass);
 		Statement stmt = con.createStatement();
 		
-		String sql= "Insert into bus values (0, 0,'"+busNumber+"', '"+busSeat+"', '"+type+"', '"+condition+"', '"+day+"')";
+		String sql= "Insert into bus values (0, 1,'"+busNumber+"', '"+busSeat+"', '"+type+"', '"+condition+"')";
 		int rs = stmt.executeUpdate(sql);
 		
 		if(rs > 0) {
 			isSuccess = true;
+			
 		}else {
 			isSuccess = false;
 		}
