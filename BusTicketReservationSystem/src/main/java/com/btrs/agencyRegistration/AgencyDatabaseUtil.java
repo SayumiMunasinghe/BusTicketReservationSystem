@@ -136,7 +136,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
 
-			String sql2 = "DELETE FROM agency WHERE agentID = "+userID+"";
+			String sql2 = "DELETE FROM agency WHERE agentID = " + userID + "";
 			int rs2 = stmt.executeUpdate(sql2);
 			if(rs2 > 0) {
 				status = "1";
@@ -150,24 +150,5 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		return status;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// DELETE THE SESSION
 }
