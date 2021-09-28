@@ -11,11 +11,17 @@
 	LocalDate today = LocalDate.now();
 %>
 <body>
-<%  String flag = (String)request.getAttribute("flag");
+<%  
+	String flag = (String)request.getAttribute("flag");
 	if(flag == "empty") {
 		%><p>No buses available for your chosen route. Please enter different locations.</p><%
 	}
-%>
+	String status = (String)request.getAttribute("status");
+	if (status == "false") {
+	%>
+		<p>Something went wrong with your order. Please try again</p><%
+	}
+	%>
 	<form action="SelectBusServlet" method="POST">
 		<label>From: </label><br>
 		<input type="text" name="arrival" required><br>

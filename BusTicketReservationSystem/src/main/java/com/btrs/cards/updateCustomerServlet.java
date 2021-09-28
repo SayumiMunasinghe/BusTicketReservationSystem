@@ -30,8 +30,7 @@ public class updateCustomerServlet extends HttpServlet {
 		
 		check = cardsDBUtil.updateCard(id,type ,cNum,name,cv,expD );
 		if(check == true) {
-			 List<cardDetails> cardDet = cardsDBUtil.getcardDetails(id,cardID);
-			 request.setAttribute("cardDet", cardDet);
+			 
 			
 		     RequestDispatcher dis = request.getRequestDispatcher("Success.jsp");
 		     dis.forward(request, response);
