@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Success!!!</h1>
+	<h1>Details entered successfully!</h1>
 </body>
 </html>
