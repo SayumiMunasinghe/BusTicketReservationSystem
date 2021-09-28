@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Passenger Registration</title>
+<title>Register</title>
 
 <style>
 	.border{
@@ -23,11 +23,17 @@
 	/* The message box is shown when the user clicks on the password field */
 	#message {
 	  display:none;
+	  padding-left: 35px;
 	}
 	
 	/* Add a green text color and a checkmark when the requirements are right */
 	.valid {
 		  color: green;
+	}
+	
+	/*to make the password checking move to right*/
+	p{
+	padding-left: 35px;
 	}
 	
 	
@@ -51,6 +57,33 @@
 
 </head>
 <body>
+
+    
+    <% String msg = (String)request.getAttribute("msg");
+		if(msg == "1"){
+			%><div class="" id = "popupp">
+			  <div class="alert alert-success alert-dismissible fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>You successfully registered!</strong> Redirecting....<span id="timer">5</span>
+			  
+			  </div>
+			</div>
+			<script>
+				var seconds = document.getElementById("timer").textContent;
+				var countdown = setInterval(function() {
+					seconds--;
+					document.getElementById("timer").textContent = seconds;
+					if (seconds <= 0)
+						clearInterval(countdown);
+				}, 1000);
+		
+				setTimeout(function() {
+					window.location.href = 'homepage.jsp';
+				}, 4000);
+			</script>
+			<%
+		}%> 
+
 
 <div class="container">
 <div class="border">
@@ -78,6 +111,16 @@
       <input type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
     </div>
     
+   	<div class="form-group">        
+	  	<div id="message">
+			  <h3>Password must contain the following:</h3>
+			  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+			  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+			  <p id="number" class="invalid">A <b>number</b></p>
+			  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+		</div>
+	</div>
+    
     <div class="form-group">
       <label for="pwd">Re-Enter Password:</label>
       <input type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
@@ -90,18 +133,7 @@
       <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" required>
     </div>
  	
-    <input type="submit" class="btn btn-default" value="Register">
-	<div class="form-group">        
-	  <div class="col-sm-offset-2 col-sm-10">
-		<div id="message">
-			  <h3>Password must contain the following:</h3>
-			  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-			  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-			  <p id="number" class="invalid">A <b>number</b></p>
-			  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-		</div>
-	</div>
-	</div>
+    <input type="submit" class="btn btn-primary" value="Register">   
   </form>
 </div>
 </div>
