@@ -29,14 +29,15 @@
 		LocalTime convTime = LocalTime.parse(bd.get(i).getTime());
 		int seats = BusDBUtil.getRemainingSeats(busid, SelectBusServlet.dateOfTravel, convTime);
 %>
-		<form action="" method="POST">
+		<form action="PaymentServlet" method="POST">
 		<input type="hidden" name="busID" value="<%= busid%>">
 		<input type="hidden" name="time" value="<%= stTime%>">
 		Select number of seats to reserve: 
-		<input type = "number" min="1" max="<%= seats%>">
+		<input type = "number" name="resSeat" min="1" max="<%= seats%>">
 		<input type="submit" name="submit" value="Proceed to payment">
 		</form>
 <%
+		
 	}
 	
 %>

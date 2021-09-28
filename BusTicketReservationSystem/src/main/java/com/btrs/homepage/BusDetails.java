@@ -11,7 +11,19 @@ public class BusDetails {
 	private String destination;
 	private String time;
 	
-	//constructor
+	//default constructor
+	public BusDetails() {
+		this.busID = 0;
+		this.busNumber = null;
+		this.numberOfSeats = 0;
+		this.busType = null;
+		this.seatPrice = 0;
+		this.AC = 0;
+		this.arrival = null;
+		this.destination = null;
+		this.time = null;
+	}
+	//overloaded constructor
 	public BusDetails(int busID, String busNumber, int numberOfSeats, String busType, double seatPrice, int AC, String arrival, String destination, String time) {
 		
 		this.busID = busID;

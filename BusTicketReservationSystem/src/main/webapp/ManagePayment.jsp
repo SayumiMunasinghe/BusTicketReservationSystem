@@ -1,12 +1,7 @@
 
-<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
-<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
- 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  
+
     
 <!DOCTYPE html>
 <html>
@@ -17,7 +12,7 @@
             left : 35%;
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 20px;
-	 		
+	 		background-color:  #b00b69;
 	 		position:absolute;
 	}
 	
@@ -41,7 +36,7 @@
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 20px;
 	  		width:467px;
-	 		
+	 		background-color:  #b00b69;
 	 		position:absolute;
 	 		
 	 }
@@ -68,10 +63,9 @@
   }
 </script>
  
-        
-      
+ 
       <button id ="but1" onclick="showForm(this.id)" class="btn btn-default">Add Card</button>
-      <button id = "but2" onclick="showForm(this.id)" class="btn btn-default" name="checkCard">Update Card</button>
+      <button id = "but2" onclick="showForm(this.id)" class="btn btn-default">Update Card</button>
       <br>
       <br>
      <div class="border">
@@ -116,32 +110,8 @@
         </form>         
       </div>
    
-         
-          <select> 
-            <option>Select Card</option>
-            <%
-              try{
-            	  Class.forName("com.mysql.jdbc.Driver");
-            	  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/obtrs","username","password");
-                  Statement st = con.createStatement();
-                  String sql = "select * from cards where pid="+123+"" ;
-                  ResultSet rs = st.executeQuery(sql);
-                  
-                  while(rs.next()){
-                	  %>
-                	  <option><%=rs.getString("cardHolderName") %><option>
-                	  <%
-                  }
-              }catch(Exception e){
-            	  
-              }
-            %> 
-           </select>
-           
-          
   
-      <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">
-          
+      <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">     
           <div class="row">
               <div class ="form-group col-lg-7">
           <label>Card Type:</label><input type ="Text"  class="form-control" id="visa" name="type"  disabled readonly>
@@ -160,15 +130,12 @@
            </div>
            <div class="row">
               <div class ="form-group col-lg-3">
-          <label>CVV:</label><input type="text" name="cvv"  class="form-control" pattern="[0-9]{3}"><br>
+          <label>CVV:</label><input type="text" name="cvv"  class="form-control" pattern="[0-9]{3}">
           <label>Expiry Date:</label><input type="text"  class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
            </div>
            <input type="submit" value="Update" name="update" class="btn btn-primary">
            <input type="submit" value="Remove Card" name="Delete" class="btn btn-danger">
-           
-  
-          
         </form>
     
        

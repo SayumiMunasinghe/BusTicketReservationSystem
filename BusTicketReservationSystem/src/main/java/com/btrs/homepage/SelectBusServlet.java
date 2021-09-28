@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SelectBusServlet extends HttpServlet {
 	public static Date travelDate;
 	public static String dateOfTravel;
+	public static LocalDate date;
+	
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,9 +28,10 @@ public class SelectBusServlet extends HttpServlet {
 		String arrival = request.getParameter("arrival");
 		String destination = request.getParameter("destination");
 		dateOfTravel = request.getParameter("travelDate");
-	
+		
 		try {
 			travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
+			date = travelDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 			List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
 		
 			if(busDetails.isEmpty()) {
