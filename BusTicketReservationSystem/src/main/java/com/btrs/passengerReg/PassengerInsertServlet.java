@@ -30,6 +30,10 @@ public class PassengerInsertServlet extends HttpServlet {
 		
 		Boolean isInserted;
 		
+		//register means auto login n go to homepage
+		//so when enter email gt the pid from db and return it as a session so 
+		//can redirect user to homepage
+		
 		//insertpassenger function returns boolean value
 		isInserted = PassengerDBUtil.insertPassenger(fname, lname, email, password, phone);
 	
@@ -41,8 +45,12 @@ public class PassengerInsertServlet extends HttpServlet {
 			String mode = "passenger";
 			session.setAttribute("mode", mode);
 			
+			//sending success message if inserted to register jsp
+			String posimsg = "1";
+			request.setAttribute("msg", posimsg);	
+			
 			//use RequestDispatcher class to navigate from servelet to a jsp page
-			RequestDispatcher rdis = request.getRequestDispatcher("passucess.jsp");
+			RequestDispatcher rdis = request.getRequestDispatcher("passengerinsert.jsp");
 			//so if the insertion success go to passucess.jsp
 			rdis.forward(request, response);
 			
