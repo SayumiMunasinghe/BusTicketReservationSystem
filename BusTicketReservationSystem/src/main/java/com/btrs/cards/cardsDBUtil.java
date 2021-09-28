@@ -12,7 +12,8 @@ public class cardsDBUtil {
 	private static Statement state = null;
 	private static ResultSet res = null;
 	private static boolean Success;
-       public static boolean addCard(int pid, String cNO,String cHName ,String cType,String cvv,String date) {
+	
+       public static boolean addCard( String cNO,String cType,String cHName ,String cvv,String date,int pid) {
     	   
     	   
     	    
@@ -21,28 +22,29 @@ public class cardsDBUtil {
     	   try { 
     		   con = DBconnection.getConnection();
     		   state = con.createStatement();
-    		   String sql = "insert into cards values('"+pid+"','"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"') ";
+    		   String sql = "insert into cards values('"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"',"+pid+")";
     		   int res = state.executeUpdate(sql);
     		   
-    		   if(res > 0) {
+    		   if(res>0) {
     			   Success = true;
-    		   }else {
+    		   }else
     			   Success = false;
-    		   } 
-    	   }catch(Exception e) {
-    		   e.printStackTrace();
-    	   }
+    		   
+    		  
+       }catch(Exception e) {
+     	  e.printStackTrace(); 
+          }
     	   return Success;
        }
        
-  public static boolean updateCard(int id,String type ,int cardID,String name,String cv,String expD ) {
+  public static boolean updateCard(int id,String type ,String cNum,String name,String cv,String expD ) {
 	  
 	  try {
 		  
 		  con = DBconnection.getConnection();
 		  state =con.createStatement();
 		  String sql = "update cards set cardHolderName='"+name+"',cvv='"+cv+"',expiryDate='"+expD+"'"
-		  		+ "     where passengerID='"+id+"' and cardID='"+cardID+"'";
+		  		+ "     where pid="+id+"";
 		  int res = state.executeUpdate(sql);
 		  
 		  if(res>0) {
@@ -59,32 +61,7 @@ public class cardsDBUtil {
 	  
 	  return Success;
   }    
-   
-  public static List<cardDetails> getcardDetails(int id,int cardID){
-	  ArrayList<cardDetails> card = new ArrayList<>();
-	  try {
-		  con = DBconnection.getConnection();
-		  state = con.createStatement();
-		  String sql = "select cardHolderName,cvv,cardNo,cardType,expiryDate where passengerID='"+id+"' AND cardID='"+cardID+"' ";
-		  res = state.executeQuery(sql);
-		  
-		  while(res.next()) {
-			  String Num = res.getString(3);
-			  String CHName = res.getString(5);
-			  String cType = res.getString(4);
-			  String cvv = res.getString(6);
-			  String date = res.getString(7);
-                
-			  cardDetails c = new cardDetails(Num,CHName,cType,cvv,date);
-			  card.add(c);
-		  }
-		  
-	  }catch(Exception e) {
-		  e.printStackTrace();
-	  }
-	     
-	  
-	  return card;
-  }
+ 
+ 
  
 }
