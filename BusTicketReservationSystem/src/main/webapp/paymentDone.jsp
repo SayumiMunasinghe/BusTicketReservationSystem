@@ -12,8 +12,11 @@
 	Order order = (Order)request.getAttribute("order");
 %>
 	<p>Payment successful</p><br>
-
-	${order.orderID}
+	<form action="OrderManagementServlet" method="POST">
+	<input type="hidden" name="orderid" value="${order.orderID}">
+	<input type="submit" value="Delete Order" name="delete"> 
+	</form>
+	<p>If you delete your order, you will receive a 50% refund</p>
 
 </body>
 </html>

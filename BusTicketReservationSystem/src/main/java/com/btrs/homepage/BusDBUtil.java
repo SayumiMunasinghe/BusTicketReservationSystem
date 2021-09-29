@@ -14,7 +14,8 @@ import com.btrs.DBconnection.DatabaseConnection;
 
 
 public class BusDBUtil {
-
+	public static int orderID;
+	
 	public static List<BusDetails> sendDetails(String arrival, String destination) {
 
 		ArrayList<BusDetails> bd = new ArrayList<BusDetails>();
@@ -139,7 +140,7 @@ public class BusDBUtil {
 		}
 		return cardNos;
 	}
-	public static int orderID;
+	
 	public static boolean insertBookingDetails(Order o) {
 		boolean status = false;
 		try {
@@ -201,5 +202,29 @@ public class BusDBUtil {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	public static boolean deleteBooking(int orderid) {
+		boolean status = false;
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//inserting record to order table once a payment is done and booking completed
+			String sql = "delete from obtrs.order where orderID="+orderid;
+			int rs = stmt.executeUpdate(sql);
+			if(rs > 0) {
+				status = true;
+			}
+			else if(rs == 0) {
+				status = false;
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 }

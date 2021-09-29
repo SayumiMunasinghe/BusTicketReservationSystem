@@ -21,6 +21,11 @@
 	%>
 		<p>Something went wrong with your order. Please try again</p><%
 	}
+	String delete = (String)request.getAttribute("delete");
+	if (delete == "done") {
+	%>
+		<p>Your booking has been deleted. You will receive a refund within 2 working days.</p><%
+	}
 	%>
 	<form action="SelectBusServlet" method="POST">
 		<label>From: </label><br>
