@@ -45,7 +45,23 @@
 }
   </style>
 </head>
-<body>
+<body onload="myFunction()">
+
+
+<form id="autosub" class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
+    <input type="hidden" name="viewDetails" value="Manage Agency Details"> 
+</form>
+
+	<script>
+	if(("${loadOne}" != "1"))
+	function myFunction() {
+		 document.getElementById('autosub').submit();
+	}
+	</script>
+
+
+
+
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
