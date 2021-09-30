@@ -3,10 +3,14 @@ package com.btrs.passengerReg;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.btrs.DBconnection.DatabaseConnection;
+import com.btrs.interfaces.PersonDatabase;
 
-public class PassengerDBUtil {
+//use interface called Person for checkLogin()
+public class PassengerDBUtil implements PersonDatabase {
 	
 	//copy for db connection
 	private static Connection con = null;
@@ -39,7 +43,8 @@ public class PassengerDBUtil {
 		
 		return passid;
 	}
-	
+
+	///////////////////////////////ADD NEW PASSENGER TO DB FUNCTION////////////////////
 	public static boolean insertPassenger(String fname, String lname, String email, String pwd, String phone) {
 		
 		//variable to check if sql statement execute successfully and inserted a row
@@ -70,6 +75,7 @@ public class PassengerDBUtil {
 		return isSuccess;
 	}
 	
+	///////////////////////GET PASSENGER ID FUNCTION when registering to go homepage////////////////////////
 	public static int getID(String email) {
 		//this function is used to return the pid of passenger to servlet to send to homepage 
 		int passid = -1;
@@ -80,6 +86,7 @@ public class PassengerDBUtil {
 			//just call this function to create connection to db
 			con = DatabaseConnection.initializeDatabase(); 
 			stmt = con.createStatement();
+			
 			String sql = "select pid from passenger where email '"+email+"'";
 			
 			ResultSet rs = stmt.executeQuery(sql);
@@ -95,6 +102,69 @@ public class PassengerDBUtil {
 		return passid;
 	}
 	
+	///////////////////////UPDATE PASSENGER DETAILS FUNCTION////////////////
+	public static boolean updatePassenger(String pid, String fname, String lname, String email, String telno, String pwd) {
+		
+		boolean isUpdated = false;
+		
+		try {
+			con = DatabaseConnection.initializeDatabase(); 
+			stmt = con.createStatement();
+			
+			//below sql for update passenger table for all attributes where the parameter pid = db pid
+			String sql = "update passenger set fName='"+fname+"',lName='"+lname+"',email='"+email+"',phone='"+telno+"',password='"+pwd+"' where pid='"+pid+"'";
+			
+			//executeupdate() function reutrns 1(sucesss)/0(fail) therefore assign result to int variable
+			int rs = stmt.executeUpdate(sql);
+			
+			//assigning the 0 or 1 depending on update fail or success
+			if(rs > 0) {
+				isUpdated = true;
+			
+			}else{
+				isUpdated = false;
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();		
+		}
+		
+		return isUpdated;
+		
+	}
 	
+
+	public static List<Passenger> CheckExist(String email, String pw){
+		ArrayList<Passenger> passenger = new ArrayList<>();
+		 
+//		
+		//validate
+		try {
+			//copy for db connection for util file
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			rs = stmt.executeQuery(sql);
+			//til here
+		
+			if(rs.next()) {
+				int pid = rs.getInt(1);
+				String fname = rs.getString(2);
+				String lname = rs.getString(3);
+				String pemail = rs.getString(4);
+				String passw = rs.getString(5);
+				String telno = rs.getString(6);
+				
+				Passenger p = new Passenger(pid, fname, lname, pemail, passw, telno);
+				passenger.add(p);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return passenger;
+	}
 
 }
