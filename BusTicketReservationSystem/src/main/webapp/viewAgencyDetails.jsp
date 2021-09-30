@@ -206,7 +206,7 @@
       document.getElementById('table1').style.display = "none";
       document.getElementById('table3').style.display = "none";
   	 }else if(buttonVal == "3"){
-  		window.location="enterBusDetals.jsp";	 
+  		window.location="enterBusDetails.jsp";	 
   	 }else if(buttonVal == "4"){
   		document.getElementById('table2').style.display = "none";
         document.getElementById('table1').style.display = "none";
