@@ -14,9 +14,12 @@
 
 <div class="container">    
 	<form action="enterBusDetailsServlet" method="POST">
-	Bus No. : <input type="text" id="number" name="number" required><br>
-	Number of seats : <input type="text" id="no.ofseats" name="seat" pattern="[0-5][0-9]" required><br>
+	<div class="form-group">
+	Bus No. : <input type="text" id="number" name="number" required></div><br>
+	<div class="form-group">
+	Number of seats : <input type="text" id="no.ofseats" name="seat" pattern="[0-5][0-9]" required></div><br>
 	
+	<div class="form-group">
 	Bus Type :
 	<input type="radio" id="luxury" name="btype" value="LUXURY" checked>
   	<label for="luxury">LUXURY</label><br>
@@ -24,23 +27,22 @@
   	<label for="semi-luxury">SEMI-LUXURY</label><br>
   	<input type="radio" id="blabla" name="btype" value="BLABLA">
   	<label for="blabla">BLABLA</label><br>
+	</div>
 	
-	
+	<div class="form-group">
 	<input type="radio" id="AC" name="ac/nonac" value="AC" checked>
   	<label for="AC">AC</label>
   	<input type="radio" id="NON-AC" name="ac/nonac" value="NON-AC">
   	<label for="NON-AC">NON-AC</label><br>
+	</div>
 	
-	Survice days :
-	<select name="days" id="days">
-    <option value="Weekdays">Weekdays</option>
-    <option value="Weekend">Weekend</option>
-    <option value="Both">Both</option>
-  	</select>
+
   	
   	<br><br><br>
   	
+  	<div class="form-group">
   	<input type="submit" value="Submit">
+	</div>
 	</form>
 </div>	
 </body>
