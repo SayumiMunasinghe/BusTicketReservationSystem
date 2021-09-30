@@ -1,6 +1,7 @@
 package com.btrs.enterBusDetails;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class enterBusDetailsServlet
@@ -22,12 +24,33 @@ public class enterBusDetailsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		//HttpSession session = request.getSession();
+		/*//reaaadddddddddddd-----------------------------------------------------------------------------------------------
+		HttpSession session = request.getSession();
 		//session to get agency id
-		//nt aID = (int)session.getAttribute("aid");
+		int aID = (int)session.getAttribute("aid");
 		
-		//inserttttt--------------------------------------
+		try {
+			List<Bus> busDetails = busDBUtil.validate(aID);
+			request.setAttribute("busDetails", busDetails);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		//page to be redirrected to 
+		RequestDispatcher dis = request.getRequestDispatcher("busDetails.jsp");
+		dis.forward(request, response);*/
+		
+		HttpSession session = request.getSession();
+		//session to get agency id
+		int aID = (int)session.getAttribute("userID");
+		
+		
+		
+		
+		
+		
+		//inserttttt---------------------------------------------------------------------------------------------------
+		
 		String busNumber = request.getParameter("number");
 		int busSeat = Integer.parseInt(request.getParameter("seat"));
 		String type = request.getParameter("btype");
@@ -36,11 +59,11 @@ public class enterBusDetailsServlet extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = busDBUtil.InsertBus(busNumber, busSeat, type, condition);
+		isTrue = busDBUtil.InsertBus(aID,busNumber, busSeat, type, condition);
 		
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
-			dis.forward(request, response);
+			RequestDispatcher dis1 = request.getRequestDispatcher("success.jsp");
+			dis1.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("unsuccess.jsp");
 			dis2.forward(request, response);

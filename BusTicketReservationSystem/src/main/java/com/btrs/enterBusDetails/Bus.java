@@ -1,3 +1,4 @@
+//this class is used to assign the respective values taken from databaase into variables 
 package com.btrs.enterBusDetails;
 
 public class Bus {
@@ -8,7 +9,7 @@ public class Bus {
 	private String busType;
 	private String AC;
 	
-	public Bus( int busID, int aId, String busNumber, int numberOfSeats, String busType, String AC) {
+	public Bus( String busNumber, int numberOfSeats, String busType, String AC) {
 	//this.busID=busID;
 	//this.aId=aId;
 	this.busNumber=busNumber;
