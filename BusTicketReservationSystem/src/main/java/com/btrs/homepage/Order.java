@@ -13,6 +13,37 @@ public class Order {
 	private double totalPrice;
 	private LocalDate date;
 	
+	public Order() {
+		this.orderID = 0;
+		this.customerID = 0;
+		this.busID = 0;
+		this.cardNo = null;
+		this.time = null;
+		this.reservedSeats = 0;
+		this.totalPrice = 0;
+		this.date = null;
+	}
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
+	}
+	public void setBusID(int busID) {
+		this.busID = busID;
+	}
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
+	public void setTime(Time time) {
+		this.time = time;
+	}
+	public void setReservedSeats(int reservedSeats) {
+		this.reservedSeats = reservedSeats;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 	//constructor
 	public Order(int customerID, int busID, String cardNo, Time time, int reservedSeats, double totalPrice, LocalDate date) {
 		this.customerID = customerID;

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.ZoneId;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +40,11 @@ public class SelectBusServlet extends HttpServlet {
 				request.setAttribute("flag", flag);
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
+			}
+			for(int i = 0; i < busDetails.size(); i++) {
+				int seats = BusDBUtil.getRemainingSeats(busDetails.get(i).getBusID(), dateOfTravel, LocalTime.parse(busDetails.get(i).getTime()));
+				if(seats == 0)
+					busDetails.remove(i);
 			}
 			request.setAttribute("busDetails", busDetails);
 		} catch (ParseException e) {
