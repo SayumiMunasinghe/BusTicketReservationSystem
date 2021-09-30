@@ -100,7 +100,8 @@
 				<br>
 				<br>
 				<h3 style="text-align: center; font-size: 30px;">
-					Redirecting to Login in <span id="countdown">4</span>
+	
+					<button onclick="loginNow()" class="btn btn-success btn-block">Login now</button>
 				</h3>
 	
 				<br>
@@ -109,17 +110,9 @@
 		</div>
 	
 		<script>
-			var seconds = document.getElementById("countdown").textContent;
-			var countdown = setInterval(function() {
-				seconds--;
-				document.getElementById("countdown").textContent = seconds;
-				if (seconds <= 0)
-					clearInterval(countdown);
-			}, 1000);
-	
-			setTimeout(function() {
+			function loginNow() {
 				window.location.href = 'AgencyLogin.jsp';
-			}, 4000);
+			}
 		</script>
 	<%
 	}
