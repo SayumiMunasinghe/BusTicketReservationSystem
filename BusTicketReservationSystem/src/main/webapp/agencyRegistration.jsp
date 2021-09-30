@@ -29,43 +29,38 @@
 						Name:</label>
 					<div class="col-sm-9">
 						<input type="text" name="agentName" placeholder="Enter name"
-							class="form-control">
+							class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">agent
 						NIC:</label>
 					<div class="col-sm-9">
-						<input type="text" name="agentNIC" value="John"
-							class="form-control">
+						<input type="text" name="agentNIC" placeholder="Enter your NIC" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">companyName:</label>
 					<div class="col-sm-9">
-						<input type="text" name="companyName" value="Doe"
-							class="form-control">
+						<input type="text" name="companyName" placeholder="Enter your company name" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">agentPhone:</label>
 					<div class="col-sm-9">
-						<input type="text" name="agentPhone" value="John"
-							class="form-control">
+						<input type="text" name="agentPhone" placeholder="Enter Your mobile phone" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">agentEmail:</label>
 					<div class="col-sm-9">
-						<input type="email" name="agentEmail" value="Doedwww@gmail.com"
-							class="form-control" required>
+						<input type="email" name="agentEmail" placeholder="Enter your email" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="email">agencyLocation:</label>
 					<div class="col-sm-9">
-						<input type="text" name="agencyLocation" value="Doe"
-							class="form-control">
+						<input type="text" name="agencyLocation" placeholder="Enter agency location" class="form-control" required>
 					</div>
 				</div>
 
@@ -143,7 +138,9 @@
 		</div>
 	</div>
 
-	<style>
+<center> Already registered?<a href ="AgencyLogin.jsp"> Login now</a>
+
+<style>
 .border {
 	padding: 35px;
 	border-radius: 25px;
@@ -160,22 +157,12 @@
 	color: green;
 }
 
-.valid:before {
-	position: relative;
-	left: -35px;
-	content: "ok";
-}
-
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
 	color: red;
 }
 
-.invalid:before {
-	position: relative;
-	left: -35px;
-	content: "X";
-}
+
 </style>
 
 	<script type="text/javascript">

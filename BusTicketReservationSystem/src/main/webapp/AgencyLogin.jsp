@@ -7,6 +7,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+	<style>
+		.border {
+			padding: 35px;
+			border-radius: 25px;
+			background-color: #f5f5f5;
+		}
+	</style>
+  
 </head>
 
 <br><br><br><br><br>
@@ -19,13 +28,13 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Agent Username:</label>
       <div class="col-sm-9">
-        <input type="text" name="userName" placeholder="Enter username" class="form-control">
+        <input type="text" name="userName" placeholder="Enter username" class="form-control" required>
      </div>
     </div>
      <div class="form-group">
       <label class="control-label col-sm-2" for="email">Agent password:</label>
       <div class="col-sm-9">
- 		<input type="text" name="password" placeholder ="Enter password" class="form-control">
+ 		<input type="text" name="password" placeholder ="Enter password" class="form-control" required>
       </div>
       </div>
       
@@ -34,7 +43,7 @@
 			%><div class="" id = "popupp">
 			  <div class="alert alert-danger alert-dismissible fade in">
 			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    <strong>Username or Password is incorrect!</strong> Username or password does not match.
+			    <strong>Username or Password is incorrect!</strong> Username or password does not match. Please enter valid details or register.
 			  </div>
 			</div><%
 		}%>
@@ -45,6 +54,8 @@
 
       </div>
     </div>
+    
+   <center> Not a member?<a href ="agencyRegistration.jsp"> Register now</a>
   </form>
 </div>
 
