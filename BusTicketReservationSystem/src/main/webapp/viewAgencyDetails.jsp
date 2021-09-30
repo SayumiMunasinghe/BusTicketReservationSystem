@@ -13,12 +13,28 @@
 </head>
 <body>
 
-<% //String showTable1 = (String)request.getAttribute("showTable1");
-String showTable1 = "1";
-    if(showTable1 == "1"){
-    %>
-
-	<div class="container">          
+<div style="text-align: center;">
+      <button id ="1" onclick="buttAction(this.id)" class="btn btn-warning">View Details</button>
+      <button id = "2" onclick="buttAction(this.id)" class="btn btn-warning">Update Details</button>
+      <button id = "3" onclick="buttAction(this.id)" class="btn btn-warning">Manage Bus</button>
+      <button id = "4" onclick="buttAction(this.id)" class="btn btn-warning">Delete Account</button>
+      
+      <br><br>
+      
+      <div class="container" id = "table3" style ="display:none;">
+       <div class="alert alert-danger">
+        
+         <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
+         <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
+		 <br><br>
+           <form action="ManageAgencyDetailsServlet" method="Post">
+  	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger">
+  	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default">Cancel</button>  
+  	       </form>
+  	   </div>
+  	 </div>
+</div>
+	<div class="container" id = "table1">          
 	  <table class="table">
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
 	  
@@ -65,15 +81,9 @@ String showTable1 = "1";
 	    </c:forEach>
 	   </table>
 	 </div>
-<%
-}%>
 
 
-<% //String showTable2 = (String)request.getAttribute("showTable2");
-    String showTable2 = "1";
-   if(showTable2 == "1"){
-    %>
-   <form  action="ManageAgencyDetailsServlet" method="Post">
+   <form action="ManageAgencyDetailsServlet" method="Post" id ="table2" style ="display:none;">
 	<div class="container">          
 	  <table class="table">
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
@@ -124,25 +134,31 @@ String showTable1 = "1";
 	 </div>
 	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-primary btn-lg btn-block">
    </form>
-<%
-}%>
-    
-    
-<% 
-     if(request.getParameter("tableSwitch") == "true") {
-            showTable1 = "0";
-            showTable2 = "1";
-     }
-%>
 
-
-    <form action="ManageAgencyDetailsServlet" method = "post">
-     <INPUT TYPE="Submit"  name ="updateDetails" VALUE="Update" >
-    </form>
-
-    
-    
-
+<script type="text/javascript">
+  function buttAction(buttonVal)
+  {
+     if(buttonVal == "1"){
+       document.getElementById('table1').style.display = "block";
+       document.getElementById('table2').style.display = "none";
+       document.getElementById('table3').style.display = "none";
+  	 }else if(buttonVal == "2"){
+	  document.getElementById('table2').style.display = "block";
+      document.getElementById('table1').style.display = "none";
+      document.getElementById('table3').style.display = "none";
+  	 }else if(buttonVal == "3"){
+  		window.location="homepage.jsp";	 
+  	 }else if(buttonVal == "4"){
+  		document.getElementById('table2').style.display = "none";
+        document.getElementById('table1').style.display = "none";
+        document.getElementById('table3').style.display = "block";
+  	 }else if(buttonVal == "5"){
+  		document.getElementById('table1').style.display = "block";
+        document.getElementById('table2').style.display = "none";
+        document.getElementById('table3').style.display = "none";
+  	 }
+  }
+</script>
 
       <% String popup = (String)request.getAttribute("popup1");
 		if(popup == "1"){

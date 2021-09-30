@@ -2,14 +2,15 @@ package com.btrs.cards;
 
 public class cardDetails {
     private int id;
-    private String cNum;
+    private int cardID;
+	private String cNum;
     private String cType;
     private String date;
     private String cHName;
     private String cvv;
     
-	public cardDetails(int id, String cNum, String cType, String date, String cHName, String cvv) {
-		this.id = id;
+	public cardDetails( String cNum, String cType, String date, String cHName, String cvv) {
+		
 		this.cNum = cNum;
 		this.cType = cType;
 		this.date = date;
@@ -40,6 +41,8 @@ public class cardDetails {
 	public String getCvv() {
 		return cvv;
 	}
-    
+	public int getCardID() {
+		return cardID;
+	}
     
 }

@@ -1,6 +1,7 @@
 package com.btrs.cards;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,15 +25,19 @@ public class addCardServlet extends HttpServlet {
 		
 		boolean check;
 		
-		check = cardsDBUtil.addCard(pid,cNO, cHName, cType, cvv, date);
+		check = cardsDBUtil.addCard(cNO,cType, cHName,cvv, date,pid);
 		
 		if(check == true) {
-		     RequestDispatcher dis = request.getRequestDispatcher("result1.jsp");
+			
+			
+		     RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
 		     dis.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
 		     dis2.forward(request, response);
 		}
-	}
-
+	
+   
 }
+}
+

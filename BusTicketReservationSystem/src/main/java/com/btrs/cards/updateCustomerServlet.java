@@ -1,6 +1,7 @@
 package com.btrs.cards;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +30,9 @@ public class updateCustomerServlet extends HttpServlet {
 		
 		check = cardsDBUtil.updateCard(id,type ,cNum,name,cv,expD );
 		if(check == true) {
-		     RequestDispatcher dis = request.getRequestDispatcher("result1.jsp");
+			 
+			
+		     RequestDispatcher dis = request.getRequestDispatcher("Success.jsp");
 		     dis.forward(request, response);
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
@@ -38,3 +41,15 @@ public class updateCustomerServlet extends HttpServlet {
 	}
 
 }
+
+
+//HttpSession session = request.getSession();
+//Session for user ID
+//session.setAttribute("userID", userID);
+//session.setAttribute("mode", mode);
+
+//to retrive session
+//int test = (int)session.getAttribute("userID");
+
+//to delete session
+//session.removeAttribute("mode");

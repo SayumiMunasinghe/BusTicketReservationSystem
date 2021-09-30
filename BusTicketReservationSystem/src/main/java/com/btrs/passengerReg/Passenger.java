@@ -1,6 +1,6 @@
 package com.btrs.passengerReg;
 
-public class Passenger {
+public class Passenger{
 	private int pid;
 	private String fName;
 	private String lName;

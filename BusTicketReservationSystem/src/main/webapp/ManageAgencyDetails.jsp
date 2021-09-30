@@ -16,7 +16,7 @@
 <div class="container">
 
     <form class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
-    	<input type="submit" name="viewDetails" value="View Details" class="btn btn-primary btn-lg btn-block">
+    	<input type="submit" name="viewDetails" value="View Details" class="btn btn-default">
     </form>
  
      <form action="ViewAgencyDetailsServlet" method="Post">
