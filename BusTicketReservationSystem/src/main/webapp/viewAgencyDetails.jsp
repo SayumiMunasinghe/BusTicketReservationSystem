@@ -10,8 +10,62 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .navbar {
+    margin-bottom: 0;
+    background-color: #202020;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #202020 !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    
+    .border {
+	padding: 35px;
+	border-radius: 25px;
+	background-color: #f5f5f5;
+}
+  </style>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="homepage.jsp">Bus<span style="color: rgb(255, 115, 22);">hub</span> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="homepage.jsp">Go back</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br><br><br><br><br>
 
 <div style="text-align: center;">
       <button id ="1" onclick="buttAction(this.id)" class="btn btn-warning">View Details</button>
@@ -26,15 +80,17 @@
         
          <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
          <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
-		 <br><br>
+		 <br><br>		 
            <form action="ManageAgencyDetailsServlet" method="Post">
   	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger">
   	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default">Cancel</button>  
   	       </form>
   	   </div>
   	 </div>
+  	 
 </div>
-	<div class="container" id = "table1">          
+	<div class="container" id = "table1">       
+	<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">   
 	  <table class="table">
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
 	  
@@ -81,10 +137,11 @@
 	    </c:forEach>
 	   </table>
 	 </div>
-
+ </div>
 
    <form action="ManageAgencyDetailsServlet" method="Post" id ="table2" style ="display:none;">
-	<div class="container">          
+	<div class="container"> 
+	<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">         
 	  <table class="table">
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
 	  
@@ -105,7 +162,7 @@
 	        <td> <input type="text" name="agentName" value="${agencyDetails.agentName}" class="form-control"></td>
 	      </tr>
 		  <tr>
-	        <td>Company DOG</td>
+	        <td>Company Name</td>
 	        <td> <input type="text" name="companyName" value="${agencyDetails.companyName}" class="form-control"></td>
 	      </tr>
 	      <tr>
@@ -131,9 +188,11 @@
 	    </tbody>
 	    </c:forEach>
 	   </table>
-	 </div>
+	 
 	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-primary btn-lg btn-block">
    </form>
+   </div> 
+  </div>
 
 <script type="text/javascript">
   function buttAction(buttonVal)
@@ -147,7 +206,7 @@
       document.getElementById('table1').style.display = "none";
       document.getElementById('table3').style.display = "none";
   	 }else if(buttonVal == "3"){
-  		window.location="homepage.jsp";	 
+  		window.location="enterBusDetails.jsp";	 
   	 }else if(buttonVal == "4"){
   		document.getElementById('table2').style.display = "none";
         document.getElementById('table1').style.display = "none";
