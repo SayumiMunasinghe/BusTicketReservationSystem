@@ -38,8 +38,10 @@
 	<br>
 	<br>
 	
+	<!-- https://www.seekpng.com/png/full/168-1687539_transparent-white-sprinkle-black-and-white-sprinkles-pattern.png-->
+	
 	<div class="container">
-		<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
+		<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">
 			<h2>Agency Registration</h2>
 			<form class="form-horizontal" action="AgencyRegistrationServlet"
 				method="post">

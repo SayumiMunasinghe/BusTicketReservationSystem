@@ -67,7 +67,8 @@
 <body>
 <br><br><br>
 <div class="container">
-<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
+<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png
+)">
   <h2>Agency Login</h2>
   <form class="form-horizontal" action="AgencyLoginServlet" method="post">
     <div class="form-group">
@@ -79,7 +80,7 @@
      <div class="form-group">
       <label class="control-label col-sm-2" for="email">Agent password:</label>
       <div class="col-sm-9">
- 		<input type="text" name="password" placeholder ="Enter password" class="form-control" required>
+ 		<input type="password" name="password" placeholder ="Enter password" class="form-control" required>
       </div>
       </div>
       
