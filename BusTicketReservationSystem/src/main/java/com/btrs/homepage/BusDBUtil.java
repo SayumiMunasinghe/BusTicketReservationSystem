@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.sql.Date;
@@ -16,6 +17,54 @@ import com.btrs.DBconnection.DatabaseConnection;
 public class BusDBUtil {
 	public static int orderID;
 	
+	public static ArrayList<String> getArrival() {
+		
+		ArrayList<String> arrival = new ArrayList<String>();
+		
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//getting price per seat in a given bus going at a given time
+			String sql = "select distinct arrivalLocation from obtrs.busroute";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+
+				arrival.add(rs.getString(1));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return arrival;
+	}
+	public static ArrayList<String> getDestination() {
+		
+		ArrayList<String> destination = new ArrayList<String>();
+		
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//getting price per seat in a given bus going at a given time
+			String sql = "select distinct destinationLocation from obtrs.busroute";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+
+				destination.add(rs.getString(1));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return destination;
+	}
 	public static List<BusDetails> sendDetails(String arrival, String destination) {
 
 		ArrayList<BusDetails> bd = new ArrayList<BusDetails>();
@@ -140,7 +189,6 @@ public class BusDBUtil {
 		}
 		return cardNos;
 	}
-	
 	public static boolean insertBookingDetails(Order o) {
 		boolean status = false;
 		try {
@@ -211,6 +259,97 @@ public class BusDBUtil {
 
 			//inserting record to order table once a payment is done and booking completed
 			String sql = "delete from obtrs.order where orderID="+orderid;
+			int rs = stmt.executeUpdate(sql);
+			if(rs > 0) {
+				status = true;
+			}
+			else if(rs == 0) {
+				status = false;
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	public static Order getOrderDetails(int orderid) {
+		Order order = new Order();
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//getting order details for given orderid
+			String sql = "select * from obtrs.order where orderID="+orderid;
+			ResultSet rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				
+				int customerid = rs.getInt(2);
+				int busid = rs.getInt(3);
+				String sttime = rs.getString(4);
+				LocalTime time = LocalTime.parse(sttime);
+				Time orTime = Time.valueOf(time);
+				int seats = rs.getInt(5);
+				double price = rs.getDouble(6);
+				String cardno = rs.getString(7);
+				String stdate = rs.getString(8);
+				LocalDate orderDate = LocalDate.parse(stdate); 
+						
+				order.setOrderID(orderid);
+				order.setCustomerID(customerid);
+				order.setBusID(busid);
+				order.setTime(orTime);
+				order.setReservedSeats(seats);
+				order.setTotalPrice(price);
+				order.setCardNo(cardno);
+				order.setDate(orderDate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return order;
+		
+	}
+	public static ArrayList<BusTimes> getTimes(String arrival, String destination, String busType) {
+		ArrayList<BusTimes> btl = new ArrayList<BusTimes>();
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//
+			String sql = "select distinct r.busID, r.time from obtrs.busroute r, obtrs.bus b where r.arrivalLocation='"+arrival+"' AND r.destinationLocation='"+destination+"' AND b.busType='"+busType+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+
+				int busid = rs.getInt(1);
+				Time time = rs.getTime(2);
+				BusTimes bt = new BusTimes(busid, time);
+				btl.add(bt);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return btl;
+	}
+	public static boolean updateBooking(int orderid, int busid, Time time) {
+		boolean status = false;
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+			//updating booking time and busid
+			String sql = "update obtrs.order set busID="+busid+", btime='"+time+"' where orderID="+orderid;
 			int rs = stmt.executeUpdate(sql);
 			if(rs > 0) {
 				status = true;
