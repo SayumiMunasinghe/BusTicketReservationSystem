@@ -19,14 +19,14 @@ public class PaymentServlet extends HttpServlet {
 	
 	int reservedSeats;
 	private double totalPrice;
-	//make the others also private
-	BusDetails bd;
-	String cardNo;
-	int cusID;
-	int busid;
-	LocalTime convTime;
-	//for sql inserting
-	Time time;
+	//
+	private BusDetails bd;
+	private String cardNo;
+	private int cusID;
+	private int busid;
+	private LocalTime convTime;
+	private Time time;
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("submit") != null) {
 			HttpSession session = request.getSession();
