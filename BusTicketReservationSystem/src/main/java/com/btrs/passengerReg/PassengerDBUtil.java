@@ -21,7 +21,6 @@ public class PassengerDBUtil implements PersonDatabase {
 	public static List<Passenger> CheckExist(String email, String pw){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 
-//		
 		//validate
 		try {
 			//copy for db connection for util file

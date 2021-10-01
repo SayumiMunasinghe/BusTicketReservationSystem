@@ -43,7 +43,7 @@ public class PassengerLoginServlet extends HttpServlet {
 		
 		if(passengerid > 0) {
 			//allows a servlet to navigate to a jsp page
-			RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("passengeracc.jsp");
 			dis.forward(request, response);
 		}else{
 			//if email or pw doesnot match data in db will redirect to the login form
