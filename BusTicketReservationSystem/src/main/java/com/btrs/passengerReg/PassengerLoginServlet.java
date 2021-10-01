@@ -1,6 +1,8 @@
 package com.btrs.passengerReg;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +26,19 @@ public class PassengerLoginServlet extends HttpServlet {
 		int passengerid = -1;
 		
 		try {
-			int pid= PassengerDBUtil.checkLogin(email, password);
-			session.setAttribute("userID", pid);
-			String mode = "passenger";
-			session.setAttribute("mode", mode);
-			passengerid = pid;
+				List<Passenger> passDetails = PassengerDBUtil.CheckExist(email, password);
+				request.setAttribute("passDetails", passDetails);
+				
+				int pid= PassengerDBUtil.checkLogin(email, password);
+				
+				session.setAttribute("userID", pid);
+				String mode = "passenger";
+				session.setAttribute("mode", mode);
+				passengerid = pid;
 		}
 		catch(Exception e) {
-			//print the exeception if there is one
-			e.printStackTrace();
+				//print the exeception if there is one
+				e.printStackTrace();
 		}
 		
 		if(passengerid > 0) {
@@ -49,6 +55,7 @@ public class PassengerLoginServlet extends HttpServlet {
 	//Session for user ID
 //	session.setAttribute("userID", userID);
 //	session.setAttribute("mode", mode);
+	
 //	//to retrive session
 //	String test = (String)session.getAttribute("mode");
 //

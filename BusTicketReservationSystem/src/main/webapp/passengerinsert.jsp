@@ -86,7 +86,7 @@
 
 
 <div class="container">
-<div class="border">
+<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h2>Passenger Registration</h2>
   <br>
   <form action="PassengerInsertServlet" method="post">
@@ -110,8 +110,13 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
     </div>
+      
+    <div class="form-group">
+      <label for="pwd">Re-Enter Password:</label>
+      <input type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
+    </div>
     
-   	<div class="form-group">        
+    <div class="form-group">        
 	  	<div id="message">
 			  <h3>Password must contain the following:</h3>
 			  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -121,11 +126,6 @@
 		</div>
 	</div>
     
-    <div class="form-group">
-      <label for="pwd">Re-Enter Password:</label>
-      <input type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
-    </div>
-    
     <!-- <h6 id="mismatch"></h6>-->
     
      <div class="form-group">
@@ -134,13 +134,30 @@
     </div>
  	
     <input type="submit" class="btn btn-primary" value="Register">   
+    
+    <div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">
+		  <label class="form-check-label" for="flexCheckDefault">
+		    Show Password
+	  	  </label>
+    </div>
+    
   </form>
 </div>
 </div>
 	
-
-	
 	<script>
+	
+	//the below code shows the password to user
+	function myFunction() {
+	  var x = document.getElementById("pwd1");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}	
+	
 		var myInput = document.getElementById("pwd1");
 		var letter = document.getElementById("letter");
 		var capital = document.getElementById("capital");
