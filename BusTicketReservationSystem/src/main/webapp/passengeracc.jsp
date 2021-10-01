@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <!-- below jstl used to call a java class while in jsp class -->
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,8 @@
       </tr>
     </thead>
     <tbody>
+    
 		<c:forEach var="pass" items="${passDetails}">
-		
 		
 		<c:set var="pid" value="${pass.pid}"/>
 		<c:set var="fname" value="${pass.fName}"/>
@@ -39,6 +40,7 @@
 		<c:set var="pwd" value="${pass.password}"/>
 		
 			<tr>
+			<!-- this below one calls the getpid function in passenger, java class -->
 				<td>${pass.pid}</td>
 				<td>${pass.fName}</td>
 				<td>${pass.lName}</td>

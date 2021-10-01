@@ -16,8 +16,10 @@
 		<br><br><br><br><br><br>	
 		<div class="container">
 		<div class="well">
+		<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
 	  <h2>Passenger Login</h2>
 	  <form action="PassengerLoginServlet" method="post">
+	 
 	    <div class="form-group">
 	      <label for="email">Email:</label>
 	      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
@@ -30,17 +32,17 @@
 	  	
 	  	<div class="form-check">
 		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">
-		  <label class="form-check-label" for="flexCheckDefault">
-		    Show Password
-	  	  </label>
+		  <label class="form-check-label" for="flexCheckDefault">Show Password</label>
 	  	  </div>
 	    
 	    <input type="submit" class="btn btn-default" value="Login">
 	  </form>
 	  </div>
+	  </div>
 	</div>
 	
 <script>
+//the below code shows the password to user
 		function myFunction() {
 		  var x = document.getElementById("pwd");
 		  if (x.type === "password") {
