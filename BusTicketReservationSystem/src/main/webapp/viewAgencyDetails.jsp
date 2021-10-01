@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>s
   <style>
     .navbar {
     margin-bottom: 0;
@@ -45,7 +45,23 @@
 }
   </style>
 </head>
-<body>
+<body onload="myFunction()">
+
+
+<form id="autosub" class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
+    <input type="hidden" name="viewDetails" value="Manage Agency Details"> 
+</form>
+
+	<script>
+	if(("${loadOne}" != "1"))
+	function myFunction() {
+		 document.getElementById('autosub').submit();
+	}
+	</script>
+
+
+
+
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
@@ -76,7 +92,7 @@
       <br><br>
       
       <div class="container" id = "table3" style ="display:none;">
-       <div class="alert alert-danger">
+       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(255, 163, 163, 0.95) 0%,rgba(255, 163, 163, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">
         
          <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
          <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
@@ -189,7 +205,7 @@
 	    </c:forEach>
 	   </table>
 	 
-	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-primary btn-lg btn-block">
+	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-success btn-lg btn-block" >
    </form>
    </div> 
   </div>
