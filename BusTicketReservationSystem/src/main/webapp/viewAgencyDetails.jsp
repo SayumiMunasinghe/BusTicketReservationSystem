@@ -45,6 +45,15 @@
 }
   </style>
 </head>
+
+<%
+     if("${userID}" == null || "${mode}" == null){ %>
+	     <script>
+			window.location.href = 'AgencyLogin.jsp';
+		</script>
+     <%}
+%>
+
 <body onload="myFunction()">
 
 
@@ -58,11 +67,6 @@
 		 document.getElementById('autosub').submit();
 	}
 	</script>
-
-
-
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
     <div class="navbar-header">
@@ -99,8 +103,8 @@
 		 <br><br>		 
            <form action="ManageAgencyDetailsServlet" method="Post">
   	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger">
+  	       </form><br>
   	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default">Cancel</button>  
-  	       </form>
   	   </div>
   	 </div>
   	 

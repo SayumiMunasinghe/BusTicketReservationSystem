@@ -84,6 +84,8 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			int userID = (int) session.getAttribute("userID");
 			
 			AgencyDatabaseUtil.DeleteAgencyDetails(userID);
+			session.removeAttribute("userID");
+			session.removeAttribute("mode");
 			
 			String deleteSuccess = "1";
 			request.setAttribute("deleteSuccess", deleteSuccess);
