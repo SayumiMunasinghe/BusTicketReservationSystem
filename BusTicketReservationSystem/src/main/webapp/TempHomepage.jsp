@@ -90,8 +90,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" ><a href="#about">ABOUT</a></li>
-        <li class="nav-item"><a>CONTACT</a></li>
+        <li class="nav-item" ><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+        <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		           String loginMode = (String)session.getAttribute("mode");
 				if(loginStatus == null || loginMode == null){ %> 
@@ -111,18 +111,25 @@
 					<li><a class="" type="button" data-toggle="dropdown">MANAGE PASSENGER</a>
 		            <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="passengeracc.jsp" >Manage Passenger Details</a></li>
-		              <li><a href="#">Ishans page</a></li>
+		              <li><a href="ManagePayment.jsp">Manage Payment</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% }else if (loginMode == "agency"){ %> 
 					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
 		              <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
-		              <li><a href="#">Manage bus details</a></li>
+		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+		              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
+				<% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				%> 
+					 <script>
+					  window.location.href = 'homepage.jsp';
+					 </script> 
 				<% } %>
-     
       </ul>
     </div>
   </div>
