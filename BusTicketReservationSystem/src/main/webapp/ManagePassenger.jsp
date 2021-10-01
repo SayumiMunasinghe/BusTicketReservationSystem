@@ -72,6 +72,15 @@ body {font-family: "Lato", sans-serif;}
 </style>
 
 </head>
+	
+	<%
+     if("${userID}" == null || "${mode}" == null){ %>
+	     <script>
+			window.location.href = 'PassengrLogin.jsp';
+		</script>
+     <%}
+%>
+
 <body>
 
 <br><br>
@@ -103,7 +112,7 @@ body {font-family: "Lato", sans-serif;}
   		<span id='message'></span>
     </div>
     
-    <input type="submit" class="btn btn-default" value="Update">
+    <input type="submit" class="btn btn-warning" value="Update">
   
   </form>
 </div>
@@ -121,10 +130,11 @@ body {font-family: "Lato", sans-serif;}
       <input type="email" class="form-control" id="email" placeholder="Enter contact number" name="email">
     </div>
     
-    <input type="submit" class="btn btn-default" value="Update">
+    <input type="submit" class="btn btn-warning" value="Update">
   </form>
   </div>
 </div> 
+
 
 <div id="delete" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(237, 133, 135, 0.75) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h3>Delete My Account</h3>
@@ -132,7 +142,12 @@ body {font-family: "Lato", sans-serif;}
     <strong>Warning!</strong> Once your account is delete this action cannot be reversed.
   </div>
   
+   <form action="ManagePassengerDetailsServlets" method="post">
+   		<input type="button" class="btn btn-danger" name="delete" value="Delete My Account"> 
+   </form> 
 </div>
+
+
 </div>
 
 <script>

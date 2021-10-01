@@ -26,7 +26,7 @@ public class PassengerDBUtil implements PersonDatabase {
 			//copy for db connection for util file
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
-			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			String sql = "SELECT * FROM passenger WHERE email='"+email+"'and password='"+pw+"'";
 			rs = stmt.executeQuery(sql);
 			//til here
 		
@@ -59,7 +59,7 @@ public class PassengerDBUtil implements PersonDatabase {
 			//copy for db connection for util file
 			con = DatabaseConnection.initializeDatabase(); //make connection with db using DatabaseConnection class
 			stmt = con.createStatement();
-			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			String sql = "SELECT * FROM passenger WHERE email='"+email+"'and password='"+pw+"'";
 			rs = stmt.executeQuery(sql);
 			//til here
 			
@@ -88,7 +88,7 @@ public class PassengerDBUtil implements PersonDatabase {
 			stmt = con.createStatement();
 			
 			//the email field in the database is UNIQUE so if email already exist will display an error when inserting
-			String sql = "insert into passenger values (0,'"+fname+"','"+lname+"','"+email+"','"+pwd+"','"+phone+"')";
+			String sql = "INSERT INTO passenger VALUES (0,'"+fname+"','"+lname+"','"+email+"','"+pwd+"','"+phone+"')";
 
 			//if it would return 1 -> success(row inserted)
 			//else if executeupdate return 0 -> unsuccess (row not inserted)
@@ -145,7 +145,7 @@ public class PassengerDBUtil implements PersonDatabase {
 			stmt = con.createStatement();
 			
 			//below sql for update passenger table for all attributes where the parameter pid = db pid
-			String sql = "update passenger set fName='"+fname+"',lName='"+lname+"',email='"+email+"',phone='"+telno+"',password='"+pwd+"' where pid='"+pid+"'";
+			String sql = "UPDATE passenger SET fName='"+fname+"',lName='"+lname+"',email='"+email+"',phone='"+telno+"',password='"+pwd+"' WHERE pid='"+pid+"'";
 			
 			//executeupdate() function reutrns 1(sucesss)/0(fail) therefore assign result to int variable
 			int rs = stmt.executeUpdate(sql);
@@ -167,5 +167,29 @@ public class PassengerDBUtil implements PersonDatabase {
 		
 	}
 	
+	/////////////////////DELETE PASSENGER////////////////////
+	public static Boolean DeletePassengerDetails(int userID) 
+	{
+		boolean isDeleted = false;
+		
+		try {
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+
+			String sql = "DELETE FROM passenger WHERE pid = " + userID + "";
+			int rs2 = stmt.executeUpdate(sql);
+			if(rs2 > 0) {
+				isDeleted = true;
+			}else {
+				isDeleted = false;
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return isDeleted;
+	}
+
 
 }
