@@ -13,7 +13,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		if(request.getParameter("viewDetails") != null) {
+		if(request.getParameter("") != null) {
 			
 			
 		}

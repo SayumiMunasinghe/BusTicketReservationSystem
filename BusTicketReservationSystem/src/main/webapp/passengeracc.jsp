@@ -51,23 +51,6 @@
 		</c:forEach>
 	</tbody>
   </table>
-  
-    <!--c url tag tags us to managepassenger.jsp with the below parameters-->
-  <c:url value="ManagePassenger.jsp" var="passupdate">
-  	<c:param name="pid" value="${pid}"/>
-  	<c:param name="fname" value="${fname}"/>
-  	<c:param name="lname" value="${lname}"/>
-  	<c:param name="email" value="${email}"/>
-  	<c:param name="telno" value="${phone}"/>
-  	<c:param name="passw" value="${pwd}"/>
-  	
-  </c:url>
-  
-  <!-- the anchor tag calls the above c url tag-->
-  <a href="${passupdate}">
-  <input type="button" name="update" value="updatedata">
-  </a>
 </div>
-
 </body>
 </html>
