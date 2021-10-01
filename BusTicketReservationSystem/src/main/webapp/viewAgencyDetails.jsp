@@ -92,7 +92,7 @@
       <br><br>
       
       <div class="container" id = "table3" style ="display:none;">
-       <div class="alert alert-danger">
+       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(255, 163, 163, 0.95) 0%,rgba(255, 163, 163, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">
         
          <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
          <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
@@ -205,7 +205,7 @@
 	    </c:forEach>
 	   </table>
 	 
-	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-primary btn-lg btn-block">
+	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-success btn-lg btn-block" >
    </form>
    </div> 
   </div>
