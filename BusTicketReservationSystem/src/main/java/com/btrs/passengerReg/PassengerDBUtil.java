@@ -18,6 +18,38 @@ public class PassengerDBUtil implements PersonDatabase {
 	private static ResultSet rs = null;
 	//til here
 	
+	public static List<Passenger> CheckExist(String email, String pw){
+		ArrayList<Passenger> passenger = new ArrayList<>();
+		 
+//		
+		//validate
+		try {
+			//copy for db connection for util file
+			con = DatabaseConnection.initializeDatabase();
+			stmt = con.createStatement();
+			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
+			rs = stmt.executeQuery(sql);
+			//til here
+		
+			if(rs.next()) {
+				int pid = rs.getInt(1);
+				String fname = rs.getString(2);
+				String lname = rs.getString(3);
+				String pemail = rs.getString(4);
+				String passw = rs.getString(5);
+				String telno = rs.getString(6);
+				
+				Passenger p = new Passenger(pid, fname, lname, pemail, passw, telno);
+				passenger.add(p);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return passenger;
+	}
+	
 	//checks if user details pw and un exist and return pid to allow login to a session
 	public static int checkLogin(String email, String pw){
 
@@ -55,10 +87,12 @@ public class PassengerDBUtil implements PersonDatabase {
 			//sql statement to insert the new passenger details to the db
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
-			String sql = "insert into passenger values (0,'"+fname+"','"+lname+"','"+email+"','"+pwd+"','"+phone+"')";
 			
-			//if executeupdate return 0 -> unsuccess (row not inserted)
-			//else it would return 1 -> success(row inserted)
+			//the email field in the database is UNIQUE so if email already exist will display an error when inserting
+			String sql = "insert into passenger values (0,'"+fname+"','"+lname+"','"+email+"','"+pwd+"','"+phone+"')";
+
+			//if it would return 1 -> success(row inserted)
+			//else if executeupdate return 0 -> unsuccess (row not inserted)
 			//change bool variable depending on this
 			int rs = stmt.executeUpdate(sql);
 			
@@ -134,37 +168,5 @@ public class PassengerDBUtil implements PersonDatabase {
 		
 	}
 	
-
-	public static List<Passenger> CheckExist(String email, String pw){
-		ArrayList<Passenger> passenger = new ArrayList<>();
-		 
-//		
-		//validate
-		try {
-			//copy for db connection for util file
-			con = DatabaseConnection.initializeDatabase();
-			stmt = con.createStatement();
-			String sql = "select * from passenger where email='"+email+"'and password='"+pw+"'";
-			rs = stmt.executeQuery(sql);
-			//til here
-		
-			if(rs.next()) {
-				int pid = rs.getInt(1);
-				String fname = rs.getString(2);
-				String lname = rs.getString(3);
-				String pemail = rs.getString(4);
-				String passw = rs.getString(5);
-				String telno = rs.getString(6);
-				
-				Passenger p = new Passenger(pid, fname, lname, pemail, passw, telno);
-				passenger.add(p);
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		return passenger;
-	}
 
 }
