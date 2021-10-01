@@ -90,8 +90,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" ><a href="#about">ABOUT</a></li>
-        <li class="nav-item"><a>CONTACT</a></li>
+        <li class="nav-item" ><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+        <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		           String loginMode = (String)session.getAttribute("mode");
 				if(loginStatus == null || loginMode == null){ %> 
