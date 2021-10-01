@@ -111,7 +111,7 @@
 					<li><a class="" type="button" data-toggle="dropdown">MANAGE PASSENGER</a>
 		            <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="passengeracc.jsp" >Manage Passenger Details</a></li>
-		              <li><a href="#">Ishans page</a></li>
+		              <li><a href="ManagePayment.jsp">Manage Payment</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% }else if (loginMode == "agency"){ %> 
@@ -121,8 +121,14 @@
 		              <li><a href="#">Manage bus details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
+				<% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				%> 
+					 <script>
+					  window.location.href = 'homepage.jsp';
+					 </script> 
 				<% } %>
-     
       </ul>
     </div>
   </div>
