@@ -118,7 +118,8 @@
 					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
 		              <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
-		              <li><a href="#">Manage bus details</a></li>
+		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+		              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% } else { 
