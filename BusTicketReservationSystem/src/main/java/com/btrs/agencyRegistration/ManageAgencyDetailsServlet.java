@@ -31,13 +31,17 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			try {
 				List<AgencyDetails> agencyListDetails = AgencyDatabaseUtil.viewAgencyData(userID);
 				request.setAttribute("agencyListDetails", agencyListDetails);
-	
+				
+				String loadOne = "1";
+				request.setAttribute("loadOne", loadOne);
+				
 				boolean ans = agencyListDetails.isEmpty();
 				if (ans == true) {
 					String popup = "1";
 					request.setAttribute("popup1", popup);
 					RequestDispatcher d6 = request.getRequestDispatcher("viewAgencyDetails.jsp");
 					d6.forward(request, response);
+					
 				}
 	
 			}catch(Exception e) {

@@ -11,7 +11,7 @@
 <body>
 <%
 	List<BusDetails> bd = (List<BusDetails>)request.getAttribute("busDetails");
-
+	
 	for(int i = 0; i < bd.size(); i++) {
 		out.println(bd.get(i).getBusID());
 		out.println(bd.get(i).getBusNumber());
@@ -33,7 +33,7 @@
 		<input type="hidden" name="busID" value="<%= busid%>">
 		<input type="hidden" name="time" value="<%= stTime%>">
 		Select number of seats to reserve: 
-		<input type = "number" name="resSeat" min="1" max="<%= seats%>">
+		<input type = "number" name="resSeat" min="1" max="<%= seats%>" required>
 		<input type="submit" name="submit" value="Proceed to payment">
 		</form>
 <%
