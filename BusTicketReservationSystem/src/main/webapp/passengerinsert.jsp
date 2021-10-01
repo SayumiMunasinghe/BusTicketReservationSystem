@@ -84,6 +84,17 @@
 			<%
 		}%> 
 
+<script>
+//front end validation to check if pwd == confirm pwd
+     var check = function() {
+        if (document.getElementById('pwd1').value != document.getElementById('pwd2').value) {
+          document.getElementById('msg').style.color = 'red';
+          document.getElementById('msg').innerHTML = 'Not Matching!';
+        }else{
+          document.getElementById('msg').style.display = "none";
+        }
+}
+</script>
 
 <div class="container">
 <div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
@@ -108,12 +119,12 @@
     
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
+      <input onkeyup='check();' type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
     </div>
       
     <div class="form-group">
       <label for="pwd">Re-Enter Password:</label>
-      <input type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
+      <input  onkeyup='check();' type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
     </div>
     
     <div class="form-group">        
@@ -124,6 +135,7 @@
 			  <p id="number" class="invalid">A <b>number</b></p>
 			  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 		</div>
+		<span id='msg'></span>
 	</div>
     
     <!-- <h6 id="mismatch"></h6>-->
