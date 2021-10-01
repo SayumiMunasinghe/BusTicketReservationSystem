@@ -64,8 +64,5 @@
 		<input type="date" name="travelDate" min="<%= today%>" required><br>
 		<input type="submit" name="submit" value="Find Bus">
 	</form>
-	<form class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
-    	<input type="submit" name="viewDetails" value="View Details" class="btn btn-default">
-    </form>
 </body>
 </html>

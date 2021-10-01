@@ -97,20 +97,20 @@
 				if(loginStatus == null || loginMode == null){ %> 
 					 <li><a class="" type="button" data-toggle="dropdown">REGISTER</a>
 			            <ul class="dropdown-menu" style="background-color: black;">
-			              <li><a href="#" >Register as Passenger</a></li>
+			              <li><a href="passengerinsert.jsp" >Register as Passenger</a></li>
 			              <li><a href="agencyRegistration.jsp">Register as Agency</a></li>
 			            </ul>
 			          </li>
 			          <li><a class="" type="button" data-toggle="dropdown">LOGIN</a>
 			            <ul class="dropdown-menu" style="background-color: black;">
-			              <li><a href="#" >Login as Passenger</a></li>
+			              <li><a href="PassengerLogin.jsp" >Login as Passenger</a></li>
 			              <li><a href="AgencyLogin.jsp">Login as Agency</a></li>
 			            </ul>
 			          </li>
 				<% }else if (loginMode == "passenger"){ %>  
 					<li><a class="" type="button" data-toggle="dropdown">MANAGE PASSENGER</a>
 		            <ul class="dropdown-menu" style="background-color: black;">
-		              <li><a href="" >Manage Passenger Details</a></li>
+		              <li><a href="passengeracc.jsp" >Manage Passenger Details</a></li>
 		              <li><a href="#">Ishans page</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
@@ -200,9 +200,6 @@
   </div>
   <br>
 </div>
-
-
-
 
 <!-- Container (Contact Section) -->
 <div class="container-fluid bg-grey" style="background-image: linear-gradient(to bottom, rgba(32, 32, 32, 0.5) 0%,rgba(32, 32, 32, 0.5) 0%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
