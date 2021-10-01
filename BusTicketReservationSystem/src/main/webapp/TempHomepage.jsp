@@ -173,9 +173,9 @@
       <p>We offer the best bus ticket prices <br> in the whole industry with addidional <br> discounts and offers</p>
     </div>
     <div class="col-sm-4">
-      <i class="bi bi-map" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>Google map support</b></h4>
-      <p>No more asking for dirrections <br> from random strangers. All <br> you need is your phone</p>
+      <i class="bi bi-hand-index-thumb" style="font-size: 10rem; color:#202020;"></i>
+      <h4  style="color: rgb(255, 115, 22);"><b>Easy to use</b></h4>
+      <p>Designed to be simple and easy<br> for anyone to use even without <br> much experience</p>
     </div>
   </div>
   <br><br>
@@ -191,9 +191,9 @@
       <p>Fast and quick ticket booking <br> with your phone or computer</p>
     </div>
     <div class="col-sm-4">
-      <i class="bi bi-phone" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>This is a phone</b></h4>
-      <p>You can do many things with a phone <br> like book even more tickets for <br> you and your family</p>
+      <i class="bi bi-emoji-laughing" style="font-size: 10rem; color:#202020;"></i>
+      <h4  style="color: rgb(255, 115, 22);"><b>Convenience</b></h4>
+      <p>We will take care of all your <br> bus ticket reservation needs making <br> making it convinent for you.</p>
     </b>
     </div>
     
@@ -207,29 +207,22 @@
 <!-- Container (Contact Section) -->
 <div class="container-fluid bg-grey" style="background-image: linear-gradient(to bottom, rgba(32, 32, 32, 0.5) 0%,rgba(32, 32, 32, 0.5) 0%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
   <h2 class="text-center">CONTACT</h2>
-  <div class="row">
-    <div class="col-sm-5">
-      <p>Contact us and we'll get back to you within 24 hours The </p>
+  <div class="row" style="padding-left: 15%; padding-top: 50px; padding-bottom: 50px;">
+    <div class="col-sm-4">
       <p><span class="glyphicon glyphicon-map-marker"></span> Colombo, Sri lanka.</p>
       <p><span class="glyphicon glyphicon-phone"></span>  +94 11 742 5484</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>  Obtrs@Gmail.com</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>  obtrs@Gmail.com</p>
     </div>
-    <div class="col-sm-7">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-          <button class="btn btn-warning pull-right" type="submit" >Send</button>
-        </div>
-      </div>
+    <div class="col-sm-4">
+      <p><span class=""></span> Terms and conditions</p>
+      <p><span class=""></span> Privacy policy</p>
+      <p><span class=""></span> Service updates dates</p>
     </div>
+    <div class="col-sm-4">
+      <p><span class=""></span> offers and special deals</p>
+      <p><span class=""></span> Agents and more</p>
+      <p><span class=""></span> Bus Operators and care providers</p>
+    </div>    
   </div>
 </div>
 
