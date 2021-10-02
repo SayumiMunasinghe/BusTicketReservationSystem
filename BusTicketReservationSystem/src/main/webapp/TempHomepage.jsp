@@ -42,10 +42,23 @@
         <ul>
           <li><a class="nav-link active" href="#header">Home</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
+                <% Integer loginStatus = (Integer)session.getAttribute("userID");
+		            String loginMode = (String)session.getAttribute("mode");
+			 	if(loginStatus == null || loginMode == null){ %> 
           <li><a class="nav-link" href="#register">Register</a></li>
           <li><a class="nav-link" href="#login">Login</a></li>
-          <!-- <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li> -->
+             	<% }else if (loginMode == "passenger"){ %>  
+          <li><a class="nav-link" href="#passengerManage">Manage Passenger</a></li>
+                <% }else if (loginMode == "agency"){ %> 
+          <li><a class="nav-link" href="#agencyManage">Manage Agency</a></li>
+                <% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				 %> 
+					 <script>
+					  window.location.href = 'TempHomepage.jsp';
+					 </script> 
+				 <% } %>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -161,17 +174,17 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-sm-6" >
+          <div class="col-sm-4" >
           <div class="card bg-primary">
             <a href="AgencyLogin.jsp"><div class="card img-fluid" style="width:500px">
               <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
               <div class="card-img-overlay">
-
               </div></a>
             </div>
             </div>
           </div>
-          <div class="col-sm-6" >
+          
+          <div class="col-sm-4" >
             <div class="card bg-warning">
               <div class="card img-fluid" style="width:500px">
                 <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
@@ -180,6 +193,17 @@
               </div>
           </div>
         </div>
+        
+        <div class="col-sm-4" >
+            <div class="card bg-warning">
+              <div class="card img-fluid" style="width:500px">
+                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                </div>
+              </div>
+          </div>
+        </div>
+        
       </div>
     </div>
 </section>
