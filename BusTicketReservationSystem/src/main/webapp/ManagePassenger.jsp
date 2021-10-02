@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,20 +78,32 @@ body {font-family: "Lato", sans-serif;}
 </head>
 	
 	<%
-     if("${userID}" == null || "${mode}" == null){ %>
+	if(session.getAttribute("mode") == null){ %>
 	     <script>
-			window.location.href = 'PassengrLogin.jsp';
+			window.location.href = 'PassengerLogin.jsp';
 		</script>
      <%}
 %>
 
-<body>
+<body onload="mySubmit()">
 
+	<form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
+    	<input type="hidden" name="viewPassDetails" value="Manage Agency Details"> 
+	</form>
+
+<script>
+	if(("${loadOne}" != "1"))
+	function mySubmit() {
+		 document.getElementById('autosub').submit();
+	}
+</script>
+
+ <c:forEach var="pass" items = "${passDetails}">
 <br><br>
 <br><br>
-<h4 style="margin-left: 200px;">Hi <strong>(put her person name)</strong>,</h4>
+<h4 style="margin-left: 200px;">Hi <strong>${pass.fName}</strong>,</h4>
 <h2 style="margin-left: 200px; margin-bottom: -100px;">Settings</h2>
-
+   </c:forEach>
 
 <div class="big" style="">
 <div class="tab">
@@ -98,27 +112,34 @@ body {font-family: "Lato", sans-serif;}
   <button class="tablinks" onclick="openCity(event, 'delete')">Delete Account</button>
 </div>
 
+
+  <!-- this form is to update the password -->
 <div id="Pwd" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <div class="container" id="form1">
-  <h3>Password</h3>
-  <!-- this form is to update the password -->
-  <form action="#" method="post">
   
+  <h3>Password</h3>
+
+  <form action="ManagePassengerDetailsServlets" method="post">
+	<c:forEach var="pass" items = "${passDetails}">  
   <div class="form-group">
+
       <label for="pwd1">Password:</label>
-      <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Enter password" onkeyup='check();' />
+      <input type="text" name="pwd" value="${pass.password}" class="form-control" id="pwd" onkeyup='check();' />
     </div>
     <div class="form-group">
       <label for="pwd2">Confirm Password:</label>
-      <input type="password"  class="form-control" name="conpwd" id="conpwd" placeholder="Re-enter password" onkeyup='check();' /> 
+      <input type="text"  class="form-control" name="conpwd" id="conpwd" placeholder="Re-enter password" onkeyup='check();' /> 
   		<span id='message'></span>
     </div>
     
     <input type="submit" class="btn btn-warning" name="updatePassword" value="Update">
-  
+  </c:forEach>
   </form>
 </div>
 </div>
+
+
+
 
 <div id="telno" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <div class="container" id="form2">
@@ -126,16 +147,19 @@ body {font-family: "Lato", sans-serif;}
   <h3>Contact Number</h3>
   <!-- this form is to update telephone number -->
   
-  <form class="form-inline" action="#" method="post">
+  <form class="form-inline" action="ManagePassengerDetailsServlets" method="post">
+  <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
-      <label for="email">Phone:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter contact number" name="email">
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone">
     </div>
     
     <input type="submit" class="btn btn-warning" name="updatePhone" value="Update">
+    </c:forEach>
   </form>
   </div>
 </div> 
+
 
 
 <div class="container">
@@ -153,6 +177,14 @@ body {font-family: "Lato", sans-serif;}
 
 </div>
 </div>
+
+	  <% String popup = (String)request.getAttribute("msg");
+		if(popup == "1"){
+			%><div class="alert alert-warning alert-dismissible fade show">
+    			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  			</div><%
+		}%>
 
 <script>
      var check = function() {

@@ -18,7 +18,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	private static ResultSet rs = null;
 	//til here
 	
-	public static List<Passenger> CheckExist(String email, String pw){
+	public static List<Passenger> CheckExist(int userID){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 
 		//validate
@@ -26,7 +26,7 @@ public class PassengerDBUtil implements PersonDatabase {
 			//copy for db connection for util file
 			con = DatabaseConnection.initializeDatabase();
 			stmt = con.createStatement();
-			String sql = "SELECT * FROM passenger WHERE email='"+email+"'and password='"+pw+"'";
+			String sql = "SELECT * FROM passenger WHERE pid= "+userID+" ";
 			rs = stmt.executeQuery(sql);
 			//til here
 		
