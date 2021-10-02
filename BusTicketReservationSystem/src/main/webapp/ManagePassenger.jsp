@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -72,6 +74,15 @@ body {font-family: "Lato", sans-serif;}
 </style>
 
 </head>
+	
+	<%
+     if("${userID}" == null || "${mode}" == null){ %>
+	     <script>
+			window.location.href = 'PassengrLogin.jsp';
+		</script>
+     <%}
+%>
+
 <body>
 
 <br><br>
@@ -103,7 +114,7 @@ body {font-family: "Lato", sans-serif;}
   		<span id='message'></span>
     </div>
     
-    <input type="submit" class="btn btn-default" value="Update">
+    <input type="submit" class="btn btn-warning" name="updatePassword" value="Update">
   
   </form>
 </div>
@@ -121,17 +132,25 @@ body {font-family: "Lato", sans-serif;}
       <input type="email" class="form-control" id="email" placeholder="Enter contact number" name="email">
     </div>
     
-    <input type="submit" class="btn btn-default" value="Update">
+    <input type="submit" class="btn btn-warning" name="updatePhone" value="Update">
   </form>
   </div>
 </div> 
 
+
+<div class="container">
 <div id="delete" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(237, 133, 135, 0.75) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h3>Delete My Account</h3>
    <div class="alert alert-danger">
     <strong>Warning!</strong> Once your account is delete this action cannot be reversed.
   </div>
   
+   <form action="ManagePassengerDetailsServlets" method="post">
+   		<input type="submit" class="btn btn-danger" name="delete" value="Delete My Account"> 
+   </form> 
+
+</div>
+
 </div>
 </div>
 
