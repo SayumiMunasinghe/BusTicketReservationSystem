@@ -90,8 +90,12 @@
         if (document.getElementById('pwd1').value != document.getElementById('pwd2').value) {
           document.getElementById('msg').style.color = 'red';
           document.getElementById('msg').innerHTML = 'Not Matching!';
+          document.getElementById('msg').style.display = "block";
+          document.getElementById("able").disabled = true;
+          
         }else{
           document.getElementById('msg').style.display = "none";
+          document.getElementById("able").disabled = false;
         }
 }
 </script>
@@ -145,7 +149,7 @@
       <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" required>
     </div>
  	
-    <input type="submit" class="btn btn-warning btn-lg" value="Register">   
+    <input type="submit" class="btn btn-warning btn-lg" value="Register" id="able">   
     
     <div class="form-check">
 		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">

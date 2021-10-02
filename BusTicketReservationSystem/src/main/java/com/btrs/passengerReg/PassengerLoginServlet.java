@@ -1,7 +1,6 @@
 package com.btrs.passengerReg;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,9 +25,6 @@ public class PassengerLoginServlet extends HttpServlet {
 		int passengerid = -1;
 		
 		try {
-				List<Passenger> passDetails = PassengerDBUtil.CheckExist(email, password);
-				request.setAttribute("passDetails", passDetails);
-				
 				int pid= PassengerDBUtil.checkLogin(email, password);
 				
 				session.setAttribute("userID", pid);

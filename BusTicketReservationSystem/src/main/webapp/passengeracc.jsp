@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <!-- below jstl used to call a java class while in jsp class -->
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,7 @@
 		
 			<tr>
 			<!-- this below one calls the getpid function in passenger, java class -->
-				<td>${pass.pid}</td>
+				<td>${pass.pid}<span id="ch"></span></td>
 				<td>${pass.fName}</td>
 				<td>${pass.lName}</td>
 				<td>${pass.email}</td>
