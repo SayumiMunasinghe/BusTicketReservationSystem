@@ -28,31 +28,23 @@
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container">
-
-      <h1><a href="index.html">OnlineBTRS</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
-      <h2>We made booking <span>Bus Tickets </span> Revolutionary for Everyone</h2>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
+<header id="header">
+<div class="navbarr" >
+      <nav id="navbar" class="navbassr">
+     
+          <a class="nav-link active" href="#header">Home</a>
+          <a class="nav-link" href="#about">About</a></li>
                 <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		            String loginMode = (String)session.getAttribute("mode");
 			 	if(loginStatus == null || loginMode == null){ %> 
-          <li><a class="nav-link" href="#register">Register</a></li>
-          <li><a class="nav-link" href="#login">Login</a></li>
+          <a class="nav-link" href="#register">Register</a>
+          <a class="nav-link" href="#login">Login</a>
              	<% }else if (loginMode == "passenger"){ %>  
-          <li><a class="nav-link" href="#passengerManage">Manage Passenger</a></li>
-          <li><a class="nav-link" href="logout.jsp">Logout</a></li>
+          <a class="nav-link" href="#passengerManage">Manage Passenger</a>
+          <a class="nav-link" href="logout.jsp">Logout</a>
                 <% }else if (loginMode == "agency"){ %> 
-          <li><a class="nav-link" href="#agencyManage">Manage Agency</a></li>
-          <li><a class="nav-link" href="logout.jsp">Logout</a></li>
+          <a class="nav-link" href="#agencyManage">Manage Agency</a>
+         <a class="nav-link" href="logout.jsp">Logout</a>
                 <% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -61,10 +53,59 @@
 					  window.location.href = 'TempHomepage.jsp';
 					 </script> 
 				 <% } %>
-		   
-        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+</div>
+
+
+<style>
+.navbarr {
+  overflow: hidden;
+  background-color: inherit;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+display: flex;
+flex-direction: row;
+justify-content:center;
+}
+
+.navbarr a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbarr a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+</style>
+</style>
+
+
+
+  <!-- ======= Header ======= -->
+  
+    <div class="container">
+
+      <h1><a href="index.html">OnlineBTRS</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <h2>We made booking <span>Bus Tickets </span> Revolutionary for Everyone</h2>
+
+ 
       
     
         	  <% if(session.getAttribute("Agency") == "Agency"){
@@ -84,15 +125,15 @@
         <form>
           <div class="form-group" >
   
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  style=" border-radius:50px; background-color:inherit; border-color:#dc3545; border-width: 2px"><br>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  style=" border-radius:50px;"><br>
           </div>
           <div class="form-group">
 
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#ffc107; border-width: 2px"><br>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px;"><br>
           </div>
           <div class="form-group">
 
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#0dcaf0; border-width: 2px"><br>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px;">
           </div>
           <div class="form-check">
            <br>
@@ -110,42 +151,54 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-sm-6">
-             <div class="containerr">
-			   <img src="webpage/home/pass2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #ffbf00, #ff9100) 1; width:550px; ">
-			  <div class="centered"><h1>REGISTER AS CUSTOMER</h1></div>
-			</div>
+          <div class="col-sm-6" >
+          <div class="card bg-primary">
+          <a href="agencyRegistration.jsp">
+            <div class="card img-fluid" style="width:500px">
+              <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
+              <div class="card-img-overlay">
+              </div></a>
+            </div>
+            </div>
           </div>
-         
-          <div class="col-sm-6" style="text-align: center;" >
-           <div class="containerr">
-			   <img src="webpage/home/agency2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00a3ff, #00e8ff) 1; width:550px; ">
-			  <div class="centered"><h1>REGISTER AS AGENCY</h1></div>
-			</div>
+          <div class="col-sm-6" >
+            <div class="card bg-warning">
+              <div class="card img-fluid" style="width:500px">
+                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                </div>
+              </div>
           </div>
-          
         </div>
- </section>
+      </div>
+    </div>
+</section>
 
  <section id="login" class="about">
       <div class="container">
 
         <div class="row">
-          <div class="col-sm-6">
-             <div class="containerr">
-			   <img src="webpage/home/passlog.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #ff8200, #ff4d00) 1; width:550px; ">
-			  <div class="centered"><h1>LOGIN AS CUSTOMER</h1></div>
-			</div>
+          <div class="col-sm-6" >
+          <div class="card bg-primary">
+            <a href="AgencyLogin.jsp"><div class="card img-fluid" style="width:500px">
+              <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
+              <div class="card-img-overlay">
+
+              </div></a>
+            </div>
+            </div>
           </div>
-         
-          <div class="col-sm-6" style="text-align: center;" >
-           <div class="containerr">
-			   <img src="webpage/home/agencylog.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #0081ff, #0062ff) 1; width:550px; ">
-			  <div class="centered"><h1>LOGIN AS AGENCY</h1></div>
-			</div>
+          <div class="col-sm-6" >
+            <div class="card bg-warning">
+              <div class="card img-fluid" style="width:500px">
+                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
+                <div class="card-img-overlay">
+                </div>
+              </div>
           </div>
-          
         </div>
+      </div>
+    </div>
 </section>
 
  <section id="passengerManage" class="about">
@@ -243,24 +296,5 @@
     color: red;
   }
   
-  
   </style>
-  
-     <style>
-.containerr {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-section .container {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 100px;
-}
-</style>
   
