@@ -44,7 +44,7 @@
 		  <label class="form-check-label" for="flexCheckDefault">Show Password</label>
 	  	  </div>
 	    
-	    <input type="submit" class="btn btn-default" value="Login">
+	    <input type="submit" class="btn btn-warning btn-lg" value="Login">
 	  </form>
 	  </div>
 	  </div>

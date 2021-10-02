@@ -145,7 +145,7 @@
       <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" required>
     </div>
  	
-    <input type="submit" class="btn btn-primary" value="Register">   
+    <input type="submit" class="btn btn-warning btn-lg" value="Register">   
     
     <div class="form-check">
 		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">

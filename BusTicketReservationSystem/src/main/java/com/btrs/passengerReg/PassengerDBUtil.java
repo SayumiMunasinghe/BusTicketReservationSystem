@@ -177,8 +177,8 @@ public class PassengerDBUtil implements PersonDatabase {
 			stmt = con.createStatement();
 
 			String sql = "DELETE FROM passenger WHERE pid = " + userID + "";
-			int rs2 = stmt.executeUpdate(sql);
-			if(rs2 > 0) {
+			int rs = stmt.executeUpdate(sql);
+			if(rs > 0) {
 				isDeleted = true;
 			}else {
 				isDeleted = false;

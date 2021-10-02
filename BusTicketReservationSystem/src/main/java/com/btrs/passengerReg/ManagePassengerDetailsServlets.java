@@ -15,7 +15,20 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		///////////calling for update password function///////
+		if(request.getParameter("updatePassword") != null) {
+			HttpSession session = request.getSession();
+			int userID = (int) session.getAttribute("userID");
+		}
+			
+		/////////////calling for the uupdte phone function//////
+		if(request.getParameter("updatePhone") != null) {
+			HttpSession session = request.getSession();
+			int userID = (int) session.getAttribute("userID");
+		}
+		
+		/////calling for delete account function/////
 		if(request.getParameter("delete") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
@@ -25,15 +38,18 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			session.removeAttribute("mode");
 			
 			if(status == true) {
-				System.out.println("deleted");
-//				RequestDispatcher dis1 = request.getRequestDispatcher("homepage.jsp");
-//				dis1.forward(request, response);
+				//goes to homepage if deleted
+				RequestDispatcher dis1 = request.getRequestDispatcher("homepage.jsp");
+				dis1.forward(request, response);
 			}else {
-				System.out.println("failed");
-//				RequestDispatcher dis2 = request.getRequestDispatcher("ManagePassenger.jsp");
-//				dis2.forward(request, response);
+				//if not delete will go back to same page
+				//& on top of page will display a delete failed msg
+				String msg = "1";
+				request.setAttribute("msg", msg);
+				RequestDispatcher dis2 = request.getRequestDispatcher("ManagePassenger.jsp");
+				dis2.forward(request, response);
 			}
-		}
+		}		
 	}
 
 }
