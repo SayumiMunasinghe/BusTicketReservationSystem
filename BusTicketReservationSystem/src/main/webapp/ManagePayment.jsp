@@ -1,7 +1,7 @@
-
+<%@ page import=" java.util.ArrayList, java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
             left : 35%;
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 20px;
-	 		background-color:  #b00b69;
+	 		background-color:  ;
 	 		position:absolute;
 	}
 	
@@ -31,14 +31,24 @@
 	 }
 	 #f2{
 	   
+	        top:30%;
+            left : 35%;
+	  		padding: 20px 35px 20px 35px;
+	  		border-radius: 20px;
+	  		width:467px;
+	 		background-color:  ;
+	 		position:absolute;
+	 		
+	 }
+	 #f3{
+	 
 	        top:20%;
             left : 35%;
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 20px;
 	  		width:467px;
-	 		background-color:  #b00b69;
+	 		background-color:  ;
 	 		position:absolute;
-	 		
 	 }
     </style>
 <meta charset="ISO-8859-1">
@@ -50,25 +60,40 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body> 
-    <script type="text/javascript">
+        
+ <script type="text/javascript">
+         
+ 
+ 
+ 
   function showForm(clickedId)
   {
      if(clickedId == "but1"){
        document.getElementById('f1').style.display = "block";
        document.getElementById('f2').style.display = "none";
+       document.getElementById('f3').style.display = "none";
   }else if(clickedId == "but2"){
-	  document.getElementById('f2').style.display = "block";
-      document.getElementById('f1').style.display = "none";
-	  }
+	  document.getElementById('f1').style.display = "none";
+      document.getElementById('f2').style.display = "block";
   }
-</script>
+  }
+ 
+ </script>
+ 
  
  
       <button id ="but1" onclick="showForm(this.id)" class="btn btn-default">Add Card</button>
-      <button id = "but2" onclick="showForm(this.id)" class="btn btn-default">Update Card</button>
+      
+      <form action="addCardServlet" method="post"  >
+      <button id = "but2" name="submit1" onclick="showF(this.id)" class="btn btn-default" >Update Card</button>
+      </form>
+      
       <br>
       <br>
      <div class="border">
+     
+    
+  
        <form action="addCardServlet" method="post" id="f1" >
        
          <label>
@@ -109,35 +134,92 @@
           
         </form>         
       </div>
-   
-  
-      <form action="updateCustomerServlet" method="post"   id="f2" style="display:none">     
+          
+    <%
+    ArrayList<String> cards = (ArrayList<String>)request.getAttribute("cardNos");
+    %>   
+    
+		
+		 
+            
+           
+		
+
+        <% String status = (String)request.getAttribute("status");
+		if(status == "1"){
+			%>
+		 
+		<form action="addCardServlet" method="post"   id="f3"  >     
+         
+       
+		<p>Select card to make payment: </p>
+		<select id="card" name="card">
+		<%
+		for(int i = 0; i < cards.size(); i++) {
+		%>
+			<option value="<%= cards.get(i) %>"><%= cards.get(i) %></option>
+		<%
+		}
+		%>
+		 
+		</select>
+		<input type="submit" value="Select" name="select" id ="b3" >
+		
+		</form>
+		<script type="text/javascript">
+		
+		 if(document.getElementById('card')!=null){
+	     document.getElementById('f1').style.display = "none";
+		 }
+	
+         </script>
+		<%
+		}
+		%>
+		
+        <% String stats = (String)request.getAttribute("stats");
+		if(stats != "1"){
+			%>
+		<form action="updateCardServlet" method="post" id="f2">
+		<c:forEach var="cardDetails" items="${cardDetails}">
           <div class="row">
               <div class ="form-group col-lg-7">
-          <label>Card Type:</label><input type ="Text"  class="form-control" id="visa" name="type"  disabled readonly>
+          <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"  readonly>
               </div>
            </div>
             
            <div class="row">
               <div class ="form-group col-lg-7">
-          <label>Card Number <span class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value=" ${card.cNum }" disabled readonly>
+          <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}"  readonly>
               </div>
           </div>
           <div class="row">
               <div class ="form-group col-lg-7">
-          <label>Card Holder Name:</label><input type="text"  class="form-control" name="hName">
+          <label>Card Holder Name:</label><input type="text" value="${cardDetails.cHName}" class="form-control" name="hName">
               </div>
            </div>
            <div class="row">
               <div class ="form-group col-lg-3">
-          <label>CVV:</label><input type="text" name="cvv"  class="form-control" pattern="[0-9]{3}">
-          <label>Expiry Date:</label><input type="text"  class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
+          <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[0-9]{3}">
+          <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
            </div>
-           <input type="submit" value="Update" name="update" class="btn btn-primary">
-           <input type="submit" value="Remove Card" name="Delete" class="btn btn-danger">
+           <input type="submit" value="Update" name="update" id ="b1" class="btn btn-primary">
+           <input type="submit" value="Remove Card" name="delete" id="b2" class="btn btn-danger">
+           </c:forEach>
         </form>
-    
+        <script type="text/javascript">
+		
+		 if(document.getElementById('c')!=null){
+	     document.getElementById('f1').style.display = "none";
+	     document.getElemntById('f3').style.display="block";
+		 }
+        </script>
+        <%} 
+        %>
+  
        
+     
+           
 </body>
 </html>
