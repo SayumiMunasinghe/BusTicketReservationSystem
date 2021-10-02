@@ -82,7 +82,7 @@
 			}, 1000);
 	
 			setTimeout(function() {
-				window.location.href = 'TestHomepage.jsp';
+				window.location.href = 'homepage.jsp';
 			}, 4000);
 		</script>
 
