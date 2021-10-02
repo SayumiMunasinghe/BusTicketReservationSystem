@@ -34,18 +34,48 @@
 </head>
 <body>
 
+  
+	
 	
   <header id="header" class="header-top">
     <div class="container" >
       <h1><a href="index.html">OnlineBTRS</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <h2>We made booking <span>Bus Tickets </span> Revolutionary for Everyone</h2>
 
       <nav id="navbar" class="navbar" style="background-color:inherit">
-        <ul style="background-color:inherit" >
-          <li><a class="nav-link" href="TempHomepage.jsp">Home</a></li>
+        <ul style="background-color:inherit">
+          <li><a class="nav-link active" href="TempHomepage.jsp">Home</a></li>
           <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#resume">Register</a></li>
-          <li><a class="nav-link active" href="#services">Login</a></li>
+                <% Integer loginStatus = (Integer)session.getAttribute("userID");
+		            String loginMode = (String)session.getAttribute("mode");
+			 	if(loginStatus == null || loginMode == null){ %> 
+          <li><a class="nav-link" href="#register">Register</a></li>
+          <li><a class="nav-link" href="#login">Login</a></li>
+             	<% }else if (loginMode == "passenger"){ %>  
+          <li><a class="nav-link" href="#passengerManage">Manage Passenger</a></li>
+                <% }else if (loginMode == "agency"){ %> 
+          <li><a class="nav-link" onclick="autoAgency()">Manage Agency</a></li>
+                <% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				 %> 
+					 <script>
+					  window.location.href = 'TempHomepage.jsp';
+					 </script> 
+				 <% } %>
         </ul>
+        <script>
+          function autoAgency(){
+        	  <% String button = "Agency";
+        	     request.setAttribute("Agency", button); %>
+        	     window.location.href = 'TempHomepage.jsp';
+          }
+        </script>
+        
+        
+        
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
     </div>

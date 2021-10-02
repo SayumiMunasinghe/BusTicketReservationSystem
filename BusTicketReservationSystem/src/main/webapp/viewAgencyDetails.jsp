@@ -44,6 +44,26 @@
 	background-color: #f5f5f5;
 }
   </style>
+  	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="webpage/assets/css/style.css" rel="stylesheet"> 
+	<style>
+		.border {
+			padding: 35px;
+			border-radius: 25px;
+			background-color: #f5f5f5;
+		}
+		.navbar{
+			position: relative;
+			display: flex;
+			flex-wrap:wrap;
+			align-items: center;
+			justify-content: space-between;
+		}
+	</style>
 </head>
 
 <%
@@ -67,23 +87,51 @@
 		 document.getElementById('autosub').submit();
 	}
 	</script>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="homepage.jsp">Bus<span style="color: rgb(255, 115, 22);">hub</span> </a>
+
+  <header id="header" class="header-top">
+    <div class="container" >
+      <h1><a href="index.html">OnlineBTRS</a></h1>
+      <h2>We made booking <span>Bus Tickets </span> Revolutionary for Everyone</h2>
+      <nav id="navbar" class="navbar" style="background-color:inherit">
+        <ul style="background-color:inherit">
+          <li><a class="nav-link active" href="TempHomepage.jsp">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+                <% Integer loginStatus = (Integer)session.getAttribute("userID");
+		            String loginMode = (String)session.getAttribute("mode");
+			 	if(loginStatus == null || loginMode == null){ %> 
+          <li><a class="nav-link" href="#register">Register</a></li>
+          <li><a class="nav-link" href="#login">Login</a></li>
+             	<% }else if (loginMode == "passenger"){ %>  
+          <li><a class="nav-link" onclick="autoPassenger()">Manage Passenger</a></li>
+                <% }else if (loginMode == "agency"){ %> 
+          <li><a class="nav-link" onclick="autoAgency()">Manage Agency</a></li>
+                <% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				 %> 
+					 <script>
+					  window.location.href = 'TempHomepage.jsp';
+					 </script> 
+				 <% } %>
+        </ul>
+        <script>
+          function autoAgency(){
+        	  <% String button = "Agency";
+        	     session.setAttribute("Agency", button);%>
+        	     window.location.href = 'TempHomepage.jsp';
+          }
+          
+          function autoPassenger(){
+        	  <% String button2 = "Passenger";
+        	     session.setAttribute("Passenger", button2);%>
+        	     window.location.href = 'TempHomepage.jsp';
+          }
+        </script>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item"><a href="homepage.jsp">Go back</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </header>
+
 
 <br><br><br><br><br>
 
