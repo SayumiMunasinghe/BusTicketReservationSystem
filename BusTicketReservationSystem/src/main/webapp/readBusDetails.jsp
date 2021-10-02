@@ -11,7 +11,8 @@
 <body>
 
 
-  <h2>Buses</h2>            
+  <h2>Buses</h2>       
+  <form action="viewBusDetailsServlet" method="POST">     
   <table class="table table-striped">
    <c:forEach var="bus" items="${busDetails}">
    <%---- calling the get methods in bus.java----%>
@@ -21,7 +22,13 @@
      <c:set var="no.ofseats" value="${bus.numberOfSeats}"/>
      <c:set var="type" value="${bus.busType}"/>
      <c:set var="condition" value="${bus.AC}"/>
-     
+     ${bus.uTime}
+     ${bus.uArrival}
+     ${bus.uDestination}
+     ${bus.dTime}
+     ${bus.dArrival}
+     ${bus.dDestination}
+     ${bus.price}
       <tr>
       	<th>Bus Number</th>
       	<td>${bus.busNumber}</td>
@@ -44,19 +51,8 @@
 			
 	</c:forEach>
   </table>
-  
-  	<%-----url of the page to be navigated to --%>
-  	<c:url value="updateBusDetails.jsp" var="busUpdate">
-  		<%----values to be taken to that navigated page --%>
-  		<c:param name="busNumber" value="${bnumber}"/>
-  		<c:param name="numberOfSeats" value="${no.ofseats}"/>
-  		<c:param name="busType" value="${btype}"/>
-  		<c:param name="condition" value="${condition}"/>
-  	</c:url>
-	
-	<a href="${busUpdate}">
-	<input type="button" name="update" value="Update bus Details">
-	</a>
-	
+ </form> 
+ 
+
 </body>
 </html>
