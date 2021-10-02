@@ -49,8 +49,10 @@
           <li><a class="nav-link" href="#login">Login</a></li>
              	<% }else if (loginMode == "passenger"){ %>  
           <li><a class="nav-link" href="#passengerManage">Manage Passenger</a></li>
+          <li><a class="nav-link" href="logout.jsp">Logout</a></li>
                 <% }else if (loginMode == "agency"){ %> 
           <li><a class="nav-link" href="#agencyManage">Manage Agency</a></li>
+          <li><a class="nav-link" href="logout.jsp">Logout</a></li>
                 <% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -59,9 +61,24 @@
 					  window.location.href = 'TempHomepage.jsp';
 					 </script> 
 				 <% } %>
+		   
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+      
+    
+        	  <% if(session.getAttribute("Agency") == "Agency"){
+        		  %><a href="#agencyManage" id="butt"> </a><% 
+        		  session.removeAttribute("Agency");%>
+        		  <script>document.getElementById('butt').click();</script><% 
+        	    }else if(session.getAttribute("Passenger") == "Passenger"){
+          		  %><a href="#agencyManage" id="butt2"> </a><% 
+                		  session.removeAttribute("Passenger");%>
+                		  <script>document.getElementById('butt2').click();</script><% 
+                	    }
+        	   %>
+
+     
 
       <div class="social-links">
         <form>
@@ -176,7 +193,7 @@
         <div class="row">
           <div class="col-sm-4" >
           <div class="card bg-primary">
-            <a href="AgencyLogin.jsp"><div class="card img-fluid" style="width:500px">
+            <a href="viewAgencyDetails.jsp"><div class="card img-fluid" style="width:500px">
               <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
               <div class="card-img-overlay">
               </div></a>
