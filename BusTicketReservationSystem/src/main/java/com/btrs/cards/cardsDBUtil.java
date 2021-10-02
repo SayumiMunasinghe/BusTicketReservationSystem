@@ -2,9 +2,12 @@ package com.btrs.cards;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.btrs.DBconnection.DatabaseConnection;
 
 
 public class cardsDBUtil {
@@ -37,14 +40,13 @@ public class cardsDBUtil {
     	   return Success;
        }
        
-  public static boolean updateCard(int id,String type ,String cNum,String name,String cv,String expD ) {
+  public static boolean updateCard(String cNum,String name,String cv,String expD ) {
 	  
 	  try {
 		  
 		  con = DBconnection.getConnection();
 		  state =con.createStatement();
-		  String sql = "update cards set cardHolderName='"+name+"',cvv='"+cv+"',expiryDate='"+expD+"'"
-		  		+ "     where pid="+id+"";
+		  String sql = "update cards set cardHolderName='"+name+"',cvv='"+cv+"',expiryDate='"+expD+"' where cardNo='"+cNum+"' ";
 		  int res = state.executeUpdate(sql);
 		  
 		  if(res>0) {
@@ -62,6 +64,66 @@ public class cardsDBUtil {
 	  return Success;
   }    
  
+  
+  
+  
+  
  
  
+ 
+  public static List<cardDetails> viewCardDetails(String cardNo){
+	  ArrayList<cardDetails> cardDetails1 = new ArrayList<>();
+	  
+	  try {
+		  con = DBconnection.getConnection();
+		  state = con.createStatement();
+		  String sql = "SELECT * FROM cards where cardNo='"+cardNo+"'";
+		  res = state.executeQuery(sql);
+		  
+		  if(res.next()) {
+			  String cNO =res.getString("cardNo");
+			  String cardType = res.getString("cardType");
+			  String cardHN = res.getString("cardHolderName");
+			  String cvv = res.getString("cvv");
+			  String expDate = res.getString("expiryDate");
+			  
+			  cardDetails newCard = new cardDetails (cNO,cardType,cardHN,cvv,expDate);
+			  cardDetails1.add(newCard);
+		  }else {
+			  
+		  }
+		  
+	  }catch(Exception e) {
+		  
+	  }
+	  
+	  return cardDetails1;
+  }
+  
+  
+  public static ArrayList<String> getCardNumbers(int cusID ) {
+		
+		ArrayList<String> cardNos = new ArrayList<String>();
+		
+		try {
+			Connection con = DatabaseConnection.initializeDatabase();
+			Statement stmt = con.createStatement();
+
+		
+			String sql = "select cardNo from cards where pid = "+cusID;
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+
+				cardNos.add(rs.getString(1));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cardNos;
+	}
+  
 }

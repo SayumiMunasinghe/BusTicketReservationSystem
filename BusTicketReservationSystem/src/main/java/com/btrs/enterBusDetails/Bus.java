@@ -7,19 +7,39 @@ public class Bus {
 	private String busNumber;
 	private int numberOfSeats;
 	private String busType;
-	private String AC;
+	private int AC;
+	private String uTime;
+	private String uArrival;
+	private String uDestination;
+	private String dTime;
+	private String dArrival;
+	private String dDestination;
+	private double price;
 	
-	public Bus( String busNumber, int numberOfSeats, String busType, String AC) {
-	//this.busID=busID;
+	
+	//overloaded constructor
+	public Bus( String busNumber, int numberOfSeats, String busType, int AC,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
+		//public Bus( String busNumber, int numberOfSeats, String busType,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
+		//this.busID=busID;
 	//this.aId=aId;
 	this.busNumber=busNumber;
 	this.numberOfSeats=numberOfSeats;
 	this.busType=busType;
 	this.AC=AC ;
+	this.uTime=uTime;
+	this.uArrival=uArrival;
+	this.uDestination=uDestination;
+	this.dTime=dTime;
+	this.dArrival=dArrival;
+	this.dDestination=dDestination;
+	this.price=price;
 	}
 	
 	
 	
+
+
+
 	/*public int getBusID() {
 		return busID;
 	}
@@ -35,7 +55,47 @@ public class Bus {
 	public String getBusType() {
 		return busType;
 	}
-	public String getAC() {
-		return AC;
+	public int getAC() {
+
+		int condition = 0;
+		if(this.AC == 0) {
+			condition = 0;
+		}
+			
+		else if(this.AC == 1) {
+			condition = 1;
+		}
+		return condition;
+
+	}
+
+	public String getuTime() {
+		return uTime;
+	}
+
+	public String getuArrival() {
+		return uArrival;
+	}
+
+	public String getuDestination() {
+		return uDestination;
+	}
+
+	public String getdTime() {
+		return dTime;
+	}
+
+	public String getdArrival() {
+		return dArrival;
+	}
+
+	public String getdDestination() {
+		return dDestination;
+	}
+
+
+
+	public double getPrice() {
+		return price;
 	}
 }
