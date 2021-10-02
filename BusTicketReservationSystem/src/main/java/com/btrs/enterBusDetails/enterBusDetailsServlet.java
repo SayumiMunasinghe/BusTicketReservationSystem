@@ -42,8 +42,8 @@ public class enterBusDetailsServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		//session to get agency id
-		int aID = (int)session.getAttribute("userID");
-		
+		//int aID = (int)session.getAttribute("userID");
+		int aID= 1;
 		
 		
 		
@@ -51,15 +51,22 @@ public class enterBusDetailsServlet extends HttpServlet {
 		
 		//inserttttt---------------------------------------------------------------------------------------------------
 		
+		//servlet catching the values entered through the form
 		String busNumber = request.getParameter("number");
 		int busSeat = Integer.parseInt(request.getParameter("seat"));
 		String type = request.getParameter("btype");
-		String condition = request.getParameter("ac/nonac");
-		//String day = request.getParameter("days");
+		int condition = Integer.parseInt(request.getParameter("ac/nonac"));
+		String upTime = request.getParameter("utime");
+		String upArrival = request.getParameter("uarr");
+		String upDestination = request.getParameter("udes");
+		String downTime = request.getParameter("dtime");
+		String downArrival = request.getParameter("darr");
+		String downDestination = request.getParameter("ddes");
+		double seatPrice =Double.parseDouble(request.getParameter("price"));
 		
 		boolean isTrue;
 		
-		isTrue = busDBUtil.InsertBus(aID,busNumber, busSeat, type, condition);
+		isTrue = busDBUtil.InsertBus(aID,busNumber, busSeat, type, condition,upTime,upArrival,upDestination,downTime, downArrival,downDestination,seatPrice);
 		
 		if(isTrue == true) {
 			RequestDispatcher dis1 = request.getRequestDispatcher("success.jsp");

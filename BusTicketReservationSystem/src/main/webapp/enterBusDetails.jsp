@@ -26,20 +26,29 @@
   	<input type="radio" id="semi-luxury" name="btype" value="SEMI-LUXURY">
   	<label for="semi-luxury">SEMI-LUXURY</label><br>
   	<input type="radio" id="blabla" name="btype" value="BLABLA">
-  	<label for="blabla">BLABLA</label><br>
+  	<label for="superLuxury">SUPER LUXURY</label><br>
 	</div>
 	
 	<div class="form-group">
-	<input type="radio" id="AC" name="ac/nonac" value="AC" checked>
+	<input type="radio" id="AC" name="ac/nonac" value=1 checked>
   	<label for="AC">AC</label>
-  	<input type="radio" id="NON-AC" name="ac/nonac" value="NON-AC">
+  	<input type="radio" id="NON-AC" name="ac/nonac" value=0>
   	<label for="NON-AC">NON-AC</label><br>
 	</div>
 	
+	<p>Bus Route Details</p><br>
+	Up-time :  <input type="time" id="utime" name="utime" required>
+	Arrival : <input type="text" id="uarr" name="uarr" required>
+  	Destination : <input type="text" id="udes" name="udes" required>
+  	<br><br>
 
-  	
-  	<br><br><br>
-  	
+	Down-time :  <input type="time" id="dtime" name="dtime" required>
+	
+	Arrival : <input type="text" id="darr" name="darr" required>
+  	Destination : <input type="text" id="ddes" name="ddes" required>
+  	<br><br>
+  	Seat Price : <input type="text" id="price" name="price" required><br><br><br><br>
+
   	<div class="form-group">
   	<input type="submit" value="Submit">
 	</div>
