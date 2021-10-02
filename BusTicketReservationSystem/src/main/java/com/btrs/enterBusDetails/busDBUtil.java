@@ -133,12 +133,12 @@ public static List<Bus> getBusDetails(int aID){
 		 con = DatabaseConnection.initializeDatabase(); 
 		 stmt = con.createStatement();
 		
-		String sql = "SELECT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID=1 ";
+		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID=1 ";
 		ResultSet rs = stmt.executeQuery(sql);
 		
-		Bus B = new Bus ("EE3",50, "Luxury",1, "30:00","ghsghdg","idfsjf","34:00","ifisjndf","ksjdffd",100.00);
-		bus.add(B);
-		/*if(rs.next()) {
+//		Bus B = new Bus ("EE3",50, "Luxury",1,"30:00","ghsghdg","idfsjf","34:00","ifisjndf","ksjdffd",100.00);
+//		bus.add(B);
+		while(rs.next()) {
 			
 			String busNumber = rs.getString("busNumber");
 			int numberOfSeats = rs.getInt("numberOfSeats");
@@ -154,7 +154,7 @@ public static List<Bus> getBusDetails(int aID){
 			
 			Bus B = new Bus (busNumber,numberOfSeats, busType,AC, uTime,uArrival,uDestination,dTime,dArrival,dDestination,price);
 			bus.add(B);
-		}*/
+		}
 		
 	}catch(Exception e) {
 		e.printStackTrace();
