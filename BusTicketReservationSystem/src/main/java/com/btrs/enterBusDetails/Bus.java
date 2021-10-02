@@ -19,7 +19,8 @@ public class Bus {
 	
 	//overloaded constructor
 	public Bus( String busNumber, int numberOfSeats, String busType, int AC,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
-	//this.busID=busID;
+		//public Bus( String busNumber, int numberOfSeats, String busType,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
+		//this.busID=busID;
 	//this.aId=aId;
 	this.busNumber=busNumber;
 	this.numberOfSeats=numberOfSeats;
@@ -55,8 +56,8 @@ public class Bus {
 		return busType;
 	}
 	public int getAC() {
-		@SuppressWarnings("null")
-		int condition = (Integer) null;
+
+		int condition = 0;
 		if(this.AC == 0) {
 			condition = 0;
 		}
