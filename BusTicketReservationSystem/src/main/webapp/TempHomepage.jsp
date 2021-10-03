@@ -25,6 +25,20 @@
   <link href="webpage/home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="webpage/home/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> 
   <link href="webpage/home/assets/css/style.css" rel="stylesheet"> 
+  <style>
+  	body, html {
+  		height: 100%;
+  		width: 100%;
+  	}
+  	#agencyResgistration {
+  		width: 100%;
+  		height: 100%;
+  	}
+  	#frame-1{
+  		width: 100%;
+  		height: 100%;
+  	}
+  </style>
 </head>
 
 <body>
@@ -136,7 +150,6 @@
 
  <section id="login" class="about">
       <div class="container">
-
         <div class="row">
           <div class="col-sm-6">
              <div class="containerr">
@@ -181,46 +194,71 @@
 			</div>
           </div>
         </div>
+        </div>
+        </div>
 </section>
 
  <section id="agencyManage" class="about">
-      <div class="container">
-
         <div class="row">
             <div class="row">
-          <div class="col-sm-3">
-             <div class="containerr">
-			   <a href="viewAgencyDetails.jsp"><img src="webpage/home/5.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #a2000c, #ff0017) 1; width:390px; "></a>
-			  <div class="centered"><h1>Manage Agency Details</h1></div>
-			</div>
-          </div>
+		          <div class="col-sm-3">
+		             <div class="containerr">
+					   <a href="viewAgencyDetails.jsp"><img src="webpage/home/5.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #a2000c, #ff0017) 1; width:390px; "></a>
+					   <div class="centered">
+					      <h1>Manage Agency Details</h1>
+					    </div>
+					 </div>
+		          </div>
           
-          <div class="col-sm-3">
-             <div class="containerr">
-			   <a href=""> <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
-			  <div class="centered"><h1>Manage Bus Details</h1></div>
-			</div>
-          </div>
+		   <div class="col-sm-3">
+		        <div class="containerr">
+					 <a href="">
+					   	<img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
+					 </a>
+				  <div class="centered">
+					   <h1>Manage Bus Details</h1>
+			      </div>
+		       </div>
+		   </div>
          
-         <div class="col-sm-3">
+           <div class="col-sm-3">
              <div class="containerr">
-			   <a href=""> <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
-			  <div class="centered"><h1>Manage Bus Details</h1></div>
+			   <a href="">
+			      <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
+			   </a>
+			   <div class="centered">
+			      <h1>Manage Bus Details</h1>
+			   </div>
 			</div>
           </div>
          
           <div class="col-sm-3" style="text-align: center;" >
-           <div class="containerr">
+          	<div class="containerr">
 			   <img src="webpage/home/1.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #e8ae00, #cf8500) 1; width:390px; ">
-			  <div class="centered"><h1>LOGOUT</h1></div>
+			   <div class="centered"><h1>LOGOUT</h1></div>
 			</div>
           </div>
         </div>
+      </div>
 </section>
 
-
+	<section id="agencyResgistration">
+		 <iframe id="iframe-1" src="agencyRegistration.jsp"></iframe>
+	</section>
   <script src="webpage/home/assets/js/main.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+		let hrefArray = window.location.href.split("#");
+		let iframe = $("#iframe-1");
+		let iframeId = hrefArray[hrefArray.length - 1];
+		console.log(iframeId, iframe);
+		let iframesrc = window.location.origin + "/" + "BusTicketReservationSystem" + "/" + iframeId + ".jsp";
+		console.log(iframesrc);
+		iframe.attr("id", iframeId);
+		iframe[0].scrollIntoView();
+		iframe.attr("src", iframesrc);
+		iframe[0].contentWindow.location.reload();
+	</script>
 </body>
 
 </html>
@@ -254,7 +292,7 @@
   
   
   </style>
-  
+  	
      <style>
 .containerr {
   position: relative;
