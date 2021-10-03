@@ -25,7 +25,7 @@ public class cardsDBUtil {
     	   try { 
     		   con = DBconnection.getConnection();
     		   state = con.createStatement();
-    		   String sql = "insert into cards values('"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"',"+pid+")";
+    		   String sql = " insert into cards values('"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"',"+pid+")" ;
     		   int res = state.executeUpdate(sql);
     		   
     		   if(res>0) {
@@ -126,4 +126,23 @@ public class cardsDBUtil {
 		return cardNos;
 	}
   
+  
+   public static boolean deleteCard(String cardNo) {
+	   
+	   try {
+		   con = DBconnection.getConnection();
+		   state = con.createStatement();
+		   
+		   String sql = "delete from cards where cardNo='"+cardNo+"'"; 
+		   int res = state.executeUpdate(sql);
+		   if(res>0) {
+			   Success = true;
+		   }else {
+			   Success = false;
+		   }
+	   }catch(Exception e){
+		   e.printStackTrace();
+	   }
+	   return Success;
+   }
 }
