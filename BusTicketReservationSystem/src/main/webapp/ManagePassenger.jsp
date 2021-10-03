@@ -95,33 +95,7 @@ body {font-family: "Lato", sans-serif;}
 
 <body onload="mySubmit()">
 
-    <% String msg = (String)request.getAttribute("msg");
-		if(msg == "1"){
-			%><div class="" id = "popupp">
-			  <div class="alert alert-danger alert-dismissible fade in">
-			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    <strong>Your account has been successfully Deleted!</strong> Redirecting....<span id="timer">5</span>
-			  
-			  </div>
-			</div>
-			<script>
-				var seconds = document.getElementById("timer").textContent;
-				var countdown = setInterval(function() {
-					seconds--;
-					document.getElementById("timer").textContent = seconds;
-					if (seconds <= 0)
-						clearInterval(countdown);
-				}, 1000);
-		
-				setTimeout(function() {
-					window.location.href = 'homepage.jsp';
-				}, 4000);
-			</script>
-			<%
-		}%> 
-
-
-	<form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
+  <form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
     	<input type="hidden" name="viewPassDetails" value="Manage Agency Details"> 
 	</form>
 

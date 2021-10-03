@@ -101,16 +101,11 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			
 			if(status == true) {
 				//goes to homepage if deleted
+				
 				String msg = "1";
 				request.setAttribute("msg", msg);
 				RequestDispatcher dis1 = request.getRequestDispatcher("homepage.jsp");
 				dis1.forward(request, response);
-			}else{
-				//if not delete will go back to same page
-				//& on top of page will display a delete failed msg
-				
-				RequestDispatcher dis2 = request.getRequestDispatcher("ManagePassenger.jsp");
-				dis2.forward(request, response);
 			}
 		}
 	}
