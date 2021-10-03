@@ -15,10 +15,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-		<%
-     if("${userID}" == null || "${mode}" == null){ %>
+	<%
+	if(session.getAttribute("mode") == null){ %>
 	     <script>
-			window.location.href = 'PassengrLogin.jsp';
+			window.location.href = 'PassengerLogin.jsp';
 		</script>
      <%}
 %>
