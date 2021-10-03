@@ -82,7 +82,7 @@
 				}, 1000);
 		
 				setTimeout(function() {
-					window.location.href = 'homepage.jsp';
+					window.location.href = 'PassengerLogin.jsp';
 				}, 4000);
 			</script>
 			<%

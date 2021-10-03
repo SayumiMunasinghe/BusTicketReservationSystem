@@ -1,6 +1,7 @@
 package com.btrs.passengerReg;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,10 +41,11 @@ public class PassengerInsertServlet extends HttpServlet {
 		//use if condition to check if inserted succesfully and dbconnection success
 		//true -> insertion success
 		if(isInserted == true) {
-			int pid = PassengerDBUtil.getID(email);
-			session.setAttribute("userID", pid);
-			String mode = "passenger";
-			session.setAttribute("mode", mode);
+//			int pid = PassengerDBUtil.getID(email);
+//			session.setAttribute("userID", pid);
+//			String mode = "passenger";
+//			session.setAttribute("mode", mode);
+			
 			
 			//sending success message if inserted to register jsp
 			String posimsg = "1";
