@@ -13,8 +13,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
  <style>
-   body{
-
+   body, html{
+	width: 100%;
+	height: 100%;
+	background-size:cover;
    }
  
  
@@ -55,7 +57,7 @@
 
   .navbar {
     margin-bottom: 0;
-    background-color: #202020;
+    background-color: transparent;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -147,11 +149,11 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron texst-center" style="background-image: linear-gradient(to bottom, rgba(32, 32, 32, 1) 10%,rgba(32, 32, 32, 0.4) 100%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
+<div style="width: 100%; height: 100%; display:flex; align-items: center">
   <div class="container">
     <br>
     <!-- <span style="color: rgb(255, 115, 22);">BTRS</span> -->
-  <h1>Reserve your bus ticket now</h1> 
+  <h1 style="color:white">Reserve your bus ticket now</h1> 
   <p style ="color:rgba(255, 255, 255, 0.507);">Fastest and easiest way to reserve your tickets online</p> 
 	
 	<form action="SelectBusServlet" method="POST">
@@ -168,6 +170,8 @@
 				%>
 				</select>
           </div>
+        </div>
+          <div class="row">
           <div class="col-sm-4">
              <label style ="color:rgba(255, 255, 255, 0.5);">TO: </label>
              <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white" required>
@@ -180,6 +184,9 @@
 				%>
 			</select>
           </div>
+          </div>
+          
+          <div class="row">
           <div class="col-sm-4">
            <label style ="color:rgba(255, 255, 255, 0.5);">TRAVEL DATE: </label>
            <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white">
