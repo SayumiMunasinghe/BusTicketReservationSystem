@@ -86,7 +86,7 @@
   </div>
   <center> Not a member?<a href ="agencyRegistration.jsp"> Register now</a>
 </div>
-<script src="webpage/home/assets/js/main.js"></script>
+<script src="webpage/assets/js/main.js"></script>
 
 </body>
 </html>
