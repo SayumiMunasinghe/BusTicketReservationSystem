@@ -150,17 +150,17 @@
   </div>
 </nav>
 <div style="width: 100%; height: 100%; display:flex; align-items: center">
-  <div class="container">
+  <div class="container" style="border-left: 3px solid; border-image: linear-gradient(to right, #d19300, #d19300) 1; padding-left: 40px " >
     <br>
     <!-- <span style="color: rgb(255, 115, 22);">BTRS</span> -->
-  <h1 style="color:white">Reserve your bus ticket now</h1> 
-  <p style ="color:rgba(255, 255, 255, 0.507);">Fastest and easiest way to reserve your tickets online</p> 
+  <h1 style="color:white; font-size: 58px">RESERVE YOUR <span style="color:#d19300"> BUS TICKET </span> <br> NOW</h1> 
+  <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px">We made booking Bus Tickets Revolutionary for Everyone</p> 
 	
 	<form action="SelectBusServlet" method="POST">
 	<div class="row" col-sm-15">
           <div class="col-sm-4">
             <label style ="color:rgba(255, 255, 255, 0.5);">FROM: </label>
-          	<select id="arrival" name="arrival" class="form-control" style ="background-color: inherit ; color: white" required>
+          	<select id="arrival" name="arrival" class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px" required>
 				<%
 				for(int i = 0; i < arrival.size(); i++) {
 				%>
@@ -174,7 +174,7 @@
           <div class="row">
           <div class="col-sm-4">
              <label style ="color:rgba(255, 255, 255, 0.5);">TO: </label>
-             <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white" required>
+             <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px" required>
 				<%
 				for(int i = 0; i < destination.size(); i++) {
 				%>
@@ -189,7 +189,7 @@
           <div class="row">
           <div class="col-sm-4">
            <label style ="color:rgba(255, 255, 255, 0.5);">TRAVEL DATE: </label>
-           <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white">
+           <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px">
           </div>
         </div>
         <br><br><br>
