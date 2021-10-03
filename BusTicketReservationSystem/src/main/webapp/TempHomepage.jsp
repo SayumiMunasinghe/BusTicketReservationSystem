@@ -18,13 +18,13 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <link href="webpage/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="webpage/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="webpage/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="webpage/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="webpage/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="webpage/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> 
-  <link href="webpage/assets/css/style.css" rel="stylesheet"> 
+  <link href="webpage/home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> 
+  <link href="webpage/home/assets/css/style.css" rel="stylesheet"> 
 </head>
 
 <body>
@@ -84,15 +84,15 @@
         <form>
           <div class="form-group" >
   
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  style=" border-radius:50px; background-color:inherit; border-color:#dc3545; border-width: 2px"><br>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"  style=" border-radius:50px; background-color:inherit; border-color:#dc3545; border-width: 4px"><br>
           </div>
           <div class="form-group">
 
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#ffc107; border-width: 2px"><br>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#ffc107; border-width: 4px"><br>
           </div>
           <div class="form-group">
 
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#0dcaf0; border-width: 2px"><br>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"  style=" border-radius:50px; background-color:inherit; border-color:#0dcaf0; border-width: 4px"><br>
           </div>
           <div class="form-check">
            <br>
@@ -101,7 +101,6 @@
           <button type="submit" class="btn btn-success">Submit</button>
         </form>         
       </div>
-
     </div>
   </header><!-- End Header -->
 
@@ -140,81 +139,79 @@
          
           <div class="col-sm-6" style="text-align: center;" >
            <div class="containerr">
-			   <img src="webpage/home/agencylog.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #0081ff, #0062ff) 1; width:550px; ">
+              <a href="AgencyLogin.jsp">
+			   <img src="webpage/home/agencylog.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #0081ff, #0062ff) 1; width:550px; "></a>
 			  <div class="centered"><h1>LOGIN AS AGENCY</h1></div>
 			</div>
           </div>
-          
         </div>
 </section>
 
  <section id="passengerManage" class="about">
       <div class="container">
 
-        <div class="row">
-          <div class="col-sm-6" >
-          <div class="card bg-primary">
-            <a href="AgencyLogin.jsp"><div class="card img-fluid" style="width:500px">
-              <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
-              <div class="card-img-overlay">
-
-              </div></a>
-            </div>
-            </div>
+           <div class="row">
+            <div class="row">
+          <div class="col-sm-4">
+             <div class="containerr">
+			   <img src="webpage/home/5.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #a2000c, #ff0017) 1; width:390px; ">
+			  <div class="centered"><h1>Manage Passenger Details</h1></div>
+			</div>
           </div>
-          <div class="col-sm-6" >
-            <div class="card bg-warning">
-              <div class="card img-fluid" style="width:500px">
-                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
-                <div class="card-img-overlay">
-                </div>
-              </div>
+          
+          <div class="col-sm-4">
+             <div class="containerr">
+			   <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
+			  <div class="centered"><h1>Manage Payment Details</h1></div>
+			</div>
+          </div>
+         
+          <div class="col-sm-4" style="text-align: center;" >
+           <div class="containerr">
+			   <img src="webpage/home/1.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #e8ae00, #cf8500) 1; width:390px; ">
+			  <div class="centered"><h1>LOGOUT</h1></div>
+			</div>
           </div>
         </div>
-      </div>
-    </div>
 </section>
 
  <section id="agencyManage" class="about">
       <div class="container">
 
         <div class="row">
-          <div class="col-sm-4" >
-          <div class="card bg-primary">
-            <a href="viewAgencyDetails.jsp"><div class="card img-fluid" style="width:500px">
-              <img class="card-img-top" src="webpage/agency.jpg" alt="Card image" style="width:100%">
-              <div class="card-img-overlay">
-              </div></a>
-            </div>
-            </div>
+            <div class="row">
+          <div class="col-sm-3">
+             <div class="containerr">
+			   <a href="viewAgencyDetails.jsp"><img src="webpage/home/5.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #a2000c, #ff0017) 1; width:390px; "></a>
+			  <div class="centered"><h1>Manage Agency Details</h1></div>
+			</div>
           </div>
           
-          <div class="col-sm-4" >
-            <div class="card bg-warning">
-              <div class="card img-fluid" style="width:500px">
-                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
-                <div class="card-img-overlay">
-                </div>
-              </div>
+          <div class="col-sm-3">
+             <div class="containerr">
+			   <a href=""> <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
+			  <div class="centered"><h1>Manage Bus Details</h1></div>
+			</div>
+          </div>
+         
+         <div class="col-sm-3">
+             <div class="containerr">
+			   <a href=""> <img src="webpage/home/2.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #00937f, #00c8cf) 1; width:390px; ">
+			  <div class="centered"><h1>Manage Bus Details</h1></div>
+			</div>
+          </div>
+         
+          <div class="col-sm-3" style="text-align: center;" >
+           <div class="containerr">
+			   <img src="webpage/home/1.jpg" alt="Card image" style="border-style:solid; border-width:5px; border-image: linear-gradient(to right, #e8ae00, #cf8500) 1; width:390px; ">
+			  <div class="centered"><h1>LOGOUT</h1></div>
+			</div>
           </div>
         </div>
-        
-        <div class="col-sm-4" >
-            <div class="card bg-warning">
-              <div class="card img-fluid" style="width:500px">
-                <img class="card-img-top" src="webpage/pass.jpg" alt="Card image" style="width:100%">
-                <div class="card-img-overlay">
-                </div>
-              </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
 </section>
 
 
-  <script src="webpage/assets/js/main.js"></script>
+  <script src="webpage/home/assets/js/main.js"></script>
 
 </body>
 
@@ -243,6 +240,10 @@
     color: red;
   }
   
+  .header-top {
+    background: rgba(0, 0, 0, 0.5);
+}
+  
   
   </style>
   
@@ -260,7 +261,7 @@
 }
 section .container {
     background: rgba(0, 0, 0, 0.5);
-    padding: 100px;
+    padding: 50px;
 }
 </style>
   
