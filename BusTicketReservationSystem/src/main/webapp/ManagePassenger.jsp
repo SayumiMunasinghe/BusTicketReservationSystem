@@ -96,7 +96,7 @@ body {font-family: "Lato", sans-serif;}
 <body onload="mySubmit()">
 
   <form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
-    	<input type="hidden" name="viewPassDetails" value="Manage Agency Details"> 
+    	<input type="hidden" name="viewPassDetails" value="Manage Pass Details"> 
 	</form>
 
 <script>
