@@ -75,8 +75,16 @@
           		  %><a href="#agencyManage" id="butt2"> </a><% 
                 		  session.removeAttribute("Passenger");%>
                 		  <script>document.getElementById('butt2').click();</script><% 
-                	    }
-        	   %>
+                 }else if(session.getAttribute("Register") == "Register"){
+             		  %><a href="#agencyManage" id="butt3"> </a><% 
+                    		  session.removeAttribute("Register");%>
+                    		  <script>document.getElementById('butt3').click();</script><% 
+                 }else if(session.getAttribute("Login") == "Login"){
+             		  %><a href="#agencyManage" id="butt4"> </a><% 
+                    		  session.removeAttribute("Login");%>
+                    		  <script>document.getElementById('butt4').click();</script><% 
+                 }
+        	    %>
 
      
 
