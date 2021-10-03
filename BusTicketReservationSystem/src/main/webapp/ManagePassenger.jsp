@@ -10,6 +10,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
+#form1{
+	color: white;
+}
+
+#form2{
+	color: white;
+}
+
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
 
@@ -87,7 +95,7 @@ body {font-family: "Lato", sans-serif;}
 
 <body onload="mySubmit()">
 
-	<form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
+  <form id="autosub" class="form-horizontal" action="ManagePassengerDetailsServlets" method="Post">
     	<input type="hidden" name="viewPassDetails" value="Manage Agency Details"> 
 	</form>
 
@@ -114,7 +122,8 @@ body {font-family: "Lato", sans-serif;}
 
 
   <!-- this form is to update the password -->
-<div id="Pwd" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+<div id="Pwd" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+
   <div class="container" id="form1">
   
   <h3>Password</h3>
@@ -131,8 +140,9 @@ body {font-family: "Lato", sans-serif;}
       <input type="text"  class="form-control" name="conpwd" id="conpwd" placeholder="Re-enter password" onkeyup='check();' /> 
   		<span id='message'></span>
     </div>
-    
-    <input type="submit" class="btn btn-warning" name="updatePassword" value="Update">
+
+    <input type="submit" id="able" class="btn btn-success" name="updatePassword" value="Update">
+
   </c:forEach>
   </form>
 </div>
@@ -141,7 +151,9 @@ body {font-family: "Lato", sans-serif;}
 
 
 
-<div id="telno" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+
+<div id="telno" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+
   <div class="container" id="form2">
   
   <h3>Contact Number</h3>
@@ -154,7 +166,9 @@ body {font-family: "Lato", sans-serif;}
       <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone">
     </div>
     
-    <input type="submit" class="btn btn-warning" name="updatePhone" value="Update">
+
+    <input type="submit" class="btn btn-success" name="updatePhone" value="Update">
+
     </c:forEach>
   </form>
   </div>
@@ -182,7 +196,9 @@ body {font-family: "Lato", sans-serif;}
 		if(popup == "1"){
 			%><div class="alert alert-warning alert-dismissible fade show">
     			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-			    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+
+			    <strong>Warning!</strong> Your account was not deleted.
+
   			</div><%
 		}%>
 
@@ -191,8 +207,11 @@ body {font-family: "Lato", sans-serif;}
         if (document.getElementById('pwd').value != document.getElementById('conpwd').value) {
           document.getElementById('message').style.color = 'red';
           document.getElementById('message').innerHTML = 'Not Matching!';
+          document.getElementById('message').style.display = "block";
+          document.getElementById("able").disabled = true;
         }else{
           document.getElementById('message').style.display = "none";
+          document.getElementById("able").disabled = false;
         }
 	}
 

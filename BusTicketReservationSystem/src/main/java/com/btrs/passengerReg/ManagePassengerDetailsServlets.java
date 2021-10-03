@@ -16,8 +16,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		///////////////////get the data from db////////////
+
 		if(request.getParameter("viewPassDetails") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
@@ -42,13 +41,26 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 		if(request.getParameter("updatePassword") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
-			try {
+
+			String pwd = request.getParameter("conpwd");
 			
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		
-			
+				Boolean updated = PassengerDBUtil.updatePassword(userID, pwd);
+				
+				String msg;
+				
+				//if updated show success popup ->>>>>>>>>> 
+				if(updated == true) {
+					msg="1";
+					
+				}else {
+					msg="0";
+					//if not updated show error popup ->>>>>>>>>>
+				}
+				
+				request.setAttribute("updatePass", msg);
+				RequestDispatcher dis = request.getRequestDispatcher("ManagePassenger.jsp");
+				dis.forward(request, response);			
+
 		}
 			
 		
@@ -57,7 +69,26 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
 			
+
+			String tel = request.getParameter("phone");
 			
+			Boolean updated = PassengerDBUtil.updatePhone(userID, tel);
+			
+			String msg;
+			
+			//if updated show success popup ->>>>>>>>>> 
+			if(updated == true) {
+				msg="1";
+				
+			}else {
+				msg="0";
+				//if not updated show error popup ->>>>>>>>>>
+			}
+			
+			request.setAttribute("updateTel", msg);
+			RequestDispatcher dis = request.getRequestDispatcher("ManagePassenger.jsp");
+			dis.forward(request, response);	
+
 			
 		}
 		
@@ -73,15 +104,11 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			
 			if(status == true) {
 				//goes to homepage if deleted
+
+        String msg = "1";
+				request.setAttribute("msg", msg);
 				RequestDispatcher dis1 = request.getRequestDispatcher("homepage.jsp");
 				dis1.forward(request, response);
-			}else{
-				//if not delete will go back to same page
-				//& on top of page will display a delete failed msg
-				String msg = "1";
-				request.setAttribute("msg", msg);
-				RequestDispatcher dis2 = request.getRequestDispatcher("ManagePassenger.jsp");
-				dis2.forward(request, response);
 			}
 		}
 	}
