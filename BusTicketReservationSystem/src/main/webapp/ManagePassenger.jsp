@@ -123,6 +123,7 @@ body {font-family: "Lato", sans-serif;}
 
   <!-- this form is to update the password -->
 <div id="Pwd" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+
   <div class="container" id="form1">
   
   <h3>Password</h3>
@@ -139,8 +140,9 @@ body {font-family: "Lato", sans-serif;}
       <input type="text"  class="form-control" name="conpwd" id="conpwd" placeholder="Re-enter password" onkeyup='check();' /> 
   		<span id='message'></span>
     </div>
-    
+
     <input type="submit" id="able" class="btn btn-success" name="updatePassword" value="Update">
+
   </c:forEach>
   </form>
 </div>
@@ -149,7 +151,9 @@ body {font-family: "Lato", sans-serif;}
 
 
 
+
 <div id="telno" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+
   <div class="container" id="form2">
   
   <h3>Contact Number</h3>
@@ -162,7 +166,9 @@ body {font-family: "Lato", sans-serif;}
       <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone">
     </div>
     
+
     <input type="submit" class="btn btn-success" name="updatePhone" value="Update">
+
     </c:forEach>
   </form>
   </div>
@@ -190,7 +196,9 @@ body {font-family: "Lato", sans-serif;}
 		if(popup == "1"){
 			%><div class="alert alert-warning alert-dismissible fade show">
     			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+
 			    <strong>Warning!</strong> Your account was not deleted.
+
   			</div><%
 		}%>
 
