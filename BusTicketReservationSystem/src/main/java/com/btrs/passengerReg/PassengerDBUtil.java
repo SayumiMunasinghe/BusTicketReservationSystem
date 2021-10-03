@@ -18,7 +18,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	private static ResultSet rs = null;
 	//til here
 	
-	//////////////////function to return db passenger details to servlet///////////
+
 	public static List<Passenger> CheckExist(int userID){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 

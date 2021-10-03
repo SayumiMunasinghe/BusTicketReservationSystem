@@ -16,8 +16,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		///////////////////get the data from db to display on account page////////////
+
 		if(request.getParameter("viewPassDetails") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
@@ -42,6 +41,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 		if(request.getParameter("updatePassword") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
+
 			String pwd = request.getParameter("conpwd");
 			
 				Boolean updated = PassengerDBUtil.updatePassword(userID, pwd);
@@ -60,6 +60,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 				request.setAttribute("updatePass", msg);
 				RequestDispatcher dis = request.getRequestDispatcher("ManagePassenger.jsp");
 				dis.forward(request, response);			
+
 		}
 			
 		
@@ -68,6 +69,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
 			
+
 			String tel = request.getParameter("phone");
 			
 			Boolean updated = PassengerDBUtil.updatePhone(userID, tel);
@@ -86,6 +88,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			request.setAttribute("updateTel", msg);
 			RequestDispatcher dis = request.getRequestDispatcher("ManagePassenger.jsp");
 			dis.forward(request, response);	
+
 			
 		}
 		
@@ -101,8 +104,8 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			
 			if(status == true) {
 				//goes to homepage if deleted
-				
-				String msg = "1";
+
+        String msg = "1";
 				request.setAttribute("msg", msg);
 				RequestDispatcher dis1 = request.getRequestDispatcher("homepage.jsp");
 				dis1.forward(request, response);

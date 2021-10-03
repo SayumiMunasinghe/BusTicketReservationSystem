@@ -38,9 +38,25 @@ public class updateCardServlet extends HttpServlet {
 		     dis2.forward(request, response);
 		}
 	}
+		
+		
+		if(request.getParameter("delete")!= null) {
+			String cardNo = request.getParameter("cno");
+			
+		boolean	check = cardsDBUtil.deleteCard(cardNo);
+		
+		if(check == true) {
+			RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
+		    dis.forward(request, response);
+		}else {
+			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
+		     dis2.forward(request, response);
+		}
 	}
 }
 
+}
+         
 
 //HttpSession session = request.getSession();
 //Session for user ID

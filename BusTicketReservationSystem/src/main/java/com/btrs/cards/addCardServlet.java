@@ -27,6 +27,7 @@ public class addCardServlet extends HttpServlet {
 		String cHName = request.getParameter("hName");
 		String date = request.getParameter("date").replaceAll("[a-zA-Z]", "");
 		
+		int set=1;
 		boolean check;
 		
 		check = cardsDBUtil.addCard(cNO,cType, cHName,cvv, date,pid);
@@ -34,12 +35,14 @@ public class addCardServlet extends HttpServlet {
 		if(check == true) {
 			
 			
-		     RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
+		     RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
 		     dis.forward(request, response);
+		   
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
 		     dis2.forward(request, response);
 		}
+		
     }
    
 

@@ -222,7 +222,7 @@
 	    <tbody>
 	      <tr>
 	        <td>Agent NIC</td>
-	        <td> <input type="text" name="agentNIC"" value="${agencyDetails.agentNIC}" class="form-control"></td>
+	        <td> <input type="text" name="agentNIC" value="${agencyDetails.agentNIC}" class="form-control"></td>
 	       
 	      </tr>
 	      <tr>
