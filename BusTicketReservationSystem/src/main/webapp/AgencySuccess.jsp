@@ -45,7 +45,7 @@
 				}, 1000);
 		
 				setTimeout(function() {
-					window.location.href = 'homepage.jsp';
+					window.location.href = 'TestHomepage.jsp';
 				}, 4000);
 			</script>
 
