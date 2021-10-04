@@ -20,23 +20,37 @@
      <%}
 %>
 
+<style>
+		body{
+			color:white;
+		}
+	
+	.border{
+	  		padding: 20px 35px 20px 35px;
+	  		border-radius: 25px;
+	 		background-color: #f5f5f5;
+	 		width: 1000px;
+	 		margin: auto;
+	}
+</style>
+
 <body>
 
 		<br><br><br><br><br><br>	
 		<div class="container">
-		<div class="well">
-		<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+		
+		<div class="border"  style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
 	  <h2>Passenger Login</h2>
 	  <form action="PassengerLoginServlet" method="post">
 	 
 	    <div class="form-group">
 	      <label for="email">Email:</label>
-	      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+	      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" style=" border-radius:50px;" required>
 	    </div>
 	  
 	    <div class="form-group">
 	      <label for="pwd">Password:</label>
-	      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
+	      <input type="password" class="form-control" id="pwd" placeholder="Enter password" style=" border-radius:50px;" name="pw" required>
 	    </div>
 	  	
 	  	<div class="form-check">
@@ -44,10 +58,10 @@
 		  <label class="form-check-label" for="flexCheckDefault">Show Password</label>
 	  	  </div>
 	    
-	    <input type="submit" class="btn btn-warning btn-lg" value="Login">
+	    <input type="submit" class="btn btn-success btn-lg" value="Login">
 	  </form>
 	  </div>
-	  </div>
+	  
 	</div>
 	
 <script>

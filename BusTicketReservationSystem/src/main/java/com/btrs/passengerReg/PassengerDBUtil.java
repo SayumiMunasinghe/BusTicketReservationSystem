@@ -18,6 +18,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	private static ResultSet rs = null;
 	//til here
 	
+
 	public static List<Passenger> CheckExist(int userID){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 
@@ -135,8 +136,8 @@ public class PassengerDBUtil implements PersonDatabase {
 		return passid;
 	}
 	
-	///////////////////////UPDATE PASSENGER DETAILS FUNCTION////////////////
-	public static boolean updatePassenger(String pid, String fname, String lname, String email, String telno, String pwd) {
+	///////////////////////UPDATE PASSENGER PASSWORD FUNCTION////////////////
+	public static boolean updatePassword(int userID, String pwd) {
 		
 		boolean isUpdated = false;
 		
@@ -144,8 +145,40 @@ public class PassengerDBUtil implements PersonDatabase {
 			con = DatabaseConnection.initializeDatabase(); 
 			stmt = con.createStatement();
 			
-			//below sql for update passenger table for all attributes where the parameter pid = db pid
-			String sql = "UPDATE passenger SET fName='"+fname+"',lName='"+lname+"',email='"+email+"',phone='"+telno+"',password='"+pwd+"' WHERE pid='"+pid+"'";
+			//below sql for update passenger password where the parameter pid = db pid
+			String sql = "UPDATE passenger SET password='"+pwd+"' WHERE pid="+userID+"";
+			
+			//executeupdate() function reutrns 1(sucesss)/0(fail) therefore assign result to int variable
+			int rs = stmt.executeUpdate(sql);
+			
+			//assigning the 0 or 1 depending on update fail or success
+			if(rs > 0) {
+				isUpdated = true;
+			
+			}else{
+				isUpdated = false;
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();		
+		}
+		
+		return isUpdated;
+		
+	}
+	
+	///////////////////////UPDATE PASSENGER PHONE FUNCTION////////////////
+	public static boolean updatePhone(int userID, String tel) {
+		
+		boolean isUpdated = false;
+		
+		try {
+			con = DatabaseConnection.initializeDatabase(); 
+			stmt = con.createStatement();
+			
+			//below sql for update passenger phone where the parameter pid = db pid
+			String sql = "UPDATE passenger SET phone='"+tel+"' WHERE pid="+userID+"";
 			
 			//executeupdate() function reutrns 1(sucesss)/0(fail) therefore assign result to int variable
 			int rs = stmt.executeUpdate(sql);

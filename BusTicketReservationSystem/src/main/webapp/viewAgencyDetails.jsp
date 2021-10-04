@@ -10,60 +10,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-    .navbar {
-    margin-bottom: 0;
-    background-color: #202020;
-    z-index: 9999;
-    border: 0;
-    font-size: 12px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 4px;
-    border-radius: 0;
-  }
-  .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #202020 !important;
-    background-color: #fff !important;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: #fff !important;
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-    
-    .border {
-	padding: 35px;
-	border-radius: 25px;
-	background-color: #f5f5f5;
-}
-  </style>
   	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="webpage/assets/css/style.css" rel="stylesheet"> 
-	<style>
-		.border {
-			padding: 35px;
-			border-radius: 25px;
-			background-color: #f5f5f5;
-		}
-		.navbar{
-			position: relative;
-			display: flex;
-			flex-wrap:wrap;
-			align-items: center;
-			justify-content: space-between;
-		}
-	</style>
+   <link href="webpage/home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="webpage/home/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> 
+  <link href="webpage/home/assets/css/style.css" rel="stylesheet"> 
 </head>
 
 <%
