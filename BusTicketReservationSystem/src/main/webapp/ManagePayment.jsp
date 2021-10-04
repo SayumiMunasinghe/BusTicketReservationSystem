@@ -59,6 +59,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
+<%
+	if(session.getAttribute("mode") == null){ %>
+	     <script>
+			window.location.href = 'PassengerLogin.jsp';
+		</script>
+     <%}
+%>
+
 <body> 
         
  <script type="text/javascript">
@@ -162,7 +171,7 @@
 		<%
 		for(int i = 0; i < cards.size(); i++) {
 		%>
-			<option value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
+			<option id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
 		<%
 		}
 		%>
@@ -176,6 +185,11 @@
 		
 		 if(document.getElementById('card')!=null){
 	     document.getElementById('f1').style.display = "none";
+		 }
+		 
+
+		 if(document.getElementById('cards')==null){
+	     document.getElementById('b3').disabled=true;
 		 }
 	
          </script>
