@@ -104,7 +104,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color: rgb(255, 115, 22);">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp">O<span style="color:#d19300;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">

@@ -102,7 +102,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color: rgb(255, 115, 22);">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp">O<span style="color:#d19300;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -153,7 +153,7 @@
   <div class="container" style="border-left: 3px solid; border-image: linear-gradient(to right, #d19300, #d19300) 1; padding-left: 40px " >
     <br>
     <!-- <span style="color: rgb(255, 115, 22);">BTRS</span> -->
-  <h1 style="color:white; font-size: 58px">RESERVE YOUR <span style="color:#d19300"> BUS TICKET </span> <br> NOW</h1> 
+  <h1 style="color:white; font-size: 55px">RESERVE YOUR <span style="color:#d19300"> BUS TICKET </span> <br> NOW</h1> 
   <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px">We made booking Bus Tickets Revolutionary for Everyone</p> 
 	
 	<form action="SelectBusServlet" method="POST">
