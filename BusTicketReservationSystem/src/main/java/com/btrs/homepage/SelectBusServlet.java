@@ -3,6 +3,7 @@ package com.btrs.homepage;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
@@ -25,34 +26,51 @@ public class SelectBusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String arrival = request.getParameter("arrival");
-		String destination = request.getParameter("destination");
-		dateOfTravel = request.getParameter("travelDate");
-		
-		try {
-			travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
-			date = travelDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-			List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
-		
-			if(busDetails.isEmpty()) {
-				String flag = "empty";
-				request.setAttribute("flag", flag);
+		if(request.getParameter("dropdowns") != null) {
+			try {
+				String x = "1";
+				ArrayList<String> arrival = BusDBUtil.getArrival();
+				ArrayList<String> destination = BusDBUtil.getDestination();
+				request.setAttribute("arrival", arrival);
+				request.setAttribute("destination", destination);
+				request.setAttribute("x", x);
+				System.out.println("arrival: " + arrival.size());
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-			for(int i = 0; i < busDetails.size(); i++) {
-				int seats = BusDBUtil.getRemainingSeats(busDetails.get(i).getBusID(), dateOfTravel, LocalTime.parse(busDetails.get(i).getTime()));
-				if(seats == 0)
-					busDetails.remove(i);
-			}
-			request.setAttribute("busDetails", busDetails);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
-		RequestDispatcher dis = request.getRequestDispatcher("availableBuses.jsp");
-		dis.forward(request, response);
+		if(request.getParameter("submit") != null) {
+			String arrival = request.getParameter("arrival");
+			String destination = request.getParameter("destination");
+			dateOfTravel = request.getParameter("travelDate");
+			
+			try {
+				travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
+				date = travelDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
+			
+				if(busDetails.isEmpty()) {
+					String flag = "empty";
+					request.setAttribute("flag", flag);
+					RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
+					dis.forward(request, response);
+				}
+				for(int i = 0; i < busDetails.size(); i++) {
+					int seats = BusDBUtil.getRemainingSeats(busDetails.get(i).getBusID(), dateOfTravel, LocalTime.parse(busDetails.get(i).getTime()));
+					if(seats == 0)
+						busDetails.remove(i);
+				}
+				request.setAttribute("busDetails", busDetails);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			RequestDispatcher dis = request.getRequestDispatcher("availableBuses.jsp");
+			dis.forward(request, response);
+		}
 	}	
 }
