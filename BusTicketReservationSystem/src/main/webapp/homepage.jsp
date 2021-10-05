@@ -12,7 +12,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
  <style>
+   body, html{
+	width: 100%;
+	height: 100%;
+	background-size:cover;
+	/*font*/
+font-family: 'Spotnik demo', sans-serif;  
+}
+ 
+ 
   .jumbotron {
     background-color: #202020;
     color: #fff;
@@ -50,7 +60,7 @@
 
   .navbar {
     margin-bottom: 0;
-    background-color: #202020;
+    background-color: transparent;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -85,7 +95,7 @@
 	ArrayList<String> arrival = BusDBUtil.getArrival();
 	ArrayList<String> destination = BusDBUtil.getDestination();
 %>
-<body>
+<body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
@@ -95,7 +105,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color: rgb(255, 115, 22);">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp">O<span style="color:#d19300;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -142,18 +152,18 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron texst-center" style="background-image: linear-gradient(to bottom, rgba(32, 32, 32, 1) 10%,rgba(32, 32, 32, 0.4) 100%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
-  <div class="container">
+<div style="width: 100%; height: 100%; display:flex; align-items: center">
+  <div class="container" style="border-left: 3px solid; border-image: linear-gradient(to right, #d19300, #d19300) 1; padding-left: 40px " >
     <br>
     <!-- <span style="color: rgb(255, 115, 22);">BTRS</span> -->
-  <h1>Reserve your bus ticket now</h1> 
-  <p style ="color:rgba(255, 255, 255, 0.507);">Fastest and easiest way to reserve your tickets online</p> 
+  <h1 style="color:white; font-size: 55px">RESERVE YOUR <span style="color:#d19300"> BUS TICKET </span> <br> NOW</h1> 
+  <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px">We made booking Bus Tickets Revolutionary for Everyone</p> 
 	
 	<form action="SelectBusServlet" method="POST">
 	<div class="row" col-sm-15">
           <div class="col-sm-4">
             <label style ="color:rgba(255, 255, 255, 0.5);">FROM: </label>
-          	<select id="arrival" name="arrival" class="form-control" style ="background-color: inherit ; color: white" required>
+          	<select id="arrival" name="arrival" class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px" required>
 				<%
 				for(int i = 0; i < arrival.size(); i++) {
 				%>
@@ -163,9 +173,11 @@
 				%>
 				</select>
           </div>
+        </div>
+          <div class="row">
           <div class="col-sm-4">
              <label style ="color:rgba(255, 255, 255, 0.5);">TO: </label>
-             <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white" required>
+             <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px" required>
 				<%
 				for(int i = 0; i < destination.size(); i++) {
 				%>
@@ -175,9 +187,12 @@
 				%>
 			</select>
           </div>
+          </div>
+          
+          <div class="row">
           <div class="col-sm-4">
            <label style ="color:rgba(255, 255, 255, 0.5);">TRAVEL DATE: </label>
-           <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white">
+           <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white; border-radius: 50px; border-width:3px">
           </div>
         </div>
         <br><br><br>
@@ -228,73 +243,5 @@
       </div><br>
 	</form>
 </div>
-
-<!-- Container (Services Section) -->
-<div class="container-fluid text-center">
-  <h2><b>Why Book with O<span style="color: rgb(255, 115, 22);">BTRS</span>?</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row">
-    <div class="col-sm-4">
-      <i class="bi bi-view-list" style="font-size: 10rem; color:#202020;"></i>
-      <h4 style="color: rgb(255, 115, 22);"> <b>More Options</b></h4>
-      <p>We give you maximum choices across  <br> all the routes to choose your bus along <br> with maximum flexibility.</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="bi bi-cash-coin" style="font-size: 10rem; color:#202020;"></i>
-      <h4 style="color: rgb(255, 115, 22);" ><b>Best rates</b></h4>
-      <p>We offer the best bus ticket prices <br> in the whole industry with addidional <br> discounts and offers</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="bi bi-hand-index-thumb" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>Easy to use</b></h4>
-      <p>Designed to be simple and easy<br> for anyone to use even without <br> much experience</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <i class="bi bi-headset" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>24/7 Customer support</b></h4>
-      <p>We are always here to assist you <br> with any way we can. You can call <br> or text us anytime</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="bi bi-clock-history" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>Saves time</b></h4>
-      <p>Fast and quick ticket booking <br> with your phone or computer</p>
-    </div>
-    <div class="col-sm-4">
-      <i class="bi bi-emoji-laughing" style="font-size: 10rem; color:#202020;"></i>
-      <h4  style="color: rgb(255, 115, 22);"><b>Convenience</b></h4>
-      <p>We will take care of all your <br> bus ticket reservation needs making <br> making it convinent for you.</p>
-    </b>
-    </div>
-    
-  </div>
-  <br>
-</div>
-
-<!-- Container (Contact Section) -->
-<div class="container-fluid bg-grey" style="background-image: linear-gradient(to bottom, rgba(32, 32, 32, 0.5) 0%,rgba(32, 32, 32, 0.5) 0%), url(https://pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png)">
-  <h2 class="text-center">CONTACT</h2>
-  <div class="row" style="padding-left: 15%; padding-top: 50px; padding-bottom: 50px;">
-    <div class="col-sm-4">
-      <p><span class="glyphicon glyphicon-map-marker"></span> Colombo, Sri lanka.</p>
-      <p><span class="glyphicon glyphicon-phone"></span>  +94 11 742 5484</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>  obtrs@Gmail.com</p>
-    </div>
-    <div class="col-sm-4">
-      <p><span class=""></span> Terms and conditions</p>
-      <p><span class=""></span> Privacy policy</p>
-      <p><span class=""></span> Service updates dates</p>
-    </div>
-    <div class="col-sm-4">
-      <p><span class=""></span> offers and special deals</p>
-      <p><span class=""></span> Agents and more</p>
-      <p><span class=""></span> Bus Operators and care providers</p>
-    </div>    
-  </div>
-</div>
-
 </body>
 </html>
