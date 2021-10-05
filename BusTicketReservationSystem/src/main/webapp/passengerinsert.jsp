@@ -12,6 +12,10 @@
 <title>Register</title>
 
 <style>
+	body{
+			color:white;
+	}
+	
 	.border{
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 25px;
@@ -78,7 +82,7 @@
 				}, 1000);
 		
 				setTimeout(function() {
-					window.location.href = 'homepage.jsp';
+					window.location.href = 'PassengerLogin.jsp';
 				}, 4000);
 			</script>
 			<%
@@ -101,34 +105,34 @@
 </script>
 
 <div class="container">
-<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h2>Passenger Registration</h2>
   <br>
   <form action="PassengerInsertServlet" method="post">
   
     <div class="form-group">
       <label for="fname">First Name:</label>
-      <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" required>
+      <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" style=" border-radius:50px;" required>
     </div>
     
     <div class="form-group">
       <label for="lname">Last Name:</label>
-      <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" required>
+      <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" style=" border-radius:50px;" required>
     </div>
     
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" style=" border-radius:50px;" required>
     </div>
     
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input onkeyup='check();' type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
+      <input onkeyup='check();' type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" style=" border-radius:50px;" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
     </div>
       
     <div class="form-group">
       <label for="pwd">Re-Enter Password:</label>
-      <input  onkeyup='check();' type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" required>
+      <input  onkeyup='check();' type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" style=" border-radius:50px;" required>
     </div>
     
     <div class="form-group">        
@@ -146,10 +150,12 @@
     
      <div class="form-group">
       <label for="lname">Contact No:</label>
-      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" required>
+      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" style=" border-radius:50px;" required>
     </div>
  	
-    <input type="submit" class="btn btn-warning btn-lg" value="Register" id="able">   
+
+    <input type="submit" class="btn btn-success btn-lg" value="Register" id="able">   
+
     
     <div class="form-check">
 		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">

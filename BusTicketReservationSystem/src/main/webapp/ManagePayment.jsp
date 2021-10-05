@@ -59,6 +59,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
+<%
+	if(session.getAttribute("mode") == null){ %>
+	     <script>
+			window.location.href = 'PassengerLogin.jsp';
+		</script>
+     <%}
+%>
+
 <body> 
         
  <script type="text/javascript">
@@ -82,10 +91,10 @@
  
  
  
-      <button id ="but1" onclick="showForm(this.id)" class="btn btn-default">Add Card</button>
+      <button id ="but1" onclick="showForm(this.id)" class="btn btn-warning">Add Card</button>
       
       <form action="addCardServlet" method="post"  >
-      <button id = "but2" name="submit1" onclick="showF(this.id)" class="btn btn-default" >Update Card</button>
+      <button id = "but2" name="submit1" onclick="showF(this.id)" class="btn btn-warning" >Update Card</button>
       </form>
       
       <br>
@@ -130,10 +139,14 @@
            <label>Expiry Date:</label><input type="text" pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
               </div>
            </div>
-           <input type="submit" value="Add Card" name="submit"  class="btn btn-primary">
-          
-        </form>         
+           <input type="submit"  value="Add Card" name="submit"  class="btn btn-primary">
+         
+        </form>
+                 
       </div>
+          
+          
+          
           
     <%
     ArrayList<String> cards = (ArrayList<String>)request.getAttribute("cardNos");
@@ -151,25 +164,32 @@
 		 
 		<form action="addCardServlet" method="post"   id="f3"  >     
          
-       
+        
 		<p>Select card to make payment: </p>
-		<select id="card" name="card">
+		<div class ="form-group col-lg-7">
+		<select id="card" name="card" class="form-control">
 		<%
 		for(int i = 0; i < cards.size(); i++) {
 		%>
-			<option value="<%= cards.get(i) %>"><%= cards.get(i) %></option>
+			<option id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
 		<%
 		}
 		%>
 		 
 		</select>
-		<input type="submit" value="Select" name="select" id ="b3" >
+		</div>
+		<input type="submit" value="Select" class="btn btn-primary" name="select" id ="b3" >
 		
 		</form>
 		<script type="text/javascript">
 		
 		 if(document.getElementById('card')!=null){
 	     document.getElementById('f1').style.display = "none";
+		 }
+		 
+
+		 if(document.getElementById('cards')==null){
+	     document.getElementById('b3').disabled=true;
 		 }
 	
          </script>
@@ -200,7 +220,7 @@
            </div>
            <div class="row">
               <div class ="form-group col-lg-3">
-          <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[0-9]{3}">
+          <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[]0-9]{3}">
           <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
            </div>
