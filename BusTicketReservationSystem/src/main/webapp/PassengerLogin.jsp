@@ -17,14 +17,6 @@
 
 </head>
 
-		<%
-     if("${userID}" == null || "${mode}" == null){ %>
-	     <script>
-			window.location.href = 'PassengrLogin.jsp';
-		</script>
-     <%}
-%>
-
 <style>
 		body{
 			color:white;
