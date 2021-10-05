@@ -118,7 +118,7 @@
       <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
         <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
         <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
@@ -167,7 +167,7 @@
     <br>
     <!-- <span style="color: rgb(255, 115, 22);">BTRS</span> -->
   <h1 style="color:white; font-size: 55px;">RESERVE YOUR <span style="color:#C3073F"> BUS TICKET </span> <br> NOW</h1> 
-  <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px; color:#C3073F">WE MADE BOOKING BUS TICKETS REVOLUTIONARY FOR EVERYONE</p> 
+  <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px; color:#C3073F">WE&nbsp&nbspMADE&nbsp&nbspBOOKING&nbsp&nbspBUS&nbsp&nbspTICKETS&nbsp&nbspREVOLUTIONARY&nbsp&nbspEVERYONE</p> 
 	<div class="row">
 	<form action="SelectBusServlet" method="POST" style="font-family:sanserif;">
 	<div>
