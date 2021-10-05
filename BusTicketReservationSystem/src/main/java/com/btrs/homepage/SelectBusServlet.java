@@ -34,7 +34,6 @@ public class SelectBusServlet extends HttpServlet {
 				request.setAttribute("arrival", arrival);
 				request.setAttribute("destination", destination);
 				request.setAttribute("x", x);
-				System.out.println("arrival: " + arrival.size());
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
 			} catch(Exception e) {
