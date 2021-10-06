@@ -8,8 +8,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
   <title>Personal Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+
 <link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -24,12 +23,6 @@
 	font-family: Life Savers;
 }
  
- 
-  .jumbotron {
-    background-color: #202020;
-    color: #fff;
-    padding: 100px 25px;
-  }
   .container-fluid {
     padding: 60px 50px;
   }
@@ -37,15 +30,6 @@
     background-color: #202020;
     color: white;
   }
-  .logo-small {
-    color: #202020;
-    font-size: 50px;
-  }
-  .logo {
-    color: #202020;
-    font-size: 200px;
-  }
-
   .item h4 {
     font-size: 19px;
     line-height: 1.375em;
@@ -86,14 +70,8 @@
       text-align: center;
       margin: 25px 0;
     }
-  }
-  ::-webkit-calendar-picker-indicator {
-	    filter: invert(1);
-	}
   </style>
 </head>
-
-<body>
 
  <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 

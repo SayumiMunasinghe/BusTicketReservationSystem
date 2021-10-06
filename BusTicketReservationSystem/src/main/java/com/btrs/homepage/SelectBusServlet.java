@@ -27,6 +27,7 @@ public class SelectBusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//on auto load of home page, get the drop-downs 
 		if(request.getParameter("dropdowns") != null) {
 			try {
 				String x = "1";
@@ -40,7 +41,6 @@ public class SelectBusServlet extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 		if(request.getParameter("submit") != null) {
 			String arrival = request.getParameter("arrival");
@@ -61,8 +61,7 @@ public class SelectBusServlet extends HttpServlet {
 					dis.forward(request, response);
 				}
 				for(int i = 0; i < busDetails.size(); i++) {
-					int seats = BusDBUtil.getRemainingSeats(busDetails.get(i).getBusID(), dateOfTravel, LocalTime.parse(busDetails.get(i).getTime()));
-					if(seats == 0)
+					if(busDetails.get(i).getRemainingSeats() == 0)
 						busDetails.remove(i);
 				}
 				request.setAttribute("busDetails", busDetails);
