@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.btrs.enterBusDetails.busDBUtil;
 
@@ -24,8 +25,9 @@ public class OrderManagementServlet extends HttpServlet {
 			int orderid = Integer.parseInt(request.getParameter("orderid"));
 			boolean status = BusDBUtil.deleteBooking(orderid);
 			if (status == true) {
-				String delete = "done";
-				request.setAttribute("delete", delete);
+				HttpSession session = request.getSession();
+				String flag = "done";
+				session.setAttribute("flag", flag);
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
 			}
@@ -79,8 +81,9 @@ public class OrderManagementServlet extends HttpServlet {
 				dis.forward(request, response);
 			}
 			else {
-				String result = "fail";
-				request.setAttribute("result", result);
+				HttpSession session = request.getSession();
+				String flag = "fail";
+				session.setAttribute("flag", flag);
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
 			}
