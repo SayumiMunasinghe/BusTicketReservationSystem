@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/SelectBusServlet")
 public class SelectBusServlet extends HttpServlet {
@@ -52,8 +53,10 @@ public class SelectBusServlet extends HttpServlet {
 				List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
 			
 				if(busDetails.isEmpty()) {
+					HttpSession session = request.getSession();
 					String flag = "empty";
-					request.setAttribute("flag", flag);
+					session.setAttribute("flag", flag);
+					
 					RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 					dis.forward(request, response);
 				}

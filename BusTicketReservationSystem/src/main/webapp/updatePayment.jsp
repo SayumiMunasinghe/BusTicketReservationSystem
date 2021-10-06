@@ -13,8 +13,9 @@
 	ArrayList<BusTimes> bt = (ArrayList<BusTimes>)request.getAttribute("busTimes");
 	if(bt.size() == 0 )
 	{
-		String update = "fail";
-		request.setAttribute("update", update);
+		HttpSession session2 = request.getSession();
+		String flag = "failure";
+		session2.setAttribute("flag", flag);
 		RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 		dis.forward(request, response);
 	}

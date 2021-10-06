@@ -29,7 +29,6 @@
 
 <%
 	List<BusDetails> bd = (List<BusDetails>)request.getAttribute("busDetails");
-	
 	for(int i = 0; i < bd.size(); i++) {
 		%>
 		<div><%

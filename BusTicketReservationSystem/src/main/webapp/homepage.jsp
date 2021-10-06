@@ -7,7 +7,7 @@
 <title>OBTRS: Home Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/4/41/Victoria_bus_logo.svg">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -86,6 +86,15 @@
   }
   ::-webkit-calendar-picker-indicator {
 	    filter: invert(1);
+	}
+	.alert-danger {
+	    color: #a94442;
+	    background-color: #f2dede;
+	    border-color: #ebccd1;
+	    width: 72.5%;
+	    margin-left: 14px;
+	    margin-top: 40px;
+	    margin-bottom: 0px;
 	}
   </style>
 </head>
@@ -209,54 +218,80 @@
            <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;">
           </div>
         </div>
-        <br><br><br>
+        
         <%  
-	String flag = (String)request.getAttribute("flag");
+    String flag = (String)session.getAttribute("flag");
 	if(flag == "empty") {%>
+	<br><br>
 		<div class="alert alert-danger">
-		<p>No buses available for your chosen route. Please select different locations.</p>
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">No buses available for your chosen route. Please select different locations.</p></div>
+		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
 		</div>
-		</br></br>
+		</div>
+		
 	<%
 	}
-	String status = (String)request.getAttribute("status");
-	if (status == "false") {
-	%>
+	//String status = (String)request.getAttribute("status");
+	if (flag == "false") {
+	%><br><br>
 	<div class="alert alert-danger">
-		<p>Something went wrong with your order. Please try again</p>
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Something went wrong with your order. Please try again</p></div>
+		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
+		</div>
 	</div>
-	</br></br>
 	<%	
 	}
-	String delete = (String)request.getAttribute("delete");
-	if (delete == "done") {
-	%>
-	<div class="alert alert-info">
-		<p>Your booking has been deleted. You will receive a refund within 2 working days.</p>
-	</div><br><br>
-	<%
-	}
-	String result = (String)request.getAttribute("result");
-	if (delete == "fail") {
-	%>
-	<div class="alert alert-warning">
-		<p>Your booking could not be updated.</p>
-	</div></br></br>
-	<%
-	}
-	String update = (String)request.getAttribute("update");
-	if (update == "fail") {
-	%>
-	<div class="alert alert-info">
-		<p>There are no other booking times available.</p>
-	</div><br><br>
-	<%
-	}
-%><br>
+	//String delete = (String)request.getAttribute("delete");
+	if (flag == "done") {
+	%><br><br>
+	<div class="alert alert-danger">
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Your booking has been deleted. You will receive a refund within 2 working days.</p></div>
+		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
+		</div>
 	</div>
-        <input type="submit" name="submit" value="FIND BUS"  class="btn btn-warning btn-lg" style="background-color:#C3073F; border-style:none;"><br><br><br>
+	<%
+	}
+	//String result = (String)request.getAttribute("result");
+	if (flag == "fail") {
+	%><br><br>
+	<div class="alert alert-danger">
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Your booking could not be updated.</p></div>
+		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
+		</div>
+	</div>
+	<%
+	}
+	//String update = (String)request.getAttribute("update");
+	if (flag == "failure") {
+	%><br><br>
+	<div class="alert alert-danger">
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">There are no other booking times available.</p></div>
+		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
+		</div>
+	</div>
+	<%
+	}
+%>
+	</div>
+        <input type="submit" id="submit" name="submit" value="FIND BUS"  class="btn btn-warning btn-lg" style="background-color:#C3073F; border-style:none; margin-top:20px;"><br><br><br>
       </div><br>
 	</form>
+	<script>
+			function enable() {
+				document.getElementById("submit").disabled = false;
+				window.location.href = 'temp.jsp';
+			}
+	</script>
+	<% if(flag!=null){ %>
+	<script>
+		document.getElementById("submit").disabled = true;
+	</script>
+	<%} %>
 </div>
 </body>
 </html>
