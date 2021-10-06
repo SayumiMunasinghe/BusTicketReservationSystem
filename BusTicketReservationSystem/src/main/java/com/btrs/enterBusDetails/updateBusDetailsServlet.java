@@ -85,6 +85,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 	    dis.forward(request, response);
 	    
 	}
+	//function to delete bus from database
 	if(request.getParameter("Remove Bus") != null) {
 		HttpSession session = request.getSession();
 		//session to get agency id
