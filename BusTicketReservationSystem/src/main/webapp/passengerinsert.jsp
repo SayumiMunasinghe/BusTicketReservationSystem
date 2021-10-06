@@ -206,7 +206,8 @@
     
     <% String msg = (String)request.getAttribute("msg");
 		if(msg == "1"){
-			%><div class="" id = "popupp">
+			%><br><br>
+			<div class="" id = "popupp">
 			  <div class="alert alert-success alert-dismissible fade in">
 			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			    <strong>You successfully registered!</strong> Redirecting....<span id="timer">5</span>

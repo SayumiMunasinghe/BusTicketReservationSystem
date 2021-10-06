@@ -18,6 +18,7 @@ body, html{
 	width: 100%;
 	height: 100%;
 	background-size:cover;
+	color: white;
    }
  
   .jumbotron {
@@ -150,6 +151,8 @@ body {font-family: "Lato", sans-serif;}
   width: 50%;
   border-left: none;
   height: 350px;
+  background-color: #f5f5f5;
+	 		
 }
 
 .big{
@@ -257,7 +260,7 @@ body {font-family: "Lato", sans-serif;}
 <h4 style="margin-left: 200px;">Hi <strong>${pass.fName}</strong>,</h4>
 <h2 style="margin-left: 200px; margin-bottom: -100px;">Settings</h2>
    </c:forEach>
-
+<br>
 <div class="big" style="">
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'Pwd')" id="defaultOpen">Password</button>
@@ -278,11 +281,11 @@ body {font-family: "Lato", sans-serif;}
   <div class="form-group">
 
       <label for="pwd1">Password:</label>
-      <input type="text" name="pwd" value="${pass.password}" class="form-control" id="pwd" onkeyup='check();' />
+      <input type="text" name="pwd" value="${pass.password}" style=" border-radius:50px;" class="form-control" id="pwd" onkeyup='check();' />
     </div>
     <div class="form-group">
       <label for="pwd2">Confirm Password:</label>
-      <input type="text"  class="form-control" name="conpwd" id="conpwd" placeholder="Re-enter password" onkeyup='check();' /> 
+      <input type="text"  class="form-control" name="conpwd" id="conpwd" style=" border-radius:50px;" placeholder="Re-enter password" onkeyup='check();' /> 
   		<span id='message'></span>
     </div>
 
@@ -308,7 +311,7 @@ body {font-family: "Lato", sans-serif;}
   <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone">
+      <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone" style=" border-radius:50px;">
     </div>
     
 
@@ -322,7 +325,7 @@ body {font-family: "Lato", sans-serif;}
 
 
 <div class="container">
-<div id="delete" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(237, 133, 135, 0.75) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
+<div id="delete" class="tabcontent" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h3>Delete My Account</h3>
    <div class="alert alert-danger">
     <strong>Warning!</strong> Once your account is delete this action cannot be reversed.
