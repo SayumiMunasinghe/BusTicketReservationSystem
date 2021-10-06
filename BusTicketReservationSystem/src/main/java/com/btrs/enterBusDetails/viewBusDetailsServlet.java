@@ -21,14 +21,19 @@ public class viewBusDetailsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		if(request.getParameter("view") != null) {
 		HttpSession session = request.getSession();
 		//session to get agency id
 		//int aID = (int)session.getAttribute("userID");
-		int aID= 1;
+		int aID= 2;
 		
+		String stat = "1";
 		try {
 			List <Bus> busDetails = busDBUtil.getBusDetails(aID);
 			request.setAttribute("busDetails", busDetails);
+			request.setAttribute("stats",stat);
+//			System.out.println(id);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -36,6 +41,7 @@ public class viewBusDetailsServlet extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
 		dis.forward(request, response);
 		
+		}
 		
 		
 	

@@ -3,7 +3,7 @@ package com.btrs.enterBusDetails;
 
 public class Bus {
 	//private int busID;
-	//private int aId;
+	private int id;
 	private String busNumber;
 	private int numberOfSeats;
 	private String busType;
@@ -18,10 +18,10 @@ public class Bus {
 	
 	
 	//overloaded constructor
-	public Bus( String busNumber, int numberOfSeats, String busType, int AC,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
+	public Bus( int id,String busNumber, int numberOfSeats, String busType, int AC,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
 		//public Bus( String busNumber, int numberOfSeats, String busType,String uTime,String uArrival, String uDestination,String dTime,String dArrival, String dDestination,double price) {
 		//this.busID=busID;
-	//this.aId=aId;
+	this.id=id;
 	this.busNumber=busNumber;
 	this.numberOfSeats=numberOfSeats;
 	this.busType=busType;
@@ -97,5 +97,10 @@ public class Bus {
 
 	public double getPrice() {
 		return price;
+	}
+
+
+	public int getId() {
+		return id;
 	}
 }
