@@ -6,22 +6,23 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  
   <title>Personal Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
 
-<link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/4/41/Victoria_bus_logo.svg">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
- <style>
+<style>
    body, html{
 	width: 100%;
 	height: 100%;
 	background-size:cover;
-   }
+	font-family: Life Savers;
+}
  
  
   .jumbotron {
@@ -73,8 +74,8 @@
     color: #fff !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #202020 !important;
-    background-color: #fff !important;
+    color: #white !important;
+    background-color: #C3073F !important;
   }
   .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -104,11 +105,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color: rgb(255, 115, 22);">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" ><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
         <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		           String loginMode = (String)session.getAttribute("mode");
