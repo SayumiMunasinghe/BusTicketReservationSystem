@@ -7,12 +7,37 @@
 <html>
 <head>
  <style>
+ 
+    body{
+			
+	}
+ 
     .border{
             top:20%;
             left : 35%;
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 20px;
-	 		background-color:  ;
+	 	    color:white;
+	 		position:absolute;
+	}
+	
+	#f2{
+	
+	        top:20%;
+            left : 35%;
+	  		padding: 20px 35px 20px 35px;
+	  		border-radius: 20px;
+	 		color:white;
+	 		position:absolute;
+	}
+	
+	#f3{
+	
+	        top:20%;
+            left : 35%;
+	  		padding: 20px 35px 20px 35px;
+	  		border-radius: 20px;
+	 		color:white;
 	 		position:absolute;
 	}
 	
@@ -29,27 +54,9 @@
             left : 28%;
             position:absolute;
 	 }
-	 #f2{
-	   
-	        top:30%;
-            left : 35%;
-	  		padding: 20px 35px 20px 35px;
-	  		border-radius: 20px;
-	  		width:467px;
-	 		background-color:  ;
-	 		position:absolute;
-	 		
-	 }
-	 #f3{
-	 
-	        top:20%;
-            left : 35%;
-	  		padding: 20px 35px 20px 35px;
-	  		border-radius: 20px;
-	  		width:467px;
-	 		background-color:  ;
-	 		position:absolute;
-	 }
+	
+
+
     </style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -99,10 +106,10 @@
       
       <br>
       <br>
-     <div class="border">
+     <div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
      
     
-  
+ 
        <form action="addCardServlet" method="post" id="f1" >
        
          <label>
@@ -161,12 +168,12 @@
         <% String status = (String)request.getAttribute("status");
 		if(status == "1"){
 			%>
-		 
-		<form action="addCardServlet" method="post"   id="f3"  >     
+		 <div class="border2" >
+		<form action="addCardServlet" method="post"   id="f3"  style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)" >     
          
         
 		<p>Select card to make payment: </p>
-		<div class ="form-group col-lg-7">
+		<div class ="form-group col-lg-12">
 		<select id="card" name="card" class="form-control">
 		<%
 		for(int i = 0; i < cards.size(); i++) {
@@ -181,6 +188,7 @@
 		<input type="submit" value="Select" class="btn btn-primary" name="select" id ="b3" >
 		
 		</form>
+		</div>
 		<script type="text/javascript">
 		
 		 if(document.getElementById('card')!=null){
@@ -200,26 +208,27 @@
         <% String stats = (String)request.getAttribute("stats");
 		if(stats != "1"){
 			%>
+			<div class="border3" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
 		<form action="updateCardServlet" method="post" id="f2">
 		<c:forEach var="cardDetails" items="${cardDetails}">
           <div class="row">
-              <div class ="form-group col-lg-7">
+              <div class ="form-group col-lg-12">
           <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"  readonly>
               </div>
            </div>
             
            <div class="row">
-              <div class ="form-group col-lg-7">
+              <div class ="form-group col-lg-12">
           <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}"  readonly>
               </div>
           </div>
           <div class="row">
-              <div class ="form-group col-lg-7">
+              <div class ="form-group col-lg-12">
           <label>Card Holder Name:</label><input type="text" value="${cardDetails.cHName}" class="form-control" name="hName">
               </div>
            </div>
            <div class="row">
-              <div class ="form-group col-lg-3">
+              <div class ="form-group col-lg-6">
           <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[]0-9]{3}">
           <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
@@ -228,6 +237,7 @@
            <input type="submit" value="Remove Card" name="delete" id="b2" class="btn btn-danger">
            </c:forEach>
         </form>
+        </div>
         <script type="text/javascript">
 		
 		 if(document.getElementById('c')!=null){
