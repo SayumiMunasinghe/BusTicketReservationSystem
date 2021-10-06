@@ -12,14 +12,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-	<link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/4/41/Victoria_bus_logo.svg">
+	<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
 <title>Register</title>
 
 <style>
    body, html{
-			width: 100%;
-			height: 100%;
-			background-size:cover;
+				width: 100%;
+				height: 100%;
+				background-size:cover;
+				font-family: Life Savers;
    }
 
   .jumbotron {
@@ -76,13 +77,13 @@
   .navbar li a, .navbar .navbar-brand {
   					color: #fff !important;
   }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-				    color: #202020 !important;
-				    background-color: #fff !important;
+   .navbar-nav li a:hover, .navbar-nav li.active a {
+				    color: #white !important;
+				    background-color: #C3073F !important;
   }
   .navbar-default .navbar-toggle {
-  				    border-color: transparent;
-    				color: #fff !important;
+				    border-color: transparent;
+				    color: #fff !important;
   }
   
   @media screen and (max-width: 768px) {
@@ -156,11 +157,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color:#d19300;">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" ><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
         <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		           String loginMode = (String)session.getAttribute("mode");
