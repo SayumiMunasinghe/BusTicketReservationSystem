@@ -6,40 +6,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  <title>Personal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
  <style>
- 
-    body{
-			
-	}
- 
-    .border{
+     
+     .gota{
             top:20%;
             left : 35%;
-	  		padding: 20px 35px 20px 35px;
+	  		padding:20px 35px 20px 35px;
 	  		border-radius: 20px;
 	 	    color:white;
-	 		position:absolute;
+	 	    position:absolute;
+	 	    
+	 		
 	}
-	
-	#f2{
-	
-	        top:20%;
-            left : 35%;
-	  		padding: 20px 35px 20px 35px;
-	  		border-radius: 20px;
-	 		color:white;
-	 		position:absolute;
-	}
-	
-	#f3{
-	
-	        top:20%;
-            left : 35%;
-	  		padding: 20px 35px 20px 35px;
-	  		border-radius: 20px;
-	 		color:white;
-	 		position:absolute;
-	}
+     
 	
 	#but1 {
 	           
@@ -53,18 +46,87 @@
 	        top:29%;
             left : 28%;
             position:absolute;
-	 }
+            
+            }
+  body, html{
+	width: 100%;
+	height: 100%;
+	background-size:cover;
+	font-family: Life Savers;
+}
+ 
+ 
+  .jumbotron {
+    background-color: #202020;
+    color: #fff;
+    padding: 100px 25px;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #202020;
+    color: white;
+  }
+  .logo-small {
+    color: #202020;
+    font-size: 50px;
+  }
+  .logo {
+    color: #202020;
+    font-size: 200px;
+  }
+
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+
+  .navbar {
+    margin-bottom: 0;
+    background-color: transparent;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #white !important;
+    background-color: #C3073F !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  ::-webkit-calendar-picker-indicator {
+	    filter: invert(1);
+	}
+	 
 	
 
 
     </style>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <%
@@ -75,8 +137,68 @@
      <%}
 %>
 
-<body> 
-        
+
+
+
+ <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+        <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
+		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
+		           String loginMode = (String)session.getAttribute("mode");
+				if(loginStatus == null || loginMode == null){ %> 
+					 <li><a class="" type="button" data-toggle="dropdown">REGISTER</a>
+			            <ul class="dropdown-menu" style="background-color: black;">
+			              <li><a href="passengerinsert.jsp" >Register as Passenger</a></li>
+			              <li><a href="agencyRegistration.jsp">Register as Agency</a></li>
+			            </ul>
+			          </li>
+			          <li><a class="" type="button" data-toggle="dropdown">LOGIN</a>
+			            <ul class="dropdown-menu" style="background-color: black;">
+			              <li><a href="PassengerLogin.jsp" >Login as Passenger</a></li>
+			              <li><a href="AgencyLogin.jsp">Login as Agency</a></li>
+			            </ul>
+			          </li>
+				<% }else if (loginMode == "passenger"){ %>  
+					<li><a class="" type="button" data-toggle="dropdown">MANAGE PASSENGER</a>
+		            <ul class="dropdown-menu" style="background-color: black;">
+		              <li><a href="ManagePassenger.jsp" >Manage Passenger Details</a></li>
+		              <li><a href="ManagePayment.jsp">Manage Payment</a></li>
+		              <li><a href="logout.jsp">Logout</a></li>
+		            </ul>
+				<% }else if (loginMode == "agency"){ %> 
+					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
+		              <ul class="dropdown-menu" style="background-color: black;">
+		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+		              <li><a href="logout.jsp">Logout</a></li>
+		            </ul>
+				<% } else { 
+					session.removeAttribute("userID");
+					session.removeAttribute("mode");
+				%> 
+					 <script>
+					  window.location.href = 'homepage.jsp';
+					 </script> 
+				<% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    
  <script type="text/javascript">
          
  
@@ -106,10 +228,10 @@
       
       <br>
       <br>
-     <div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
      
-    
- 
+     
+    <div class="container">
+        <div class="gota">
        <form action="addCardServlet" method="post" id="f1" >
        
          <label>
@@ -131,26 +253,27 @@
            <br>
            <br>
            <div class="row">
-              <div class ="form-group col-lg-7">
+              <div class ="form-group col-lg-5">
            <label>Card Number <span class="glyphicon glyphicon-credit-card"></span> :</label><input type ="text" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" class="form-control" name="cno" placeholder="xxxx-xxxx-xxxx-xxxx" required>
               </div>         
            </div>
            <div class="row">
-              <div class ="form-group col-lg-7">
+              <div class ="form-group col-lg-5" >
            <label>Card Holder Name:</label><input type="text" name="hName" class="form-control" required >
               </div>
            </div>
            <div class="row">
-              <div class ="form-group col-lg-3">
+              <div class ="form-group col-lg-1" style="width:9.999999996%">
            <label>CVV:</label><input type="text" name="cvv" pattern="[0-9]{3}" class="form-control" width="50" required><br>
            <label>Expiry Date:</label><input type="text" pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
               </div>
            </div>
+           
            <input type="submit"  value="Add Card" name="submit"  class="btn btn-primary">
          
         </form>
-                 
-      </div>
+      </div>     
+    </div>
           
           
           
@@ -168,13 +291,13 @@
         <% String status = (String)request.getAttribute("status");
 		if(status == "1"){
 			%>
-		 <div class="border2" >
-		<form action="addCardServlet" method="post"   id="f3"  style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)" >     
+		<div class="container">
+		<form action="addCardServlet" method="post"   id="f3"   >     
          
         
 		<p>Select card to make payment: </p>
-		<div class ="form-group col-lg-12">
-		<select id="card" name="card" class="form-control">
+		<div class ="form-group col-lg-3" style="width:18.166666659%">
+		<select id="card" name="card" class="form-control" >
 		<%
 		for(int i = 0; i < cards.size(); i++) {
 		%>
@@ -208,27 +331,27 @@
         <% String stats = (String)request.getAttribute("stats");
 		if(stats != "1"){
 			%>
-			<div class="border3" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
-		<form action="updateCardServlet" method="post" id="f2">
+			<div class="container">
+		<form action="updateCardServlet" method="post" id="f2" >
 		<c:forEach var="cardDetails" items="${cardDetails}">
           <div class="row">
-              <div class ="form-group col-lg-12">
+              <div class ="form-group col-lg-3"style="width:18.166666659%">
           <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"  readonly>
               </div>
            </div>
             
            <div class="row">
-              <div class ="form-group col-lg-12">
+              <div class ="form-group col-lg-3"style="width:18.166666659%">
           <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}"  readonly>
               </div>
           </div>
           <div class="row">
-              <div class ="form-group col-lg-12">
+              <div class ="form-group col-lg-3"style="width:18.166666659%">
           <label>Card Holder Name:</label><input type="text" value="${cardDetails.cHName}" class="form-control" name="hName">
               </div>
            </div>
            <div class="row">
-              <div class ="form-group col-lg-6">
+              <div class ="form-group col-lg-1" style="width: 9.999999996%">
           <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[]0-9]{3}">
           <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
