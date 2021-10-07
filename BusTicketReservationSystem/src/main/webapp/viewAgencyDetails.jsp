@@ -2,25 +2,94 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-<title>View Agency Data</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   <link href="webpage/home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="webpage/home/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="webpage/home/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="webpage/home/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="webpage/home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="webpage/home/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> 
-  <link href="webpage/home/assets/css/style.css" rel="stylesheet"> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  <title>Manage Details</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<style>
+   body, html{
+	width: 100%;
+	height: 100%;
+	background-size:cover;
+	font-family: Life Savers;
+}
+ 
+ 
+  .jumbotron {
+    background-color: #202020;
+    color: #fff;
+    padding: 100px 25px;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #202020;
+    color: white;
+  }
+  .logo-small {
+    color: #202020;
+    font-size: 50px;
+  }
+  .logo {
+    color: #202020;
+    font-size: 200px;
+  }
+
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+
+  .navbar {
+    margin-bottom: 0;
+    background-color: transparent;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #white !important;
+    background-color: #C3073F !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  ::-webkit-calendar-picker-indicator {
+	    filter: invert(1);
+	}
+  </style>
 </head>
 
 <%
@@ -31,8 +100,7 @@
      <%}
 %>
 
-<body onload="myFunction()">
-
+<body style="background-image: url('webpage/home/assets/img/bg.jpg');" onload="myFunction()">
 
 <form id="autosub" class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
     <input type="hidden" name="viewDetails" value="Manage Agency Details"> 
@@ -45,58 +113,103 @@
 	}
 	</script>
 
-  <header id="header" class="header-top">
-    <div class="container" >
-      <h1><a href="index.html">OnlineBTRS</a></h1>
-      <h2>We made booking <span>Bus Tickets </span> Revolutionary for Everyone</h2>
-      <nav id="navbar" class="navbar" style="background-color:inherit">
-        <ul style="background-color:inherit">
-          <li><a class="nav-link active" href="TempHomepage.jsp">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-                <% Integer loginStatus = (Integer)session.getAttribute("userID");
-		            String loginMode = (String)session.getAttribute("mode");
-			 	if(loginStatus == null || loginMode == null){ %> 
-          <li><a class="nav-link" href="#register">Register</a></li>
-          <li><a class="nav-link" href="#login">Login</a></li>
-             	<% }else if (loginMode == "passenger"){ %>  
-          <li><a class="nav-link" onclick="autoPassenger()">Manage Passenger</a></li>
-                <% }else if (loginMode == "agency"){ %> 
-          <li><a class="nav-link" onclick="autoAgency()">Manage Agency</a></li>
-                <% } else { 
+
+ 
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+        <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
+		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
+		           String loginMode = (String)session.getAttribute("mode");
+				if(loginStatus == null || loginMode == null){ %> 
+					 <li><a class="" type="button" data-toggle="dropdown">REGISTER</a>
+			            <ul class="dropdown-menu" style="background-color: black;">
+			              <li><a href="passengerinsert.jsp" >Register as Passenger</a></li>
+			              <li><a href="agencyRegistration.jsp">Register as Agency</a></li>
+			            </ul>
+			          </li>
+			          <li><a class="" type="button" data-toggle="dropdown">LOGIN</a>
+			            <ul class="dropdown-menu" style="background-color: black;">
+			              <li><a href="PassengerLogin.jsp" >Login as Passenger</a></li>
+			              <li><a href="AgencyLogin.jsp">Login as Agency</a></li>
+			            </ul>
+			          </li>
+				<% }else if (loginMode == "passenger"){ %>  
+					<li><a class="" type="button" data-toggle="dropdown">MANAGE PASSENGER</a>
+		            <ul class="dropdown-menu" style="background-color: black;">
+		              <li><a href="ManagePassenger.jsp" >Manage Passenger Details</a></li>
+		              <li><a href="ManagePayment.jsp">Manage Payment</a></li>
+		              <li><a href="logout.jsp">Logout</a></li>
+		            </ul>
+				<% }else if (loginMode == "agency"){ %> 
+					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
+		              <ul class="dropdown-menu" style="background-color: black;">
+		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+		              <li><a href="logout.jsp">Logout</a></li>
+		            </ul>
+				<% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
-				 %> 
+				%> 
 					 <script>
-					  window.location.href = 'TempHomepage.jsp';
+					  window.location.href = 'homepage.jsp';
 					 </script> 
-				 <% } %>
-        </ul>
-        <script>
-          function autoAgency(){
-        	  <% String button = "Agency";
-        	     session.setAttribute("Agency", button);%>
-        	     window.location.href = 'TempHomepage.jsp';
-          }
-          
-          function autoPassenger(){
-        	  <% String button2 = "Passenger";
-        	     session.setAttribute("Passenger", button2);%>
-        	     window.location.href = 'TempHomepage.jsp';
-          }
-        </script>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+				<% } %>
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
+  
 
 
-<br><br><br><br><br>
 
 <div style="text-align: center;">
-      <button id ="1" onclick="buttAction(this.id)" class="btn btn-warning">View Details</button>
-      <button id = "2" onclick="buttAction(this.id)" class="btn btn-warning">Update Details</button>
-      <button id = "3" onclick="buttAction(this.id)" class="btn btn-warning">Manage Bus</button>
-      <button id = "4" onclick="buttAction(this.id)" class="btn btn-warning">Delete Account</button>
+     <div id ="buttSet">
+      <button id ="1" onclick="buttAction(this.id)" class="butt" active>View Details</button>
+      <button id = "2" onclick="buttAction(this.id)" class="butt">Update Details</button>
+      <button id = "3" onclick="buttAction(this.id)" class="butt">Manage Bus</button>
+      <button id = "4" onclick="buttAction(this.id)" class="butt">Delete Account</button>
+     </div>
+      
+      <script>
+		// Add active class to the current button (highlight it)
+		var header = document.getElementById("buttSet");
+		var btns = header.getElementsByClassName("burr");
+		for (var i = 0; i < btns.length; i++) {
+		  btns[i].addEventListener("click", function() {
+		  var current = document.getElementsByClassName("active");
+		  current[0].className = current[0].className.replace(" active", "");
+		  this.className += " active";
+		  });
+		}
+	  </script>
+      
+      <style>
+	      .active, .butt:hover {
+		  background-color: #666;
+		  color: pink;
+			}
+        .butt{
+		    border-radius:20px;
+		    padding:10px 20px;
+		  }
+		  .butt:hover{
+		    color: #white !important;
+		    background-color: #C3073F !important;
+		  }
+      </style>
       
       <br><br>
       

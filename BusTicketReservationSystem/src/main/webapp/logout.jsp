@@ -16,7 +16,7 @@ session.removeAttribute("mode");
 
 if(session.getAttribute("userID") == null){ %>
 	<script>
-	window.location.href = 'TempHomepage.jsp';
+	window.location.href = 'homepage.jsp';
 	</script>
 <% }
 

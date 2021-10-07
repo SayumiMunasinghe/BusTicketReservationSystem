@@ -9,12 +9,16 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/4/41/Victoria_bus_logo.svg">
+
+ <link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">  
 
+	<link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+	
 </head>
 
 <style>
@@ -25,6 +29,7 @@
 					width: 100%;
 					height: 100%;
 					background-size:cover;
+					ffont-family: 'Manrope', sans-serif;
    		}
 	
 	.border{
@@ -32,6 +37,13 @@
 	  		border-radius: 25px;
 	 		background-color: #f5f5f5;
 	 		width: 1000px;
+	 		margin: auto;
+	 		margin-top: 150px;
+	 	
+	}
+	#poppy{
+	  		border-radius: 25px;
+	  		width: 1000px;
 	 		margin: auto;
 	}
  .jumbotron {
@@ -81,15 +93,18 @@
 		  }
   .navbar li a, .navbar .navbar-brand {
 		    color: #fff !important;
-		  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-		    color: #202020 !important;
-		    background-color: #fff !important;
-		  }
+ }
+  
+   .navbar-nav li a:hover, .navbar-nav li.active a {
+			    color: #white !important;
+			    background-color: #C3073F !important;
+  }
+  
   .navbar-default .navbar-toggle {
-	    border-color: transparent;
-	    color: #fff !important;
-	  }
+		    border-color: transparent;
+		    color: #fff !important;
+  }
+  
   @media screen and (max-width: 768px) {
     .col-sm-4 {
 		      text-align: center;
@@ -101,8 +116,6 @@
 			}
 </style>
 
-<body>
-
  <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -113,11 +126,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="homepage.jsp">O<span style="color:#d19300;">BTRS</span> </a>
+      <a class="navbar-brand" href="homepage.jsp" style="font-size: 28px;">O<span style="color:#C3073F;">BTRS</span> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" ><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
+      <ul style="font-size: 18px;" class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a href="https://peterpanbus.com/company/our-story/">ABOUT</a></li>
         <li class="nav-item"><a href="https://peterpanbus.com/help/">CONTACT</a></li>
 		        <% Integer loginStatus = (Integer)session.getAttribute("userID");
 		           String loginMode = (String)session.getAttribute("mode");
@@ -161,7 +174,6 @@
   </div>
 </nav>
 
-		<br><br><br><br><br><br>	
 		<div class="container">
 		
 		<div class="border"  style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
@@ -185,9 +197,42 @@
 	    
 	    <input type="submit" class="btn btn-success btn-lg" value="Login">
 	  </form>
-	  </div>
-	  
+	  </div>	  
 	</div>
+
+<% String msg = (String)request.getAttribute("pmsg");
+		if(msg == "1"){
+			%>
+			<div class="" id = "poppy">
+			  <div class="alert alert-success alert-dismissible fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>You successfully logged in!</strong> Redirecting....<span id="timer">3</span>
+			  </div>
+			</div>
+			<script>
+				var seconds = document.getElementById("timer").textContent;
+				var countdown = setInterval(function() {
+					seconds--;
+					document.getElementById("timer").textContent = seconds;
+					if (seconds <= 0)
+						clearInterval(countdown);
+				}, 1000);
+		
+				setTimeout(function() {
+					window.location.href = 'homepage.jsp';
+				}, 3000);
+			</script>
+			<%
+		}
+		String nmsg = (String)request.getAttribute("nmsg");
+		if(nmsg == "2"){%>
+			<div class="" id = "poppy">
+		    <div class="alert alert-danger alert-dismissible">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Oops! </strong>That email and password combination is not valid.
+	  		</div>
+		    </div>
+		<%}%> 
 	
 <script>
 //the below code shows the password to user

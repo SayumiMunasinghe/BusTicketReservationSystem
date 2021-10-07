@@ -70,8 +70,9 @@ public class PaymentServlet extends HttpServlet {
 				dis.forward(request, response);
 			}
 			else {
-				status = "false";
-				request.setAttribute("status", status);
+				HttpSession session = request.getSession();
+				String flag = "false";
+				session.setAttribute("flag", flag);
 				RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 				dis.forward(request, response);
 			}

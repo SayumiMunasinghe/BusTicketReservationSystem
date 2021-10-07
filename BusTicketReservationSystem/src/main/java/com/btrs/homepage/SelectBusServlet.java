@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/SelectBusServlet")
 public class SelectBusServlet extends HttpServlet {
@@ -26,6 +27,7 @@ public class SelectBusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//on auto load of home page, get the drop-downs 
 		if(request.getParameter("dropdowns") != null) {
 			try {
 				String x = "1";
@@ -39,7 +41,6 @@ public class SelectBusServlet extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 		if(request.getParameter("submit") != null) {
 			String arrival = request.getParameter("arrival");
@@ -52,14 +53,15 @@ public class SelectBusServlet extends HttpServlet {
 				List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
 			
 				if(busDetails.isEmpty()) {
+					HttpSession session = request.getSession();
 					String flag = "empty";
-					request.setAttribute("flag", flag);
+					session.setAttribute("flag", flag);
+					
 					RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 					dis.forward(request, response);
 				}
 				for(int i = 0; i < busDetails.size(); i++) {
-					int seats = BusDBUtil.getRemainingSeats(busDetails.get(i).getBusID(), dateOfTravel, LocalTime.parse(busDetails.get(i).getTime()));
-					if(seats == 0)
+					if(busDetails.get(i).getRemainingSeats() == 0)
 						busDetails.remove(i);
 				}
 				request.setAttribute("busDetails", busDetails);

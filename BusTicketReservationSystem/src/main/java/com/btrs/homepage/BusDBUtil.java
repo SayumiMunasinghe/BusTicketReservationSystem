@@ -87,8 +87,10 @@ public class BusDBUtil {
 				double seatPrice = rs.getDouble(5);
 				int AC = rs.getInt(6);
 				String time = rs.getString(7);
-
-				BusDetails b = new BusDetails(busID, busNumber, noOfSeats, busType, seatPrice, AC, arrival, destination, time);
+				LocalTime tempTime = LocalTime.parse(time);
+				
+				int remainingSeats = getRemainingSeats(busID, SelectBusServlet.dateOfTravel, tempTime);
+				BusDetails b = new BusDetails(busID, busNumber, noOfSeats, busType, seatPrice, AC, arrival, destination, time, remainingSeats);
 				bd.add(b);
 			}
 
