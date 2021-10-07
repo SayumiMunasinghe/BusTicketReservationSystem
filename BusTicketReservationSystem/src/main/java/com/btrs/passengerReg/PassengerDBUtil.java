@@ -16,6 +16,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	private static Connection con = null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
+	private static DatabaseConnection db;
 	//til here
 	
 
@@ -26,7 +27,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		//validate
 		try {
 			//copy for db connection for util file
-			con = DatabaseConnection.initializeDatabase();
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			String sql = "SELECT * FROM passenger WHERE pid= "+userID+" ";
 			rs = stmt.executeQuery(sql);
@@ -59,7 +62,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		
 		try {
 			//copy for db connection for util file
-			con = DatabaseConnection.initializeDatabase(); //make connection with db using DatabaseConnection class
+//			con = DatabaseConnection.initializeDatabase(); //make connection with db using DatabaseConnection class
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			String sql = "SELECT * FROM passenger WHERE email='"+email+"'and password='"+pw+"'";
 			rs = stmt.executeQuery(sql);
@@ -86,7 +91,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		try {
 			
 			//sql statement to insert the new passenger details to the db
-			con = DatabaseConnection.initializeDatabase();
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			
 			//the email field in the database is UNIQUE so if email already exist will display an error when inserting
@@ -119,7 +126,9 @@ public class PassengerDBUtil implements PersonDatabase {
 			
 			//sql statement to insert the new passenger details to the db
 			//just call this function to create connection to db
-			con = DatabaseConnection.initializeDatabase(); 
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			
 			String sql = "select pid from passenger where email '"+email+"'";
@@ -143,7 +152,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		boolean isUpdated = false;
 		
 		try {
-			con = DatabaseConnection.initializeDatabase(); 
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			
 			//below sql for update passenger password where the parameter pid = db pid
@@ -175,7 +186,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		boolean isUpdated = false;
 		
 		try {
-			con = DatabaseConnection.initializeDatabase(); 
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			
 			//below sql for update passenger phone where the parameter pid = db pid
@@ -207,7 +220,9 @@ public class PassengerDBUtil implements PersonDatabase {
 		boolean isDeleted = false;
 		
 		try {
-			con = DatabaseConnection.initializeDatabase();
+//			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 
 			String sql = "DELETE FROM passenger WHERE pid = " + userID + "";
