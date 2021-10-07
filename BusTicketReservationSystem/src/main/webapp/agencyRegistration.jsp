@@ -108,6 +108,12 @@
 	.p-t-180 {
 	    padding-top: 80px;
 	}
+	.wrapper--w780{
+	max-width: 1100px;
+	}
+	input {
+    width: 380px;
+    }
 	
 	/* The message box is shown when the user clicks on the password field */
 #message {
@@ -212,7 +218,7 @@
                          <input type="password" id="psw" name="password"
 							class="input--style-3"
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password"  required>
+							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onkeyup="passMatch2()" placeholder="Password"  required>
                         </div>
                         
                         <div id="message" style="display: none">
@@ -232,15 +238,12 @@
 			     		</div>
                         
                         <div class="input-group">
-                            <input type="password" name="confirmPassword" id="cpws" class="input--style-3"  placeholder="Confirm Password"  required>
+                            <input type="password" name="confirmPassword" id="cpws" class="input--style-3"  placeholder="Confirm Password" onfocusout="passMatch()" required>
                         </div>
                         <div class="input-group">
                             <input type="text" name="userName" placeholder="Enter username" class="input--style-3" required>
                         </div>
-                        
-                       
-                        
-                        
+                                            
                    				<% String popup = (String)request.getAttribute("popup");
 							if(popup == "1"){
 								%><div class="" id="popupp">
@@ -263,12 +266,14 @@
 							}%>
                         
                         <div class="p-t-10">
-                            <button class="btn btn--pill" style="background-color:rgba(149, 7, 64, 0.87)" type="submit">REGISTER</button>
+                            <button class="btn btn--pill" style="background-color:rgba(149, 7, 64, 0.87)" id="regButt" type="submit">REGISTER</button>
                         </div>
                     </form>
                     
                 </div>
                  <div class="card-heading">
+                 
+                 
                  </div>
             </div>
              
@@ -277,15 +282,30 @@
     </div>
 
 <script type="text/javascript">
-	    function Validate() {
-	        var password = document.getElementById("psw").value;
+
+	    function passMatch(){
+	    	var password = document.getElementById("psw").value;
 	        var confirmPassword = document.getElementById("cpws").value;
 	        if (password != confirmPassword) {
+	        	document.getElementById("regButt").disabled = true;
 	            alert("Passwords do not match.");
 	            return false;
+	        }else if (password == confirmPassword){
+	        	document.getElementById("regButt").disabled = false;
 	        }
-	        return true;
 	    }
+	    
+	    function passMatch2(){
+	    	var password = document.getElementById("psw").value;
+	        var confirmPassword = document.getElementById("cpws").value;
+	    	if (password == confirmPassword){
+	        	document.getElementById("regButt").disabled = false;
+	        } else if (password != confirmPassword){
+	        	document.getElementById("regButt").disabled = true;
+	        }
+	    }
+	    
+	    
 	    
 	    var myInput = document.getElementById("psw");
 	    var letter = document.getElementById("letter");
