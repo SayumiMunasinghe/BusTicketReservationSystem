@@ -13,6 +13,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 	<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
+<link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+
 <title>Register</title>
 
 <style>
@@ -20,7 +22,7 @@
 				width: 100%;
 				height: 100%;
 				background-size:cover;
-				font-family: Life Savers;
+				font-family: 'Manrope', sans-serif;
    }
 
   .jumbotron {
@@ -107,14 +109,24 @@
 	 		background-color: #f5f5f5;
 	 		width: 1000px;
 	 		margin: auto;
+	 		margin-top: 90px;
+	}
+	#poppy{
+	  		border-radius: 25px;
+	  		width: 1000px;
+	 		margin: auto;
 	}
 		
 	/* The message box is shown when the user clicks on the password field */
 	#message {
 	  display:none;
-	  padding-left: 35px;
+	  padding-left: 150px;
 	}
 	
+	#msg{
+		display: none;
+		padding-left: 150px;
+	}
 	/* Add a green text color and a checkmark when the requirements are right */
 	.valid {
 		  color: green;
@@ -150,6 +162,7 @@
  <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
 <nav class="navbar navbar-default navbar-fixed-top">
+
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -204,32 +217,7 @@
     </div>
   </div>
 </nav>
-    
-    <% String msg = (String)request.getAttribute("msg");
-		if(msg == "1"){
-			%><br><br>
-			<div class="" id = "popupp">
-			  <div class="alert alert-success alert-dismissible fade in">
-			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			    <strong>You successfully registered!</strong> Redirecting....<span id="timer">5</span>
-			  
-			  </div>
-			</div>
-			<script>
-				var seconds = document.getElementById("timer").textContent;
-				var countdown = setInterval(function() {
-					seconds--;
-					document.getElementById("timer").textContent = seconds;
-					if (seconds <= 0)
-						clearInterval(countdown);
-				}, 1000);
-		
-				setTimeout(function() {
-					window.location.href = 'PassengerLogin.jsp';
-				}, 4000);
-			</script>
-			<%
-		}%> 
+
 
 <script>
 //front end validation to check if pwd == confirm pwd
@@ -247,39 +235,43 @@
 }
 </script>
 
-<br><br><br><br>
 <div class="container">
 <div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
   <h2>Passenger Registration</h2>
   <br>
-  <form action="PassengerInsertServlet" method="post">
+  <form class="form-horizontal" action="PassengerInsertServlet"  method="post">
   
     <div class="form-group">
-      <label for="fname">First Name:</label>
+      <label  class="control-label col-sm-2" for="fname">First Name:</label>
+       <div class="col-sm-10">
       <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="fname" style=" border-radius:50px;" required>
-    </div>
+    </div></div>
     
     <div class="form-group">
-      <label for="lname">Last Name:</label>
+      <label  class="control-label col-sm-2" for="lname">Last Name:</label>
+       <div class="col-sm-10">
       <input type="text" class="form-control" id="lname" placeholder="Enter last name" name="lname" style=" border-radius:50px;" required>
-    </div>
+    </div></div>
     
     <div class="form-group">
-      <label for="email">Email:</label>
+      <label  class="control-label col-sm-2" for="email">Email:</label>
+       <div class="col-sm-10">
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" style=" border-radius:50px;" required>
-    </div>
+    </div></div>
     
     <div class="form-group">
-      <label for="pwd">Password:</label>
+      <label  class="control-label col-sm-2" for="pwd">Password:</label>
+       <div class="col-sm-10">
       <input onkeyup='check();' type="password" class="form-control" id="pwd1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" style=" border-radius:50px;" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="pwd" required>
-    </div>
+    </div></div>
       
     <div class="form-group">
-      <label for="pwd">Re-Enter Password:</label>
+      <label  class="control-label col-sm-2" for="pwd">Re-Enter Password:</label>
+       <div class="col-sm-10">
       <input  onkeyup='check();' type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" style=" border-radius:50px;" required>
     </div>
-    
-    <div class="form-group">        
+   
+     <div class="col-sm-10">     
 	  	<div id="message">
 			  <h3>Password must contain the following:</h3>
 			  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -289,30 +281,72 @@
 		</div>
 		<span id='msg'></span>
 	</div>
-    
-    <!-- <h6 id="mismatch"></h6>-->
+	</div>
     
      <div class="form-group">
-      <label for="lname">Contact No:</label>
-      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" name="telno" style=" border-radius:50px;" required>
-    </div>
+      <label  class="control-label col-sm-2" for="lname">Contact No:</label>
+       <div class="col-sm-10">
+      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" pattern="[0-9]{10}" data-toggle="tooltip" title="Enter a 10 digit number" name="telno" style=" border-radius:50px;" required>
+    </div></div>
  	
-
+	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
     <input type="submit" class="btn btn-success btn-lg" value="Register" id="able">   
-
+</div></div>
     
-    <div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">
-		  <label class="form-check-label" for="flexCheckDefault">
-		    Show Password
-	  	  </label>
-    </div>
+   
+    
+     <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+      	<div class="checkbox">
+	
+		  <label  class="form-check-label" for="flexCheckDefault"><input class="form-check-input" type="checkbox" value="" onclick="myFunction()" id="flexCheckDefault">Show Password</label>
+    </div></div></div>
     
   </form>
 </div>
 </div>
+<% String msg = (String)request.getAttribute("msg");
+		if(msg == "1"){
+			%>
+			<div class="" id = "poppy">
+			  <div class="alert alert-success alert-dismissible fade in">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>You successfully registered!</strong> Redirecting....<span id="timer">5</span>
+			  
+			  </div>
+			</div>
+			<script>
+				var seconds = document.getElementById("timer").textContent;
+				var countdown = setInterval(function() {
+					seconds--;
+					document.getElementById("timer").textContent = seconds;
+					if (seconds <= 0)
+						clearInterval(countdown);
+				}, 1000);
+		
+				setTimeout(function() {
+					window.location.href = 'PassengerLogin.jsp';
+				}, 5000);
+			</script>
+			<%
+		}
+		String nmsg = (String)request.getAttribute("nmsg");
+		if(nmsg == "2"){%>
+			<div class="" id = "poppy">
+			    <div class="alert alert-danger alert-dismissible">
+				    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				    <strong>Oops! </strong>Your account was not created.
+		  		</div>
+		    </div>
+		<%}%> 
 	
 	<script>
+
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();
+		});
+
 	
 	//the below code shows the password to user
 	function myFunction() {
