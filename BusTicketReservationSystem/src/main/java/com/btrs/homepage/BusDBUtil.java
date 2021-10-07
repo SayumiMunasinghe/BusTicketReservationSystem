@@ -16,13 +16,15 @@ import com.btrs.DBconnection.DatabaseConnection;
 
 public class BusDBUtil {
 	public static int orderID;
-	
+	private static DatabaseConnection db;
+	private static Connection con;
 	public static ArrayList<String> getArrival() {
 		
 		ArrayList<String> arrival = new ArrayList<String>();
 		
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			Statement stmt = con.createStatement();
 
 			//getting price per seat in a given bus going at a given time
@@ -32,6 +34,7 @@ public class BusDBUtil {
 
 				arrival.add(rs.getString(1));
 			}
+			//con.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -39,6 +42,7 @@ public class BusDBUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return arrival;
 	}
 	public static ArrayList<String> getDestination() {
@@ -46,7 +50,8 @@ public class BusDBUtil {
 		ArrayList<String> destination = new ArrayList<String>();
 		
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
+			//con = db.getCon();
+			//Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting price per seat in a given bus going at a given time
@@ -56,9 +61,12 @@ public class BusDBUtil {
 
 				destination.add(rs.getString(1));
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+			//con.close();
+		} 
+			//catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} 
+			catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +79,7 @@ public class BusDBUtil {
 
 		try {
 
-			Connection con = DatabaseConnection.initializeDatabase();
+			//Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting busses with the given arrival and destination locations
