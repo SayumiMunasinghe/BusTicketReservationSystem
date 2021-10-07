@@ -1,7 +1,6 @@
 package com.btrs.passengerReg;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/PassengerInsertServlet")
@@ -24,28 +22,17 @@ public class PassengerInsertServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pwd");
 		String phone = request.getParameter("telno");
-		HttpSession session = request.getSession();
 		
-		//use passengerdbutil class to call the insert function
 		//pass values from servelet to the model (passengerdbutil.java)
 		
 		Boolean isInserted;
-		
-		//register means auto login n go to homepage
-		//so when enter email gt the pid from db and return it as a session so 
-		//can redirect user to homepage
 		
 		//insertpassenger function returns boolean value
 		isInserted = PassengerDBUtil.insertPassenger(fname, lname, email, password, phone);
 	
 		//use if condition to check if inserted succesfully and dbconnection success
 		//true -> insertion success
-		if(isInserted == true) {
-//			int pid = PassengerDBUtil.getID(email);
-//			session.setAttribute("userID", pid);
-//			String mode = "passenger";
-//			session.setAttribute("mode", mode);
-			
+		if(isInserted == true) {			
 			
 			//sending success message if inserted to register jsp
 			String posimsg = "1";
@@ -56,9 +43,13 @@ public class PassengerInsertServlet extends HttpServlet {
 			//so if the insertion success go to passucess.jsp
 			rdis.forward(request, response);
 			
-		}else {
-			//if the insertion fail go to passfail.jsp
-			RequestDispatcher rdis2 = request.getRequestDispatcher("passfail.jsp");
+		}else{
+			///show re-enter details if registration fails
+			String negimsg = "2";
+			request.setAttribute("nmsg", negimsg);
+			
+			//if the insertion fail go to samepage
+			RequestDispatcher rdis2 = request.getRequestDispatcher("passengerinsert.jsp");
 			rdis2.forward(request, response);
 		}
 	}

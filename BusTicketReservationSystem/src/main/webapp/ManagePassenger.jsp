@@ -13,12 +13,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
 <style>
 body, html{
 		width: 100%;
 	height: 100%;
 	background-size:cover;
-	font-family: Life Savers;
+	font-family: 'Manrope', sans-serif;
 	color: white;
    }
  
