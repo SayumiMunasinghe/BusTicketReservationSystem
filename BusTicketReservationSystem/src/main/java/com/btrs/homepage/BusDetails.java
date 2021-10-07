@@ -10,6 +10,7 @@ public class BusDetails {
 	private String arrival;
 	private String destination;
 	private String time;
+	private int remainingSeats;
 	
 	//default constructor
 	public BusDetails() {
@@ -22,10 +23,11 @@ public class BusDetails {
 		this.arrival = null;
 		this.destination = null;
 		this.time = null;
+		this.remainingSeats = 0;
 	}
 	//overloaded constructor
 	public BusDetails(int busID, String busNumber, int numberOfSeats, String busType, double seatPrice, int AC, String arrival, String destination, String time) {
-		
+	
 		this.busID = busID;
 		this.busNumber = busNumber;
 		this.numberOfSeats = numberOfSeats;
@@ -36,7 +38,20 @@ public class BusDetails {
 		this.destination = destination;
 		this.time = time;
 	}
-
+	public BusDetails(int busID, String busNumber, int numberOfSeats, String busType, double seatPrice, int AC, String arrival, String destination, String time, int remainingSeats) {
+		
+		this.busID = busID;
+		this.busNumber = busNumber;
+		this.numberOfSeats = numberOfSeats;
+		this.busType = busType;
+		this.seatPrice = seatPrice;
+		this.AC = AC;
+		this.arrival = arrival;
+		this.destination = destination;
+		this.time = time;
+		this.remainingSeats = remainingSeats;
+	}
+	
 	public int getBusID() {
 		return busID;
 	}
@@ -81,5 +96,7 @@ public class BusDetails {
 		return time;
 	}
 	
-	
+	public int getRemainingSeats() {
+		return this.remainingSeats;
+	}
 }

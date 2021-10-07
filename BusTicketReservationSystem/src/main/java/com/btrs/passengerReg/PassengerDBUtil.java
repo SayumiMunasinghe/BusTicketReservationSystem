@@ -19,6 +19,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	//til here
 	
 
+	///get the data from db related to a passenger n display in account settings
 	public static List<Passenger> CheckExist(int userID){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 

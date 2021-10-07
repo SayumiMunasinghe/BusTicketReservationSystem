@@ -26,10 +26,7 @@ public class PassengerLoginServlet extends HttpServlet {
 		
 		try {
 				int pid= PassengerDBUtil.checkLogin(email, password);
-				
-				session.setAttribute("userID", pid);
-				String mode = "passenger";
-				session.setAttribute("mode", mode);
+		
 				passengerid = pid;
 		}
 		catch(Exception e) {
@@ -38,13 +35,27 @@ public class PassengerLoginServlet extends HttpServlet {
 		}
 		
 		if(passengerid > 0) {
+			session.setAttribute("userID", passengerid);
+			String mode = "passenger";
+			session.setAttribute("mode", mode);
+			
+			////show success message if logged in successfully
+			String posimsg = "1";
+			request.setAttribute("pmsg", posimsg);
+			
 			//allows a servlet to navigate to a jsp page
-			RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
 			dis.forward(request, response);
 		}else{
+			
+			///show re-enter details if login fails 
+			String negimsg = "2";
+			request.setAttribute("nmsg", negimsg);
+			
 			//if email or pw doesnot match data in db will redirect to the login form
 			RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
 			dis.forward(request, response);
+			
 		}
 	}
 	
