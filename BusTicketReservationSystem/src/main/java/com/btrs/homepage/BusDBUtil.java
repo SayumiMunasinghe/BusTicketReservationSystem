@@ -15,9 +15,11 @@ import com.btrs.DBconnection.DatabaseConnection;
 
 
 public class BusDBUtil {
+	
 	public static int orderID;
 	private static DatabaseConnection db;
 	private static Connection con;
+	
 	public static ArrayList<String> getArrival() {
 		
 		ArrayList<String> arrival = new ArrayList<String>();
@@ -34,7 +36,7 @@ public class BusDBUtil {
 
 				arrival.add(rs.getString(1));
 			}
-			//con.close();
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -50,8 +52,6 @@ public class BusDBUtil {
 		ArrayList<String> destination = new ArrayList<String>();
 		
 		try {
-			//con = db.getCon();
-			//Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting price per seat in a given bus going at a given time
@@ -61,7 +61,7 @@ public class BusDBUtil {
 
 				destination.add(rs.getString(1));
 			}
-			//con.close();
+			
 		} 
 			//catch (ClassNotFoundException e) {
 //			e.printStackTrace();
@@ -78,8 +78,6 @@ public class BusDBUtil {
 		ArrayList<BusDetails> bd = new ArrayList<BusDetails>();
 
 		try {
-
-			//Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting busses with the given arrival and destination locations
@@ -102,9 +100,11 @@ public class BusDBUtil {
 				bd.add(b);
 			}
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} 
+//		catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,8 +120,6 @@ public class BusDBUtil {
 		Date date = Date.valueOf(travelDate);
 		Time time = Time.valueOf(timeBus);
 		try {
-
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting sum of seats reserved in a given bus on a given date at a given time
@@ -138,9 +136,11 @@ public class BusDBUtil {
 				totalSeats = rs2.getInt(1);
 			}
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} 
+//		catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,7 +154,6 @@ public class BusDBUtil {
 		double price = 0;
 		Time time = Time.valueOf(timeBus);
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting price per seat in a given bus going at a given time
@@ -165,9 +164,7 @@ public class BusDBUtil {
 				price = rs.getDouble(1);
 			}
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}  catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,7 +177,6 @@ public class BusDBUtil {
 		ArrayList<String> cardNos = new ArrayList<String>();
 		
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting price per seat in a given bus going at a given time
@@ -190,9 +186,7 @@ public class BusDBUtil {
 
 				cardNos.add(rs.getString(1));
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -202,7 +196,6 @@ public class BusDBUtil {
 	public static boolean insertBookingDetails(Order o) {
 		boolean status = false;
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//inserting record to order table once a payment is done and booking completed
@@ -219,9 +212,7 @@ public class BusDBUtil {
 			else if(rs == 0) {
 				status = false;
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}  catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,7 +222,6 @@ public class BusDBUtil {
 	public static BusDetails getDetails(int busID, LocalTime time) {
 		BusDetails b = new BusDetails();
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 			Time timedb = Time.valueOf(time);
 			//getting bus details for a given busID and time
@@ -248,13 +238,11 @@ public class BusDBUtil {
 				int AC = rs.getInt(6);
 				String arrival = rs.getString(7);
 				String destination = rs.getString(8);
-				String obtime = rs.getString(7);
+				String obtime = rs.getString(9);
 
 				b = new BusDetails(busid, busNumber, noOfSeats, busType, seatPrice, AC, arrival, destination, obtime);
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}  catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -264,7 +252,6 @@ public class BusDBUtil {
 	public static boolean deleteBooking(int orderid) {
 		boolean status = false;
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//inserting record to order table once a payment is done and booking completed
@@ -276,8 +263,6 @@ public class BusDBUtil {
 			else if(rs == 0) {
 				status = false;
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -288,7 +273,6 @@ public class BusDBUtil {
 	public static Order getOrderDetails(int orderid) {
 		Order order = new Order();
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//getting order details for given orderid
@@ -316,9 +300,7 @@ public class BusDBUtil {
 				order.setCardNo(cardno);
 				order.setDate(orderDate);
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}  catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -330,7 +312,6 @@ public class BusDBUtil {
 	public static ArrayList<BusTimes> getTimes(String arrival, String destination, String busType) {
 		ArrayList<BusTimes> btl = new ArrayList<BusTimes>();
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//
@@ -343,8 +324,6 @@ public class BusDBUtil {
 				BusTimes bt = new BusTimes(busid, time);
 				btl.add(bt);
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -355,7 +334,6 @@ public class BusDBUtil {
 	public static boolean updateBooking(int orderid, int busid, Time time) {
 		boolean status = false;
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
 			Statement stmt = con.createStatement();
 
 			//updating booking time and busid
@@ -367,9 +345,8 @@ public class BusDBUtil {
 			else if(rs == 0) {
 				status = false;
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
