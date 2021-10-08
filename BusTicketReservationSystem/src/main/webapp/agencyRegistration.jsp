@@ -25,7 +25,7 @@
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-  .card-heading {background: url("webpage/Agencyform/images/bg-heading-03.jpg") top left/cover no-repeat;}
+  .card-heading {background: url("webpage/Agencyform/images/bg4.jpg") top left/cover no-repeat;}
 
  .border {
 			padding: 35px;
@@ -96,6 +96,7 @@
   
   .input--style-3{
   padding: 0px;
+  color: #950740;
   }
 
 	.card-3{
