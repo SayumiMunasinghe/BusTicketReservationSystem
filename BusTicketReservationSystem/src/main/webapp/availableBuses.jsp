@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -131,17 +132,17 @@
 	<c:forEach var="bd" items="${busDetails}">
 	<div class="row">
 		<div class="col-sm-4">
-			<p><i class="fas fa-bus"></i>Bus ID: ${bd.busID}</p>
+			<p><i class="fas fa-bus" style="color:#C3073F"></i>&nbsp&nbspBus ID: ${bd.busID}</p>
 			<p>Bus Number: ${bd.busNumber}</p>
 			<p>Number of Seats: ${bd.numberOfSeats}</p>
 			<p>Bus Type: ${bd.busType}</p>
-			<p>Price per seat: ${bd.seatPrice}</p>
+			<p><i class="fas fa-dollar-sign" style="color:#00FF00"></i>&nbsp&nbspPrice per seat: ${bd.seatPrice}</p>
 		</div>
 		<div class="col-sm-4" style="padding-top: inherit;">
-			<p>Air Condition: ${bd.AC}</p>
-			<p>Starting Location: ${bd.arrival}</p>
-			<p>Ending Location: ${bd.destination}</p>
-			<p>Time of Journey: ${bd.time}</p>
+			<p><i class="fas fa-fan" style="color:#0096FF"></i>&nbsp&nbspAir Condition: ${bd.AC}</p>
+			<p><i class="fas fa-map-marker" style="color:#FF3131"></i>&nbsp&nbspStarting Location: ${bd.arrival}</p>
+			<p><i class="fas fa-map-marker-alt" style="color:#DC143C"></i>&nbsp&nbspEnding Location: ${bd.destination}</p>
+			<p><i class="fas fa-clock" style="color:#FFC000"></i>&nbsp&nbspTime of Journey: ${bd.time}</p>
 		</div>
 		<div class="col-sm-4">
 			<form action="PaymentServlet" method="POST">
