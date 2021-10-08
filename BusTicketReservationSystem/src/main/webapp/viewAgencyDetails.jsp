@@ -104,7 +104,7 @@
      <%}
 %>
 
-<body style="background-image: url('webpage/home/assets/img/bg.jpg');" onload="myFunction()">
+<body style="background-image: url('webpage/home/assets/img/bg.jpg'); " onload="myFunction()">
 
 <form id="autosub" class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
     <input type="hidden" name="viewDetails" value="Manage Agency Details"> 
@@ -260,15 +260,15 @@
       
       
       <div class="container" id = "table3" style ="display:none;">
-       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(255, 163, 163, 0.95) 0%,rgba(255, 163, 163, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">
+       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(82, 0, 0, 0.95) 0%,rgba(82, 0, 0, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png) ; color: white;">
         
          <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
          <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
 		 <br><br>		 
            <form action="ManageAgencyDetailsServlet" method="Post">
-  	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger">
+  	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger" style="padding: 40px 180px">
   	       </form><br>
-  	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default">Cancel</button>  
+  	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default" >Cancel</button>  
   	   </div>
   	 </div>
   	 
