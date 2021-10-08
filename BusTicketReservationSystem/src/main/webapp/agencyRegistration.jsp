@@ -115,6 +115,7 @@
 	input {
     width: 380px;
     }
+
 	
 	/* The message box is shown when the user clicks on the password field */
 #message {
