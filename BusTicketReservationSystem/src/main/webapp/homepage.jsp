@@ -156,6 +156,7 @@
 					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
 		              <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+		              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
 		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
@@ -178,7 +179,7 @@
   <h1 style="color:white; font-size: 55px;">RESERVE YOUR <span style="color:#C3073F"> BUS TICKET </span> <br> NOW</h1> 
   <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px; color:#C3073F">WE&nbsp&nbspMADE&nbsp&nbspBOOKING&nbsp&nbspBUS&nbsp&nbspTICKETS&nbsp&nbspREVOLUTIONARY&nbsp&nbspEVERYONE</p> 
 	<div class="row">
-	<form action="SelectBusServlet" method="POST" style="font-family:sanserif;">
+	<form action="SelectBusServlet" method="POST" style="font-family: HP Simplified;">
 	<div>
           <div class="col-sm-3">
             <label style ="color:white;">FROM: </label>
