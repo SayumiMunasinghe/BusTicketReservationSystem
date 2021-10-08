@@ -9,15 +9,17 @@ import com.btrs.interfaces.PersonDatabase;
 import com.btrs.DBconnection.DatabaseConnection;
 
 public class AgencyDatabaseUtil implements PersonDatabase{
-	private static Connection con = null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
+	private static DatabaseConnection db;
+	private static Connection con;
 
 	//Checks login and return user ID value and assigns user ID to a session in AgencyLoginServlet page. 
 	public static int checkLogin(String userName, String password){
 		int output = -1;
 		try {
-			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			String sql = "SELECT * FROM agency WHERE username ='"+userName+"'and password ='"+password+"'";
 			rs = stmt.executeQuery(sql);
@@ -38,7 +40,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
 		try {
-			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			String sql = "SELECT * FROM agency WHERE agentID ='"+userID+"'";
 			rs = stmt.executeQuery(sql);
@@ -72,7 +75,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		ResultSet rs = null;
 		String status = "0";
 		try {
-			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 			String sql1 = "SELECT * FROM obtrs.agency WHERE username ='"+username+"'OR agentEmail = '"+agentEmail+"'";
 			rs = stmt.executeQuery(sql1);
@@ -111,7 +115,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	{
 		String status = "0";
 		try {
-			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 
 			String sql2 = "UPDATE agency SET agentNIC = '"+agentNIC+"' , agentName = '"+agentName+"', companyName = '"+companyName+"', agentPhone = '"+agentPhone+"', agentEmail = '"+agentEmail+"', agencyLocation = '"+agencyLocation+"', password = '"+password+"', username ='"+username+"' WHERE agentID = "+userID+"";
@@ -133,7 +138,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	{
 		String status = "0";
 		try {
-			con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+			con = db.getCon();
 			stmt = con.createStatement();
 
 			String sql2 = "DELETE FROM agency WHERE agentID = " + userID + "";
@@ -149,6 +155,6 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		}
 		return status;
 	}
-
+   
 // DELETE THE SESSION
 }

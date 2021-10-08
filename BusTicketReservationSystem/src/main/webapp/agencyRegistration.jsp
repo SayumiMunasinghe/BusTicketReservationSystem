@@ -25,7 +25,7 @@
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-  .card-heading {background: url("webpage/Agencyform/images/bg-heading-03.jpg") top left/cover no-repeat;}
+  .card-heading {background: url("webpage/Agencyform/images/bg4.jpg") top left/cover no-repeat;}
 
  .border {
 			padding: 35px;
@@ -96,6 +96,7 @@
   
   .input--style-3{
   padding: 0px;
+  color: #950740;
   }
 
 	.card-3{
@@ -114,6 +115,7 @@
 	input {
     width: 380px;
     }
+
 	
 	/* The message box is shown when the user clicks on the password field */
 #message {
@@ -201,6 +203,9 @@
                    <form class="form-horizontal" action="AgencyRegistrationServlet" method="post">
                         <div class="input-group">
                              <input type="text" name="agentNIC" placeholder="Enter your NIC" class="input--style-3" required>
+                        </div>
+                         <div class="input-group">
+                             <input type="text" name="agentName" placeholder="Enter Agent Name" class="input--style-3" required>
                         </div>
                         <div class="input-group">
                             <input type="text" name="companyName" placeholder="Enter your company name" class="input--style-3" required>
