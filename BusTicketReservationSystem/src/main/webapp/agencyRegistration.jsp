@@ -204,6 +204,9 @@
                         <div class="input-group">
                              <input type="text" name="agentNIC" placeholder="Enter your NIC" class="input--style-3" required>
                         </div>
+                         <div class="input-group">
+                             <input type="text" name="agentName" placeholder="Enter Agent Name" class="input--style-3" required>
+                        </div>
                         <div class="input-group">
                             <input type="text" name="companyName" placeholder="Enter your company name" class="input--style-3" required>
                         </div>
