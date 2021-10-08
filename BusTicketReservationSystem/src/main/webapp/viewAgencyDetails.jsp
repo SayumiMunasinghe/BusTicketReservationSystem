@@ -93,7 +93,7 @@
 </head>
 
 <%
-	if(session.getAttribute("mode") == null){ %>
+	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
 	     <script>
 			window.location.href = 'AgencyLogin.jsp';
 		</script>
