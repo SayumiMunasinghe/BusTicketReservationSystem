@@ -49,7 +49,6 @@ public class PassengerLoginServlet extends HttpServlet {
 				dis.forward(request, response);
 			}
 			else {
-				session.removeAttribute("loggedIn");
 				RequestDispatcher dis = request.getRequestDispatcher("payment.jsp");
 				dis.forward(request, response);
 			}

@@ -133,14 +133,14 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<p><i class="fas fa-bus" style="color:#C3073F"></i>&nbsp&nbspBus ID: ${bd.busID}</p>
-			<p>Bus Number: ${bd.busNumber}</p>
-			<p>Number of Seats: ${bd.numberOfSeats}</p>
-			<p>Bus Type: ${bd.busType}</p>
+			<p><i class="fas fa-bus-alt" style="color:#FFF8DC"></i>&nbsp&nbspBus Number: ${bd.busNumber}</p>
+			<p><i class="fas fa-user-tie" style="color:#E0B0FF"></i>&nbsp&nbspNumber of Seats: ${bd.numberOfSeats}</p>
+			<p><i class="fas fa-shuttle-van" style="color:#E97451"></i>&nbsp&nbspBus Type: ${bd.busType}</p>
 			<p><i class="fas fa-dollar-sign" style="color:#00FF00"></i>&nbsp&nbspPrice per seat: ${bd.seatPrice}</p>
 		</div>
 		<div class="col-sm-4" style="padding-top: inherit;">
 			<p><i class="fas fa-fan" style="color:#0096FF"></i>&nbsp&nbspAir Condition: ${bd.AC}</p>
-			<p><i class="fas fa-map-marker" style="color:#FF3131"></i>&nbsp&nbspStarting Location: ${bd.arrival}</p>
+			<p><i class="fas fa-map-marker-alt" style="color:#FF3131"></i>&nbsp&nbspStarting Location: ${bd.arrival}</p>
 			<p><i class="fas fa-map-marker-alt" style="color:#DC143C"></i>&nbsp&nbspEnding Location: ${bd.destination}</p>
 			<p><i class="fas fa-clock" style="color:#FFC000"></i>&nbsp&nbspTime of Journey: ${bd.time}</p>
 		</div>

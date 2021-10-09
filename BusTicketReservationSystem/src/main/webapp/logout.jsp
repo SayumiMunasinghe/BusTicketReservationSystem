@@ -11,7 +11,7 @@
 <%
 session.removeAttribute("userID");
 session.removeAttribute("mode");
-
+session.removeAttribute("flag");
 
 
 if(session.getAttribute("userID") == null){ %>
