@@ -162,10 +162,10 @@ if(clickedId == "butn1"){
    
   <thead id="t1" > 
   <tr>
-  	<th>Car Number</th>
+  	<th>Bus Number</th>
   	<th>Number of seats</th>
   	<th>Bus Type</th>
-  	<th>Condition</th>
+  	<th>Air-Condition</th>
   	<th>Time</th>
   	<th>Arrival</th>
   	<th>Destination</th>
@@ -273,7 +273,7 @@ if(clickedId == "butn1"){
 		</div>
 	</div>
 	<div class="form-group">
-  		<label class="control-label col-sm-2">Condition : </label>
+  		<label class="control-label col-sm-2">Air-Condition : </label>
   		<div class="col-sm-9">
   			<input type="text"  name="condition" value="<c:if test="${bus.AC == 1}">AC</c:if><c:if test="${bus.AC == 0}">NON-AC</c:if>" pattern="[0-1]" readonly>
 		</div>
@@ -281,7 +281,7 @@ if(clickedId == "butn1"){
 	<div class="form-group">
   		<label class="control-label col-sm-2">Time :  </label>
   		<div class="col-sm-9">
-  			<input type="text"  name="time" value="${bus.uTime}">
+  			<input type="time"  name="time" value="${bus.uTime}">
 		</div>
 	</div>
 	<div class="form-group">
