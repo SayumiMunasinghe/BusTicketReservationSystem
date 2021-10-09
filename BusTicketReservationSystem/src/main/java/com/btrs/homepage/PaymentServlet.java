@@ -30,8 +30,12 @@ public class PaymentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("submit") != null) {
 			HttpSession session = request.getSession();
+//			if(session.getAttribute("userID") == null || session.getAttribute("mode") == null){ 
+//				RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
+//				dis.forward(request, response);
+//			}
 			//get cusID from session
-	//		int cusID = (int)session.getAttribute("userID");
+			//int cusID = (int)session.getAttribute("userID");
 			cusID = 1;
 			busid = Integer.parseInt(request.getParameter("busID"));
 			String sttime = request.getParameter("time");

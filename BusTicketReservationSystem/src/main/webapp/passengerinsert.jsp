@@ -154,6 +154,9 @@
 	  left: -35px;
 	  content: "Invalid";
 	}
+	.coloring{
+		color:#C3073F;
+  	}
 </style>
 
 </head>
@@ -161,7 +164,7 @@
 
  <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav style="font-family: Life Savers;" class="navbar navbar-default navbar-fixed-top">
 
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
     <div class="navbar-header">
@@ -202,9 +205,10 @@
 					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
 		              <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+		              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
 		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
-		            </ul>
+	            </ul>
 				<% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -237,7 +241,7 @@
 
 <div class="container">
 <div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
-  <h2>Passenger Registration</h2>
+<h2>Passenger <span class="coloring">Registration</span></h2>
   <br>
   <form class="form-horizontal" action="PassengerInsertServlet"  method="post">
   
@@ -266,7 +270,7 @@
     </div></div>
       
     <div class="form-group">
-      <label  class="control-label col-sm-2" for="pwd">Re-Enter Password:</label>
+      <label  class="control-label col-sm-2" for="pwd">Confirm Password:</label>
        <div class="col-sm-10">
       <input  onkeyup='check();' type="password" class="form-control" id="pwd2" placeholder="Re-enter password" name="repwd" style=" border-radius:50px;" required>
     </div>
@@ -286,12 +290,12 @@
      <div class="form-group">
       <label  class="control-label col-sm-2" for="lname">Contact No:</label>
        <div class="col-sm-10">
-      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" pattern="[0-9]{10}" data-toggle="tooltip" title="Enter a 10 digit number" name="telno" style=" border-radius:50px;" required>
+      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" pattern="[0]{1}[7]{1}[0-9]{8}" data-toggle="tooltip" title="Enter a 10 digit number" name="telno" style=" border-radius:50px;" required>
     </div></div>
  	
 	<div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-    <input type="submit" class="btn btn-success btn-lg" value="Register" id="able">   
+    <input type="submit" class="btn btn-lg" value="Register" id="able" style="background-color: rgba(149, 7, 64, 0.87);">   
 </div></div>
     
    
@@ -306,6 +310,9 @@
   </form>
 </div>
 </div>
+<center>
+	<p>Have an account ?<a style="color: #C3073F;" href="PassengerLogin.jsp"> Log In</a></p>
+</center>
 <% String msg = (String)request.getAttribute("msg");
 		if(msg == "1"){
 			%>

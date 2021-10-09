@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/ab07e88f42.js" crossorigin="anonymous"></script>
 
 <style>
 	body, html{
@@ -40,11 +42,33 @@
     border-color: transparent;
     color: #fff !important;
   }
-	.buses {
-		color: white;
-		border-color: red;
-		border-style: solid;
-	}
+  .my {
+  	font-family: HP Simplified;
+  	border-style: solid;
+	border-color: #950740;
+	margin: auto;
+	width: 65%;
+  }
+  .my .row {
+  	padding: 10px;
+  	color: white;
+	margin: 10px;
+	background-color: #1A1A1D;
+	
+  }
+  .my div input{
+  	border-radius: 4px;
+  	background-color: #4E4E50;
+  }
+  .my div .submitBtn{
+  	padding: 5px;
+  	background-color: #C3073F;
+  }
+  .my div form {
+  	margin: auto;
+  	padding-top: 50px;
+  	padding-bottom: 50px;
+  }
 </style>
 </head>
 <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
@@ -104,25 +128,33 @@
   </div>
 </nav>
 <br><br><br><br>
-<div class="buses">
+<div class="my">
 	<c:forEach var="bd" items="${busDetails}">
-		${bd.busID}
-		${bd.busNumber}
-		${bd.numberOfSeats}
-		${bd.busType}
-		${bd.seatPrice}
-		${bd.AC}
-		${bd.arrival}
-		${bd.destination}
-		${bd.time}
-		${bd.remainingSeats}
-		<form action="PaymentServlet" method="POST">
-		<input type="hidden" name="busID" value="${bd.busID}">
-		<input type="hidden" name="time" value="${bd.time}">
-		Select number of seats to reserve: 
-		<input type = "number" name="resSeat" min="1" max="${bd.remainingSeats}" required>
-		<input type="submit" name="submit" value="Proceed to payment">
-		</form>
+	<div class="row">
+		<div class="col-sm-4">
+			<p><i class="fas fa-bus" style="color:#C3073F"></i>&nbsp&nbspBus ID: ${bd.busID}</p>
+			<p>Bus Number: ${bd.busNumber}</p>
+			<p>Number of Seats: ${bd.numberOfSeats}</p>
+			<p>Bus Type: ${bd.busType}</p>
+			<p><i class="fas fa-dollar-sign" style="color:#00FF00"></i>&nbsp&nbspPrice per seat: ${bd.seatPrice}</p>
+		</div>
+		<div class="col-sm-4" style="padding-top: inherit;">
+			<p><i class="fas fa-fan" style="color:#0096FF"></i>&nbsp&nbspAir Condition: ${bd.AC}</p>
+			<p><i class="fas fa-map-marker" style="color:#FF3131"></i>&nbsp&nbspStarting Location: ${bd.arrival}</p>
+			<p><i class="fas fa-map-marker-alt" style="color:#DC143C"></i>&nbsp&nbspEnding Location: ${bd.destination}</p>
+			<p><i class="fas fa-clock" style="color:#FFC000"></i>&nbsp&nbspTime of Journey: ${bd.time}</p>
+		</div>
+		<div class="col-sm-4">
+			<form action="PaymentServlet" method="POST">
+				<input type="hidden" name="busID" value="${bd.busID}">
+				<input type="hidden" name="time" value="${bd.time}">
+			
+				Select number of seats to reserve: 
+				<input type = "number" name="resSeat" min="1" max="${bd.remainingSeats}" required>
+				<input class="submitBtn" type="submit" name="submit" value="Proceed to payment">
+			</form>
+		</div>
+	</div>
 	</c:forEach>
 </div>
 </body>

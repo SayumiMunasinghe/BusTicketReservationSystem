@@ -89,18 +89,22 @@
   ::-webkit-calendar-picker-indicator {
 	    filter: invert(1);
 	}
+   .table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 0px;
+    }
   </style>
 </head>
 
 <%
-	if(session.getAttribute("mode") == null){ %>
+	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
 	     <script>
 			window.location.href = 'AgencyLogin.jsp';
 		</script>
      <%}
 %>
 
-<body style="background-image: url('webpage/home/assets/img/bg.jpg');" onload="myFunction()">
+<body style="background-image: url('webpage/home/assets/img/bg.jpg'); " onload="myFunction()">
 
 <form id="autosub" class="form-horizontal" action="ManageAgencyDetailsServlet" method="Post">
     <input type="hidden" name="viewDetails" value="Manage Agency Details"> 
@@ -173,14 +177,14 @@
 </nav>
   
 
-
+<br><br><br><br>
 
 <div style="text-align: center;">
      <div id ="buttSet">
-      <button id ="1" onclick="buttAction(this.id)" class="butt" active>View Details</button>
-      <button id = "2" onclick="buttAction(this.id)" class="butt">Update Details</button>
-      <button id = "3" onclick="buttAction(this.id)" class="butt">Manage Bus</button>
-      <button id = "4" onclick="buttAction(this.id)" class="butt">Delete Account</button>
+      <button id ="1" onclick="buttAction(this.id)" class="butt btn-grad" style ="padding:25px;">View Details</button>
+      <button id = "2" onclick="buttAction(this.id)" class="butt btn-grad">Update Details</button>
+      <button id = "3" onclick="buttAction(this.id)" class="butt btn-grad">Manage Bus</button>
+      <button id = "4" onclick="buttAction(this.id)" class="butt btn-grad">Delete Account</button>
      </div>
       
       <script>
@@ -202,43 +206,86 @@
 		  color: pink;
 			}
         .butt{
-		    border-radius:20px;
+		    border-radius:50px;
 		    padding:10px 20px;
 		  }
 		  .butt:hover{
 		    color: #white !important;
 		    background-color: #C3073F !important;
 		  }
+		  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		    padding: 15px;
+		    line-height: 1.42857143;
+		    vertical-align: top;
+		    border-top: 0px solid black;
+		}
+		.form-control{
+		  background-color:transparent;
+		  color:white;
+		  border-style: none;
+		  border-bottom: solid;
+		  border-color: #6F2232;
+
+		}
+		
+         .btn-grad {background-image:linear-gradient(to right, #6F2232 0%, #C3073F  40%, #6F2232  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 13px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            border-style: none;
+            border-radius: 50px;
+
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+          @media (min-width: 1200px)
+			.container {
+			    width: 950px;
+			}
+			
+		 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 10px;
+         }
       </style>
       
-      <br><br>
+      
       
       <div class="container" id = "table3" style ="display:none;">
-       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(255, 163, 163, 0.95) 0%,rgba(255, 163, 163, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">
+       <div class="alert alert-danger" style="padding:90px ;background-image: linear-gradient(to bottom, rgba(82, 0, 0, 0.95) 0%,rgba(82, 0, 0, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png) ; color: white;">
         
          <p style="font-size:45px;"><b>DELETE ACCOUNT?</b></p> 
          <p style="font-size:25px;"><b>You are about to delete Agency Account. This action cannot be undone!</b></p> 
 		 <br><br>		 
            <form action="ManageAgencyDetailsServlet" method="Post">
-  	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger">
+  	       <input type="submit" name="deleteDetails" value="DELETE ACCOUNT" class="btn btn-danger" style="padding: 40px 180px">
   	       </form><br>
-  	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default">Cancel</button>  
+  	       <button id = "5" onclick="buttAction(this.id)" class="btn btn-default" >Cancel</button>  
   	   </div>
   	 </div>
   	 
 </div>
 	<div class="container" id = "table1">       
-	<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">   
-	  <table class="table">
+	<div class="border" style="background-image: url(webpage/Agencyform/images/1.png); background-size: 260px">   
+	  <table class="table" style="background-image: url(https://www.pngkey.com/png/full/8-80192_free-distinct-patterns-naldz-infinite-design-cube-black.png) ;background-color: transparent ;background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(80, 10, 10, 0.4)) ;
+	  color: white; border-radius: 25px;">
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
 	  
-	    <thead>
+	    <thead style="font-family: HP-Simplified;">
 	      <tr>
-	        <th>Type</th>
-	        <th>Details</th>
+	        <th style="font-size:25px">Type</th>
+	        <th style="font-size:25px">Details</th>
 	      </tr>
 	    </thead>
-	    <tbody>
+	    <tbody style="font-family: HP-Simplified;">
 	      <tr>
 	        <td>Agent NIC</td>
 	        <td>${agencyDetails.agentNIC}</td>
@@ -278,18 +325,20 @@
  </div>
 
    <form action="ManageAgencyDetailsServlet" method="Post" id ="table2" style ="display:none;">
-	<div class="container"> 
-	<div class="border" style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(247, 247, 247, 0.95) 0%), url(https://www.seekpng.com/png/full/46-463085_desktop-free-triangle.png)">         
-	  <table class="table">
+	<div class="container">      
+	<div class="border" >         
+	  <table class="table" style=" background-color: transparent ;background-image: url(webpage/Agencyform/images/1.png); background-size: 20%);
+	  color: white; border-radius: 25px">
+	
 	  <c:forEach var="agencyDetails" items = "${agencyListDetails}">
 	  
-	    <thead>
+	    <thead style="font-family: HP-Simplified; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(80, 10, 10, 0.4))">
 	      <tr>
-	        <th>Type</th>
-	        <th>Details</th>
+	        <th style="font-size:25px">Type</th>
+	        <th style="font-size:25px">Enter new details</th>
 	      </tr>
 	    </thead>
-	    <tbody>
+	    <tbody style="font-family: HP-Simplified; background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(80, 10, 10, 0.4))">
 	      <tr>
 	        <td>Agent NIC</td>
 	        <td> <input type="text" name="agentNIC" value="${agencyDetails.agentNIC}" class="form-control"></td>
@@ -320,16 +369,17 @@
 	        <td> <input type="text" name="password" value="${agencyDetails.password}" class="form-control"></td>
 	      </tr>
 	      <tr>
-	        <td>Agent username</td>
-	        <td> <input type="text" name="userName" value="${agencyDetails.username}" class="form-control"></td>
+	        <td></td>
+	        <td> <input type="hidden" name="userName" value="${agencyDetails.username}" class="form-control"></td>
 	      </tr>
 	    </tbody>
 	    </c:forEach>
 	   </table>
-	 
-	<input type="submit" name="updateDetails" value="Update Details" class="btn btn-success btn-lg btn-block" >
+	    </div> 
+	<input type="submit" name="updateDetails" value="Update Details" class="btn-grad" style="background-image: linear-gradient(to right, #DCE35B 0%, #45B649  51%, #DCE35B  100%)">
+   </div>
    </form>
-   </div> 
+
   </div>
 
 <script type="text/javascript">
@@ -338,21 +388,33 @@
      if(buttonVal == "1"){
        document.getElementById('table1').style.display = "block";
        document.getElementById('table2').style.display = "none";
-       document.getElementById('table3').style.display = "none";
+       document.getElementById('table3').style.display = "none";    
+       document.getElementById("1").style.padding= '25px';
+       document.getElementById("2").style.padding= '13px';
+       document.getElementById("4").style.padding= '13px';
   	 }else if(buttonVal == "2"){
 	  document.getElementById('table2').style.display = "block";
       document.getElementById('table1').style.display = "none";
       document.getElementById('table3').style.display = "none";
+      document.getElementById("1").style.padding= '13px';
+      document.getElementById("2").style.padding= '25px';
+      document.getElementById("4").style.padding= '13px';
   	 }else if(buttonVal == "3"){
   		window.location="enterBusDetails.jsp";	 
   	 }else if(buttonVal == "4"){
   		document.getElementById('table2').style.display = "none";
         document.getElementById('table1').style.display = "none";
         document.getElementById('table3').style.display = "block";
+        document.getElementById("1").style.padding= '13px';
+        document.getElementById("2").style.padding= '13px';
+        document.getElementById("4").style.padding= '25px';
   	 }else if(buttonVal == "5"){
   		document.getElementById('table1').style.display = "block";
         document.getElementById('table2').style.display = "none";
         document.getElementById('table3').style.display = "none";
+        document.getElementById("1").style.padding= '25px';
+        document.getElementById("2").style.padding= '13px';
+        document.getElementById("4").style.padding= '13px';
   	 }
   }
 </script>
