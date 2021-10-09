@@ -26,6 +26,7 @@ public class cardsDBUtil {
     	   try { 
     		   db = DatabaseConnection.getInstance();
     		   con = db.getCon();
+    		   state =con.createStatement();
     		   String sql = " insert into cards values('"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"',"+pid+")" ;
     		   int res = state.executeUpdate(sql);
     		   
