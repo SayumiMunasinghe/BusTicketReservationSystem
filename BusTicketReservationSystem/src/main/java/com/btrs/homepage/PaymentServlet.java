@@ -33,12 +33,25 @@ public class PaymentServlet extends HttpServlet {
 			if(session.getAttribute("userID") == null || session.getAttribute("mode") == null){ 
 				int loggedIn = 1;
 				session.setAttribute("loggedIn", loggedIn);
+				
+				busid = Integer.parseInt(request.getParameter("busID"));
+				String sttime = request.getParameter("time");
+				
+				reservedSeats = Integer.parseInt(request.getParameter("resSeat"));
+				convTime = LocalTime.parse(sttime);
+				
+				double pricePerSeat = BusDBUtil.getPrice(busid, convTime);
+				
+				totalPrice = pricePerSeat * reservedSeats;
+				bd = BusDBUtil.getDetails(busid, convTime);
+				
+				session.setAttribute("busid", busid);
+				session.setAttribute("seats", reservedSeats);
+				session.setAttribute("sttime", sttime);
+				
 				RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
 				dis.forward(request, response);
 			}
-			//get cusID from session
-			//int cusID = (int)session.getAttribute("userID");
-			cusID = 1;
 			busid = Integer.parseInt(request.getParameter("busID"));
 			String sttime = request.getParameter("time");
 			
@@ -50,14 +63,20 @@ public class PaymentServlet extends HttpServlet {
 			totalPrice = pricePerSeat * reservedSeats;
 			bd = BusDBUtil.getDetails(busid, convTime);
 			
+			
+			//get cusID from session
+			cusID = (int)session.getAttribute("userID");
+			//cusID = 1;
+			
+			ArrayList<String> cardNos = BusDBUtil.getCardNumbers(cusID);
+			
 			request.setAttribute("busDetails", bd);
 			request.setAttribute("seats", reservedSeats);
 			request.setAttribute("date", SelectBusServlet.dateOfTravel);
 			request.setAttribute("price", totalPrice);
-			
-			ArrayList<String> cardNos = BusDBUtil.getCardNumbers(cusID);
-			
 			request.setAttribute("cardNos", cardNos);
+			
+			
 			
 			RequestDispatcher dis = request.getRequestDispatcher("payment.jsp");
 			dis.forward(request, response);
@@ -70,6 +89,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			boolean decision = BusDBUtil.insertBookingDetails(order);
 			order.setOrderID(BusDBUtil.orderID);
+			
 			if(decision == true) {
 				request.setAttribute("order", order);
 				RequestDispatcher dis = request.getRequestDispatcher("paymentDone.jsp");

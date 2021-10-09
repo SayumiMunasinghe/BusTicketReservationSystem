@@ -133,13 +133,24 @@
 </nav>
 <br><br><br><br>
 <div class="container">
+
 	<h1>BOOKING&nbsp&nbspSUMMARY</h1>
 	<%
-	     //if(session.getAttribute("userID") == null || session.getAttribute("mode") == null){ %>
-		     <script>
-				//window.location.href = 'PassengerLogin.jsp';
+	     if(session.getAttribute("loggedIn") != null){ %>
+		   <form id="auto" action="PaymentServlet" method="POST">
+		   	<input type="hidden" value="${busid}" name="busID">
+		   	<input type="hidden" value="${seats}" name="resSeat"> 
+		   	<input type="hidden" value="${sttime}" name="time">
+			<input type="hidden" name="submit">
+			<button style="background-color: transparent; border-style: none;" id="ss" onclick="autoSubmit()"></button>
+		   </form>
+		   <script>
+		   document.getElementById("ss").click();
+			function autoSubmit() {
+				document.getElementById('auto').submit();
+			}
 			</script>
-	     <%//}
+	     <%}
 	%>
 	<table class="table">
 		<tr>
@@ -208,6 +219,11 @@
 		</c:choose>
 	</div>
 </div>
-
+<%
+session.removeAttribute("loggedIn");
+session.removeAttribute("busid");
+session.removeAttribute("seats");
+session.removeAttribute("sttime");
+%>
 </body>
 </html>
