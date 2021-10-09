@@ -26,28 +26,86 @@
             top:20%;
             left : 35%;
 	  		padding:20px 35px 20px 35px;
-	  		border-radius: 20px;
-	 	    color:white;
+	  		font-family: Life Savers;
+	 	    color: #C3073F !important;
 	 	    position:absolute;
-	 	    
-	 		
+	 	   
 	}
-     
 	
-	#but1 {
-	           
-	        top:22%;
-            left : 28%;
-            position:absolute;
+	 input[type="radio"]:active {
+	       color:#C3073F !important;
 	 }
-	 
-	 #but2{
-	      
-	        top:29%;
-            left : 28%;
-            position:absolute;
+	
+	input[type="text"]
+ { 
+    background:transparent;
+    color:white;
+    border-bottom: 1px solid #C3073F !important;
+    border:none;
+}
+    select{
+     background:none;
+     
+    }
+     #f1{
+        border:1px solid;
+        padding:20px 35px 20px 35px;
+         border-color:#C3073F !important;
+      }
+       
+       #f3{
+        border:1px solid;
+        border-color:#C3073F !important;
+        padding:20px 35px 20px 35px;
+        height:464px;
+        width:466px;
+        
+      }
+      #f2{
+          border:1px solid;
+          padding:20px 35px 20px 35px;
+          height:464px;
+          width:466px;
+          border-color:#C3073F !important;
+      }
+	
+	.tab {
+	      top:22.7%;
+          left:30%;
+          border: 1px solid #ccc;
+          background-color: transparent;
+          width: 7%;
+          height: 464.7px;
+          position:absolute;
+          border-color:#C3073F !important;
+          
+}
+
+	
+   	.tab button {
+          display: block;
+          background-color: inherit;
+          color:#ccc;
+          padding: 22px 16px;
+          width: 100%;
+          border: none;
+          outline: none;
+          text-align: left;
+          cursor: pointer;
+          font-family: Life Savers;
+}
+
+     .tab button:hover {
+          background-color: #C3073F !important;
+}
+       
             
-            }
+     #b3{
+             left:54%;
+             position:absolute;
+             top:19%;
+     
+     }
   body, html{
 	width: 100%;
 	height: 100%;
@@ -210,25 +268,29 @@
        document.getElementById('f1').style.display = "block";
        document.getElementById('f2').style.display = "none";
        document.getElementById('f3').style.display = "none";
+       document.getElementById('but1').style.background = "#C3073F";
+       document.getElementById('but2').style.background = "transparent";
+      
   }else if(clickedId == "but2"){
 	  document.getElementById('f1').style.display = "none";
-      document.getElementById('f2').style.display = "block";
+	  document.getElementById('but2').style.background = "#C3073F";
+	 
   }
   }
  
  </script>
  
  
- 
-      <button id ="but1" onclick="showForm(this.id)" class="btn btn-warning">Add Card</button>
+ <div class="tab">
+      <button class="tablinks" id ="but1" onclick="showForm(this.id)" class="btn btn-warning">Add Card</button>
       
       <form action="addCardServlet" method="post"  >
-      <button id = "but2" name="submit1" onclick="showF(this.id)" class="btn btn-warning" >Update Card</button>
+      <button class="tablinks" id = "but2" name="submit1" onclick="showForm(this.id)" class="btn btn-warning" >Update Card</button>
       </form>
       
       <br>
       <br>
-     
+     </div>
      
     <div class="container">
         <div class="gota">
@@ -253,17 +315,17 @@
            <br>
            <br>
            <div class="row">
-              <div class ="form-group col-lg-5">
+              <div class ="form-group col-lg-6">
            <label>Card Number <span class="glyphicon glyphicon-credit-card"></span> :</label><input type ="text" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" class="form-control" name="cno" placeholder="xxxx-xxxx-xxxx-xxxx" required>
               </div>         
            </div>
            <div class="row">
-              <div class ="form-group col-lg-5" >
+              <div class ="form-group col-lg-6" >
            <label>Card Holder Name:</label><input type="text" name="hName" class="form-control" required >
               </div>
            </div>
            <div class="row">
-              <div class ="form-group col-lg-1" style="width:9.999999996%">
+              <div class ="form-group col-lg-3">
            <label>CVV:</label><input type="text" name="cvv" pattern="[0-9]{3}" class="form-control" width="50" required><br>
            <label>Expiry Date:</label><input type="text" pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
               </div>
@@ -292,36 +354,43 @@
 		if(status == "1"){
 			%>
 		<div class="container">
+		<div class="gota">
 		<form action="addCardServlet" method="post"   id="f3"   >     
-         
-        
-		<p>Select card to make payment: </p>
-		<div class ="form-group col-lg-3" style="width:18.166666659%">
-		<select id="card" name="card" class="form-control" >
+		 <div class ="form-group col-lg-6">
+		<label for="card" style="color: #C3073F !important;"><p>Select card to make payment: </p></label>
+		<select id="card" name="card" class="form-control"  style="background:transparent;border-bottom: 1px solid #C3073F !important; border:none;color:white">
 		<%
 		for(int i = 0; i < cards.size(); i++) {
-		%>
-			<option id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
+		%>  
+			<option style="color:white;" id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
+			
 		<%
 		}
 		%>
 		 
 		</select>
 		</div>
-		<input type="submit" value="Select" class="btn btn-primary" name="select" id ="b3" >
+	
+		<input type="submit" value="Select" class="btn btn-primary" name="select" id ="b3" onclick="showUp(this.id)" >
 		
 		</form>
 		</div>
+		</div>
 		<script type="text/javascript">
+		
+		
 		
 		 if(document.getElementById('card')!=null){
 	     document.getElementById('f1').style.display = "none";
+	     document.getElementById('but2').style.background = "#C3073F";
+	     
 		 }
 		 
-
-		 if(document.getElementById('cards')==null){
-	     document.getElementById('b3').disabled=true;
-		 }
+		 if(clickedId == "but1"){
+				document.getElementById('but1').style.background = "#C3073F";
+				
+			}
+		 
 	
          </script>
 		<%
@@ -332,27 +401,28 @@
 		if(stats != "1"){
 			%>
 			<div class="container">
-		<form action="updateCardServlet" method="post" id="f2" >
+			<div class="gota">
+		<form action="updateCardServlet" method="post" id="f2" style="display:none" >
 		<c:forEach var="cardDetails" items="${cardDetails}">
           <div class="row">
-              <div class ="form-group col-lg-3"style="width:18.166666659%">
-          <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"  readonly>
+              <div class ="form-group col-lg-6">
+          <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"   style="background:transparent;"readonly>
               </div>
            </div>
             
            <div class="row">
-              <div class ="form-group col-lg-3"style="width:18.166666659%">
-          <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}"  readonly>
+              <div class ="form-group col-lg-6">
+          <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}" style="background:transparent;"  readonly>
               </div>
           </div>
           <div class="row">
-              <div class ="form-group col-lg-3"style="width:18.166666659%">
+              <div class ="form-group col-lg-6">
           <label>Card Holder Name:</label><input type="text" value="${cardDetails.cHName}" class="form-control" name="hName">
               </div>
            </div>
            <div class="row">
-              <div class ="form-group col-lg-1" style="width: 9.999999996%">
-          <label>CVV:</label><input type="text" name="cvv"  value="${cardDetails.cvv} " class="form-control" pattern="[]0-9]{3}">
+              <div class ="form-group col-lg-3" >
+          <label>CVV:</label><input type="text" name="cvv" id="cvv" value="${cardDetails.cvv} " class="form-control" pattern="[]0-9]{3}">
           <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
            </div>
@@ -361,17 +431,26 @@
            </c:forEach>
         </form>
         </div>
+        </div>
         <script type="text/javascript">
-		
+        if(document.getElementById('cvv')!=null){
+   	     document.getElementById('f1').style.display = "none";
+   	     document.getElementById('f2').style.display = "block";
+   	    document.getElementById('but2').style.background = "#C3073F";
+   		 }
+        
 		 if(document.getElementById('c')!=null){
 	     document.getElementById('f1').style.display = "none";
 	     document.getElemntById('f3').style.display="block";
 		 }
+		 
+		 
+		 
         </script>
         <%} 
         %>
-  
-       
+ 
+     </script>
      
            
 </body>
