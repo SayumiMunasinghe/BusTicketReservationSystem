@@ -57,25 +57,25 @@
         border:1px solid;
         border-color:#C3073F !important;
         padding:20px 35px 20px 35px;
-        height:464px;
+         height: 472px;
         width:466px;
         
       }
       #f2{
           border:1px solid;
           padding:20px 35px 20px 35px;
-          height:464px;
+           height: 472px;
           width:466px;
           border-color:#C3073F !important;
       }
 	
 	.tab {
-	      top:22.7%;
+	      top:23%;
           left:30%;
           border: 1px solid #ccc;
           background-color: transparent;
           width: 7%;
-          height: 464.7px;
+          height: 472px;
           position:absolute;
           border-color:#C3073F !important;
           
@@ -268,12 +268,16 @@
        document.getElementById('f1').style.display = "block";
        document.getElementById('f2').style.display = "none";
        document.getElementById('f3').style.display = "none";
-       document.getElementById('but1').style.background = "#C3073F";
        document.getElementById('but2').style.background = "transparent";
+       document.getElementById('but1').style.background = "#C3073F";
+      
       
   }else if(clickedId == "but2"){
 	  document.getElementById('f1').style.display = "none";
+	  document.getElementById('but1').style.background = "transparent";
 	  document.getElementById('but2').style.background = "#C3073F";
+	 
+	  
 	 
   }
   }
@@ -282,10 +286,10 @@
  
  
  <div class="tab">
-      <button class="tablinks" id ="but1" onclick="showForm(this.id)" class="btn btn-warning">Add Card</button>
+      <button class="tablinks" id ="but1" onclick="showForm(this.id)" >Add Card</button>
       
       <form action="addCardServlet" method="post"  >
-      <button class="tablinks" id = "but2" name="submit1" onclick="showForm(this.id)" class="btn btn-warning" >Update Card</button>
+      <button class="tablinks" id = "but2" name="submit1" onclick="showForm(this.id)"  >Update Card</button>
       </form>
       
       <br>
@@ -326,13 +330,29 @@
            </div>
            <div class="row">
               <div class ="form-group col-lg-3">
-           <label>CVV:</label><input type="text" name="cvv" pattern="[0-9]{3}" class="form-control" width="50" required><br>
-           <label>Expiry Date:</label><input type="text" pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
+           <label>CVV:</label><input type="text" name="cvv" id="cv" pattern="[0-9]{3}" class="form-control" width="50" required><br>
+           <label>Expiry Date:</label><input type="text"  pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
               </div>
            </div>
            
            <input type="submit"  value="Add Card" name="submit"  class="btn btn-primary">
          
+         <script>
+         if(document.getElementById('cv')!=null){
+        	 document.getElementById('but1').style.background = "#C3073F";
+        	
+        	 
+         }
+         
+         function showForm(clickedId)
+         {(clickedId == "but2"){
+        	 document.getElementById('but1').style.background = "transparent";
+         }
+         (clickedId == "but1"){
+        	 document.getElementById('but1').style.background = "#C3073F";
+         }
+         }
+         </script>
         </form>
       </div>     
     </div>
@@ -362,7 +382,7 @@
 		<%
 		for(int i = 0; i < cards.size(); i++) {
 		%>  
-			<option style="color:white;" id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
+			<option style="color:black;" id="cards" value="<%= cards.get(i) %>" class="form-control"><%= cards.get(i) %></option>
 			
 		<%
 		}
