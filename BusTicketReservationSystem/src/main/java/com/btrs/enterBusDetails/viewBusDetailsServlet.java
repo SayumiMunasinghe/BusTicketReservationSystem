@@ -25,8 +25,8 @@ public class viewBusDetailsServlet extends HttpServlet {
 		if(request.getParameter("view") != null) {
 		HttpSession session = request.getSession();
 		//session to get agency id
-		//int aID = (int)session.getAttribute("userID");
-		int aID= 2;
+		int aID = (int)session.getAttribute("userID");
+//		int aID= 2;
 	
 		String stat = "1";
 		try {
