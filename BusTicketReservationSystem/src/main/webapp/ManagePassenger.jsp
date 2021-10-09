@@ -284,7 +284,7 @@ body {font-family: "Lato", sans-serif;}
 	<c:forEach var="pass" items = "${passDetails}">  
   <div class="form-group">
 
-      <label for="pwd1">Password:</label>
+      <label for="pwd1">New Password:</label>
       <input type="text" name="pwd" value="${pass.password}" style=" border-radius:50px;" class="form-control" id="pwd" onkeyup='check();' />
     </div>
     <div class="form-group">
@@ -315,7 +315,7 @@ body {font-family: "Lato", sans-serif;}
   <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" pattern="[0]{1}[7]{1}[0-9]{8}" id="phone" name="phone" style=" border-radius:50px;">
+      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" pattern="[0]{1}[7]{1}[0-9]{8}" data-toggle="tooltip" title="Enter a 10 digit number thats starts with 07" id="phone" name="phone" style=" border-radius:50px;">
     </div>
     
 
