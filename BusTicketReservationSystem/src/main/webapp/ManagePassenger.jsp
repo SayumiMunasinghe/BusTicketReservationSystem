@@ -315,7 +315,7 @@ body {font-family: "Lato", sans-serif;}
   <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" id="phone" name="phone" style=" border-radius:50px;">
+      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" pattern="[0]{1}[7]{1}[0-9]{8}" id="phone" name="phone" style=" border-radius:50px;">
     </div>
     
 
@@ -382,6 +382,17 @@ body {font-family: "Lato", sans-serif;}
            document.getElementById("contact").disabled = false;
          }
  	}
+
+///////////to display another modal after the passenger clicks delete account///////////
+	// Get the modal
+	var modal = document.getElementById('id01');
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
