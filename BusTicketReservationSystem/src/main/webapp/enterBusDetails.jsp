@@ -15,6 +15,12 @@
 	background-size:cover;
 	font-family: Life Savers;
 }
+ 
+
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+
   .navbar {
     margin-bottom: 0;
     background-color: transparent;
@@ -36,11 +42,55 @@
     border-color: transparent;
     color: #fff !important;
   }
-  .formtexts{
+
+  .control-label{
   color: white;
+ 
+  font-family:Verdana;
   }
+  .form-control{
+  color: white;
+  font-family:Verdana;
+  }
+  #price,#utime,#dtime{
+  font-family:Verdana;
+  }
+  .seat{
+  font-family:Verdana;
+  }
+  
+  input[type=text] {
+  	outline: none; 
+	border: none;
+	border-bottom: 2px solid gray; 
+	background:transparent;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	outline: none;
+}
+.button {
+  background-color:rgba(149, 7, 64, 0.0);
+  color: white; 
+  border: 2px solid rgb(0,0,0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family:Verdana;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+
+.button:hover {
+background-color:black; 
+  color: white;
+  
+}
 	</style>
-	<title>Insert title here</title>
+	<title>Bus Registration</title>
 
 
 </head>
@@ -82,12 +132,13 @@
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% }else if (loginMode == "agency"){ %> 
-					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
-		              <ul class="dropdown-menu" style="background-color: black;">
-		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
-		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
-		              <li><a href="logout.jsp">Logout</a></li>
-		            </ul>
+				 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
+	              <ul class="dropdown-menu" style="background-color: black;">
+	              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+	              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
+	              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+	              <li><a href="logout.jsp">Logout</a></li>
+	            </ul>
 				<% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -102,73 +153,90 @@
 </nav>
   
 
-<br><br><br>
+<br><br>
 <div class="container">  
-  <form action="enterBusDetailsServlet" method="POST">
-  <h2 class="formtexts">Bus Registraion</h2>
+  <form style="background-color:rgba(149, 7, 64, 0.5)"class="form-horizontal" action="enterBusDetailsServlet" method="POST">
+  <h2 class="control-label" style="text-align:center;">Bus Registraion</h2>
 	<div class="form-group">
-		<label for="busNo" class="formtexts">Bus No. : </label>
+		<label for="busNo" class="control-label col-sm-2">Bus No. : </label>
+		<div class="col-sm-9">
 			<input type="text" class="form-control" id="number" name="number" required>
+		</div>
 	</div>	
 	
 	<div class="form-group">
-		<label for="seats" class="formtexts">Number of seats : </label>
-			<input type="text" class="form-control" id="no.ofseats" name="seat" pattern="[0-5][0-9]" required>
+		<label for="seats" class="control-label col-sm-2">Number of seats : </label>
+		&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" class="seat" id="no.ofseats" name="seat" min="20" max="100" step="1" required>
 	</div>
 		
 	<div class="form-group">
-		<label for="seats" class="formtexts">Bus Type :</label>
+		<label for="seats" class="control-label col-sm-2">Bus Type :</label>&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="radio"  id="luxury" name="btype" value="LUXURY" checked>
-  			<label for="luxury" class="formtexts">LUXURY</label>
+  			<label for="luxury" class="control-label">LUXURY</label>
 		
   			<input type="radio" id="semi-luxury" name="btype" value="SEMI-LUXURY">
-  			<label for="semi-luxury" class="formtexts">SEMI-LUXURY</label>
+  			<label for="semi-luxury" class="control-label">SEMI-LUXURY</label>
 		
   			<input type="radio" id="blabla" name="btype" value="BLABLA">
-  			<label for="superLuxury" class="formtexts">SUPER LUXURY</label><br>	
+  			<label for="superLuxury" class="control-label">SUPER LUXURY</label>	
 	</div>
 	
 	<div class="form-group">
-		<label for="condition" class="formtexts"> Condition :</label>
+		<label for="condition" class="control-label col-sm-2"> Condition :</label>&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio"  id="AC" name="ac/nonac" value=1 checked>
-  		<label for="AC" class="formtexts">AC</label>
+  		<label for="AC" class="control-label">AC</label>
   		<input type="radio"  id="NON-AC" name="ac/nonac" value=0>
-  		<label for="NON-AC" class="formtexts">NON-AC</label><br>
+  		<label for="NON-AC" class="control-label">NON-AC</label>
 	</div>
 	
-	<h3 class="formtexts">Bus Route Details</h3><br>
-	
-	<label for="uptime" class="formtexts">Up-time : </label> <input type="time" id="utime" name="utime" required><br>
+	<h3 class="control-label" style="text-align:center;">Bus Route Details</h3>
 	
 	<div class="form-group">
-		<label for="upArrival" class="formtexts">Arrival : </label>
+	<label for="uptime" class="control-label col-sm-2">Up-time :</label> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="utime" name="utime" required>
+	</div>
+	<div class="form-group">
+		<label for="upArrival" class="control-label col-sm-2">Arrival : </label>
+		<div class="col-sm-9">
 			<input type="text" class="form-control" id="uarr" name="uarr" required>
+		</div>
 	</div>
 	<div class="form-group">
-  		<label for="upDestination" class="formtexts">Destination :</label> 
+  		<label for="upDestination" class="control-label col-sm-2">Destination :</label> 
+  		<div class="col-sm-9">
   			<input type="text" class="form-control" id="udes" name="udes" required>
+  		</div>
   	</div>
-  	<br><br>
-
-	<label for="downtime" class="formtexts">Down-time : </label> <input type="time" id="dtime" name="dtime" required>
-	
+  	<br>
 	<div class="form-group">
-		<label for="downArrival" class="formtexts">Arrival :</label> 
+	<label for="downtime" class="control-label col-sm-2">Down-time :</label> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="dtime" name="dtime" required>
+	</div>
+	<div class="form-group">
+		<label for="downArrival" class="control-label col-sm-2">Arrival :</label> 
+		<div class="col-sm-9">
 			<input type="text" class="form-control" id="darr" name="darr" required>
+		</div>
 	</div>
 	
 	<div class="form-group">
-  		<label for="downDestination" class="formtexts">Destination :</label> 
+  		<label for="downDestination" class="control-label col-sm-2">Destination :</label> 
+  		<div class="col-sm-9">
   			<input type="text" class="form-control" id="ddes" name="ddes" required>
+  		</div>
   	</div>
   	
-  	<br><br>
-  	<label for="seatPrice" class="formtexts">Seat Price :</label> 
-  		<input type="text" class="form-control" id="price" name="price" required><br><br><br><br>
-
   	<div class="form-group">
-  		<input type="submit" value="Submit">
+  	<label for="seatPrice" class="control-label col-sm-2">Seat Price (Rs.):</label> 
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"  id="price" name="price" min="0" max="1000" step="1" required>
 	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+ 		<input class="button" type="submit" value="Submit" >
+	</div>
+	</div>
+	<br>
+	
 </form>
 </div>	
 </body>
