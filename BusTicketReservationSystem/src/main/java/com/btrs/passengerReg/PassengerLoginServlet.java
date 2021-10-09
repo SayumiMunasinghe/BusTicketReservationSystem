@@ -43,9 +43,17 @@ public class PassengerLoginServlet extends HttpServlet {
 			String posimsg = "1";
 			request.setAttribute("pmsg", posimsg);
 			
-			//allows a servlet to navigate to a jsp page
-			RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
-			dis.forward(request, response);
+			if(session.getAttribute("loggedIn") == null){
+				//allows a servlet to navigate to a jsp page
+				RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
+				dis.forward(request, response);
+			}
+			else {
+				session.removeAttribute("loggedIn");
+				RequestDispatcher dis = request.getRequestDispatcher("payment.jsp");
+				dis.forward(request, response);
+			}
+			
 		}else{
 			
 			///show re-enter details if login fails 
