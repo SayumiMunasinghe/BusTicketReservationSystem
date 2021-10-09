@@ -290,7 +290,7 @@
      <div class="form-group">
       <label  class="control-label col-sm-2" for="lname">Contact No:</label>
        <div class="col-sm-10">
-      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" pattern="[0]{1}[7]{1}[0-9]{8}" data-toggle="tooltip" title="Enter a 10 digit number" name="telno" style=" border-radius:50px;" required>
+      <input type="text" class="form-control" id="telno" placeholder="Enter phone number" pattern="[0]{1}[7]{1}[0-9]{8}"  data-toggle="tooltip" title="Enter a 10 digit number" name="telno" style=" border-radius:50px;" required>
     </div></div>
  	
 	<div class="form-group">        

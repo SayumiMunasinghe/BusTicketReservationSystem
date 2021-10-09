@@ -27,19 +27,21 @@ public class viewBusDetailsServlet extends HttpServlet {
 		//session to get agency id
 		//int aID = (int)session.getAttribute("userID");
 		int aID= 2;
-		
+	
 		String stat = "1";
 		try {
 			List <Bus> busDetails = busDBUtil.getBusDetails(aID);
 			request.setAttribute("busDetails", busDetails);
-			request.setAttribute("stats",stat);
+			request.setAttribute("stat",stat);
 //			System.out.println(id);
+			RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
+			dis.forward(request, response);
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
-		dis.forward(request, response);
+		
 		
 		}
 		
