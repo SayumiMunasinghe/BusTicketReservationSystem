@@ -10,17 +10,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 
 @WebServlet("/addCardServlet")
 public class addCardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+    private int pid;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	if(request.getParameter("submit")!= null) {
-		int pid = 1;
+		HttpSession session = request.getSession();
+		pid =(int) session.getAttribute("userID");
+		if(request.getParameter("submit")!= null) {
+       
+		
 		String cNO =request.getParameter("cno").replaceAll("[a-zA-Z--]", "");
     	String cType = request.getParameter("type");
 		String cvv = request.getParameter("cvv").replaceAll("[a-zA-Z]", "");
@@ -51,8 +55,8 @@ if(request.getParameter("submit1")!=null) {
         
 	    String stat = "1";
 	    
-	    int cusID = 1;	  
-		 ArrayList<String> cardNos = cardsDBUtil.getCardNumbers(cusID);
+	   
+		 ArrayList<String> cardNos = cardsDBUtil.getCardNumbers(pid);
 	      request.setAttribute("cardNos", cardNos);
 	      request.setAttribute("status",stat);
 		RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
