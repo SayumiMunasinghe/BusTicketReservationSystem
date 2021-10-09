@@ -113,8 +113,8 @@ body {font-family: "Lato", sans-serif;}
 /* Style the tab */
 .tab {
   float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  border: 1px solid rgb(184, 30, 60);
+  background-color: rgba(184, 30, 60, 0.8);
   width: 20%;
   height: 350px;
 }
@@ -136,19 +136,19 @@ body {font-family: "Lato", sans-serif;}
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: rgba(215, 77, 99, 0.8);
 }
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgba(215, 77, 99, 0.8);
 }
 
 /* Style the tab content */
 .tabcontent {
   float: left;
   padding: 0px 12px;
-  border: 2px solid #ccc;
+  border: 2px solid rgb(184, 30, 60);
   width: 50%;
   border-left: none;
   height: 350px;
@@ -171,7 +171,9 @@ body {font-family: "Lato", sans-serif;}
 .container{
 		   width: auto;	
 }
-
+.coloring{
+		color:#C3073F;
+ }
 </style>
 
 </head>
@@ -188,7 +190,7 @@ body {font-family: "Lato", sans-serif;}
 
 <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav style="font-family: Life Savers;" class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -225,12 +227,13 @@ body {font-family: "Lato", sans-serif;}
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% }else if (loginMode == "agency"){ %> 
-					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
-		              <ul class="dropdown-menu" style="background-color: black;">
-		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
-		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
-		              <li><a href="logout.jsp">Logout</a></li>
-		            </ul>
+				 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
+	              <ul class="dropdown-menu" style="background-color: black;">
+	              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+	              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
+	              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
+	              <li><a href="logout.jsp">Logout</a></li>
+	            </ul>
 				<% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -258,7 +261,7 @@ body {font-family: "Lato", sans-serif;}
  <c:forEach var="pass" items = "${passDetails}">
 <br><br>
 <br><br>
-<h4 style="margin-left: 200px;">Hi <strong>${pass.fName}</strong>,</h4>
+<h4 style="margin-left: 200px;">Hi <strong><span class="coloring">${pass.fName}</span></strong>,</h4>
 <h2 style="margin-left: 200px; margin-bottom: -100px;">Settings</h2>
    </c:forEach>
 <br>
@@ -290,7 +293,7 @@ body {font-family: "Lato", sans-serif;}
   		<span id='message'></span>
     </div>
 
-    <input type="submit" id="able" class="btn btn-success" name="updatePassword" value="Update">
+    <input type="submit" id="able" class="btn btn-lg" style="background-color: rgb(149, 7, 64);" name="updatePassword" value="Update" disabled>
 
   </c:forEach>
   </form>
@@ -312,11 +315,11 @@ body {font-family: "Lato", sans-serif;}
   <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" class="form-control" value="${pass.telno}" id="phone" name="phone" style=" border-radius:50px;">
+      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" id="phone" name="phone" style=" border-radius:50px;">
     </div>
     
 
-    <input type="submit" class="btn btn-success" name="updatePhone" value="Update">
+    <input type="submit" class="btn btn-lg" style="background-color: rgb(149, 7, 64);" id="contact" name="updatePhone" value="Update">
 
     </c:forEach>
   </form>
@@ -333,7 +336,7 @@ body {font-family: "Lato", sans-serif;}
   </div>
   
    <form action="ManagePassengerDetailsServlets" method="post">
-   		<input type="submit" class="btn btn-danger" name="delete" value="Delete My Account"> 
+   		<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete My Account"> 
    </form> 
 
 </div>
@@ -352,7 +355,9 @@ body {font-family: "Lato", sans-serif;}
 		}%>
 
 <script>
+
      var check = function() {
+ 		////////CHECKS USING JS IF CONFIRM PASSWORD == NEW PASSWORD and blocks update button accordingly/////////////
         if (document.getElementById('pwd').value != document.getElementById('conpwd').value) {
           document.getElementById('message').style.color = 'red';
           document.getElementById('message').innerHTML = 'Not Matching!';
@@ -362,7 +367,21 @@ body {font-family: "Lato", sans-serif;}
           document.getElementById('message').style.display = "none";
           document.getElementById("able").disabled = false;
         }
+        ///IF new password or confirm pasword empty the button will still be disabled until both fields entered with matching values
+        if ((document.getElementById('pwd').value == "") || (document.getElementById('conpwd').value == "")){
+        	 document.getElementById("able").disabled = true;
+        }
+        
 	}
+     
+///////CHECKS WITH JS IF THE PHONE NUMBER FIELD IS EMPTY THEN THE UPDATE BUTTON IS DISABLED SO CANT UPDATE////     
+     var checkz = function() {
+         if (document.getElementById('phone').value == "") {
+           document.getElementById("contact").disabled = true;
+         }else{
+           document.getElementById("contact").disabled = false;
+         }
+ 	}
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;

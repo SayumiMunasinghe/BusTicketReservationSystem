@@ -22,6 +22,7 @@
 </head>
 
 <style>
+
 		body{
 			color:white;
 		}
@@ -29,21 +30,21 @@
 					width: 100%;
 					height: 100%;
 					background-size:cover;
-					ffont-family: 'Manrope', sans-serif;
+					font-family: 'Manrope', sans-serif;
    		}
 	
 	.border{
 	  		padding: 20px 35px 20px 35px;
 	  		border-radius: 25px;
 	 		background-color: #f5f5f5;
-	 		width: 1000px;
+	 		width: 700px;
 	 		margin: auto;
 	 		margin-top: 150px;
 	 	
 	}
 	#poppy{
 	  		border-radius: 25px;
-	  		width: 1000px;
+	  		width: 700px;
 	 		margin: auto;
 	}
  .jumbotron {
@@ -113,12 +114,15 @@
   }
   ::-webkit-calendar-picker-indicator {
 			    filter: invert(1);
-			}
+  }
+  .coloring{
+		color:#C3073F;
+  }
 </style>
 
  <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav style="font-family: Life Savers;" class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -155,12 +159,13 @@
 		              <li><a href="logout.jsp">Logout</a></li>
 		            </ul>
 				<% }else if (loginMode == "agency"){ %> 
-					 <li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
-		              <ul class="dropdown-menu" style="background-color: black;">
+				 	<li><a class="" type="button" data-toggle="dropdown">MANAGE AGENCY</a>
+	             	 <ul class="dropdown-menu" style="background-color: black;">
 		              <li><a href="viewAgencyDetails.jsp">Manage Agency Details</a></li>
+		              <li><a href="enterBusDetails.jsp">Add Bus Details</a></li>
 		              <li><a href="readBusDetails.jsp">Manage Bus Details</a></li>
 		              <li><a href="logout.jsp">Logout</a></li>
-		            </ul>
+	            	</ul>
 				<% } else { 
 					session.removeAttribute("userID");
 					session.removeAttribute("mode");
@@ -177,7 +182,7 @@
 		<div class="container">
 		
 		<div class="border"  style="background-image: linear-gradient(to bottom, rgba(247, 247, 247, 0.95) 0%,rgba(0, 0, 0, 0.9) 0%), url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)">
-	  <h2>Passenger Login</h2>
+	  <h2>Passenger <span class="coloring">Login</span></h2>
 	  <form action="PassengerLoginServlet" method="post">
 	 
 	    <div class="form-group">
@@ -195,10 +200,13 @@
 		  <label class="form-check-label" for="flexCheckDefault">Show Password</label>
 	  	  </div>
 	    
-	    <input type="submit" class="btn btn-success btn-lg" value="Login">
+	    <input type="submit" class="btn btn-lg" value="Login" style="background-color: rgba(149, 7, 64, 0.87);">
 	  </form>
 	  </div>	  
 	</div>
+	<center>
+		<p>New to OBTRS ?<a style="color: #C3073F;" href="passengerinsert.jsp"> Sign Up</a></p>
+	</center>
 
 <% String msg = (String)request.getAttribute("pmsg");
 		if(msg == "1"){
