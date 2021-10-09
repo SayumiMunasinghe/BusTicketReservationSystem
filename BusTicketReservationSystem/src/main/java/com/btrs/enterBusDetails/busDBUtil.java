@@ -82,7 +82,7 @@ public static List<Bus> getBusDetails(int aID){
 		 con = db.getCon(); 
 		 stmt = con.createStatement();
 		
-		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID=1 ";
+		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID="+aID+" ";
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		while(rs.next()) {
@@ -121,7 +121,7 @@ public static boolean updatebus(int id,String busNumber, int numberOfSeats,Strin
 		 con = db.getCon();
 		stmt = con.createStatement();
 		 
-		String sql1="update bus b,busroute r set b.numberOfSeats="+numberOfSeats+",b.busType='"+busType+"',r.time='"+time+"',r.arrivalLocation='"+arrival+"',r.destinationLocation='"+destination+"', r.seatPrice="+Price+" where b.busID=r.busID AND b.aID=1 AND r.id="+id;
+		String sql1="update bus b,busroute r set b.numberOfSeats="+numberOfSeats+",b.busType='"+busType+"',r.time='"+time+"',r.arrivalLocation='"+arrival+"',r.destinationLocation='"+destination+"', r.seatPrice="+Price+" where b.busID=r.busID AND b.aID="+aID+" AND r.id="+id;
 		int rs1 = stmt.executeUpdate(sql1);
 		
 		if((rs1 > 0)){
@@ -147,7 +147,7 @@ public static ArrayList<String> getBusNumbers(int aID ) {
 		 stmt = con.createStatement();
 
 		//getting busnumbers per agent
-		String sql = "select busNumber from bus where aID = 1 ";
+		String sql = "select busNumber from bus where aID = "+aID+" ";
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()) {
 
@@ -164,7 +164,7 @@ public static ArrayList<String> getBusNumbers(int aID ) {
 }
 	
 //getting busdetails into an array	
-public static ArrayList<Bus> getBusDetails(String busNumber){
+public static ArrayList<Bus> getBusDetails(String busNumber,int aID){
 	ArrayList<Bus> BusDetails = new ArrayList<Bus>();
 	
 	try {
@@ -172,7 +172,7 @@ public static ArrayList<Bus> getBusDetails(String busNumber){
 		 con = db.getCon();
 		 stmt = con.createStatement();
 		 
-		 String sql ="Select * from bus b, busroute r where b.busID=r.busID AND aID=1 AND busNumber='"+busNumber+"'";
+		 String sql ="Select * from bus b, busroute r where b.busID=r.busID AND aID="+aID+" AND busNumber='"+busNumber+"'";
 		 ResultSet rs = stmt.executeQuery(sql);
 		 
 		 while(rs.next()) {
@@ -236,7 +236,7 @@ public static boolean deleteBus(String busNumber,int aID) {
 			 con = db.getCon();
 		   stmt = con.createStatement();
 		   
-		   String sql = "DELETE FROM bus WHERE busNumber='"+busNumber+"' and aID=1;"; 
+		   String sql = "DELETE FROM bus WHERE busNumber='"+busNumber+"' and aID="+aID+""; 
 		   int res = stmt.executeUpdate(sql);
 		   
 		   if(res > 0) {
