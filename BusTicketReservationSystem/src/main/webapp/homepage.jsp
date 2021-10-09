@@ -276,11 +276,18 @@
 		  <div class="col-sm-2"><button onclick="enable()">Cancel</button></div>
 		</div>
 	</div>
-	<%
+	<%}
+	if(session.getAttribute("mode") == "agency") {%>
+	<br><br>
+		<div class="alert alert-danger">
+		<div class="row">
+		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Login as passenger to book a bus ticket.</p></div>
+		</div>
+	</div><%
 	}
 %>
 	</div>
-        <input type="submit" id="submit" name="submit" value="FIND BUS"  class="btn btn-warning btn-lg" style="background-color:#C3073F; border-style:none; margin-top:20px;"><br><br><br>
+        <input type="submit" id="submit" name="submit" value="FIND BUS" class="btn btn-warning btn-lg" style="background-color:#C3073F; border-style:none; margin-top:20px;"><br><br><br>
       </div><br>
 	</form>
 	<script>
@@ -288,6 +295,11 @@
 				document.getElementById("submit").disabled = false;
 				window.location.href = 'temp.jsp';
 			}
+			
+        	if('${mode}' == "agency") {
+        		document.getElementById("submit").disabled = true;
+        	}
+        
 	</script>
 	<% if(flag!=null){ %>
 	<script>
