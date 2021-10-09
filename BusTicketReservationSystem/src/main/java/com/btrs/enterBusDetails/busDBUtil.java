@@ -13,7 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.btrs.DBconnection.DatabaseConnection;
-import com.btrs.cards.DBconnection;
+
 
 public class busDBUtil {
 	private static DatabaseConnection db;

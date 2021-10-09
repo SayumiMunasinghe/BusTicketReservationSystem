@@ -171,14 +171,14 @@ background-color:black;
 		
 	<div class="form-group">
 		<label for="seats" class="control-label col-sm-2">Bus Type :</label>&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="radio"  id="luxury" name="btype" value="LUXURY" checked>
-  			<label for="luxury" class="control-label">LUXURY</label>
+			<input type="radio"  id="luxury" name="btype" value="Luxury" checked>
+  			<label for="luxury" class="control-label">Luxury</label>
 		
-  			<input type="radio" id="semi-luxury" name="btype" value="SEMI-LUXURY">
-  			<label for="semi-luxury" class="control-label">SEMI-LUXURY</label>
+  			<input type="radio" id="semi-luxury" name="btype" value="Semi Luxury">
+  			<label for="semi-luxury" class="control-label">Semi Luxury</label>
 		
-  			<input type="radio" id="blabla" name="btype" value="BLABLA">
-  			<label for="superLuxury" class="control-label">SUPER LUXURY</label>	
+  			<input type="radio" id="super-luxury" name="btype" value="Super Luxury">
+  			<label for="superLuxury" class="control-label">Super Luxury</label>	
 	</div>
 	
 	<div class="form-group">
