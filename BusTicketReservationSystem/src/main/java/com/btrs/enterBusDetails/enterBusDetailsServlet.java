@@ -42,8 +42,8 @@ public class enterBusDetailsServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		//session to get agency id
-		//int aID = (int)session.getAttribute("userID");
-		int aID= 1;
+		int aID = (int)session.getAttribute("userID");
+//		int aID= 1;
 		
 		
 		

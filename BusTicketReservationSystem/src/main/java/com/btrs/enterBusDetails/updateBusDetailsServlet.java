@@ -29,8 +29,8 @@ public class updateBusDetailsServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		//session to get agency id
-		//int aID = (int)session.getAttribute("userID");
-		int aID= 2;
+		int aID = (int)session.getAttribute("userID");
+//		int aID= 2;
 		
 //		HttpSession session2 = request.getSession();
 ////		//session to get agency id
@@ -65,8 +65,10 @@ public class updateBusDetailsServlet extends HttpServlet {
 	}
 	if(request.getParameter("select") != null) {
 		String stat = "1";
-		
-		int aID = 2;
+		HttpSession session = request.getSession();
+		//session to get agency id
+		int aID = (int)session.getAttribute("userID");
+//		int aID = 2;
 		ArrayList<String> busNumbers = busDBUtil.getBusNumbers(aID);
 		request.setAttribute("busNumbers", busNumbers);
 		request.setAttribute("status", stat);
@@ -76,9 +78,11 @@ public class updateBusDetailsServlet extends HttpServlet {
 	}
 	if(request.getParameter("selectt") != null) {
 		String busNumber = request.getParameter("bus");
+		HttpSession session = request.getSession();
+		//session to get agency id
+		int aID = (int)session.getAttribute("userID");
 		
-		
-		List<Bus> BusDetails = busDBUtil.getBusDetails(busNumber);
+		List<Bus> BusDetails = busDBUtil.getBusDetails(busNumber,aID);
 		request.setAttribute("BusDetails",BusDetails);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
@@ -89,8 +93,8 @@ public class updateBusDetailsServlet extends HttpServlet {
 	if(request.getParameter("Remove Bus") != null) {
 		HttpSession session = request.getSession();
 		//session to get agency id
-		//int aID = (int)session.getAttribute("userID");
-		int aID= 2;
+		int aID = (int)session.getAttribute("userID");
+//		int aID= 2;
 		String busNumber = request.getParameter("busNumber");
 		boolean check = busDBUtil.deleteBus(busNumber,aID);
 		
