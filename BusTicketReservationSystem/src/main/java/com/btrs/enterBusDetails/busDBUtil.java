@@ -16,7 +16,8 @@ import com.btrs.DBconnection.DatabaseConnection;
 import com.btrs.cards.DBconnection;
 
 public class busDBUtil {
-	private static Connection con = null;
+	private static DatabaseConnection db;
+	private static Connection con;
 	private static Statement stmt = null;
 	private static boolean isSuccess;
 	
@@ -28,7 +29,8 @@ public static boolean InsertBus(int aID,String busNumber, int busSeat, String ty
 	isSuccess = false;
 	
 	try {
-		 con = DatabaseConnection.initializeDatabase(); 
+		 db = DatabaseConnection.getInstance();
+		 con = db.getCon();
 		 stmt = con.createStatement();
 		
 		LocalTime time = LocalTime.parse(upTime);
@@ -76,10 +78,11 @@ public static List<Bus> getBusDetails(int aID){
 	
 	try {
 		
-		 con = DatabaseConnection.initializeDatabase(); 
+		db = DatabaseConnection.getInstance();
+		 con = db.getCon(); 
 		 stmt = con.createStatement();
 		
-		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID=2 ";
+		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID=1 ";
 		ResultSet rs = stmt.executeQuery(sql);
 		
 		while(rs.next()) {
@@ -114,10 +117,11 @@ public static List<Bus> getBusDetails(int aID){
 public static boolean updatebus(int id,String busNumber, int numberOfSeats,String busType, String condition, String time, String arrival, String destination, int aID,double Price ) {
 	
 	try {
-		con = DatabaseConnection.initializeDatabase(); 
+		db = DatabaseConnection.getInstance();
+		 con = db.getCon();
 		stmt = con.createStatement();
 		 
-		String sql1="update bus b,busroute r set b.numberOfSeats="+numberOfSeats+",b.busType='"+busType+"',r.time='"+time+"',r.arrivalLocation='"+arrival+"',r.destinationLocation='"+destination+"', r.seatPrice="+Price+" where b.busID=r.busID AND b.aID=2 AND r.id="+id;
+		String sql1="update bus b,busroute r set b.numberOfSeats="+numberOfSeats+",b.busType='"+busType+"',r.time='"+time+"',r.arrivalLocation='"+arrival+"',r.destinationLocation='"+destination+"', r.seatPrice="+Price+" where b.busID=r.busID AND b.aID=1 AND r.id="+id;
 		int rs1 = stmt.executeUpdate(sql1);
 		
 		if((rs1 > 0)){
@@ -138,11 +142,12 @@ public static ArrayList<String> getBusNumbers(int aID ) {
 	ArrayList<String> busNumbers = new ArrayList<String>();
 	
 	try {
-		 con = DatabaseConnection.initializeDatabase();
+		db = DatabaseConnection.getInstance();
+		 con = db.getCon();
 		 stmt = con.createStatement();
 
 		//getting busnumbers per agent
-		String sql = "select busNumber from bus where aID = 2 ";
+		String sql = "select busNumber from bus where aID = 1 ";
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()) {
 
@@ -163,10 +168,11 @@ public static ArrayList<Bus> getBusDetails(String busNumber){
 	ArrayList<Bus> BusDetails = new ArrayList<Bus>();
 	
 	try {
-		 con = DatabaseConnection.initializeDatabase();
+		db = DatabaseConnection.getInstance();
+		 con = db.getCon();
 		 stmt = con.createStatement();
 		 
-		 String sql ="Select * from bus b, busroute r where b.busID=r.busID AND aID=2 AND busNumber='"+busNumber+"'";
+		 String sql ="Select * from bus b, busroute r where b.busID=r.busID AND aID=1 AND busNumber='"+busNumber+"'";
 		 ResultSet rs = stmt.executeQuery(sql);
 		 
 		 while(rs.next()) {
@@ -226,10 +232,11 @@ public static ArrayList<Bus> getBusDetails(String busNumber){
 public static boolean deleteBus(String busNumber,int aID) {
 	   
 	   try {
-		   con = DatabaseConnection.initializeDatabase();
+		   db = DatabaseConnection.getInstance();
+			 con = db.getCon();
 		   stmt = con.createStatement();
 		   
-		   String sql = "DELETE FROM bus WHERE busNumber='"+busNumber+"' and aID=2;"; 
+		   String sql = "DELETE FROM bus WHERE busNumber='"+busNumber+"' and aID=1;"; 
 		   int res = stmt.executeUpdate(sql);
 		   
 		   if(res > 0) {
