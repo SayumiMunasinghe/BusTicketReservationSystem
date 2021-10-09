@@ -11,7 +11,8 @@ import com.btrs.DBconnection.DatabaseConnection;
 
 
 public class cardsDBUtil {
-	private static Connection con = null;
+	private static DatabaseConnection db;
+	private static Connection con;
 	private static Statement state = null;
 	private static ResultSet res = null;
 	private static boolean Success;
@@ -23,8 +24,8 @@ public class cardsDBUtil {
     	   boolean Success = false;
     	   
     	   try { 
-    		   con = DBconnection.getConnection();
-    		   state = con.createStatement();
+    		   db = DatabaseConnection.getInstance();
+    		   con = db.getCon();
     		   String sql = " insert into cards values('"+cNO+"','"+cType+"','"+cHName+"','"+cvv+"','"+date+"',"+pid+")" ;
     		   int res = state.executeUpdate(sql);
     		   
@@ -44,7 +45,8 @@ public class cardsDBUtil {
 	  
 	  try {
 		  
-		  con = DBconnection.getConnection();
+		   db = DatabaseConnection.getInstance();
+		   con = db.getCon();
 		  state =con.createStatement();
 		  String sql = "update cards set cardHolderName='"+name+"',cvv='"+cv+"',expiryDate='"+expD+"' where cardNo='"+cNum+"' ";
 		  int res = state.executeUpdate(sql);
@@ -75,7 +77,8 @@ public class cardsDBUtil {
 	  ArrayList<cardDetails> cardDetails1 = new ArrayList<>();
 	  
 	  try {
-		  con = DBconnection.getConnection();
+		  db = DatabaseConnection.getInstance();
+		  con = db.getCon();
 		  state = con.createStatement();
 		  String sql = "SELECT * FROM cards where cardNo='"+cardNo+"'";
 		  res = state.executeQuery(sql);
@@ -106,7 +109,8 @@ public class cardsDBUtil {
 		ArrayList<String> cardNos = new ArrayList<String>();
 		
 		try {
-			Connection con = DatabaseConnection.initializeDatabase();
+			db = DatabaseConnection.getInstance();
+ 		    con = db.getCon();
 			Statement stmt = con.createStatement();
 
 		
@@ -130,7 +134,8 @@ public class cardsDBUtil {
    public static boolean deleteCard(String cardNo) {
 	   
 	   try {
-		   con = DBconnection.getConnection();
+		   db = DatabaseConnection.getInstance();
+		   con = db.getCon();
 		   state = con.createStatement();
 		   
 		   String sql = "delete from cards where cardNo='"+cardNo+"'"; 
