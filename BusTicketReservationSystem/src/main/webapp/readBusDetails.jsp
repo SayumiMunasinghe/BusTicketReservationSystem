@@ -126,36 +126,41 @@
   </div>
 </nav>
 <script type="text/javascript">
+<script type="text/javascript">
 function showForm(clickedId){
 if(clickedId == "butn1"){
 	document.getElementById('myTable').style.display = "block";
-	document.getElementById('thead').style.display = "block";
+	document.getElementById('t1').style.display = "block";
 	document.getElementById('f1').style.display = "none";
     document.getElementById('f2').style.display = "none";
 }else if(clickedId == "butn2"){
 	document.getElementById('myTable').style.display = "none";
-	document.getElementById('f1').style.display = "block";
+	document.getElementById('t1').style.display = "none";
+	document.getElementById('f1').style.display = "none";
+	
 }}
 </script>
 
   
 <br><br><br><br>
 
-
 <center><h2 style="color: white;font-family:Verdana;">Bus Details</h2>  </center>  
   <form action="viewBusDetailsServlet" method="POST">   
   <center>
- <input type="submit" value="View Details" onclick="showForm(this.id);" id="butn1" name="view">     
+ <input type="submit" value="View Details" onclick="showForm(this.id)" id="butn1" name="view">     
  	</form>
  	<form action="updateBusDetailsServlet" method="POST">
-  	<input type="submit"    name="select" value="Edit" id="butn2"> 
+  	<input type="submit"    name="select" onclick="showForm(this.id)" value="Edit" id="butn2"> 
 	</form>
 	<hr>
    </center>   
  <div class="container" >
-  <table class="table"  id="myTable" style="background-color:rgba(149, 7, 64, 0.0);">
+ <% String stats = (String)request.getAttribute("stat");
+		if(stats == "1"){
+			%>
+  <table class="table"  id="myTable" style="background-color:rgba(149, 7, 64, 0.0);" >
    
-  <thead id="thead">
+  <thead id="t1" > 
   <tr>
   	<th>Car Number</th>
   	<th>Number of seats</th>
@@ -201,9 +206,18 @@ if(clickedId == "butn1"){
   	<td>${bus.uDestination}</td>
   	<td>${bus.price}</td>
   	</tr>
+  	
+			
   </c:forEach>
   </tbody>
   </table>
+  
+  <script>
+ 
+  </script>
+  
+
+  <%} %>
   	<!--<c:url value="updateBusDetails.jsp" var="busupdate">
   	<c:param name="busNumber" value="${busNumber}"/>
   	<c:param name="seats" value="${noOfSeats}"/>
@@ -235,10 +249,9 @@ if(clickedId == "butn1"){
   	 }
   	 %>
   	 </select>
-  	
   	 <input type="submit" name="selectt" value="Select" onclick="showForm(this.id)" id ="b3" >
-  	
-  	 </form>
+  	 
+  	 
   	 <%
 		}
 		%>
