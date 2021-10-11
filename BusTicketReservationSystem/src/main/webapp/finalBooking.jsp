@@ -40,10 +40,10 @@
   }
   .container {
   	color: white;
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   	background-image: linear-gradient(#950740, #1A1A1D);
   	width: 350px;
-    height: 350px;
+    height: auto;
     font-size: larger;
   }
   .container .btn {
@@ -110,13 +110,25 @@
   </div>
 </nav>
 <br><br><br><br>
-<div class="container">
-	<h1 style="font-family: Life Savers;padding-bottom: 50px; padding-top: 30px;">Booking Summary</h1>
-	<p>Bus ID: ${order.busID}</p>
-	<p>Date of journey: ${order.date}</p>
-	<p>Time of Journey: ${order.time}</p>
-	<p>Number of seats reserved: ${order.reservedSeats}</p>
-	<a href="homepage.jsp"><button class="btn">Back to homepage</button></a>
-</div>
+	<div class="container">
+		<div>
+		
+			<h1 style="font-family: Life Savers;padding-bottom: 50px; padding-top: 30px;">Booking Summary</h1>
+			<p>Ticket ID: ${order.orderID}</p>
+			<p>Bus ID: ${order.busID}</p>
+			<p>Date of journey: ${order.date}</p>
+			<p>Time of Journey: ${order.time}</p>
+			<p>Number of seats reserved: ${order.reservedSeats}</p>
+			
+			<a href="homepage.jsp"><button class="btn" style="margin-top: 10px;">Back to homepage</button></a>
+		</div>
+		<br>
+		<div>
+			<form action="OrderManagementServlet" method="POST">
+					<input type="hidden" name="orderid" value="${order.orderID}">
+					<input style="display:inline; margin-bottom:20px;" class="btn" type="submit" value="Delete Booking" name="delete"> 
+			</form>
+		</div>
+	</div>
 </body>
 </html>
