@@ -43,7 +43,7 @@
     color: #fff !important;
   }
   .my {
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   	border-style: solid;
 	border-color: #950740;
 	margin: auto;

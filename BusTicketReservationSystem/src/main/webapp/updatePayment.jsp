@@ -44,7 +44,7 @@
   }
   .container {
   	color: white;
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   	background-image: linear-gradient(#950740, #1A1A1D);
   	width: 300px;
     height: 400px;
@@ -133,7 +133,7 @@
 		<select id="time" name="time" style ="background-color: #1A1A1D ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;">
 	
 		<c:forEach var="bt" items="${busTimes}">
-			<option style="color:black;" value="${bt.time} ${bt.busid}">${bt.time}</option>
+			<option style="color:white;" value="${bt.time} ${bt.busid}">${bt.time}</option>
 		</c:forEach>
 		</select><br><br>
 		<input class="btn" type="submit" name="updateTime" value="Update time">		
