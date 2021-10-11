@@ -356,6 +356,8 @@ body {font-family: "Lato", sans-serif;}
 
 <script>
 
+
+//boostrap tooltip for the form buttons in update phone number n delete account
 $(document).ready(function(){
 	  $('[data-toggle="tooltip"]').tooltip();   
 	});
