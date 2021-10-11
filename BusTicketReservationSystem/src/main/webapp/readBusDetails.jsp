@@ -56,7 +56,54 @@
   color: white;
   font-family:Verdana;
   }
+  .button {
+	background-color:rgb(149, 7, 64);
+	border: none;
+	color: black;
+	width: 90%;
+	font-family:Verdana;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	
+}
+.button:hover {
+	background-image: linear-gradient(to right, rgb(77, 35, 48), rgb(144, 179, 255));
+	background-color:inherit;
+	color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+  input[type=text] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+}
+input[type=number] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+}
+input[type=time] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+}
+.myBody{
+font-family:Verdana;
 
+}
+#minibutton1{
+	background-color:#4E4E50;
+	color:white;
+}
+#minibutton2{
+	background-color:#C3073F;
+}
 </style>
 
 <title>Bus Details</title>
@@ -143,16 +190,16 @@ if(clickedId == "butn1"){
 
   
 <br><br><br><br>
-
+<div class="myBody">
 <center><h2 style="color: white;font-family:Verdana;">Bus Details</h2>  </center>  
   <form action="viewBusDetailsServlet" method="POST">   
   <center>
- <input type="submit" value="View Details" onclick="showForm(this.id)" id="butn1" name="view">     
- 	</form>
+ <input type="submit" value="View Details" onclick="showForm(this.id)" id="butn1" class="button"name="view">     
+ 	</form><br>
  	<form action="updateBusDetailsServlet" method="POST">
-  	<input type="submit"    name="select" onclick="showForm(this.id)" value="Edit" id="butn2"> 
+  	<input type="submit"    name="select" onclick="showForm(this.id)" value="Edit" class="button" id="butn2"> 
 	</form>
-	<hr>
+	<hr style="width: 90%;">
    </center>   
  <div class="container" >
  <% String stats = (String)request.getAttribute("stat");
@@ -162,10 +209,10 @@ if(clickedId == "butn1"){
    
   <thead id="t1" > 
   <tr>
-  	<th>Car Number</th>
+  	<th>Bus Number</th>
   	<th>Number of seats</th>
   	<th>Bus Type</th>
-  	<th>Condition</th>
+  	<th>Air-Condition</th>
   	<th>Time</th>
   	<th>Arrival</th>
   	<th>Destination</th>
@@ -256,7 +303,7 @@ if(clickedId == "butn1"){
 		}
 		%>
   	
-  	 <form action="updateBusDetailsServlet" method="POST" id="f2">
+  	 <form action="updateBusDetailsServlet" method="POST" id="f2" style="vackground-color:black;">
   	<c:forEach var="bus" items="${BusDetails}" > 
   	<input type="hidden"  name="rId" value="${bus.id}">
   	<input type="hidden"  name="busNumber" value="${bus.busNumber}">
@@ -273,7 +320,7 @@ if(clickedId == "butn1"){
 		</div>
 	</div>
 	<div class="form-group">
-  		<label class="control-label col-sm-2">Condition : </label>
+  		<label class="control-label col-sm-2">Air-Condition : </label>
   		<div class="col-sm-9">
   			<input type="text"  name="condition" value="<c:if test="${bus.AC == 1}">AC</c:if><c:if test="${bus.AC == 0}">NON-AC</c:if>" pattern="[0-1]" readonly>
 		</div>
@@ -281,7 +328,7 @@ if(clickedId == "butn1"){
 	<div class="form-group">
   		<label class="control-label col-sm-2">Time :  </label>
   		<div class="col-sm-9">
-  			<input type="text"  name="time" value="${bus.uTime}">
+  			<input type="time"  name="time" value="${bus.uTime}">
 		</div>
 	</div>
 	<div class="form-group">
@@ -299,13 +346,13 @@ if(clickedId == "butn1"){
 	<div class="form-group">
   		<label class="control-label col-sm-2">Seat Price : </label> 
   		<div class="col-sm-9">
-  			<input type="text"  name="price" value="${bus.price}">
+  			<input type="number" min="0" max="1000" step="1"  name="price" value="${bus.price}">
 	  	</div>
 	  </div>
 	<div class="form-group">
   		
   		<div class="col-sm-offset-2 col-sm-10">
-  			<input type="submit" value="Save" name="Save"  ><input type="submit" value="Remove Bus" name="Remove Bus"  >
+  			<input type="submit" value="Save" name="Save" id="minibutton1" ><input type="submit" value="Remove Bus" name="Remove Bus"id="minibutton2" >
     	</div>
     
     </div>
@@ -329,6 +376,6 @@ if(clickedId == "butn1"){
   
   </div>
  
-
+</div>
 </body>
 </html>
