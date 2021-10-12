@@ -27,10 +27,10 @@ public class viewBusDetailsServlet extends HttpServlet {
 		//session to get agency id
 		int aID = (int)session.getAttribute("userID");
 //		int aID= 2;
-	
+		busDBUtil busDB =new busDBUtil();
 		String stat = "1";
 		try {
-			List <Bus> busDetails = busDBUtil.getBusDetails(aID);
+			List <Bus> busDetails = busDB.getBusDetails(aID);
 			request.setAttribute("busDetails", busDetails);
 			request.setAttribute("stat",stat);
 //			System.out.println(id);

@@ -24,30 +24,10 @@ public class enterBusDetailsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*//reaaadddddddddddd-----------------------------------------------------------------------------------------------
-		HttpSession session = request.getSession();
-		//session to get agency id
-		int aID = (int)session.getAttribute("aid");
-		
-		try {
-			List<Bus> busDetails = busDBUtil.validate(aID);
-			request.setAttribute("busDetails", busDetails);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		//page to be redirrected to 
-		RequestDispatcher dis = request.getRequestDispatcher("busDetails.jsp");
-		dis.forward(request, response);*/
-		
 		HttpSession session = request.getSession();
 		//session to get agency id
 		int aID = (int)session.getAttribute("userID");
-//		int aID= 1;
-		
-		
-		
-		
+
 		
 		//inserttttt---------------------------------------------------------------------------------------------------
 		
@@ -65,8 +45,8 @@ public class enterBusDetailsServlet extends HttpServlet {
 		double seatPrice =Double.parseDouble(request.getParameter("price"));
 		
 		boolean isTrue;
-		
-		isTrue = busDBUtil.InsertBus(aID,busNumber, busSeat, type, condition,upTime,upArrival,upDestination,downTime, downArrival,downDestination,seatPrice);
+		busDBUtil busDB =new busDBUtil();
+		isTrue = busDB.InsertBus(aID,busNumber, busSeat, type, condition,upTime,upArrival,upDestination,downTime, downArrival,downDestination,seatPrice);
 		
 		if(isTrue == true) {
 			RequestDispatcher dis1 = request.getRequestDispatcher("success.jsp");

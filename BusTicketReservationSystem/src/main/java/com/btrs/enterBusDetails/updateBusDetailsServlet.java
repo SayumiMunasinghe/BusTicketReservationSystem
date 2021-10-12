@@ -25,6 +25,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		busDBUtil busDB =new busDBUtil();
 		if(request.getParameter("Save") != null) {
 		
 		HttpSession session = request.getSession();
@@ -52,7 +53,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = busDBUtil.updatebus(id,busNumber, numberOfSeats, busType, condition,time,arrival,destination, aID,Price);
+		isTrue = busDB.updatebus(id,busNumber, numberOfSeats, busType, condition,time,arrival,destination, aID,Price);
 		
 		if(isTrue == true){
 			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
@@ -69,7 +70,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 		//session to get agency id
 		int aID = (int)session.getAttribute("userID");
 //		int aID = 2;
-		ArrayList<String> busNumbers = busDBUtil.getBusNumbers(aID);
+		ArrayList<String> busNumbers = busDB.getBusNumbers(aID);
 		request.setAttribute("busNumbers", busNumbers);
 		request.setAttribute("status", stat);
 		
@@ -82,7 +83,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 		//session to get agency id
 		int aID = (int)session.getAttribute("userID");
 		
-		List<Bus> BusDetails = busDBUtil.getBusDetails(busNumber,aID);
+		List<Bus> BusDetails = busDB.getBusDetails(busNumber,aID);
 		request.setAttribute("BusDetails",BusDetails);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
@@ -96,7 +97,7 @@ public class updateBusDetailsServlet extends HttpServlet {
 		int aID = (int)session.getAttribute("userID");
 //		int aID= 2;
 		String busNumber = request.getParameter("busNumber");
-		boolean check = busDBUtil.deleteBus(busNumber,aID);
+		boolean check = busDB.deleteBus(busNumber,aID);
 		
 		if(check == true) {
 			RequestDispatcher dis =request.getRequestDispatcher("success.jsp");
