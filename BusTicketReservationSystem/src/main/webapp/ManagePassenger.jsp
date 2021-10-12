@@ -315,11 +315,11 @@ body {font-family: "Lato", sans-serif;}
   <c:forEach var="pass" items = "${passDetails}">
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" pattern="[0]{1}[7]{1}[0-9]{8}" data-toggle="tooltip" title="Enter a 10 digit number thats starts with 07" id="phone" name="phone" style=" border-radius:50px;">
+      <input type="text" onkeyup='checkz();' class="form-control" value="${pass.telno}" pattern="[0]{1}[7]{1}[0-9]{8}" data-toggle="tooltip" data-placement="bottom" title="Enter a 10 digit number thats starts with 07" id="phone" name="phone" style=" border-radius:50px;">
     </div>
     
 
-    <input type="submit" class="btn btn-lg" style="background-color: rgb(149, 7, 64);" id="contact" name="updatePhone" value="Update">
+    <input type="submit" class="btn btn-lg" style="background-color: rgb(149, 7, 64);" id="contact" name="updatePhone" value="Update" disabled>
 
     </c:forEach>
   </form>
@@ -336,7 +336,7 @@ body {font-family: "Lato", sans-serif;}
   </div>
   
    <form action="ManagePassengerDetailsServlets" method="post">
-   		<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete My Account"> 
+   		<input type="submit" data-toggle="tooltip" data-placement="bottom" title="Are you sure you want to delete your account?" class="btn btn-danger btn-lg" name="delete" value="Delete My Account"> 
    </form> 
 
 </div>
@@ -356,6 +356,12 @@ body {font-family: "Lato", sans-serif;}
 
 <script>
 
+
+//boostrap tooltip for the form buttons in update phone number n delete account
+$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();   
+	});
+	
      var check = function() {
  		////////CHECKS USING JS IF CONFIRM PASSWORD == NEW PASSWORD and blocks update button accordingly/////////////
         if (document.getElementById('pwd').value != document.getElementById('conpwd').value) {

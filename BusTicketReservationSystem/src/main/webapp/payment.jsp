@@ -49,7 +49,7 @@
 	color: #C3073F;
   }
   .container .table{
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   	width: 50%;
     max-width: 50%;
     margin-bottom: 20px;
@@ -66,7 +66,7 @@
   }
   .pay {
   	margin-top: 20px;
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   	text-align: center;
   }
   .pay .btn {
