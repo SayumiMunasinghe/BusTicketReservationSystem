@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -90,10 +91,19 @@ background-color:black;
   
 }
 	</style>
-	<title>Bus Registration</title>
+	<title>OBTRS:Bus Registration</title>
 
 
 </head>
+<%
+	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
+	     <script>
+			window.location.href = 'AgencyLogin.jsp';
+		</script>
+     <%}
+%>
+
+
 	<body font-color="white"; style="background-image: url('webpage/home/assets/img/bg.jpg');">
 	<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
@@ -232,12 +242,20 @@ background-color:black;
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
- 		<input class="button" type="submit" value="Submit" >
+ 		<input class="button" type="submit" value="Submit" ><button onclick="Homepage()" class="button">Back</button>
 	</div>
 	</div>
+	
+	<script type="text/javascript">
+	function Homepage() {
+		window.location.href = 'homepage.jsp';
+	} 
+	
+	</script>
 	<br>
 	
 </form>
+
 </div>	
 </body>
 </html>

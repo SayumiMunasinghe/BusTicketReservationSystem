@@ -6,7 +6,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -73,7 +75,7 @@
 	
 }
 .button:hover {
-	background-image: linear-gradient(to right, rgb(77, 35, 48), rgb(144, 179, 255));
+	background-image: linear-gradient(to right, rgb(111, 34, 50), rgb(195,7,63));
 	background-color:inherit;
 	color: white;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
@@ -82,6 +84,7 @@
   	font-family:Verdana;
   	background-color:transparent;
   	color:white;
+  	border-bottom: 2px solid gray;
 }
 input[type=number] {
   	font-family:Verdana;
@@ -104,14 +107,36 @@ font-family:Verdana;
 #minibutton2{
 	background-color:#C3073F;
 }
+#b3{
+	background-color:rgba(149, 7, 64);
+  color: white; 
+  border: 2px solid rgb(0,0,0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family:Verdana;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 </style>
 
-<title>Bus Details</title>
+<title>OBTRS: Manage Bus Details</title>
 
  
   
 
 </head>
+
+<%
+	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
+	     <script>
+			window.location.href = 'AgencyLogin.jsp';
+		</script>
+     <%}
+%>
 
 
 <body style="background-image: url('webpage/home/assets/img/bg.jpg');" >
