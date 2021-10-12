@@ -25,7 +25,8 @@ public class AgencyRegistrationServlet extends HttpServlet {
 		String username = request.getParameter("userName");
 		
 		//Inserting data into database
-		String status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
+		AgencyDatabaseUtil objectName = new AgencyDatabaseUtil();
+		String status = objectName.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
 		if (status == "1") {
 			RequestDispatcher d1 = request.getRequestDispatcher("AgencySuccess.jsp");
 			d1.forward(request, response);

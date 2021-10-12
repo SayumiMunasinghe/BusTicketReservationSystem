@@ -211,7 +211,7 @@
                             <input type="text" name="companyName" placeholder="Enter your company name" class="input--style-3" required>
                         </div>
                          <div class="input-group">
-                             <input type="text" name="agentPhone" placeholder="Enter Your mobile phone" class="input--style-3" required>
+                             <input type="text" name="agentPhone" placeholder="Enter Your mobile phone" class="input--style-3" pattern="[0-9]{10}" title="Enter 10 Digit Phone number" required>
                         </div>
                         <div class="input-group">
                             <input type="email" name="agentEmail" placeholder="Enter your email" class="input--style-3" required>
