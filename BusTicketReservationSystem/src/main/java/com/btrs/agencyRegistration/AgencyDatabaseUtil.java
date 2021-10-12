@@ -15,7 +15,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	private static Connection con;
 
 	//Checks login and return user ID value and assigns user ID to a session in AgencyLoginServlet page. 
-	public static int checkLogin(String userName, String password){
+	public int checkLogin(String userName, String password){
 		int output = -1;
 		try {
 			db = DatabaseConnection.getInstance();
@@ -36,7 +36,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 //READING data and displaying the data in viewAgencyDetails page 
-	public static List<AgencyDetails> viewAgencyData(int userID){
+	public List<AgencyDetails> viewAgencyData(int userID){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
 		try {
@@ -70,7 +70,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // INSERTING data into the data base from registration
-	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
+	public String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		ResultSet rs = null;
 		String status = "0";
@@ -111,7 +111,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // UPDATING data in the data base from update form
-	public static String UpdateAgencyDetails(int userID, String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
+	public String UpdateAgencyDetails(int userID, String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		String status = "0";
 		try {
@@ -134,7 +134,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // DELETING data from the data base from manage agency section
-	public static String DeleteAgencyDetails(int userID) 
+	public String DeleteAgencyDetails(int userID) 
 	{
 		String status = "0";
 		try {
@@ -155,6 +155,4 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		}
 		return status;
 	}
-   
-// DELETE THE SESSION
 }

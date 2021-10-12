@@ -21,7 +21,8 @@ public class UpdateAgencyDetailsServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String username = request.getParameter("userName");
 		
-		String status = AgencyDatabaseUtil.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
+		AgencyDatabaseUtil objectName = new AgencyDatabaseUtil();
+		String status = objectName.insertAgencyDetails(agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
 	    
 		
 	}

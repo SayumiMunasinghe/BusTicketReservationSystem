@@ -17,6 +17,7 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		AgencyDatabaseUtil objectName = new AgencyDatabaseUtil();
 		if(request.getParameter("viewDetails") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
@@ -29,7 +30,8 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			}
 	
 			try {
-				List<AgencyDetails> agencyListDetails = AgencyDatabaseUtil.viewAgencyData(userID);
+				
+				List<AgencyDetails> agencyListDetails = objectName.viewAgencyData(userID);
 				request.setAttribute("agencyListDetails", agencyListDetails);
 				
 				String loadOne = "1";
@@ -71,7 +73,7 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userID = (int)session.getAttribute("userID");
 			
-			AgencyDatabaseUtil.UpdateAgencyDetails(userID ,agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
+			objectName.UpdateAgencyDetails(userID ,agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, password, username);
 			
 			String updateSuccess = "1";
 			request.setAttribute("updateSuccess", updateSuccess);
@@ -83,7 +85,7 @@ public class ManageAgencyDetailsServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
 			
-			AgencyDatabaseUtil.DeleteAgencyDetails(userID);
+			objectName.DeleteAgencyDetails(userID);
 			session.removeAttribute("userID");
 			session.removeAttribute("mode");
 			

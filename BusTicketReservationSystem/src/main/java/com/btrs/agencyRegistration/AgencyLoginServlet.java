@@ -20,7 +20,8 @@ public class AgencyLoginServlet extends HttpServlet {
 		 HttpSession session = request.getSession();
 		
 		try {
-			int userID = AgencyDatabaseUtil.checkLogin(username, password);
+			AgencyDatabaseUtil objectName = new AgencyDatabaseUtil();
+			int userID = objectName.checkLogin(username, password);
 		      if (userID == -1) {
 		    	  String popup = "1";
 				  request.setAttribute("popup", popup);
