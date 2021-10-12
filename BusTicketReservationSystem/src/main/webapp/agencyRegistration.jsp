@@ -200,7 +200,7 @@
              <!--    <div class="card-body" style="border-style: solid; border-color:#C3073F; border-radius:0px 10px 10px 0px;  border-left: black; border-width: 2px">   --> 
                <div class="card-body" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(80, 10, 10, 0.4));">  
                     <h2 class="title">Agency Login</h2>
-                   <form class="form-horizontal" action="AgencyRegistrationServlet" method="post">
+                   <form class="form-horizontal" action="ManageAgencyDetailsServlet" method="post">
                         <div class="input-group">
                              <input type="text" name="agentNIC" placeholder="Enter your NIC" class="input--style-3" required>
                         </div>
@@ -271,7 +271,7 @@
 							}%>
                         
                         <div class="p-t-10">
-                            <button class="btn btn--pill" style="background-color:rgba(149, 7, 64, 0.87)" id="regButt" type="submit">REGISTER</button>
+                            <button class="btn btn--pill" name="insertDetails" style="background-color:rgba(149, 7, 64, 0.87)" id="regButt" type="submit">REGISTER</button>
                         </div>
                     </form>
                     

@@ -22,9 +22,10 @@ public class AgencyDetails{
 		this.agencyLocation = agencyLocation;
 		this.password = password;
 		this.username = username;
-
 	}
 
+	
+//Getters are here
 	public int getAgentID() {
 		return agentID;
 	}
