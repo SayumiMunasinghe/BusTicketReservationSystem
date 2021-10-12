@@ -312,7 +312,7 @@ if(clickedId == "butn1"){
   
 	<form action="updateBusDetailsServlet" method="POST" id="f1">
   	 <h3 style="color: white;font-family:Verdana;">Select the bus to be editted :</h3>
-  	 <select id="bus" name="bus">
+  	 <select id="bus" name="bus" style="background:transparent;border-bottom: 1px solid #C3073F !important; border:none;color:white;width:100px;">
   	 <%
   	 for(int i = 0; i < buses.size(); i++){
   	 %>

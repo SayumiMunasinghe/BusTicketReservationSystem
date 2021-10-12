@@ -166,7 +166,7 @@ background-color:black;
 <br><br>
 <div class="container">  
   <form style="background-color:rgba(149, 7, 64, 0.5)"class="form-horizontal" action="enterBusDetailsServlet" method="POST">
-  <h2 class="control-label" style="text-align:center;">Bus Registraion</h2>
+  <h2 class="control-label" style="text-align:center;">Bus Registration</h2>
 	<div class="form-group">
 		<label for="busNo" class="control-label col-sm-2">Bus No. : </label>
 		<div class="col-sm-9">
@@ -176,7 +176,7 @@ background-color:black;
 	
 	<div class="form-group">
 		<label for="seats" class="control-label col-sm-2">Number of seats : </label>
-		&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" class="seat" id="no.ofseats" name="seat" min="20" max="100" step="1" required>
+		&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" class="seat" id="no.ofseats" name="seat" min="20" max="100" step="1"style="width:150px;background:transparent;border-bottom: 2px solid gray !important; border:none;" required>
 	</div>
 		
 	<div class="form-group">
@@ -203,7 +203,7 @@ background-color:black;
 	
 	<div class="form-group">
 	<label for="uptime" class="control-label col-sm-2">Up-time :</label> 
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="utime" name="utime" required>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="utime" name="utime" style="width:150px;background:transparent;border-bottom: 2px solid gray !important; border:none;" required>
 	</div>
 	<div class="form-group">
 		<label for="upArrival" class="control-label col-sm-2">Arrival : </label>
@@ -220,7 +220,7 @@ background-color:black;
   	<br>
 	<div class="form-group">
 	<label for="downtime" class="control-label col-sm-2">Down-time :</label> 
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="dtime" name="dtime" required>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" id="dtime" name="dtime" style="width:150px;background:transparent;border-bottom: 2px solid gray !important; border:none;" required>
 	</div>
 	<div class="form-group">
 		<label for="downArrival" class="control-label col-sm-2">Arrival :</label> 
@@ -238,7 +238,7 @@ background-color:black;
   	
   	<div class="form-group">
   	<label for="seatPrice" class="control-label col-sm-2">Seat Price (Rs.):</label> 
-  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"  id="price" name="price" min="0" max="1000" step="1" required>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number"  id="price" name="price" min="0" max="1000" step="1" style="width:150px;background:transparent;border-bottom: 2px solid gray !important; border:none;" required>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
