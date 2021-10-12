@@ -43,6 +43,7 @@
     color: #fff !important;
   }
   .container {
+    width: fit-content;
   	color: white;
   	background-image: linear-gradient(#950740, #1A1A1D);
   	padding-bottom: 10px;
@@ -51,7 +52,7 @@
   	font-family: Bahnschrift;
   }
          
-   .btn {background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%)}
+   .btn {background-image: linear-gradient(to right, #000000 0%, #434343  51%, #000000  100%)}
    .btn{
        padding: 15px 5x;
 	    text-align: center;
@@ -134,10 +135,10 @@
 		<p>Your booking could not be deleted. Please try again</p>
 	</c:if>	
 	<div class="container">
-		<h1 style="color:#00FF00">Payment successful !</h1><br>
+		<h1 style="font-weight: 1000;">PAYMENT SUCCESSFUL !</h1><br>
 		<div>
 		
-			<h1 style="font-family: Life Savers;padding-bottom: 20px;">Booking Summary</h1>
+			<h1 style="font-family: Life Savers;padding-bottom: 20px;text-align: center;">BOOKING SUMMARY</h1>
 			<p>Ticket ID: ${order.orderID}</p>
 			<p>Bus ID: ${order.busID}</p>
 			<p>Date of journey: ${order.date}</p>

@@ -97,6 +97,12 @@
 	    margin-top: 40px;
 	    margin-bottom: 0px;
 	}
+	.alert-warning {
+	    width: 72.5%;
+	    margin-left: 14px;
+	    margin-top: 40px;
+	    margin-bottom: 0px;
+	}
   </style>
 </head>
 
@@ -272,7 +278,7 @@
 	<%}
 	if(session.getAttribute("mode") == "agency") {%>
 	<br><br>
-		<div class="alert alert-danger">
+		<div class="alert alert-warning">
 		<div class="row">
 		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Login as passenger to book a bus ticket.</p></div>
 		</div>

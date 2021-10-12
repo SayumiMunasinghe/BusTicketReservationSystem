@@ -28,6 +28,7 @@ public class PaymentServlet extends HttpServlet {
 	private Time time;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BusDBUtil bdu = new BusDBUtil();
 		if(request.getParameter("submit") != null) {
 			HttpSession session = request.getSession();
 			if(session.getAttribute("userID") == null || session.getAttribute("mode") == null){ 
@@ -40,10 +41,10 @@ public class PaymentServlet extends HttpServlet {
 				reservedSeats = Integer.parseInt(request.getParameter("resSeat"));
 				convTime = LocalTime.parse(sttime);
 				
-				double pricePerSeat = BusDBUtil.getPrice(busid, convTime);
+				double pricePerSeat = bdu.getPrice(busid, convTime);
 				
 				totalPrice = pricePerSeat * reservedSeats;
-				bd = BusDBUtil.getDetails(busid, convTime);
+				bd = bdu.getDetails(busid, convTime);
 				
 				session.setAttribute("busid", busid);
 				session.setAttribute("seats", reservedSeats);
@@ -58,17 +59,17 @@ public class PaymentServlet extends HttpServlet {
 			reservedSeats = Integer.parseInt(request.getParameter("resSeat"));
 			convTime = LocalTime.parse(sttime);
 			
-			double pricePerSeat = BusDBUtil.getPrice(busid, convTime);
+			double pricePerSeat = bdu.getPrice(busid, convTime);
 			
 			totalPrice = pricePerSeat * reservedSeats;
-			bd = BusDBUtil.getDetails(busid, convTime);
+			bd = bdu.getDetails(busid, convTime);
 			
 			
 			//get cusID from session
 			cusID = (int)session.getAttribute("userID");
 			//cusID = 1;
 			
-			ArrayList<String> cardNos = BusDBUtil.getCardNumbers(cusID);
+			ArrayList<String> cardNos = bdu.getCardNumbers(cusID);
 			
 			request.setAttribute("busDetails", bd);
 			request.setAttribute("seats", reservedSeats);
@@ -85,10 +86,9 @@ public class PaymentServlet extends HttpServlet {
 			cardNo = request.getParameter("card");
 			time = Time.valueOf(convTime);
 			Order order = new Order(cusID, busid, cardNo, time, reservedSeats, totalPrice, SelectBusServlet.date);
-			String status;
 			
-			boolean decision = BusDBUtil.insertBookingDetails(order);
-			order.setOrderID(BusDBUtil.orderID);
+			boolean decision = bdu.insertBookingDetails(order);
+			order.setOrderID(bdu.getOrderID());
 			
 			if(decision == true) {
 				request.setAttribute("order", order);
