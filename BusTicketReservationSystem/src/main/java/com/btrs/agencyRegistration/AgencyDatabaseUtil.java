@@ -15,7 +15,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	private static Connection con;
 
 	//Checks login and return user ID value and assigns user ID to a session in AgencyLoginServlet page. 
-	public static int checkLogin(String userName, String password){
+	public int checkLogin(String userName, String password){
 		int output = -1;
 		try {
 			db = DatabaseConnection.getInstance();
@@ -36,7 +36,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 //READING data and displaying the data in viewAgencyDetails page 
-	public static List<AgencyDetails> viewAgencyData(int userID){
+	public List<AgencyDetails> viewAgencyData(int userID){
 		ArrayList<AgencyDetails> agencyDetailList1 = new ArrayList<>();
 
 		try {
@@ -56,11 +56,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 				String agencyLocation = rs.getString("agencyLocation");
 				String pass = rs.getString("password");
 				String username = rs.getString("username");
-
 				AgencyDetails newAgency1 = new AgencyDetails(agentID, agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, pass, username);
 				agencyDetailList1.add(newAgency1);
-			}else{
-
 			}
 		}
 		catch(Exception e) {
@@ -70,7 +67,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // INSERTING data into the data base from registration
-	public static String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
+	public String insertAgencyDetails(String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		ResultSet rs = null;
 		String status = "0";
@@ -94,7 +91,6 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 					return status;
 				}
 			}
-
 			//This will insert entered data into the database
 			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"','"+username+"')";
 			int rs2 = stmt.executeUpdate(sql2);
@@ -111,14 +107,13 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // UPDATING data in the data base from update form
-	public static String UpdateAgencyDetails(int userID, String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
+	public String UpdateAgencyDetails(int userID, String agentNIC, String agentName, String companyName, String agentPhone,String agentEmail, String agencyLocation, String password, String username) 
 	{
 		String status = "0";
 		try {
 			db = DatabaseConnection.getInstance();
 			con = db.getCon();
 			stmt = con.createStatement();
-
 			String sql2 = "UPDATE agency SET agentNIC = '"+agentNIC+"' , agentName = '"+agentName+"', companyName = '"+companyName+"', agentPhone = '"+agentPhone+"', agentEmail = '"+agentEmail+"', agencyLocation = '"+agencyLocation+"', password = '"+password+"', username ='"+username+"' WHERE agentID = "+userID+"";
 			int rs2 = stmt.executeUpdate(sql2);
 			if(rs2 > 0) {
@@ -134,7 +129,7 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 	}
 
 // DELETING data from the data base from manage agency section
-	public static String DeleteAgencyDetails(int userID) 
+	public String DeleteAgencyDetails(int userID) 
 	{
 		String status = "0";
 		try {
@@ -155,6 +150,4 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 		}
 		return status;
 	}
-   
-// DELETE THE SESSION
 }

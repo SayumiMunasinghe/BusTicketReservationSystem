@@ -96,7 +96,8 @@
   </style>
 </head>
 
-<%
+
+<% // Checks if user is logged in or not
 	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
 	     <script>
 			window.location.href = 'AgencyLogin.jsp';
