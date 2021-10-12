@@ -56,11 +56,8 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 				String agencyLocation = rs.getString("agencyLocation");
 				String pass = rs.getString("password");
 				String username = rs.getString("username");
-
 				AgencyDetails newAgency1 = new AgencyDetails(agentID, agentNIC, agentName, companyName, agentPhone, agentEmail, agencyLocation, pass, username);
 				agencyDetailList1.add(newAgency1);
-			}else{
-
 			}
 		}
 		catch(Exception e) {
@@ -94,7 +91,6 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 					return status;
 				}
 			}
-
 			//This will insert entered data into the database
 			String sql2 = "Insert into agency values (0 , '"+agentNIC+"', '"+agentName+"', '"+companyName+"', '"+agentPhone+"', '"+agentEmail+"', '"+agencyLocation+"', '"+password+"','"+username+"')";
 			int rs2 = stmt.executeUpdate(sql2);
@@ -118,7 +114,6 @@ public class AgencyDatabaseUtil implements PersonDatabase{
 			db = DatabaseConnection.getInstance();
 			con = db.getCon();
 			stmt = con.createStatement();
-
 			String sql2 = "UPDATE agency SET agentNIC = '"+agentNIC+"' , agentName = '"+agentName+"', companyName = '"+companyName+"', agentPhone = '"+agentPhone+"', agentEmail = '"+agentEmail+"', agencyLocation = '"+agencyLocation+"', password = '"+password+"', username ='"+username+"' WHERE agentID = "+userID+"";
 			int rs2 = stmt.executeUpdate(sql2);
 			if(rs2 > 0) {
