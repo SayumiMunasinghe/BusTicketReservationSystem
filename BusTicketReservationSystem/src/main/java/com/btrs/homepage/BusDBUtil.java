@@ -12,15 +12,21 @@ import java.sql.Date;
 import java.util.List;
 
 import com.btrs.DBconnection.DatabaseConnection;
+import com.btrs.interfaces.BusDBUtilInterface;
 
-
-public class BusDBUtil {
+public class BusDBUtil implements BusDBUtilInterface {
 	
-	public static int orderID;
+	private int orderID;
 	private static DatabaseConnection db;
 	private static Connection con;
 	
-	public static ArrayList<String> getArrival() {
+	public int getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(int orderID) {
+		this.orderID = orderID;
+	}
+	public ArrayList<String> getArrival() {
 		
 		ArrayList<String> arrival = new ArrayList<String>();
 		
@@ -47,7 +53,7 @@ public class BusDBUtil {
 		
 		return arrival;
 	}
-	public static ArrayList<String> getDestination() {
+	public ArrayList<String> getDestination() {
 		
 		ArrayList<String> destination = new ArrayList<String>();
 		
@@ -73,7 +79,7 @@ public class BusDBUtil {
 		}
 		return destination;
 	}
-	public static List<BusDetails> sendDetails(String arrival, String destination) {
+	public List<BusDetails> sendDetails(String arrival, String destination) {
 
 		ArrayList<BusDetails> bd = new ArrayList<BusDetails>();
 
@@ -112,7 +118,7 @@ public class BusDBUtil {
 
 		return bd;
 	}
-	public static int getRemainingSeats(int busID, String travelDate, LocalTime timeBus) {
+	public int getRemainingSeats(int busID, String travelDate, LocalTime timeBus) {
 		
 		int noOfSeatsRemaining = 0;
 		int totalSeats = 0;
@@ -149,7 +155,7 @@ public class BusDBUtil {
 		noOfSeatsRemaining = totalSeats - takenNoOfSeats;
 		return noOfSeatsRemaining;
 	}
-	public static double getPrice(int busID, LocalTime timeBus) {
+	public double getPrice(int busID, LocalTime timeBus) {
 		
 		double price = 0;
 		Time time = Time.valueOf(timeBus);
@@ -172,7 +178,7 @@ public class BusDBUtil {
 		
 		return price;
 	}
-	public static ArrayList<String> getCardNumbers(int cusID ) {
+	public ArrayList<String> getCardNumbers(int cusID) {
 		
 		ArrayList<String> cardNos = new ArrayList<String>();
 		
@@ -193,7 +199,7 @@ public class BusDBUtil {
 		}
 		return cardNos;
 	}
-	public static boolean insertBookingDetails(Order o) {
+	public boolean insertBookingDetails(Order o) {
 		boolean status = false;
 		try {
 			Statement stmt = con.createStatement();
@@ -219,7 +225,7 @@ public class BusDBUtil {
 		}
 		return status;
 	}
-	public static BusDetails getDetails(int busID, LocalTime time) {
+	public BusDetails getDetails(int busID, LocalTime time) {
 		BusDetails b = new BusDetails();
 		try {
 			Statement stmt = con.createStatement();
@@ -249,7 +255,7 @@ public class BusDBUtil {
 		}
 		return b;
 	}
-	public static boolean deleteBooking(int orderid) {
+	public boolean deleteBooking(int orderid) {
 		boolean status = false;
 		try {
 			Statement stmt = con.createStatement();
@@ -270,7 +276,7 @@ public class BusDBUtil {
 		}
 		return status;
 	}
-	public static Order getOrderDetails(int orderid) {
+	public Order getOrderDetails(int orderid) {
 		Order order = new Order();
 		try {
 			Statement stmt = con.createStatement();
@@ -309,7 +315,7 @@ public class BusDBUtil {
 		return order;
 		
 	}
-	public static ArrayList<BusTimes> getTimes(String arrival, String destination, String busType) {
+	public ArrayList<BusTimes> getTimes(String arrival, String destination, String busType) {
 		ArrayList<BusTimes> btl = new ArrayList<BusTimes>();
 		try {
 			Statement stmt = con.createStatement();
@@ -331,7 +337,7 @@ public class BusDBUtil {
 		}
 		return btl;
 	}
-	public static boolean updateBooking(int orderid, int busid, Time time) {
+	public boolean updateBooking(int orderid, int busid, Time time) {
 		boolean status = false;
 		try {
 			Statement stmt = con.createStatement();
