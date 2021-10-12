@@ -29,8 +29,13 @@ public class PaymentServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BusDBUtil bdu = new BusDBUtil();
+		
+		//when clicked proceed to payment after selecting number of seats to book
 		if(request.getParameter("submit") != null) {
+			
 			HttpSession session = request.getSession();
+			
+			//if user has not logged in
 			if(session.getAttribute("userID") == null || session.getAttribute("mode") == null){ 
 				int loggedIn = 1;
 				session.setAttribute("loggedIn", loggedIn);
@@ -53,6 +58,7 @@ public class PaymentServlet extends HttpServlet {
 				RequestDispatcher dis = request.getRequestDispatcher("PassengerLogin.jsp");
 				dis.forward(request, response);
 			}
+			
 			busid = Integer.parseInt(request.getParameter("busID"));
 			String sttime = request.getParameter("time");
 			
@@ -67,8 +73,8 @@ public class PaymentServlet extends HttpServlet {
 			
 			//get cusID from session
 			cusID = (int)session.getAttribute("userID");
-			//cusID = 1;
 			
+			//getting saved card numbers of customer to select for payment
 			ArrayList<String> cardNos = bdu.getCardNumbers(cusID);
 			
 			request.setAttribute("busDetails", bd);
@@ -77,19 +83,25 @@ public class PaymentServlet extends HttpServlet {
 			request.setAttribute("price", totalPrice);
 			request.setAttribute("cardNos", cardNos);
 			
-			
-			
 			RequestDispatcher dis = request.getRequestDispatcher("payment.jsp");
 			dis.forward(request, response);
 		}
+		
+		//after choosing card and clicking paynow button
 		if(request.getParameter("paynow") != null) {
+			
 			cardNo = request.getParameter("card");
+			
+			//converting LocalTime object to Time object
 			time = Time.valueOf(convTime);
+			//creating order object with overloaded constructor
 			Order order = new Order(cusID, busid, cardNo, time, reservedSeats, totalPrice, SelectBusServlet.date);
 			
+			//CREATE
 			boolean decision = bdu.insertBookingDetails(order);
 			order.setOrderID(bdu.getOrderID());
 			
+			//if inserted to Order table successfully,
 			if(decision == true) {
 				request.setAttribute("order", order);
 				RequestDispatcher dis = request.getRequestDispatcher("paymentDone.jsp");

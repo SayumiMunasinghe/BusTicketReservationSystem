@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/SelectBusServlet")
 public class SelectBusServlet extends HttpServlet {
-	public  Date travelDate;
+	public static Date travelDate;
 	public static String dateOfTravel;
 	public static LocalDate date;
 	
@@ -50,8 +50,12 @@ public class SelectBusServlet extends HttpServlet {
 			try {
 				travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
 				date = travelDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				
+				//get bus details to show to customer on availablebuses.jsp
+				//READ
 				List<BusDetails> busDetails = bdu.sendDetails(arrival, destination);
 			
+				//if there are no buses matching the selected route
 				if(busDetails.isEmpty()) {
 					HttpSession session = request.getSession();
 					String flag = "empty";
@@ -60,6 +64,8 @@ public class SelectBusServlet extends HttpServlet {
 					RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 					dis.forward(request, response);
 				}
+				
+				//check whether available buses are fully booked, if so, remove them from available buses for cusotmer to book
 				for(int i = 0; i < busDetails.size(); i++) {
 					if(busDetails.get(i).getRemainingSeats() == 0)
 						busDetails.remove(i);
