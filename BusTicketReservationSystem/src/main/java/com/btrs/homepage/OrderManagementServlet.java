@@ -19,8 +19,11 @@ public class OrderManagementServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BusDBUtil bdu = new BusDBUtil();
+		//if user clicks delete booking
 		if(request.getParameter("delete") != null) {
+			
 			int orderid = Integer.parseInt(request.getParameter("orderid"));
+			//DELETE
 			boolean status = bdu.deleteBooking(orderid);
 			if (status == true) {
 				HttpSession session = request.getSession();
@@ -36,6 +39,7 @@ public class OrderManagementServlet extends HttpServlet {
 				dis.forward(request, response);
 			}
 		}
+		//if user clicks update booking (which can only update time)
 		if(request.getParameter("update") != null) {
 			int orderid = Integer.parseInt(request.getParameter("orderid"));
 			Order order = bdu.getOrderDetails(orderid);
@@ -50,9 +54,11 @@ public class OrderManagementServlet extends HttpServlet {
 			
 			for(int i = 0; i < btl.size(); i++) {
 				BusTimes bt = btl.get(i);
+				//removing time if the number of seats available are less than the number of seats already booked by user
 				if(bdu.getRemainingSeats(bt.getBusid(), tempDate, tempTime) < order.getReservedSeats()) {
 					btl.remove(i);
 				}
+				//removing the already chosen time from list of times to update booking to
 				if((bt.getBusid() == busid) && bt.getTime().equals(order.getTime())) {
 					btl.remove(i);
 				}
@@ -63,7 +69,9 @@ public class OrderManagementServlet extends HttpServlet {
 			RequestDispatcher dis = request.getRequestDispatcher("updatePayment.jsp");
 			dis.forward(request, response);
 		}
+		//after choosing a time to update booking to
 		if(request.getParameter("updateTime") != null) {
+			//getting busid and time
 			String val = request.getParameter("time");
 			String[] temp = val.split(" ");
 			String sttime = temp[0];
@@ -72,6 +80,7 @@ public class OrderManagementServlet extends HttpServlet {
 			LocalTime time = LocalTime.parse(sttime);
 			Time orTime = Time.valueOf(time);
 			boolean status = bdu.updateBooking(orderid, busid, orTime);
+			//if update was successful
 			if(status==true) {
 				Order finalOrder = bdu.getOrderDetails(orderid);
 				request.setAttribute("order", finalOrder);
