@@ -25,7 +25,8 @@ public class PassengerLoginServlet extends HttpServlet {
 		int passengerid = -1;
 		
 		try {
-				int pid= PassengerDBUtil.checkLogin(email, password);
+				PassengerDBUtil pass= new PassengerDBUtil();
+				int pid= pass.checkLogin(email, password);
 		
 				passengerid = pid;
 		}

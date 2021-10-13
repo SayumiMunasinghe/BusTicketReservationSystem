@@ -17,11 +17,12 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		PassengerDBUtil pass= new PassengerDBUtil();
 		if(request.getParameter("viewPassDetails") != null) {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
 			try {
-			List<Passenger> passDetails = PassengerDBUtil.CheckExist(userID);
+			List<Passenger> passDetails = pass.CheckExist(userID);
 			request.setAttribute("passDetails", passDetails);
 			
 			String loadOne = "1";
@@ -44,7 +45,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 
 			String pwd = request.getParameter("conpwd");
 			
-				Boolean updated = PassengerDBUtil.updatePassword(userID, pwd);
+				Boolean updated = pass.updatePassword(userID, pwd);
 				
 				String msg;
 				
@@ -72,7 +73,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 
 			String tel = request.getParameter("phone");
 			
-			Boolean updated = PassengerDBUtil.updatePhone(userID, tel);
+			Boolean updated = pass.updatePhone(userID, tel);
 			
 			String msg;
 			
@@ -98,7 +99,7 @@ public class ManagePassengerDetailsServlets extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userID = (int) session.getAttribute("userID");
 			
-			Boolean status = PassengerDBUtil.DeletePassengerDetails(userID);
+			Boolean status = pass.DeletePassengerDetails(userID);
 			session.removeAttribute("userID");
 			session.removeAttribute("mode");
 			
