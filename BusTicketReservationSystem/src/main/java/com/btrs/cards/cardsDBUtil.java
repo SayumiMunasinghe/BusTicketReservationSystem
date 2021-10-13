@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.btrs.DBconnection.DatabaseConnection;
+import com.btrs.interfaces.CardInterface;
 
 
-public class cardsDBUtil {
+public class cardsDBUtil implements CardInterface {
 	private static DatabaseConnection db;
 	private static Connection con;
 	private static Statement state = null;
 	private static ResultSet res = null;
 	private static boolean Success;
 	
-       public static boolean addCard( String cNO,String cType,String cHName ,String cvv,String date,int pid) {
+       public  boolean addCard( String cNO,String cType,String cHName ,String cvv,String date,int pid) {
     	   
     	   
     	    
@@ -43,7 +44,7 @@ public class cardsDBUtil {
        }
  
  //Create sql query to update card details      
-  public static boolean updateCard(String cNum,String name,String cv,String expD ) {
+  public  boolean updateCard(String cNum,String name,String cv,String expD ) {
 	  
 	  try {
 		  
@@ -75,7 +76,7 @@ public class cardsDBUtil {
  
  
   //Create sql query to read card details      
-  public static List<cardDetails> viewCardDetails(String cardNo){
+  public  List<cardDetails> viewCardDetails(String cardNo){
 	  ArrayList<cardDetails> cardDetails1 = new ArrayList<>();
 	  
 	  try {
@@ -106,7 +107,7 @@ public class cardsDBUtil {
   }
   
   //Create sql query to read card numbers according to cus id     
-  public static ArrayList<String> getCardNumbers(int cusID ) {
+  public  ArrayList<String> getCardNumbers(int cusID ) {
 		
 		ArrayList<String> cardNos = new ArrayList<String>();
 		
@@ -133,7 +134,7 @@ public class cardsDBUtil {
 	}
   
   //Create sql query to delete card details according to cardNo     
-   public static boolean deleteCard(String cardNo) {
+   public  boolean deleteCard(String cardNo) {
 	   
 	   try {
 		   db = DatabaseConnection.getInstance();
