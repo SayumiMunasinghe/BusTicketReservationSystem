@@ -31,6 +31,17 @@
 	 	    position:absolute;
 	 	   
 	}
+	.m1{
+	 left:54%;
+	 position:absolute;
+	 color:green;
+	}
+	
+	.m2{
+	 left:54%;
+	 position:absolute;
+	 color:#C3073F;
+	}
 	
 	 input[type="radio"]:active {
 	       color:#C3073F !important;
@@ -51,6 +62,7 @@
         border:1px solid;
         padding:20px 35px 20px 35px;
          border-color:#C3073F !important;
+         background-color:rgb(13,13,13,0.6);
       }
        
        #f3{
@@ -59,6 +71,7 @@
         padding:20px 35px 20px 35px;
          height: 472px;
         width:466px;
+        background-color:rgb(13,13,13,0.6);
         
       }
       #f2{
@@ -67,18 +80,20 @@
            height: 472px;
           width:466px;
           border-color:#C3073F !important;
+          background-color:rgb(13,13,13,0.6);
       }
+   
 	
 	.tab {
 	      top:23%;
-          left:30%;
+          left:29%;
           border: 1px solid #ccc;
           background-color: transparent;
-          width: 7%;
+          width: 8%;
           height: 472px;
           position:absolute;
           border-color:#C3073F !important;
-          
+          background-color:rgb(13,13,13,0.5);
 }
 
 	
@@ -98,13 +113,20 @@
      .tab button:hover {
           background-color: #C3073F !important;
 }
-       
+       #but1{
+          background-color: #C3073F ;
+       }
             
      #b3{
              left:54%;
              position:absolute;
              top:19%;
      
+     }
+    
+     
+     #b2{
+     background-color:#C3073F ;
      }
   body, html{
 	width: 100%;
@@ -298,7 +320,7 @@
      
     <div class="container">
         <div class="gota">
-       <form action="addCardServlet" method="post" id="f1" >
+       <form action="addCardServlet" method="post" id="f1" style="background-image:url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)" >
        
          <label>
           <input type ="radio" id="visa" name="type" value="Visa"  checked >
@@ -334,8 +356,26 @@
            <label>Expiry Date:</label><input type="text"  pattern="[0-9]{2}/[0-9]{2}" class="form-control" name="date" placeholder="MM/YY" required>
               </div>
            </div>
-           
-           <input type="submit"  value="Add Card" name="submit"  class="btn btn-primary">
+           <% String msg = (String)request.getAttribute("msg");
+		if(msg == "1"){
+			%>
+			 <div class="m1">
+			    <strong>You successfully added a card!!</strong>
+			 </div>
+			
+           <%} %>
+               
+               
+                <% String negimsg = (String)request.getAttribute("negimsg");
+		if(negimsg == "1"){
+			%>
+			 <div class="m2">
+			    <strong>The card exist!!</strong>
+			 </div>
+			
+           <%} %>
+          
+           <input type="submit" id="s1" value="Add Card" name="submit"  class="btn btn-primary">
          
          <script>
          if(document.getElementById('cv')!=null){
@@ -344,14 +384,12 @@
         	 
          }
          
-         function showForm(clickedId)
-         {(clickedId == "but2"){
-        	 document.getElementById('but1').style.background = "transparent";
-         }
-         (clickedId == "but1"){
-        	 document.getElementById('but1').style.background = "#C3073F";
-         }
-         }
+         function showUp(id){
+			 if(id=='b3'){
+			     document.getElementById('but1').style.background = "transparent";
+			     document.getElementById('but2').style.background = "#C3073F";
+			 }
+		 }
          </script>
         </form>
       </div>     
@@ -375,7 +413,7 @@
 			%>
 		<div class="container">
 		<div class="gota">
-		<form action="addCardServlet" method="post"   id="f3"   >     
+		<form action="addCardServlet" method="post"   id="f3" style="background-image:url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)"  >     
 		 <div class ="form-group col-lg-6">
 		<label for="card" style="color: #C3073F !important;"><p>Select card to make payment: </p></label>
 		<select id="card" name="card" class="form-control"  style="background:transparent;border-bottom: 1px solid #C3073F !important; border:none;color:white">
@@ -403,7 +441,11 @@
 		 if(document.getElementById('card')!=null){
 	     document.getElementById('f1').style.display = "none";
 	     document.getElementById('but2').style.background = "#C3073F";
+	     document.getElementById('but1').style.background = "transparent";
 	     
+		 }else if(document.getElementById('card')==null){
+			document.getElementById('but2').style.background = "#C3073F";
+			document.getElementById('but1').style.background = "transparent";
 		 }
 		 
 		 if(clickedId == "but1"){
@@ -422,22 +464,22 @@
 			%>
 			<div class="container">
 			<div class="gota">
-		<form action="updateCardServlet" method="post" id="f2" style="display:none" >
+		<form action="updateCardServlet" method="post" id="f2" style="display:none;background-image:url(https://dbdzm869oupei.cloudfront.net/img/sticker/preview/28839.png)" >
 		<c:forEach var="cardDetails" items="${cardDetails}">
           <div class="row">
               <div class ="form-group col-lg-6">
-          <label>Card Type:</label><input type ="Text" value="${cardDetails.cType}" class="form-control" id="c" name="type"   style="background:transparent;"readonly>
+          <label>Card Type:</label><input type ="Text"  value="${cardDetails.cType}" title="You cannot change the card type " class="form-control" id="c" name="type"  style="background:transparent;color: #FF7F7F;" readonly>
               </div>
            </div>
             
            <div class="row">
               <div class ="form-group col-lg-6">
-          <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}" style="background:transparent;"  readonly>
+          <label>Card Number <span id="check"  class="glyphicon glyphicon-credit-card"></span> :</label> <input type ="text" class="form-control"  title="You cannot change the card number" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" name="cno" value="${cardDetails.cNum}" style="background:transparent;color: #FF7F7F"  readonly>
               </div>
           </div>
           <div class="row">
               <div class ="form-group col-lg-6">
-          <label>Card Holder Name:</label><input type="text" value="${cardDetails.cHName}" class="form-control" name="hName">
+          <label>Card Holder Name:</label><input type="text"  value="${cardDetails.cHName}" class="form-control" name="hName">
               </div>
            </div>
            <div class="row">
@@ -448,6 +490,8 @@
            </div>
            <input type="submit" value="Update" name="update" id ="b1" class="btn btn-primary">
            <input type="submit" value="Remove Card" name="delete" id="b2" class="btn btn-danger">
+            
+		
            </c:forEach>
         </form>
         </div>
@@ -456,15 +500,16 @@
         if(document.getElementById('cvv')!=null){
    	     document.getElementById('f1').style.display = "none";
    	     document.getElementById('f2').style.display = "block";
-   	    document.getElementById('but2').style.background = "#C3073F";
-   		 }
+   	     document.getElementById('but2').style.background = "#C3073F";
+		 document.getElementById('but1').style.background = "transparent";
+        }
         
 		 if(document.getElementById('c')!=null){
 	     document.getElementById('f1').style.display = "none";
 	     document.getElemntById('f3').style.display="block";
 		 }
 		 
-		 
+		
 		 
         </script>
         <%} 
