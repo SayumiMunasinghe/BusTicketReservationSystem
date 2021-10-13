@@ -1,7 +1,7 @@
 package com.btrs.cards;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ public class updateCardServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		cardsDBUtil cdbu = new cardsDBUtil();
 	 //Create function to update card details when update button is pressed 
 
 		if(request.getParameter("update")!=null) { 
@@ -30,7 +30,7 @@ public class updateCardServlet extends HttpServlet {
 
 		boolean check;
 		
-		check = cardsDBUtil.updateCard(cNum,name,cv,expD);
+		check = cdbu.updateCard(cNum,name,cv,expD);
 		if(check == true) {
 			 
 			 String posimsg = "1";
@@ -47,8 +47,8 @@ public class updateCardServlet extends HttpServlet {
 
 		if(request.getParameter("delete")!= null) {
 			String cardNo = request.getParameter("cno");
-	//assigning return value from db util to boolean check.
-		boolean	check = cardsDBUtil.deleteCard(cardNo);
+	//assigning return value from dbutil to boolean check.
+		boolean	check = cdbu.deleteCard(cardNo);
 		
 		if(check == true) {
 			String posimsg = "1";

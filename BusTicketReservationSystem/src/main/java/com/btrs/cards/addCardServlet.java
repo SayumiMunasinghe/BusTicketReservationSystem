@@ -20,6 +20,7 @@ public class addCardServlet extends HttpServlet {
     private int pid;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		cardsDBUtil cdbu = new cardsDBUtil();
 		HttpSession session = request.getSession();
 		pid =(int) session.getAttribute("userID");
 		
@@ -37,7 +38,7 @@ public class addCardServlet extends HttpServlet {
 		
 		boolean check;
 		
-		check = cardsDBUtil.addCard(cNO,cType, cHName,cvv, date,pid);
+		check = cdbu.addCard(cNO,cType, cHName,cvv, date,pid);
 		
 		if(check == true) {
 			String posimsg = "1";
@@ -63,7 +64,7 @@ public class addCardServlet extends HttpServlet {
 	         String stat = "1";
 	    
 	   
-		     ArrayList<String> cardNos = cardsDBUtil.getCardNumbers(pid);
+		     ArrayList<String> cardNos = cdbu.getCardNumbers(pid);
 	         request.setAttribute("cardNos", cardNos);
 	         request.setAttribute("status",stat);
 		     RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
@@ -81,7 +82,7 @@ public class addCardServlet extends HttpServlet {
                String stat = "1";
     
    
-	           List<cardDetails> cardDetails = cardsDBUtil.viewCardDetails(cardNo);
+	           List<cardDetails> cardDetails = cdbu.viewCardDetails(cardNo);
 	           request.setAttribute("cardDetails", cardDetails);
 	 
       

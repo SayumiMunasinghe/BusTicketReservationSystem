@@ -10,7 +10,7 @@
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-  <title>Personal Bootstrap Template</title>
+  <title>Manage Payment</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 <link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
