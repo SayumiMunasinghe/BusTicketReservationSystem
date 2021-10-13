@@ -1,7 +1,7 @@
 package com.btrs.enterBusDetails;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,9 +13,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import com.btrs.DBconnection.DatabaseConnection;
+import com.btrs.interfaces.BusDatabase;
 
 
-public class busDBUtil {
+public class busDBUtil implements BusDatabase{
 	private static DatabaseConnection db;
 	private static Connection con;
 	private static Statement stmt = null;
@@ -24,7 +25,7 @@ public class busDBUtil {
 
 	
 	//insert part---------------------------------------------------------------
-public static boolean InsertBus(int aID,String busNumber, int busSeat, String type,int condition,String upTime,String upArrival,String upDestination,String downTime,String downArrival,String downDestination, double seatPrice) {
+public boolean InsertBus(int aID,String busNumber, int busSeat, String type,int condition,String upTime,String upArrival,String upDestination,String downTime,String downArrival,String downDestination, double seatPrice) {
 	
 	isSuccess = false;
 	
@@ -62,8 +63,6 @@ public static boolean InsertBus(int aID,String busNumber, int busSeat, String ty
 		}else {
 			isSuccess = false;
 		}
-		
-	  
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -71,7 +70,7 @@ public static boolean InsertBus(int aID,String busNumber, int busSeat, String ty
 }
 	
 //readddddddd-------------------------------------------------------------------------------	
-public static List<Bus> getBusDetails(int aID){
+public  List<Bus> getBusDetails(int aID){
 	
 	//int convertedaid = Integer.parseInt(aid);
 	ArrayList<Bus> bus = new ArrayList<>();
@@ -79,8 +78,8 @@ public static List<Bus> getBusDetails(int aID){
 	try {
 		
 		db = DatabaseConnection.getInstance();
-		 con = db.getCon(); 
-		 stmt = con.createStatement();
+		con = db.getCon(); 
+		stmt = con.createStatement();
 		
 		String sql = "SELECT DISTINCT * FROM bus b, busroute r WHERE b.busID=r.busID AND b.aID="+aID+" ";
 		ResultSet rs = stmt.executeQuery(sql);
@@ -114,11 +113,11 @@ public static List<Bus> getBusDetails(int aID){
 
 //updateeeeeeeeeeeeeeee-----------------------------------------------------------------------------
 
-public static boolean updatebus(int id,String busNumber, int numberOfSeats,String busType, String condition, String time, String arrival, String destination, int aID,double Price ) {
+public boolean updatebus(int id,String busNumber, int numberOfSeats,String busType, String condition, String time, String arrival, String destination, int aID,double Price ) {
 	
 	try {
 		db = DatabaseConnection.getInstance();
-		 con = db.getCon();
+		con = db.getCon();
 		stmt = con.createStatement();
 		 
 		String sql1="update bus b,busroute r set b.numberOfSeats="+numberOfSeats+",b.busType='"+busType+"',r.time='"+time+"',r.arrivalLocation='"+arrival+"',r.destinationLocation='"+destination+"', r.seatPrice="+Price+" where b.busID=r.busID AND b.aID="+aID+" AND r.id="+id;
@@ -137,7 +136,7 @@ public static boolean updatebus(int id,String busNumber, int numberOfSeats,Strin
 	
 	
 //to get busNumbers from data base to the drop dwon when updating
-public static ArrayList<String> getBusNumbers(int aID ) {
+public ArrayList<String> getBusNumbers(int aID ) {
 	
 	ArrayList<String> busNumbers = new ArrayList<String>();
 	
@@ -164,13 +163,13 @@ public static ArrayList<String> getBusNumbers(int aID ) {
 }
 	
 //getting busdetails into an array	
-public static ArrayList<Bus> getBusDetails(String busNumber,int aID){
+public ArrayList<Bus> getBusDetails(String busNumber,int aID){
 	ArrayList<Bus> BusDetails = new ArrayList<Bus>();
 	
 	try {
 		db = DatabaseConnection.getInstance();
-		 con = db.getCon();
-		 stmt = con.createStatement();
+		con = db.getCon();
+		stmt = con.createStatement();
 		 
 		 String sql ="Select * from bus b, busroute r where b.busID=r.busID AND aID="+aID+" AND busNumber='"+busNumber+"'";
 		 ResultSet rs = stmt.executeQuery(sql);
@@ -192,10 +191,11 @@ public static ArrayList<Bus> getBusDetails(String busNumber,int aID){
 				
 				Bus B = new Bus (id,busNumber1,numberOfSeats, busType,AC, uTime,uArrival,uDestination,dTime,dArrival,dDestination,price);
 				BusDetails.add(B);
-		 }}catch(Exception e) {
+		 	}
+		 }catch(Exception e) {
 			 e.printStackTrace();
-		 }return BusDetails;
-	}
+	}return BusDetails;
+}
 //cant remember what this is
 //public static ArrayList<Bus> getBusRoutes(String busNumber){
 //	ArrayList<Bus> BusRoutes = new ArrayList<Bus>();
@@ -229,11 +229,11 @@ public static ArrayList<Bus> getBusDetails(String busNumber,int aID){
 //	}
 
 //function to delete bus from database
-public static boolean deleteBus(String busNumber,int aID) {
+public boolean deleteBus(String busNumber,int aID) {
 	   
 	   try {
 		   db = DatabaseConnection.getInstance();
-			 con = db.getCon();
+		   con = db.getCon();
 		   stmt = con.createStatement();
 		   
 		   String sql = "DELETE FROM bus WHERE busNumber='"+busNumber+"' and aID="+aID+""; 

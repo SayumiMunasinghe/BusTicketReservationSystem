@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/ab07e88f42.js" crossorigin="anonymous"></script>
 
 <style>
 	body, html{
@@ -44,18 +43,34 @@
     color: #fff !important;
   }
   .container {
+    width: fit-content;
   	color: white;
   	background-image: linear-gradient(#950740, #1A1A1D);
   	padding-bottom: 10px;
   }
   .container p {
-  	font-family: HP Simplified;
+  	font-family: Bahnschrift;
   }
-    .container .btn {
-  	padding: 10 5px;
-  	background-color: #C3073F;
-  	font-family: HP Simplified;
-  }
+         
+   .btn {background-image: linear-gradient(to right, #000000 0%, #434343  51%, #000000  100%)}
+   .btn{
+       padding: 15px 5x;
+	    text-align: center;
+	    text-transform: uppercase;
+	    transition: 0.5s;
+	    background-size: 200% auto;
+	    color: white;
+	    border-radius: 4px;
+	    display: block;
+    }
+
+    .btn:hover {
+      background-position: right center; /* change the direction of the change here */
+      color: #fff;
+      text-decoration: none;
+    }
+         
+   
 </style>
 </head>
 <body style="background-image: url('webpage/home/assets/img/bg.jpg');">
@@ -120,7 +135,19 @@
 		<p>Your booking could not be deleted. Please try again</p>
 	</c:if>	
 	<div class="container">
-		<h1>Payment successful</h1><br>
+		<h1 style="font-weight: 1000;">PAYMENT SUCCESSFUL !</h1><br>
+		<div>
+		
+			<h1 style="font-family: Life Savers;padding-bottom: 20px;text-align: center;">BOOKING SUMMARY</h1>
+			<p>Ticket ID: ${order.orderID}</p>
+			<p>Bus ID: ${order.busID}</p>
+			<p>Date of journey: ${order.date}</p>
+			<p>Time of Journey: ${order.time}</p>
+			<p>Number of seats reserved: ${order.reservedSeats}</p>
+			
+			<a href="homepage.jsp"><button class="btn" style="margin-top: 10px;">Back to homepage</button></a>
+		</div>
+		<br>
 		<p>If you delete your booking, you will receive a 50% refund</p>
 		<form action="OrderManagementServlet" method="POST">
 			<input type="hidden" name="orderid" value="${order.orderID}">

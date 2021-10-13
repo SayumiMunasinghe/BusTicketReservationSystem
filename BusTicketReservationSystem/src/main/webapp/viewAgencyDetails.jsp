@@ -21,8 +21,7 @@
 	height: 100%;
 	background-size:cover;
 	font-family: Life Savers;
-}
- 
+   }
  
   .jumbotron {
     background-color: #202020;
@@ -93,10 +92,65 @@
     vertical-align: bottom;
     border-bottom: 0px;
     }
+      .active, .butt:hover {
+		  background-color: #666;
+		  color: pink;
+			}
+        .butt{
+		    border-radius:50px;
+		    padding:10px 20px;
+		  }
+		  .butt:hover{
+		    color: #white !important;
+		    background-color: #C3073F !important;
+		  }
+		  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		    padding: 15px;
+		    line-height: 1.42857143;
+		    vertical-align: top;
+		    border-top: 0px solid black;
+		}
+		.form-control{
+		  background-color:transparent;
+		  color:white;
+		  border-style: none;
+		  border-bottom: solid;
+		  border-color: #6F2232;
+
+		}
+		
+         .btn-grad {background-image:linear-gradient(to right, #6F2232 0%, #C3073F  40%, #6F2232  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 13px 20px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            border-style: none;
+            border-radius: 50px;
+
+          }
+
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+          @media (min-width: 1200px)
+			.container {
+			    width: 950px;
+			}
+			
+		 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 10px;
+         }
   </style>
 </head>
 
-<%
+
+<% // Checks if user is logged in or not
 	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
 	     <script>
 			window.location.href = 'AgencyLogin.jsp';
@@ -117,8 +171,6 @@
 	}
 	</script>
 
-
- 
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
@@ -201,60 +253,7 @@
 	  </script>
       
       <style>
-	      .active, .butt:hover {
-		  background-color: #666;
-		  color: pink;
-			}
-        .butt{
-		    border-radius:50px;
-		    padding:10px 20px;
-		  }
-		  .butt:hover{
-		    color: #white !important;
-		    background-color: #C3073F !important;
-		  }
-		  .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-		    padding: 15px;
-		    line-height: 1.42857143;
-		    vertical-align: top;
-		    border-top: 0px solid black;
-		}
-		.form-control{
-		  background-color:transparent;
-		  color:white;
-		  border-style: none;
-		  border-bottom: solid;
-		  border-color: #6F2232;
-
-		}
-		
-         .btn-grad {background-image:linear-gradient(to right, #6F2232 0%, #C3073F  40%, #6F2232  100%)}
-         .btn-grad {
-            margin: 10px;
-            padding: 13px 20px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-            border-style: none;
-            border-radius: 50px;
-
-          }
-
-          .btn-grad:hover {
-            background-position: right center; /* change the direction of the change here */
-            color: #fff;
-            text-decoration: none;
-          }
-          @media (min-width: 1200px)
-			.container {
-			    width: 950px;
-			}
-			
-		 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 10px;
-         }
+	    
       </style>
       
       
@@ -354,11 +353,11 @@
 	      </tr>
 	      <tr>
 	        <td>Agent phone</td>
-	        <td> <input type="text" name="agentPhone" value="${agencyDetails.agentPhone}" class="form-control"></td>
+	        <td> <input type="text" name="agentPhone" value="${agencyDetails.agentPhone}" class="form-control" pattern="[0-9]{10}"></td>
 	      </tr>
 	      <tr>
 	        <td>Agent Email</td>
-	        <td> <input type="text" name="agentEmail" value="${agencyDetails.agentEmail}" class="form-control"></td>
+	        <td> <input type="email" name="agentEmail" value="${agencyDetails.agentEmail}" class="form-control"></td>
 	      </tr>
 	      <tr>
 	        <td>Agency location</td>
@@ -366,7 +365,7 @@
 	      </tr>
 	      <tr>
 	        <td>Agent password</td>
-	        <td> <input type="text" name="password" value="${agencyDetails.password}" class="form-control"></td>
+	        <td> <input type="text" name="password" value="${agencyDetails.password}" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" ></td>
 	      </tr>
 	      <tr>
 	        <td></td>
@@ -400,7 +399,7 @@
       document.getElementById("2").style.padding= '25px';
       document.getElementById("4").style.padding= '13px';
   	 }else if(buttonVal == "3"){
-  		window.location="enterBusDetails.jsp";	 
+  		window.location="readBusDetails.jsp";	 
   	 }else if(buttonVal == "4"){
   		document.getElementById('table2').style.display = "none";
         document.getElementById('table1').style.display = "none";

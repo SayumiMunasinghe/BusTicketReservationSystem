@@ -21,7 +21,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	
 
 	///get the data from db related to a passenger n display in account settings
-	public static List<Passenger> CheckExist(int userID){
+	public List<Passenger> CheckExist(int userID){
 		ArrayList<Passenger> passenger = new ArrayList<>();
 		 
 		//validate
@@ -55,7 +55,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 	
 	//checks if user details pw and un exist and return pid to allow login to a session
-	public static int checkLogin(String email, String pw){
+	public int checkLogin(String email, String pw){
 
 		int passid = -1;
 		//validate
@@ -83,7 +83,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 
 	///////////////////////////////ADD NEW PASSENGER TO DB FUNCTION////////////////////
-	public static boolean insertPassenger(String fname, String lname, String email, String pwd, String phone) {
+	public boolean insertPassenger(String fname, String lname, String email, String pwd, String phone) {
 		
 		//variable to check if sql statement execute successfully and inserted a row
 		boolean isSuccess = false;
@@ -118,7 +118,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 	
 	///////////////////////GET PASSENGER ID FUNCTION when registering to go homepage////////////////////////
-	public static int getID(String email) {
+	public int getID(String email) {
 		//this function is used to return the pid of passenger to servlet to send to homepage 
 		int passid = -1;
 			
@@ -147,7 +147,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 	
 	///////////////////////UPDATE PASSENGER PASSWORD FUNCTION////////////////
-	public static boolean updatePassword(int userID, String pwd) {
+	public boolean updatePassword(int userID, String pwd) {
 		
 		boolean isUpdated = false;
 		
@@ -181,7 +181,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 	
 	///////////////////////UPDATE PASSENGER PHONE FUNCTION////////////////
-	public static boolean updatePhone(int userID, String tel) {
+	public boolean updatePhone(int userID, String tel) {
 		
 		boolean isUpdated = false;
 		
@@ -215,7 +215,7 @@ public class PassengerDBUtil implements PersonDatabase {
 	}
 	
 	/////////////////////DELETE PASSENGER////////////////////
-	public static Boolean DeletePassengerDetails(int userID) 
+	public Boolean DeletePassengerDetails(int userID) 
 	{
 		boolean isDeleted = false;
 		
