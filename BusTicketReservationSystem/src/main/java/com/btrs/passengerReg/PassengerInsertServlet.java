@@ -27,8 +27,10 @@ public class PassengerInsertServlet extends HttpServlet {
 		
 		Boolean isInserted;
 		
+		PassengerDBUtil pass= new PassengerDBUtil();
+		
 		//insertpassenger function returns boolean value
-		isInserted = PassengerDBUtil.insertPassenger(fname, lname, email, password, phone);
+		isInserted = pass.insertPassenger(fname, lname, email, password, phone);
 	
 		//use if condition to check if inserted succesfully and dbconnection success
 		//true -> insertion success

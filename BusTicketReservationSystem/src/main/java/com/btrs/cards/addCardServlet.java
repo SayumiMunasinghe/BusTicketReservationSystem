@@ -22,6 +22,9 @@ public class addCardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		pid =(int) session.getAttribute("userID");
+		
+		
+		//Create function to add card details when add card button is pressed 
 		if(request.getParameter("submit")!= null) {
        
 		
@@ -31,54 +34,61 @@ public class addCardServlet extends HttpServlet {
 		String cHName = request.getParameter("hName");
 		String date = request.getParameter("date").replaceAll("[a-zA-Z]", "");
 		
-		int set=1;
+		
 		boolean check;
 		
 		check = cardsDBUtil.addCard(cNO,cType, cHName,cvv, date,pid);
 		
 		if(check == true) {
-			
+			String posimsg = "1";
+			request.setAttribute("msg", posimsg);
 			
 		     RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
 		     dis.forward(request, response);
 		   
 		}else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
+			String negimsg = "1";
+			request.setAttribute("negimsg", negimsg);
+			RequestDispatcher dis2 = request.getRequestDispatcher("ManagePayment.jsp");
 		     dis2.forward(request, response);
 		}
 		
     }
    
 
-
-if(request.getParameter("submit1")!=null) {
+		//Create function to get card numbers when update card button is pressed 
+		
+         if(request.getParameter("submit1")!=null) {
         
-	    String stat = "1";
+	         String stat = "1";
 	    
 	   
-		 ArrayList<String> cardNos = cardsDBUtil.getCardNumbers(pid);
-	      request.setAttribute("cardNos", cardNos);
-	      request.setAttribute("status",stat);
-		RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
-	    dis.forward(request, response);
+		     ArrayList<String> cardNos = cardsDBUtil.getCardNumbers(pid);
+	         request.setAttribute("cardNos", cardNos);
+	         request.setAttribute("status",stat);
+		     RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
+	         dis.forward(request, response);
 	   
 	    
 	
- }
+      }
 
-if(request.getParameter("select")!=null) {
-    String cardNo=request.getParameter("card");
-    String stat = "1";
+ 		//Create function to get card details when select card button is pressed 
+         
+            if(request.getParameter("select")!=null) {
+            	
+               String cardNo=request.getParameter("card");
+               String stat = "1";
     
    
-	List<cardDetails> cardDetails = cardsDBUtil.viewCardDetails(cardNo);
-	request.setAttribute("cardDetails", cardDetails);
-	
+	           List<cardDetails> cardDetails = cardsDBUtil.viewCardDetails(cardNo);
+	           request.setAttribute("cardDetails", cardDetails);
+	 
       
-	RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
-    dis.forward(request, response);
-   
-    request.setAttribute("stats",stat);
+	           RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
+               dis.forward(request, response);
+               request.setAttribute("stats",stat);
+    
 
 }
 

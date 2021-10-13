@@ -353,11 +353,11 @@
 	      </tr>
 	      <tr>
 	        <td>Agent phone</td>
-	        <td> <input type="text" name="agentPhone" value="${agencyDetails.agentPhone}" class="form-control"></td>
+	        <td> <input type="text" name="agentPhone" value="${agencyDetails.agentPhone}" class="form-control" pattern="[0-9]{10}"></td>
 	      </tr>
 	      <tr>
 	        <td>Agent Email</td>
-	        <td> <input type="text" name="agentEmail" value="${agencyDetails.agentEmail}" class="form-control"></td>
+	        <td> <input type="email" name="agentEmail" value="${agencyDetails.agentEmail}" class="form-control"></td>
 	      </tr>
 	      <tr>
 	        <td>Agency location</td>
@@ -365,7 +365,7 @@
 	      </tr>
 	      <tr>
 	        <td>Agent password</td>
-	        <td> <input type="text" name="password" value="${agencyDetails.password}" class="form-control"></td>
+	        <td> <input type="text" name="password" value="${agencyDetails.password}" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" ></td>
 	      </tr>
 	      <tr>
 	        <td></td>

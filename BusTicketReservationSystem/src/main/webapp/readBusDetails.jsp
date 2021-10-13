@@ -197,7 +197,7 @@ font-family:Verdana;
     </div>
   </div>
 </nav>
-<script type="text/javascript">
+<!-- onclick button function -->
 <script type="text/javascript">
 function showForm(clickedId){
 if(clickedId == "butn1"){
@@ -208,9 +208,9 @@ if(clickedId == "butn1"){
 }else if(clickedId == "butn2"){
 	document.getElementById('myTable').style.display = "none";
 	document.getElementById('t1').style.display = "none";
-	document.getElementById('f1').style.display = "none";
-	
-}}
+	document.getElementById('f1').style.display = "none";	
+}
+}
 </script>
 
   
@@ -227,9 +227,12 @@ if(clickedId == "butn1"){
 	<hr style="width: 90%;">
    </center>   
  <div class="container" >
+ 
+ <!-- displays the table heading only if the stat value is 1 -->
  <% String stats = (String)request.getAttribute("stat");
 		if(stats == "1"){
 			%>
+			<!-- read all the bus details from db for agent id -->
   <table class="table"  id="myTable" style="background-color:rgba(149, 7, 64, 0.0);" >
    
   <thead id="t1" > 
@@ -250,16 +253,6 @@ if(clickedId == "butn1"){
   <tbody>
    <c:forEach var="bus" items="${busDetails}">
    <%---- calling the get methods in bus.java----%> 
-   
-   <!--<c:set var="busNumber" value="${bus.busNumber}"/>
-   <c:set var="noOfSeats" value="${bus.numberOfSeats}"/>
-   <c:set var="busType" value="${bus.busType}"/>
-   <c:set var="condition" value="${bus.AC}"/>
-   <c:set var="time" value="${bus.uTime}"/>
-   <c:set var="arrival" value="${bus.uArrival}"/>
-   <c:set var="destination" value="${bus.uDestination}"/>
-    <c:set var="price" value="${bus.price}"/>-->
-   
   <tr>
   	<td>${bus.busNumber}</td>
   	<td>${bus.numberOfSeats}</td>
@@ -287,25 +280,15 @@ if(clickedId == "butn1"){
   <script>
  
   </script>
-  
 
-  <%} %>
-  	<!--<c:url value="updateBusDetails.jsp" var="busupdate">
-  	<c:param name="busNumber" value="${busNumber}"/>
-  	<c:param name="seats" value="${noOfSeats}"/>
-  	<c:param name="type" value="${busType}"/>
-  	<c:param name="condition" value="${condition}"/>
-  	<c:param name="time" value="${time}"/>
-  	<c:param name="arr" value="${arrival}"/>
-  	<c:param name="dest" value="${destination}"/>
-  	<c:param name="price" value="${price}"/>
-    </c:url>-->
-  	
-  	
-  	
+  <%
+  } 
+  %>
+
   	<%
   	ArrayList<String> buses = (ArrayList<String>)request.getAttribute("busNumbers");
   	%>
+  	<!-- display drop down and heading only when stat value is 1 -->
   	<% String status = (String)request.getAttribute("status");
 		if(status == "1"){
 			%>
@@ -313,6 +296,7 @@ if(clickedId == "butn1"){
 	<form action="updateBusDetailsServlet" method="POST" id="f1">
   	 <h3 style="color: white;font-family:Verdana;">Select the bus to be editted :</h3>
   	 <select id="bus" name="bus" style="background:transparent;border-bottom: 1px solid #C3073F !important; border:none;color:white;width:100px;">
+  	 <!-- getting the busnumbers under the agent id -->
   	 <%
   	 for(int i = 0; i < buses.size(); i++){
   	 %>
@@ -322,12 +306,12 @@ if(clickedId == "butn1"){
   	 %>
   	 </select>
   	 <input type="submit" name="selectt" value="Select" onclick="showForm(this.id)" id ="b3" >
-  	 
+  	 </form>
   	 
   	 <%
 		}
 		%>
-  	
+  	<!-- form to update bus detailssss -->
   	 <form action="updateBusDetailsServlet" method="POST" id="f2" style="vackground-color:black;">
   	<c:forEach var="bus" items="${BusDetails}" > 
   	<input type="hidden"  name="rId" value="${bus.id}">
@@ -379,28 +363,14 @@ if(clickedId == "butn1"){
   		<div class="col-sm-offset-2 col-sm-10">
   			<input type="submit" value="Save" name="Save" id="minibutton1" ><input type="submit" value="Remove Bus" name="Remove Bus"id="minibutton2" >
     	</div>
-    
     </div>
 	  </c:forEach>
-	 
-	 <br><br>
-  	
-     
-	 
+	   
+	 <br><br>	
+	  
   	</form>
   	
-  	
-   
-  
-
-  
-  
-  		
-	
-	
-  
   </div>
- 
 </div>
 </body>
 </html>

@@ -26,14 +26,14 @@ public class viewBusDetailsServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		//session to get agency id
 		int aID = (int)session.getAttribute("userID");
-//		int aID= 2;
+
 		busDBUtil busDB =new busDBUtil();
 		String stat = "1";
 		try {
 			List <Bus> busDetails = busDB.getBusDetails(aID);
 			request.setAttribute("busDetails", busDetails);
 			request.setAttribute("stat",stat);
-//			System.out.println(id);
+
 			RequestDispatcher dis = request.getRequestDispatcher("readBusDetails.jsp");
 			dis.forward(request, response);
 			

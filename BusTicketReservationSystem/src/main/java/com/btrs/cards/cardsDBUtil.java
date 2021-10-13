@@ -41,7 +41,8 @@ public class cardsDBUtil {
           }
     	   return Success;
        }
-       
+ 
+ //Create sql query to update card details      
   public static boolean updateCard(String cNum,String name,String cv,String expD ) {
 	  
 	  try {
@@ -73,7 +74,7 @@ public class cardsDBUtil {
   
  
  
- 
+  //Create sql query to read card details      
   public static List<cardDetails> viewCardDetails(String cardNo){
 	  ArrayList<cardDetails> cardDetails1 = new ArrayList<>();
 	  
@@ -104,7 +105,7 @@ public class cardsDBUtil {
 	  return cardDetails1;
   }
   
-  
+  //Create sql query to read card numbers according to cus id     
   public static ArrayList<String> getCardNumbers(int cusID ) {
 		
 		ArrayList<String> cardNos = new ArrayList<String>();
@@ -131,7 +132,7 @@ public class cardsDBUtil {
 		return cardNos;
 	}
   
-  
+  //Create sql query to delete card details according to cardNo     
    public static boolean deleteCard(String cardNo) {
 	   
 	   try {

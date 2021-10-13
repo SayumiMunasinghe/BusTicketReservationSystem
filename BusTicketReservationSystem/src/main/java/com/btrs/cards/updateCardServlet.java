@@ -17,6 +17,9 @@ public class updateCardServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	 //Create function to update card details when update button is pressed 
+
 		if(request.getParameter("update")!=null) { 
 		
 		
@@ -30,7 +33,8 @@ public class updateCardServlet extends HttpServlet {
 		check = cardsDBUtil.updateCard(cNum,name,cv,expD);
 		if(check == true) {
 			 
-			 
+			 String posimsg = "1";
+			 request.setAttribute("msg1", posimsg);
 		     RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
 		     dis.forward(request, response);
 		}else {
@@ -39,15 +43,19 @@ public class updateCardServlet extends HttpServlet {
 		}
 	}
 		
-		
+		 //Create function to delete card details when delete button is pressed 
+
 		if(request.getParameter("delete")!= null) {
 			String cardNo = request.getParameter("cno");
-			
+	//assigning return value from db util to boolean check.
 		boolean	check = cardsDBUtil.deleteCard(cardNo);
 		
 		if(check == true) {
+			String posimsg = "1";
+			request.setAttribute("msg2", posimsg);
 			RequestDispatcher dis = request.getRequestDispatcher("ManagePayment.jsp");
 		    dis.forward(request, response);
+		    
 		}else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("result2.jsp");
 		     dis2.forward(request, response);
@@ -58,13 +66,3 @@ public class updateCardServlet extends HttpServlet {
 }
          
 
-//HttpSession session = request.getSession();
-//Session for user ID
-//session.setAttribute("userID", userID);
-//session.setAttribute("mode", mode);
-
-//to retrive session
-//int test = (int)session.getAttribute("userID");
-
-//to delete session
-//session.removeAttribute("mode");
