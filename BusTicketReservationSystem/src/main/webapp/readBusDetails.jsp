@@ -300,7 +300,7 @@ if(clickedId == "butn1"){
   	 <%
   	 for(int i = 0; i < buses.size(); i++){
   	 %>
-  	 	<option value="<%=buses.get(i) %>"><%=buses.get(i) %></option>
+  	 	<option value="<%=buses.get(i) %>" style="color:black;"><%=buses.get(i) %></option>
   	 <%
   	 }
   	 %>
