@@ -47,7 +47,7 @@ public class updateCardServlet extends HttpServlet {
 
 		if(request.getParameter("delete")!= null) {
 			String cardNo = request.getParameter("cno");
-			
+	//assigning return value from db util to boolean check.
 		boolean	check = cardsDBUtil.deleteCard(cardNo);
 		
 		if(check == true) {
