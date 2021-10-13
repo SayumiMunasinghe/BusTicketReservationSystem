@@ -199,12 +199,15 @@
 		</tr>
 	</table>
 	<div class="pay">
-		<c:choose>
-		    <c:when test="${cardNos == null}">
-		        <a href="ManagePayment.jsp"><button>Add new card</button></a> 
-		        <br />
-		    </c:when>    
-		    <c:otherwise>
+		
+		
+		       
+	
+<% ArrayList<String> cards = (ArrayList<String>)request.getAttribute("cardNos"); 
+	if(cards.size() == 0) {
+		%> <a href="ManagePayment.jsp"><button class="btn">Add new card</button></a> 
+		<%} else { %>
+
 		        <form action="PaymentServlet" method="post">
 					<p>Select card to make payment: </p>
 					<select id="card" name="card" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;">
@@ -214,9 +217,9 @@
 					</select>
 					<input class="btn" type="submit" name="paynow" value="Pay now">
 				</form> 
+				<%} %>
 				        <br />
-		    </c:otherwise>
-		</c:choose>
+
 	</div>
 </div>
 <%
