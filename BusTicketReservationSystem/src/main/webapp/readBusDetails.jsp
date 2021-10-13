@@ -6,7 +6,9 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://www.freeiconspng.com/uploads/red-bus-icon-8.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -56,15 +58,85 @@
   color: white;
   font-family:Verdana;
   }
+  .button {
+	background-color:rgb(149, 7, 64);
+	border: none;
+	color: black;
+	width: 90%;
+	font-family:Verdana;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	
+}
+.button:hover {
+	background-image: linear-gradient(to right, rgb(111, 34, 50), rgb(195,7,63));
+	background-color:inherit;
+	color: white;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+  input[type=text] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+  	border-bottom: 2px solid gray;
+}
+input[type=number] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+}
+input[type=time] {
+  	font-family:Verdana;
+  	background-color:transparent;
+  	color:white;
+}
+.myBody{
+font-family:Verdana;
 
+}
+#minibutton1{
+	background-color:#4E4E50;
+	color:white;
+}
+#minibutton2{
+	background-color:#C3073F;
+}
+#b3{
+	background-color:rgba(149, 7, 64);
+  color: white; 
+  border: 2px solid rgb(0,0,0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family:Verdana;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 </style>
 
-<title>Bus Details</title>
+<title>OBTRS: Manage Bus Details</title>
 
  
   
 
 </head>
+
+<%
+	if(session.getAttribute("mode") == null || session.getAttribute("userID") == null){ %>
+	     <script>
+			window.location.href = 'AgencyLogin.jsp';
+		</script>
+     <%}
+%>
 
 
 <body style="background-image: url('webpage/home/assets/img/bg.jpg');" >
@@ -125,7 +197,7 @@
     </div>
   </div>
 </nav>
-<script type="text/javascript">
+<!-- onclick button function -->
 <script type="text/javascript">
 function showForm(clickedId){
 if(clickedId == "butn1"){
@@ -136,36 +208,39 @@ if(clickedId == "butn1"){
 }else if(clickedId == "butn2"){
 	document.getElementById('myTable').style.display = "none";
 	document.getElementById('t1').style.display = "none";
-	document.getElementById('f1').style.display = "none";
-	
-}}
+	document.getElementById('f1').style.display = "none";	
+}
+}
 </script>
 
   
 <br><br><br><br>
-
+<div class="myBody">
 <center><h2 style="color: white;font-family:Verdana;">Bus Details</h2>  </center>  
   <form action="viewBusDetailsServlet" method="POST">   
   <center>
- <input type="submit" value="View Details" onclick="showForm(this.id)" id="butn1" name="view">     
- 	</form>
+ <input type="submit" value="View Details" onclick="showForm(this.id)" id="butn1" class="button"name="view">     
+ 	</form><br>
  	<form action="updateBusDetailsServlet" method="POST">
-  	<input type="submit"    name="select" onclick="showForm(this.id)" value="Edit" id="butn2"> 
+  	<input type="submit"    name="select" onclick="showForm(this.id)" value="Edit" class="button" id="butn2"> 
 	</form>
-	<hr>
+	<hr style="width: 90%;">
    </center>   
  <div class="container" >
+ 
+ <!-- displays the table heading only if the stat value is 1 -->
  <% String stats = (String)request.getAttribute("stat");
 		if(stats == "1"){
 			%>
+			<!-- read all the bus details from db for agent id -->
   <table class="table"  id="myTable" style="background-color:rgba(149, 7, 64, 0.0);" >
    
   <thead id="t1" > 
   <tr>
-  	<th>Car Number</th>
+  	<th>Bus Number</th>
   	<th>Number of seats</th>
   	<th>Bus Type</th>
-  	<th>Condition</th>
+  	<th>Air-Condition</th>
   	<th>Time</th>
   	<th>Arrival</th>
   	<th>Destination</th>
@@ -178,16 +253,6 @@ if(clickedId == "butn1"){
   <tbody>
    <c:forEach var="bus" items="${busDetails}">
    <%---- calling the get methods in bus.java----%> 
-   
-   <!--<c:set var="busNumber" value="${bus.busNumber}"/>
-   <c:set var="noOfSeats" value="${bus.numberOfSeats}"/>
-   <c:set var="busType" value="${bus.busType}"/>
-   <c:set var="condition" value="${bus.AC}"/>
-   <c:set var="time" value="${bus.uTime}"/>
-   <c:set var="arrival" value="${bus.uArrival}"/>
-   <c:set var="destination" value="${bus.uDestination}"/>
-    <c:set var="price" value="${bus.price}"/>-->
-   
   <tr>
   	<td>${bus.busNumber}</td>
   	<td>${bus.numberOfSeats}</td>
@@ -215,32 +280,23 @@ if(clickedId == "butn1"){
   <script>
  
   </script>
-  
 
-  <%} %>
-  	<!--<c:url value="updateBusDetails.jsp" var="busupdate">
-  	<c:param name="busNumber" value="${busNumber}"/>
-  	<c:param name="seats" value="${noOfSeats}"/>
-  	<c:param name="type" value="${busType}"/>
-  	<c:param name="condition" value="${condition}"/>
-  	<c:param name="time" value="${time}"/>
-  	<c:param name="arr" value="${arrival}"/>
-  	<c:param name="dest" value="${destination}"/>
-  	<c:param name="price" value="${price}"/>
-    </c:url>-->
-  	
-  	
-  	
+  <%
+  } 
+  %>
+
   	<%
   	ArrayList<String> buses = (ArrayList<String>)request.getAttribute("busNumbers");
   	%>
+  	<!-- display drop down and heading only when stat value is 1 -->
   	<% String status = (String)request.getAttribute("status");
 		if(status == "1"){
 			%>
   
 	<form action="updateBusDetailsServlet" method="POST" id="f1">
   	 <h3 style="color: white;font-family:Verdana;">Select the bus to be editted :</h3>
-  	 <select id="bus" name="bus">
+  	 <select id="bus" name="bus" style="background:transparent;border-bottom: 1px solid #C3073F !important; border:none;color:white;width:100px;">
+  	 <!-- getting the busnumbers under the agent id -->
   	 <%
   	 for(int i = 0; i < buses.size(); i++){
   	 %>
@@ -250,13 +306,13 @@ if(clickedId == "butn1"){
   	 %>
   	 </select>
   	 <input type="submit" name="selectt" value="Select" onclick="showForm(this.id)" id ="b3" >
-  	 
+  	 </form>
   	 
   	 <%
 		}
 		%>
-  	
-  	 <form action="updateBusDetailsServlet" method="POST" id="f2">
+  	<!-- form to update bus detailssss -->
+  	 <form action="updateBusDetailsServlet" method="POST" id="f2" style="vackground-color:black;">
   	<c:forEach var="bus" items="${BusDetails}" > 
   	<input type="hidden"  name="rId" value="${bus.id}">
   	<input type="hidden"  name="busNumber" value="${bus.busNumber}">
@@ -273,7 +329,7 @@ if(clickedId == "butn1"){
 		</div>
 	</div>
 	<div class="form-group">
-  		<label class="control-label col-sm-2">Condition : </label>
+  		<label class="control-label col-sm-2">Air-Condition : </label>
   		<div class="col-sm-9">
   			<input type="text"  name="condition" value="<c:if test="${bus.AC == 1}">AC</c:if><c:if test="${bus.AC == 0}">NON-AC</c:if>" pattern="[0-1]" readonly>
 		</div>
@@ -281,7 +337,7 @@ if(clickedId == "butn1"){
 	<div class="form-group">
   		<label class="control-label col-sm-2">Time :  </label>
   		<div class="col-sm-9">
-  			<input type="text"  name="time" value="${bus.uTime}">
+  			<input type="time"  name="time" value="${bus.uTime}">
 		</div>
 	</div>
 	<div class="form-group">
@@ -299,36 +355,22 @@ if(clickedId == "butn1"){
 	<div class="form-group">
   		<label class="control-label col-sm-2">Seat Price : </label> 
   		<div class="col-sm-9">
-  			<input type="text"  name="price" value="${bus.price}">
+  			<input type="number" min="0" max="1000" step="1"  name="price" value="${bus.price}">
 	  	</div>
 	  </div>
 	<div class="form-group">
   		
   		<div class="col-sm-offset-2 col-sm-10">
-  			<input type="submit" value="Save" name="Save"  ><input type="submit" value="Remove Bus" name="Remove Bus"  >
+  			<input type="submit" value="Save" name="Save" id="minibutton1" ><input type="submit" value="Remove Bus" name="Remove Bus"id="minibutton2" >
     	</div>
-    
     </div>
 	  </c:forEach>
-	 
-	 <br><br>
-  	
-     
-	 
+	   
+	 <br><br>	
+	  
   	</form>
   	
-  	
-   
-  
-
-  
-  
-  		
-	
-	
-  
   </div>
- 
-
+</div>
 </body>
 </html>

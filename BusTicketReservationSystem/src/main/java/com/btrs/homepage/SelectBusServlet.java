@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
 
 import javax.servlet.RequestDispatcher;
@@ -28,11 +27,12 @@ public class SelectBusServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//on auto load of home page, get the drop-downs 
+		BusDBUtil bdu = new BusDBUtil();
 		if(request.getParameter("dropdowns") != null) {
 			try {
 				String x = "1";
-				ArrayList<String> arrival = BusDBUtil.getArrival();
-				ArrayList<String> destination = BusDBUtil.getDestination();
+				ArrayList<String> arrival = bdu.getArrival();
+				ArrayList<String> destination = bdu.getDestination();
 				request.setAttribute("arrival", arrival);
 				request.setAttribute("destination", destination);
 				request.setAttribute("x", x);
@@ -50,8 +50,12 @@ public class SelectBusServlet extends HttpServlet {
 			try {
 				travelDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfTravel);
 				date = travelDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-				List<BusDetails> busDetails = BusDBUtil.sendDetails(arrival, destination);
+				
+				//get bus details to show to customer on availablebuses.jsp
+				//READ
+				List<BusDetails> busDetails = bdu.sendDetails(arrival, destination);
 			
+				//if there are no buses matching the selected route
 				if(busDetails.isEmpty()) {
 					HttpSession session = request.getSession();
 					String flag = "empty";
@@ -60,6 +64,8 @@ public class SelectBusServlet extends HttpServlet {
 					RequestDispatcher dis = request.getRequestDispatcher("homepage.jsp");
 					dis.forward(request, response);
 				}
+				
+				//check whether available buses are fully booked, if so, remove them from available buses for cusotmer to book
 				for(int i = 0; i < busDetails.size(); i++) {
 					if(busDetails.get(i).getRemainingSeats() == 0)
 						busDetails.remove(i);

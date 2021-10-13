@@ -97,6 +97,12 @@
 	    margin-top: 40px;
 	    margin-bottom: 0px;
 	}
+	.alert-warning {
+	    width: 72.5%;
+	    margin-left: 14px;
+	    margin-top: 40px;
+	    margin-bottom: 0px;
+	}
   </style>
 </head>
 
@@ -113,9 +119,7 @@
 	}
 </script>
 <%
-		LocalDate today = LocalDate.now();
-		ArrayList<String> arrival = (ArrayList<String>)request.getAttribute("arrival");
-		ArrayList<String> destination = (ArrayList<String>)request.getAttribute("destination");
+		LocalDate day = LocalDate.now().plusDays(1);
 %>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-lg" style="padding-left: 5%; padding-right: 5%;">
@@ -180,19 +184,17 @@
   <h1 style="color:white; font-size: 55px;">RESERVE YOUR <span style="color:#C3073F"> BUS TICKET </span> <br> NOW</h1> 
   <p style ="color:rgba(255, 255, 255, 0.507); font-size: 22px; color:#C3073F">WE&nbsp&nbspMADE&nbsp&nbspBOOKING&nbsp&nbspBUS&nbsp&nbspTICKETS&nbsp&nbspREVOLUTIONARY&nbsp&nbspEVERYONE</p> 
 	<div class="row">
-	<form action="SelectBusServlet" method="POST" style="font-family: HP Simplified;">
+	<form action="SelectBusServlet" method="POST" style="font-family: Bahnschrift;">
 	<div>
           <div class="col-sm-3">
             <label style ="color:white;">FROM: </label>
           	<select id="arrival" name="arrival" class="form-control" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;" required>
 				<%
-				if(request.getAttribute("x") == "1") {
-				for(int i = 0; i < arrival.size(); i++) {
-				%>
-					<option style="color: black; " value="<%= arrival.get(i) %>"><%= arrival.get(i) %></option>
-				<%
-				}}
-				%>
+				if(request.getAttribute("x") == "1") {%>
+				<c:forEach var="arr" items="${arrival}">
+					<option style="color: black; " value="${arr}">${arr}</option>
+				</c:forEach>
+				<%}%>
 				</select>
           </div>
         </div>
@@ -202,22 +204,19 @@
              <label style ="color:white;">TO: </label>
              <select id="destination" name="destination" class="form-control" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-color:#4E4E50;" required>
 				<%
-				if(request.getAttribute("x") == "1") {
-				for(int i = 0; i < destination.size(); i++) {
-				%>
-					<option style="color: black" value="<%= destination.get(i) %>"><%= destination.get(i) %></option>
-				<%
-				}}
-				%>
+				if(request.getAttribute("x") == "1") {%>
+				<c:forEach var="des" items="${destination}">
+					<option style="color: black; " value="${des}">${des}</option>
+				</c:forEach>
+				<%}%>
 			</select>
-			
           </div>
           </div>
           
           <div>
           <div class="col-sm-3">
            <label style ="color:white;">TRAVEL DATE: </label>
-           <input type="date" name="travelDate" min="<%= today%>" required class="form-control" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;">
+           <input type="date" name="travelDate" min="<%= day%>" required class="form-control" style ="background-color: inherit ; color: white; border-radius: 4px; border-width:3px; border-radius: 4px; border-width:3px; border-color:#4E4E50;">
           </div>
         </div>
         
@@ -279,7 +278,7 @@
 	<%}
 	if(session.getAttribute("mode") == "agency") {%>
 	<br><br>
-		<div class="alert alert-danger">
+		<div class="alert alert-warning">
 		<div class="row">
 		  <div class="col-sm-10"><p style="margin: auto; padding-top: 3px;">Login as passenger to book a bus ticket.</p></div>
 		</div>
@@ -288,8 +287,9 @@
 %>
 	</div>
         <input type="submit" id="submit" name="submit" value="FIND BUS" class="btn btn-warning btn-lg" style="background-color:#C3073F; border-style:none; margin-top:20px;"><br><br><br>
-      </div><br>
+      <br>
 	</form>
+	</div>
 	<script>
 			function enable() {
 				document.getElementById("submit").disabled = false;
