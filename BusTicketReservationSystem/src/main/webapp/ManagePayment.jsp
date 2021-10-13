@@ -26,7 +26,7 @@
             top:20%;
             left : 35%;
 	  		padding:20px 35px 20px 35px;
-	  		font-family: Life Savers;
+	  		font-family:none;
 	 	    color: #C3073F !important;
 	 	    position:absolute;
 	 	   
@@ -61,8 +61,8 @@
      #f1{
         border:1px solid;
         padding:20px 35px 20px 35px;
-         border-color:#C3073F !important;
-         background-color:rgb(13,13,13,0.6);
+        border-color:#C3073F !important;
+        background-color:rgb(13,13,13,0.6);
       }
        
        #f3{
@@ -107,7 +107,8 @@
           outline: none;
           text-align: left;
           cursor: pointer;
-          font-family: Life Savers;
+          font-family:none;
+          
 }
 
      .tab button:hover {
@@ -375,7 +376,7 @@
 			
            <%} %>
           
-           <input type="submit" id="s1" value="Add Card" name="submit"  class="btn btn-primary">
+           <input type="submit" id="s1" value="Add Card" name="submit"  class="btn " style="background-color: rgb(149, 7, 64);color:white;">
          
          <script>
          if(document.getElementById('cv')!=null){
@@ -429,7 +430,7 @@
 		</select>
 		</div>
 	
-		<input type="submit" value="Select" class="btn btn-primary" name="select" id ="b3" onclick="showUp(this.id)" >
+		<input type="submit" value="Select" class="btn" name="select" id ="b3" onclick="showUp(this.id)" style="background-color: rgb(149, 7, 64);color:white;">
 		
 		</form>
 		</div>
@@ -488,7 +489,7 @@
           <label>Expiry Date:</label><input type="text" value="${cardDetails.date}" class="form-control" pattern="[0-9]{2}/[0-9]{2}" name="date" placeholder="MM/YY" >   
               </div>
            </div>
-           <input type="submit" value="Update" name="update" id ="b1" class="btn btn-primary">
+           <input type="submit" value="Update" name="update" id ="b1" class="btn " style="background-color: rgb(149, 7, 64);color:white;">
            <input type="submit" value="Remove Card" name="delete" id="b2" class="btn btn-danger">
             
 		
