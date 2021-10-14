@@ -285,11 +285,11 @@ body {font-family: "Lato", sans-serif;}
   <div class="form-group">
 
       <label for="pwd1">New Password:</label>
-      <input type="text" name="pwd" value="${pass.password}" style=" border-radius:50px;" class="form-control" id="pwd" onkeyup='check();' />
+      <input type="password" name="pwd" value="${pass.password}" style=" border-radius:50px;" class="form-control" id="pwd" onkeyup='check();' />
     </div>
     <div class="form-group">
       <label for="pwd2">Confirm Password:</label>
-      <input type="text"  class="form-control" name="conpwd" id="conpwd" style=" border-radius:50px;" placeholder="Re-enter password" onkeyup='check();' /> 
+      <input type="password"  class="form-control" name="conpwd" id="conpwd" style=" border-radius:50px;" placeholder="Re-enter password" onkeyup='check();' /> 
   		<span id='message'></span>
     </div>
 
