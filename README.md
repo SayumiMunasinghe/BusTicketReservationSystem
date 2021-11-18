@@ -1,4 +1,4 @@
-# BusTicketReservationSystem
+# Bus Ticket Reservation System
 A group project for Year 2 Semester 1 - Object Oriented Programming (OOP) Module, where me and my teammates built a Online Bus Ticket Reservation System.
 
 ## Function
